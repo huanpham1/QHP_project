@@ -4,6 +4,7 @@
 }
 body{
   background-color: azure;
+  position: relative;
 }
 header{
   width: 100%;
@@ -55,7 +56,24 @@ header{
   font-size: 16px;
   padding-left: 10px;
 }
-
+.info_acc{
+  list-style-type: none;
+  display: none;
+  position: absolute;
+  left: 93%;
+  padding: 10px;
+  color: wheat;
+  background-color: rgb(166, 163, 163);
+}
+.info_acc li{
+  padding: 3px;
+}
+.name_acc:hover .info_acc{
+  display: block;
+}
+.name_acc .info_acc:hover li{
+  color: rgb(47, 13, 13);
+}
 .main_select li{
   padding-left: 20px;
   line-height: 45px;
@@ -69,7 +87,7 @@ header{
   width: 24px;
 }
 .main_select li:hover{
-  background-color: rgb(31, 42, 138);
+  background-color: #091023;
 }
 .container{
   width: 85%;
@@ -101,4 +119,25 @@ header{
   border-radius: 10px;
   justify-content: space-around;
   background-color: blanchedalmond;
+}
+.cha_TK{
+  position: relative;
+}
+.con_TK{
+  position: absolute;
+  list-style-type: none;
+  width: 100%;
+  top: 100%;
+  left: 0%;
+  display: none;
+  background-color: #091023;
+}
+.con_TK li{
+  color: rgb(111, 105, 98);
+}
+.cha_TK:hover .con_TK{
+  display: block;
+}
+.con_TK li:hover{
+  color: #f9f9f9;
 }
