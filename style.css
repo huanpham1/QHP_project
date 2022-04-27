@@ -22,8 +22,9 @@
 }
 .checking-order a{
     text-decoration: none;
+    color: white;
 }
-.checking-order a p:hover{
+.checking-order a:hover{
     color: grey;
 }
 .htren p{

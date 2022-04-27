@@ -102,9 +102,11 @@ ul>li>ul{
 }
 nav>ul>.nam:hover > .namnam{
     visibility: visible;
+    z-index: 100;
 }
 nav>ul>.nu:hover > .nunu{
     visibility: visible;
+    z-index: 100;
 }
 .search>form{
     position: relative;
