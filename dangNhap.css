@@ -137,6 +137,9 @@ nav>ul>.nu:hover > .nunu{
     height: 40px;
     text-align: center;
 }
+.acc:hover{
+    color: red;
+}
 .acc_cart>a>div{
     margin-top: 5px;
 }
@@ -210,16 +213,18 @@ section>form>table input{
 }
 #submit>input{
     width: 200px;
-    height: 36px;
+    height: 40px;
     color: white;
     background-color: #ef5b5b;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
+    padding: 0px;
     border: none;
     cursor: pointer;
 }
 #submit>input:hover{
     background-color: black;
+    transition: all 0.3s ease-in-out;
 }
 #forgot-pass-form{
     display: none;
@@ -256,11 +261,13 @@ section>form>table input{
     background-color: #ef5b5b;
     font-family: Arial, Helvetica, sans-serif;
     font-size: 18px;
+    padding: 0px;
     border: none;
     cursor: pointer;
 }
 .form-submit>input:hover{
     background-color: black;
+    transition: all 0.3s ease-in-out;
 }
 .form-submit>a{
     text-decoration: none;

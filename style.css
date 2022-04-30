@@ -204,6 +204,7 @@ p{
 }
 .view-more button:hover{
     opacity: 80%;
+    cursor: pointer;
 }
 .title2 img{
     width: 100%;
