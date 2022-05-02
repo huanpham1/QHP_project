@@ -21,7 +21,7 @@ header{
 .nav, .banner{
   height: 100%;
   width: 15%;
-  background-color: rgb(12, 15, 44);
+  background-color: rgb(15, 18, 48);
 }
 .image_banner{
   width: 100%;
@@ -88,7 +88,7 @@ header{
   width: 24px;
 }
 .main_select li:hover{
-  background-color: #091023;
+  background-color: #1f3684;
 }
 .container{
   width: 85%;
