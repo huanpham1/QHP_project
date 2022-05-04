@@ -65,7 +65,7 @@ header{
     width: 50%;
     height: 100%;
 }
-ul{
+nav ul{
     margin: 0;
     padding: 0;
     display: flex;
@@ -145,6 +145,9 @@ nav>ul>.nu:hover > .nunu{
     height: 40px;
     text-align: center;
 }
+.acc:hover{
+    color: red;
+}
 .acc_cart>a>div{
     margin-top: 5px;
 }
@@ -153,82 +156,198 @@ nav>ul>.nu:hover > .nunu{
     font-size: 30px;
     margin-left: 10px;
 }
-.hduoi>img{
-    margin-left: 20px;
+.cart{
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
+    margin-bottom: 100px;
 }
-.acc:hover{
-    color: red;
-}
-.banner img{
-    width: 100%;
-}
-.title0 p{
+.cart-title{
     text-align: center;
-    font-size: 35px;
-    margin: 20px 0px;
+    margin: auto;;
 }
-.title1 img{
+.empty-cart{
+    width: 50%;
+    margin: auto;
+    margin-top: 30px;
+    text-align: center;
+}
+.empty-cart p{
+    font-size: 18px;
+}
+.empty-cart button{
+    background-color: #ef5b5b;
+    border: none;
+    width: 200px;
+    height: 36px;
+}
+.empty-cart button a{
+    text-decoration: none;
+    display: block;
+    color: white;
+    font-size: 20px;
+    padding: 0px;
+}
+.empty-cart button:hover{
+    background-color: black;
+    transition: all 0.3s ease-in-out;
+}
+.cart-item{
+    width: 100%;
+    margin-top: 30px;
+}
+.cart-item table{
     width: 100%;
 }
-.hang{
+.cart-item table th{
+    font-size: 20px;
+}
+.cart-item table td{
+    padding: 10px;
+    margin-top: 10px;
+}
+.cart-image{
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
 }
-.cot a img{
-    height: 240px;
+.cart-image img{
+    width: 60%;
 }
-.cot a{
+.item-name{
+    display: block;
+}
+.item-name>a{
+    text-decoration: none;
+    color: black;
+    font-size: 18px;
+}
+.item-name>a:hover{
+    color: red;
+    transition: all 0.3s ease-in-out;
+}
+.item-infor{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 10px;
+    line-height: 25px;
+}
+.color{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 10px;
+}
+.size{
+    display: flex;
+    flex-wrap: nowrap;
+    margin-right: 10px;
+}
+.item-color{
+    width: 25px;
+    height: 25px;
+    background-color: gray;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+.item-size{
+    width: 25px;
+    height: 25px;
+    line-height: 25px;
+    border: 1px solid black;
+    font-size: 16px;
+    text-align: center;
+    margin-left: 10px;
+    margin-right: 10px;
+    border-radius: 3px;
+}
+.btn-delete{
+    margin-left: 10px;
+}
+.btn-delete a{
     text-decoration: none;
     color: black;
 }
-.tensp{
+.btn-delete a:hover{
+    color: red;
+    transition: all 0.3s ease-in-out;
+}
+.btn-delete i{
     font-size: 18px;
+    margin-top: 5px;
+}
+.item-quantity{
     text-align: center;
 }
-.tensp:hover{
-    color: red;
-}
-p{
-    margin: 0;
-}
-.price{
-    text-align: center;
-    color: red;
-    font-size: 25px;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-}
-.view-more{
-    text-align: center;
-    margin: 25px 0; 
-}
-.view-more button{
-    height: 55px;
-    border: none;
-    background-color: #e34444;
-    color: white;
-    font-size: 15px;
-    width: 230px;
-}
-.view-more button:hover{
-    opacity: 80%;
-    cursor: pointer;
-}
-.title2 img{
-    width: 100%;
-}
-.title3{
-    display: flex;
-    background-color: black;
-    color: white;
+.item-quantity input{
+    width: 50px;
     height: 30px;
-    justify-content: center;
-    align-items: center;
+    font-size: 18px;
+    padding-left: 10px;
 }
-.fb{
+.item-price{
+    font-size: 18px;
+    text-align: right;
+}
+.item-total{
+    font-size: 18px;
+    text-align: right;
+    color: red;
+}
+.cart-pay{
+    margin-top: 30px;
     display: flex;
 }
-.fb img{
-    width: 158px;
+.shop-support{
+    width: 50%;
+    line-height: 25px;
+}
+.buy-more{
+    width: 35%;
+    text-decoration: none;
+    display: inline-block;
+    color: #139ddd;
+    font-size: 18px;
+}
+.buy-more:hover{
+    color: black;
+    transition: all 0.3s ease-in-out;
+}
+.shop-contact{
+    margin-top: 20px;
+}
+.shop-contact ul{
+    list-style-position: inside;
+}
+.shop-contact .phone-number{
+    font-size: 18px;
+    color: #034ea1;
+}
+.shop-contact .email{
+    font-size: 18px;
+    color: #034ea1;
+}
+.user-total-price{
+    width: 50%;
+}
+.total-price{
+    text-align: right;
+    font-size: 20px;
+}
+.user-pay{
+    text-align: right;
+    margin-top: 20px;
+}
+.user-pay input{
+    width: 200px;
+    height: 40px;
+    font-size: 20px;
+    background-color: #e34848;
+    color: white;
+    border: none;
+}
+.user-pay input:hover{
+    background-color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 .LOGO img{
     height: 150px;
@@ -247,7 +366,3 @@ footer{
 footer p{
     font-size: 20px;
 }
-
-
-
-

@@ -27,9 +27,8 @@ header{
 }
 .checking-order a{
     text-decoration: none;
-    color: white;
 }
-.checking-order a:hover{
+.checking-order a p:hover{
     color: grey;
 }
 .htren p{
@@ -110,9 +109,11 @@ ul>li>ul{
 }
 nav>ul>.nam:hover > .namnam{
     visibility: visible;
+    z-index: 100;
 }
 nav>ul>.nu:hover > .nunu{
     visibility: visible;
+    z-index: 100;
 }
 .search>form{
     position: relative;
@@ -159,22 +160,139 @@ nav>ul>.nu:hover > .nunu{
 .acc:hover{
     color: red;
 }
-.banner img{
-    width: 100%;
+.content{
+    width: 90%;
+    margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    margin-top: 50px;
+}
+.filters{
+    width: 25%;
+    display: block;
+}
+.size-filter{
+    height: 200px;
+}
+.size-filter p{
+    font-size: 20px;
+}
+.size ul{
+    display: block;
+}
+.size li{
+    width: 43px;
+    height: 43px;
+    line-height: 43px;
+    margin-right: -1px;
+    margin-bottom: -1px;
+    float: left;
+    text-align: center;
+    padding: 0;
+    display: block;
+}
+.size li a{
+    display: block;
+    text-decoration: none;
+    color: black
+}
+.size li a:hover{
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+.color-filter{
+    margin-bottom: 50px;
+
+}
+.color-boxes{
+    display: flex;
+}
+.color-filter p{
+    font-size: 20px;
+}
+.color-box{
+    font-size: 11px;
+    display: block;
+    height: 25px;
+    width: 25px;
+    line-height: 18px;
+    border-radius: 50%;
+    margin: 5px;
+}
+.price-filter p{
+    font-size: 20px;
+}
+.price-scope{
+    line-height: 25px;
+}
+.price-scope input{
+    display: inline-block;
+    width: 18px;
+    height: 18px;
+    margin: 0 5px 0 0;
+    border: 1px solid rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+    vertical-align: middle;
+    font-size: 11px;
+    font-weight: 400;
+    line-height: 16px;
+    text-align: center;
+}
+.price-scope input:hover{
+    cursor: pointer;
+}
+.price-scope label:hover{
+    cursor: pointer;
+}
+.product{
+    width: 75%;
 }
 .title0 p{
     text-align: center;
     font-size: 35px;
     margin: 20px 0px;
 }
-.title1 img{
-    width: 100%;
+.danhmuc{
+    margin-bottom: 10px;
+}
+.danhmuc>ul{
+    width: 80%;
+    margin: auto;
+    display: flex;
+    flex-wrap: nowrap;
+    justify-content: space-around;
+    height: 50px;
+}
+.danhmuc>ul>li{
+    width: 20%;
+    border: 1px solid #e6e6e6;
+    border-radius: 5px;
+    height: 50px;
+}
+.danhmuc>ul>li>a{
+    text-decoration: none;
+    color: black;
+    line-height: 50px;
+    font-size: 20px;
+    display: block;
+    text-align: center;
+}
+.danhmuc>ul>li>a:hover{
+    color: red;
+    background-color: #f2f2f2;
+    transition: all 0.3s ease-in-out;
 }
 .hang{
     display: flex;
     justify-content: space-between;
 }
+.cot{
+    width: 24%;
+    justify-content: space-between;
+}
 .cot a img{
+    width: 100%;
     height: 240px;
 }
 .cot a{
@@ -247,7 +365,3 @@ footer{
 footer p{
     font-size: 20px;
 }
-
-
-
-
