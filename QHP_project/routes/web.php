@@ -17,13 +17,16 @@ Route::prefix('/')->group(function(){
         return view('home');
     });
     Route::get('/DangNhap', function () {
-    return view('DangNhap');
+        return view('DangNhap');
     });
     Route::get('/DangKy', function () {
         return view('DangKy');
     });
     Route::get('/GioHang', function () {
         return view('GioHang');
+    });
+    Route::get('/DanhMuc', function(){
+        return view('DanhMuc');
     });
 });
 

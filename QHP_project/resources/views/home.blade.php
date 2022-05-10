@@ -14,18 +14,18 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-                <a href="dangNhap.html">Log in</a>
+                <a href="DangNhap">Log in</a>
                 <pre>|</pre>
-                <a href="dangKy.html">Register</a>
+                <a href="DangKy">Register</a>
             </div>
         </div>
         <div class="hduoi">
-            <a href="index.html"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
                     <li class="nam">
-                        <a href="XemDanhMuc.html">Nam</a>
+                        <a href="DanhMuc">Nam</a>
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -53,7 +53,7 @@
             </div>
             <div class="acc_cart">
                 <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
     </header>
