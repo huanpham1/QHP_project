@@ -3,16 +3,16 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./xemChiTiet.css">
+    <link rel="stylesheet" href="./assets/css/DangNhap.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Xem chi tiet</title>
+    <title>Giày QHP</title>
 </head>
 <body>
     <header>
         <div class="htren">
             <div class="hotline"><p>Hotline: 0987666666</p></div>
-            <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
+            <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
                 <a href="dangNhap.html">Log in</a>
                 <pre>|</pre>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="hduoi">
-            <a href="index.html"><img src="./images/Capture.PNG" alt="LOGO"></a>
+            <a href="index.html"><img src="./assets/images/Logo.PNG" alt="LOGO"></a>
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
@@ -57,57 +57,48 @@
             </div>
         </div>
     </header>
-    <div class="chiTietSP">
-        <div class="img_sp">
-            <div class="big_img">
-                <img name = "img_sp" src="./images/pro_AV00101_2.jpg" alt="Giay">
-            </div>
-            <div class="small_img">
-                <img name = "img_sp" src="./images/pro_AV00101_2.jpg" alt="Giay">
-                <img name = "img_sp" src="./images/pro_AV00101_1.jpg" alt="Giay">
-                <img name = "img_sp" src="./images/pro_AV00101_3.jpg" alt="Giay">
-                <img name = "img_sp" src="./images/pro_AV00101_4.jpg" alt="Giay">
-            </div>
-        </div>
-        <div class="info_sp">
-            <div class="name">
-                <h1>VINTAS THE NEW MILITARY - HIGH TOP - CAPULET OLIVE</h1>
-            </div>
-            <div class="maSP">
-                <p>Mã sản phẩm:</p>
-                <span id="MaSP" name="MaSP">QHP0001</span>
-            </div>
-            <div class="moTa">
-                <p>Mang vẻ ngoài bụi bặm, mộc mạc và được lấy cảm hứng từ những bộ quân phục của nhiều binh chủng trong quân đội, Vintas "The New Military" đem lại một "chất lính" rất riêng cho những ai yêu phong cách "Military" và những tâm hồn điềm đạm, kiên cường đầy tinh tế.</p>
-            </div>
-            <form action="#" method="get">
-                <div class="size_soLuong">
-                    <div class="size">
-                        <h2>SIZE</h2>
-                        <select name="SIZE" id="size">
-                            <option value="39">39</option>
-                            <option value="40">40</option>
-                            <option value="41">41</option>
-                            <option value="41">42</option>
-                            <option value="41">43</option>
-                        </select>
-                    </div>
-                    <div class="soLuong">
-                        <h2>SỐ LƯỢNG</h2>
-                        <input type="number" name="soLuong" id="soLuong">
-                    </div>
+    <section>
+        <form action="dangNhap.php" id="dangNhap" method="post">
+            <table>
+                <caption><h2>Đăng nhập</h2></caption>
+                <tr>
+                    <td>
+                        <div class="icon_form"><i class="fa-solid fa-user"></i></div>
+                        <input type="text" placeholder="Tên tài khoản">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div class="icon_form"><i class="fa-solid fa-lock"></i></div>
+                        <input type="password" placeholder="Mật khẩu">
+                    </td>
+                </tr>
+                <tr>
+                    <td class="another_option"><a href="dangKy.html">Chưa có tài khoản? Đăng ký</a></td>
+                </tr>
+                <tr>
+                    <td class="another_option"><a href="#" id="loginBtn">Quên mật khẩu?</a></td>
+                </tr>
+                <tr>
+                    <td id="submit"><input type="submit" value="Đăng nhập"></td>
+                </tr>
+            </table>
+        </form>
+        <div id="forgot-pass-form">
+            <form>
+                <h3>Phục hồi mật khẩu</h3>
+                <span>Chúng tôi sẽ gửi mật khẩu về email của bạn</span><br>
+                <div class="form-box">
+                    <div class="icon_form"><i class="fa-solid fa-envelope"></i></div>
+                    <input type="text" placeholder="Email">
                 </div>
-                <div class="btn">
-                    <div class="themVaoGio">
-                        <button>THÊM VÀO GIỎ</button>
-                    </div>
-                    <div class="thanhToan">
-                        <a href="./GioHang.html"><button type="submit">THANH TOÁN</button></a>
-                    </div>
+                <div class="form-submit">
+                    <input type="submit" value="Gửi">
+                    <a href="#" id="submitBtn">Hủy bỏ</a>
                 </div>
             </form>
-        </div>
-    </div>
+        </div>      
+    </section>
     <footer>
         <div class="support">
             <p class="bold">SUPPORT</p>
@@ -130,7 +121,20 @@
             <p>Activities</p>
             <p>Contact Us</p>
         </div>
-        <div class="LOGO"><img src="./images/Capture.PNG" alt="LOGO"></div>
+        <div class="LOGO"><img src="./assets/images/Logo.PNG" alt="LOGO"></div>
     </footer>
+
+    <script type="text/javascript">
+        document.getElementById("loginBtn").onclick = function(){
+            document.getElementById("dangNhap").style.display = "none";
+            document.getElementById("forgot-pass-form").style.display = "block";
+            return false;
+        }
+        document.getElementById("submitBtn").onclick = function(){
+            document.getElementById("forgot-pass-form").style.display = "none";
+            document.getElementById("dangNhap").style.display = "";
+            return false;
+        }
+    </script>
 </body>
 </html>

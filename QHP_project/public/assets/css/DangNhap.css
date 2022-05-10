@@ -308,6 +308,14 @@ footer{
     color: aliceblue;
 
 }
+footer{
+    display: flex;
+    height: 260px;
+    align-items: center;
+    justify-content: space-around;
+    border-top: 1px solid;
+    margin-top: 10px;
+}
 .bold{
     font-weight: bold;
 }

@@ -16,10 +16,10 @@ Route::prefix('/')->group(function(){
     Route::get('/', function () {
         return view('home');
     });
-    Route::get('/DangNhap', function () {
+    Route::get('/dangNhap', function () {
     return view('DangNhap');
     });
-    Route::get('/DangKy', function () {
+    Route::get('/dangKy', function () {
         return view('DangKy');
     });
     Route::get('/GioHang', function () {
