@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\SignInController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -20,13 +21,14 @@ Route::prefix('/')->group(function(){
     Route::get('/DangNhap', [homeController::class, 'register'])->name('register');
     Route::get('/DangKy', function () {
         return view('DangKy');
-    });
+    })->name('DangKy');
     Route::get('/GioHang', function () {
         return view('GioHang');
     });
     Route::get('/LogInAdmin', function () {
         return view('LogInAdmin');
     });
+    Route::post('/DangKyinfo',[SignInController::class,'checkinfo']);
 
 });
 Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);

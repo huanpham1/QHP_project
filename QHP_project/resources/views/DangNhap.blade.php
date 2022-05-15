@@ -14,13 +14,13 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
-                <a href="dangNhap.html">Log in</a>
+                <a href="/DangNhap">Log in</a>
                 <pre>|</pre>
-                <a href="dangKy.html">Register</a>
+                <a href="/DangKy">Register</a>
             </div>
         </div>
         <div class="hduoi">
-            <a href="index.html"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>

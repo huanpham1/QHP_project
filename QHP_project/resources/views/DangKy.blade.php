@@ -58,35 +58,77 @@
         </div>
     </header>
     <section>
-        <form action="dangky.php" method="post">
+        <form action="/DangKyinfo" method="post">
             <table>
+
                 <caption><h2>Đăng ký tài khoản</h2></caption>
                 <tr>
                     <td><label for="name">Họ và tên</label></td>
-                    <td><input type="text" name="name"></td>
+                    <td><input type="text" name="fullname"></td>
+                    <span>
+                        @error('fullname')
+                            <div class="noti" style="top: 24%">{{$message}}</div>
+                        @enderror
+                    </span>
                 </tr>
                 <tr>
                     <td><label for="dateOfBirth">Ngày sinh</label></td>
-                    <td><input type="date" name="dateOfBirth"></td>
+                    <td><input type="date" name="dob"></td>
+                    <span>
+                        @error('dob')
+                            <div class="noti" style="top: 36%">{{$message}}</div>
+                        @enderror
+                    </span>
                 </tr>
                 <tr>
                     <td><label for="username">Tên tài khoản</label></td>
                     <td><input type="text" name="username"></td>
+                    <span>
+                        @error('username')
+                            <div class="noti" style="top: 49%">{{$message}}</div>
+                        @enderror
+                    </span>
                 </tr>
                 <tr>
                     <td><label for="email">Email</label></td>
                     <td><input type="text" name="email"></td>
+                    <span>
+                        @error('email')
+                            <div class="noti" style="top: 60%">{{$message}}</div>
+                        @enderror
+                    </span>
                 </tr>
                 <tr>
                     <td><label for="password">Mật khẩu</label></td>
                     <td><input type="password" name="password"></td>
+                    <span>
+                        @error('password')
+                            <div class="noti" style="top: 72%">{{$message}}</div>
+                        @enderror
+                    </span>
                 </tr>
                 <tr>
                     <td><label for="phoneNum">Số điện thoại</label></td>
                     <td><input type="text" name="phoneNum"></td>
+                    <span>
+                        @error('phoneNum')
+                            <div class="noti" style="top: 84.2%">{{$message}}</div>
+                        @enderror
+                    </span>
+                    <div class="info">
+                        @if (\Session::has('success'))
+                        <div class="alert alert-success">
+                            <ul>
+                                <li>{!! \Session::get('success') !!}</li>
+                            </ul>
+                        </div>
+                        @endif
+                    </div>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center"><input type="submit" id="submit" value="SUBMIT"></td>
+                    <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
+                    <td colspan="2" align="center" style="padding-top: 30px"><input type="submit" id="submit" value="SUBMIT"></td>
+                    @csrf
                 </tr>
             </table>
         </form>
