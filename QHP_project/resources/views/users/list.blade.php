@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="{{ asset('assets/css/adminsite.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/users/list.css')}}">
 	<title>Document</title>
 </head>
 
@@ -34,7 +34,7 @@
 				<li><a href="#"><i class="fa-solid fa-sheet-plastic"></i>Quản Lý Danh Mục</li></a>
 				<li><a href="#"><i class="fa-regular fa-rectangle-list"></i>Quản Lý Thể Loại</li></a>
 				<li><a href="#"><i class="fa-solid fa-bag-shopping"></i>Quản Lý Đơn Hàng</li></a>
-				<li><a href="{{route('users.index')}}"><i class="fa-solid fa-user"></i>Quản Lý Tài Khoản</li></a>
+				<li><a href="#"><i class="fa-solid fa-user"></i>Quản Lý Tài Khoản</li></a>
 				<li class="cha_TK"><i class="fa-solid fa-arrow-up-right-dots"></i>Báo Cáo Thống Kê
 					<ul class="con_TK">
 						<a href="#"><li>Xuất báo cáo theo sản phẩm</li></a>
@@ -46,34 +46,45 @@
 		<div class="container">
 
 			<div class="maincontent">
-				<div class="content">
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-				</div>
-				<div class="content">
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-				</div>
-				<div class="content">
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-
-					</div>
+				<h1>Danh sách người dùng</h1>
+				<div class="table-list">
+					<button class="btn-add"><a href="{{route('users.add')}}">Thêm người dùng</a></button>
+					<table class="user-list" border="1">
+						<thead>
+							<tr>
+								<th>STT</th>
+								<th>Tên</th>
+								<th>Ngày sinh</th>
+								<th>Tên tài khoản</th>
+								<th>Email</th>
+								<th>Mật khẩu</th>
+								<th>Số điện thoại</th>
+								<th>Admin</th>
+								<th>Địa chỉ</th>
+							</tr>
+						</thead>
+						<tbody>
+							@if (!empty($usersList))
+								@foreach ($usersList as $key => $item)
+							<tr>
+								<td>{{$key+1}}</td>
+								<td>{{$item->HoVaTen}}</td>
+								<td>{{$item->NgaySinh}}</td>
+								<td>{{$item->TenTaiKhoan}}</td>
+								<td>{{$item->Email}}</td>
+								<td>{{$item->MatKhau}}</td>
+								<td>{{$item->SoDT}}</td>
+								<td>{{$item->IsAdmin}}</td>
+								<td>{{$item->DiaChi}}</td>
+							</tr>
+							@endforeach
+							@else
+							<tr>
+								<td colspan="4">Không có người dùng</td>
+							</tr>
+							@endif
+						</tbody>
+					</table>
 				</div>
 			</div>
 		</div>

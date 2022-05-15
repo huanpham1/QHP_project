@@ -2,6 +2,8 @@
 
 use Illuminate\Support\Facades\Route;
 
+use App\Http\Controllers\UsersController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -30,7 +32,17 @@ Route::prefix('/')->group(function(){
     });
 });
 
-Route::get('/adminsite', function () {
-    return view('adminsite');
+Route::prefix('/adminsite')->group(function () {
+    Route::get('/', function(){
+        return view('adminsite');
+    });
+
+    Route::prefix('/user')->name('users.')->group(function(){
+        Route::get('/', [UsersController::class, 'index'])->name('index');
+
+        Route::get('/add', [UsersController::class, 'add'])->name('add');
+
+        Route::post('/add', [UsersController::class, 'handleAdd'])->name('post-add');
+    });
 });
 
