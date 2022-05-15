@@ -1,7 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\LoginController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,17 +17,19 @@ Route::prefix('/')->group(function(){
     Route::get('/', function () {
         return view('home');
     });
-    Route::get('/DangNhap', function () {
-    return view('DangNhap');
-    });
+    Route::get('/DangNhap', [homeController::class, 'register'])->name('register');
     Route::get('/DangKy', function () {
         return view('DangKy');
     });
     Route::get('/GioHang', function () {
         return view('GioHang');
     });
-});
+    Route::get('/LogInAdmin', function () {
+        return view('LogInAdmin');
+    });
 
+});
+Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);
 Route::get('/adminsite', function () {
     return view('adminsite');
 });

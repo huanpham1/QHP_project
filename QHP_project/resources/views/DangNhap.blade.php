@@ -58,19 +58,33 @@
         </div>
     </header>
     <section>
-        <form action="dangNhap.php" id="dangNhap" method="post">
+        <form action="/DangNhap/Auth" id="dangNhap" method="post">
             <table>
                 <caption><h2>Đăng nhập</h2></caption>
                 <tr>
                     <td>
                         <div class="icon_form"><i class="fa-solid fa-user"></i></div>
-                        <input type="text" placeholder="Tên tài khoản">
+                        <input type="text" placeholder="Tên tài khoản" name="username" maxlength="20">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @error('username')
+                            <span style="color: red; font-size: " class="thongbao">{{$message}}</span>
+                        @enderror
                     </td>
                 </tr>
                 <tr>
                     <td>
                         <div class="icon_form"><i class="fa-solid fa-lock"></i></div>
-                        <input type="password" placeholder="Mật khẩu">
+                        <input type="password" placeholder="Mật khẩu" name= "password">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @error('password')
+                            <span style="color: red; font-size: " class="thongbao1">{{$message}}</span>
+                        @enderror
                     </td>
                 </tr>
                 <tr>
@@ -79,9 +93,13 @@
                 <tr>
                     <td class="another_option"><a href="#" id="loginBtn">Quên mật khẩu?</a></td>
                 </tr>
+                <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
                 <tr>
                     <td id="submit"><input type="submit" value="Đăng nhập"></td>
+                    @csrf
                 </tr>
+
+
             </table>
         </form>
         <div id="forgot-pass-form">

@@ -160,6 +160,7 @@ section{
     width: 100%;
     margin-top: 60px;
     margin-bottom: 150px;
+    position: relative;
 }
 
 section>form{
@@ -313,4 +314,19 @@ footer{
 }
 footer p{
     font-size: 20px;
+}
+.thongbao{
+    top: 33%;
+    left: 40%;
+    font-size: 14px;
+    position: absolute;
+    /* background-color: red; */
+}
+.thongbao1{
+    /* height: 10%; */
+    top: 57%;
+    left: 40%;
+    font-size: 14px;
+    position: absolute;
+    /* background-color: red; */
 }
