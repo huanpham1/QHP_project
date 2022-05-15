@@ -205,7 +205,19 @@
     text-decoration: none;
     color: black;
     display: block;
+    line-height: 30px;
   }
   .btn-back:hover{
     opacity: 80%;
+  }
+  .message{
+    width: 95%;
+    height: 50px;
+    margin: auto;
+    line-height: 50px;
+    font-size: 18px;
+    background-color: rgb(215, 250, 229);
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 30px;
   }

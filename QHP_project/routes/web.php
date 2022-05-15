@@ -43,6 +43,12 @@ Route::prefix('/adminsite')->group(function () {
         Route::get('/add', [UsersController::class, 'add'])->name('add');
 
         Route::post('/add', [UsersController::class, 'handleAdd'])->name('post-add');
+
+        Route::get('/edit/{id}', [UsersController::class, 'getEdit'])->name('edit');
+
+        Route::post('/update', [UsersController::class, 'handleEdit'])->name('post-edit');
+
+        Route::get('/delete/{id}', [UsersController::class, 'delete'])->name('delete');
     });
 });
 

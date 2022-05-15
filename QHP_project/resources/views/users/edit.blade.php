@@ -45,12 +45,12 @@
 		</div>
 		<div class="container">
 			<div class="maincontent">
-                <form action="" method="POST">
+                <form action="{{route('users.post-edit')}}" method="POST">
                     <table>
 						<caption><h1>{{$title}}</h1></caption>
                         <tr>
                             <td width="15%"><label for="fullname">Họ và tên</label></td>
-                            <td width="95%"><input type="text" name="fullname" id="fullname" value="{{old('fullname')}}">
+                            <td width="95%"><input type="text" name="fullname" id="fullname" value="{{old('fullname') ?? $userDetail->HoVaTen}}">
 								@error('fullname')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
@@ -59,7 +59,7 @@
                         </tr>
                         <tr>
                             <td><label for="dob">Ngày sinh</label></td>
-                            <td><input type="date" name="dob" id="dob" value="{{old('dob')}}">
+                            <td><input type="date" name="dob" id="dob" value="{{old('dob') ?? $userDetail->NgaySinh}}">
 								@error('dob')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
@@ -67,7 +67,7 @@
                         </tr>
                         <tr>
                             <td><label for="username">Tên tài khoản</label></td>
-                            <td><input type="text" name="username" id="username" value="{{old('username')}}">
+                            <td><input type="text" name="username" id="username" value="{{old('username') ?? $userDetail->TenTaiKhoan}}">
 								@error('username')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
@@ -75,7 +75,7 @@
                         </tr>
                         <tr>
                             <td><label for="email">Email</label></td>
-                            <td><input type="text" name="email" id="email" value="{{old('email')}}">
+                            <td><input type="text" name="email" id="email" value="{{old('email') ?? $userDetail->Email}}">
 								@error('email')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
@@ -83,7 +83,7 @@
                         </tr>
                         <tr>
                             <td><label for="password">Mật khẩu</label></td>
-                            <td><input type="password" name="password" id="password" value="{{old('password')}}">
+                            <td><input type="password" name="password" id="password" value="{{old('password') ?? $userDetail->MatKhau}}">
 								@error('password')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
@@ -91,7 +91,7 @@
                         </tr>
                         <tr>
                             <td><label for="phoneNum">Số điện thoại</label></td>
-                            <td><input type="text" name="phoneNum" id="phoneNum" value="{{old('phoneNum')}}">
+                            <td><input type="text" name="phoneNum" id="phoneNum" value="{{old('phoneNum') ?? $userDetail->SoDT}}">
 								@error('phoneNum')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
@@ -100,25 +100,29 @@
                         <tr>
                             <td>Admin</td>
                             <td>
-                                <input type="radio" class="rad" name="admin" id="isAdmin" value="1" {{(old('admin') == '1' ? 'checked' : '')}}>
+                                <input type="radio" class="rad" name="admin" id="isAdmin" value="1" {{($userDetail->IsAdmin == 1 ? 'checked' : '')}}>
                                 <label for="isAdmin">Là admin</label> &emsp;
-                                <input type="radio" class="rad" name="admin" id="notAdmin" value="0" {{(old('admin') == '0' ? 'checked' : '')}}>
+                                <input type="radio" class="rad" name="admin" id="notAdmin" value="0" {{($userDetail->IsAdmin == 0 ? 'checked' : '')}}>
                                 <label for="notAdmin" style="margin-right: 50px;">Không là admin</label>
                             </td>
                         </tr>
                         <tr>
                             <td><label for="address">Địa chỉ</label></td>
-                            <td><input type="text" name="address" id="address" value="{{old('address')}}"></td>
+                            <td><input type="text" name="address" id="address" value="{{old('address') ?? $userDetail->DiaChi}}"></td>
                         </tr>
 						<tr>
 							<td colspan="2" style="padding-left: 15%;">
-								<button class="btn-add" type="submit">Thêm mới</button>
+								<button class="btn-add" type="submit">Cập nhật</button>
 								<button class="btn-back"><a href="{{route('users.index')}}">Quay lại</a></button>
 							</td>
 						</tr>
                     </table>
                     @csrf
                 </form>
+
+				@if (session('msg'))
+				<div class="message">{{session('msg')}}</div>
+				@endif
 			</div>
 		</div>
 	</div>

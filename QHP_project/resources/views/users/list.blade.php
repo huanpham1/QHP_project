@@ -46,9 +46,9 @@
 		<div class="container">
 
 			<div class="maincontent">
-				<h1>Danh sách người dùng</h1>
+				<h1>{{$title}}</h1>
 				<div class="table-list">
-					<button class="btn-add"><a href="{{route('users.add')}}">Thêm người dùng</a></button>
+					<button class="btn-add"><a href="{{route('users.add')}}">Thêm tài khoản</a></button>
 					<table class="user-list" border="1">
 						<thead>
 							<tr>
@@ -61,6 +61,8 @@
 								<th>Số điện thoại</th>
 								<th>Admin</th>
 								<th>Địa chỉ</th>
+								<th>Sửa</th>
+								<th>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -76,6 +78,15 @@
 								<td>{{$item->SoDT}}</td>
 								<td>{{$item->IsAdmin}}</td>
 								<td>{{$item->DiaChi}}</td>
+								<td>
+									<button class="btn-update"><a href="{{route('users.edit', ['id'=>$item->MaTK])}}">Sửa</a></button>
+								</td>
+								<td>
+									<button class="btn-del">
+										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
+										href="{{route('users.delete', ['id'=>$item->MaTK])}}">Xóa</a>
+									</button>
+								</td>
 							</tr>
 							@endforeach
 							@else
@@ -86,6 +97,10 @@
 						</tbody>
 					</table>
 				</div>
+
+				@if (session('msg'))
+				<div class="message">{{session('msg')}}</div>
+				@endif
 			</div>
 		</div>
 	</div>
