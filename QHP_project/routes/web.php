@@ -25,6 +25,21 @@ Route::prefix('/')->group(function(){
     Route::get('/GioHang', function () {
         return view('GioHang');
     });
+    Route::get('/XemDanhMuc', function () {
+        return view('XemDanhMuc');
+    });
+    Route::get('/XemTheLoai/{id}',function($id){
+        $idtl = [
+            'id' => $id
+        ];
+        return view('XemTheLoai',$idtl);
+    }) -> name('xemTheLoai');
+    Route::get('/xemChiTiet/id={id}', function ($id) {
+        $idsp = [
+            'id' => $id
+        ];
+        return view('xemChiTiet',$idsp);
+    }) -> name('chiTiet');
 });
 
 Route::get('/adminsite', function () {

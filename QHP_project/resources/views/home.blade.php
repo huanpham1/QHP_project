@@ -1,3 +1,111 @@
+<?php
+    global $conn;
+ 
+    // Hàm kết nối database
+    function connect_db()
+    {
+        // Gọi tới biến toàn cục $conn
+        global $conn;
+        $servername = "localhost";
+        $database = "qhp_project";
+        $username = "root";
+        $password = "";
+         
+        // Nếu chưa kết nối thì thực hiện kết nối
+        if (!$conn){
+            $conn = mysqli_connect($servername,$username , $password, $database) or die ('Cant not connect to database');
+            // Thiết lập font chữ kết nối
+            mysqli_set_charset($conn, 'utf8');
+        }
+    }
+    // Hàm ngắt kết nối
+    function disconnect_db()
+    {
+        // Gọi tới biến toàn cục $conn
+        global $conn;
+        
+        // Nếu đã kêt nối thì thực hiện ngắt kết nối
+        if ($conn){
+            mysqli_close($conn);
+        }
+    }
+    function getAllTheLoai(){
+        // Gọi tới biến toàn cục $conn
+        global $conn;
+        
+        // Hàm kết nối
+        connect_db();
+        
+        // Câu truy vấn lấy tất cả sinh viên
+        $sql = "select * from theloai";
+        
+        // Thực hiện câu truy vấn
+        $query = mysqli_query($conn, $sql);
+        
+        // Mảng chứa kết quả
+        $result = array();
+        
+        // Lặp qua từng record và đưa vào biến kết quả
+        if ($query){
+            while ($row = mysqli_fetch_assoc($query)){
+                $result[] = $row;
+            }
+        }
+        // Trả kết quả về
+        return $result;
+    }
+    function getAllSanPham_Nu(){
+        // Gọi tới biến toàn cục $conn
+        global $conn;
+        
+        // Hàm kết nối
+        connect_db();
+        
+        // Câu truy vấn lấy tất cả sinh viên
+        $sql = "select * from sanpham where MaDanhMuc = 2";
+        
+        // Thực hiện câu truy vấn
+        $query = mysqli_query($conn, $sql);
+        
+        // Mảng chứa kết quả
+        $result = array();
+        
+        // Lặp qua từng record và đưa vào biến kết quả
+        if ($query){
+            while ($row = mysqli_fetch_assoc($query)){
+                $result[] = $row;
+            }
+        }
+        // Trả kết quả về
+        return $result;
+    }
+    function getAllSanPham_Nam(){
+        // Gọi tới biến toàn cục $conn
+        global $conn;
+        
+        // Hàm kết nối
+        connect_db();
+        
+        // Câu truy vấn lấy tất cả sinh viên
+        $sql = "select * from sanpham where MaDanhMuc = 1";
+        
+        // Thực hiện câu truy vấn
+        $query = mysqli_query($conn, $sql);
+        
+        // Mảng chứa kết quả
+        $result = array();
+        
+        // Lặp qua từng record và đưa vào biến kết quả
+        if ($query){
+            while ($row = mysqli_fetch_assoc($query)){
+                $result[] = $row;
+            }
+        }
+        // Trả kết quả về
+        return $result;
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -14,33 +122,38 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-                <a href="dangNhap.html">Log in</a>
+                <a href="/dangNhap">Log in <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                 <pre>|</pre>
-                <a href="dangKy.html">Register</a>
+                <a href="/dangKy">Register <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             </div>
         </div>
         <div class="hduoi">
-            <a href="index.html"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+            <a href="../"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
                     <li class="nam">
-                        <a href="XemDanhMuc.html">Nam</a>
+                        <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                         <ul class="namnam">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
+                            <?php foreach(getAllTheLoai() as $data){ ?>
+                                <li><a href="/XemTheLoai/<?php echo $data['MaTheLoai'] ?>"><?php echo $data['TenTheLoai'] ?></a></li>
+                            <?php } ?>
+                                <!-- <li><a href="#">Giày training</a></li>
+                                <li><a href="#">Giày thời trang</a></li>
+                                <li><a href="#">Giày leo núi</a></li> -->
                         </ul>
                     </li>
                     <li class="nu">
-                        <a href="XemDanhMuc.html">Nữ</a>
+                        <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                         <ul class="nunu">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
+                            <?php foreach(getAllTheLoai() as $data){ ?>
+                                <li><a href="/XemTheLoai/<?php echo $data['MaTheLoai'] ?>"><?php echo $data['TenTheLoai'] ?></a></li>
+                            <?php } ?>
+                            <!-- <li><a href="#">Giày training</a></li>
                             <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
+                            <li><a href="#">Giày leo núi</a></li> -->
                         </ul>
+                        
                     </li>
                     <li><a href="#">Trẻ em</a></li>
                 </ul>
@@ -53,145 +166,138 @@
             </div>
             <div class="acc_cart">
                 <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="/GioHang"><i class="fa-solid fa-cart-shopping"></i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             </div>
         </div>
     </header>
     <div class="banner"><img src="{{ asset('assets/images/Image 1.png')}}" alt="banner1"></div>
     <div class="content">
+        
         <div class="title0"><p>SẢN PHẨM</p></div>
         <div class="sp-nam">
             <div class="title1"><img src="{{ asset('assets/images/Image 3.png')}}" alt="nam"></div>
             <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                <?php
+                    foreach(getAllSanPham_Nam() as $data){
+                ?>
+                    <div class="cot">
+                        <a href="/xemChiTiet/id=<?php echo $data['MaSP']?>"><img src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                        <a href="<?php echo route('chiTiet',['id'=>$data['MaSP']]); ?>"><p class="tensp"><?php echo $data['TenSP'] ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                        <a href="#"><p class="price"><?php echo $data['GiaBan'] ?>$</p></a>
+                    </div>
+                <?php }?>
+                <!-- <div class="cot">
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/clients/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
-                </div>
-
+                </div> -->
+            </div>
+            <!-- <div class="hang">
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="#"><p class="price">$60</p></a>
+                </div>
+                <div class="cot">
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="#"><p class="price">$60</p></a>
+                </div>
+                <div class="cot">
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
             </div>
-            <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-            </div>
-        </div>
+        </div> -->
         <div class="view-more">
             <a href="#"><button>VIEW MORE PRODUCTS</button></a>
         </div>
         <div class="sp-nu">
-            <div class="title2"><img src="./images/Image 11.png" alt="nu"></div>
+            <div class="title2"><img src="<?php echo asset('assets/images/Image 11.png')?>" alt="nu"></div>
             <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+            <?php
+                    foreach(getAllSanPham_Nu() as $data){
+                ?>
+                    <div class="cot">
+                        <a href="/xemChiTiet/id=<?php echo $data['MaSP']?>"><img src="<?php echo asset('assets/images/sp6.jpg')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                        <a href="/xemChiTiet/id=<?php echo $data['MaSP']?>"><p class="tensp"><?php echo $data['TenSP'] ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                        <a href="#"><p class="price"><?php echo $data['GiaBan'] ?>$</p></a>
+                    </div>
+                <?php }?>
+                <!-- <div class="cot">
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="#"><p class="price">$60</p></a>
+                </div>
+            </div> -->
+            <!-- <div class="hang">
+            <div class="cot">
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-            </div>
-            <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="/xemChiTiet"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    <a href="/xemChiTiet"><p class="tensp">Multicolor Men's Sneaker</p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                     <a href="#"><p class="price">$60</p></a>
+                </div> -->
                 </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-            </div>
             <div class="view-more">
                 <a href="#"><button>VIEW MORE PRODUCTS</button></a>
             </div>
@@ -200,14 +306,16 @@
     <div class="feed-back">
         <div class="title3"><p>HASHTAG QHP FOR THE CHANCE TO BE ON OUR WEBSITE</p></div>
         <div class="fb">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
+            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
         </div>
     </div>
     <footer>

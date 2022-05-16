@@ -14,18 +14,18 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
-                <a href="dangNhap.html">Log in</a>
+                <a href="/dangNhap">Log in <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                 <pre>|</pre>
-                <a href="dangKy.html">Register</a>
+                <a href="/dangKy">Register <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             </div>
         </div>
         <div class="hduoi">
-            <a href="index.html"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+            <a href="../"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
                     <li class="nam">
-                        <a href="XemDanhMuc.html">Nam</a>
+                        <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -34,7 +34,7 @@
                         </ul>
                     </li>
                     <li class="nu">
-                        <a href="XemDanhMuc.html">Nữ</a>
+                        <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                         <ul class="nunu">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -53,7 +53,7 @@
             </div>
             <div class="acc_cart">
                 <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="/GioHang"><i class="fa-solid fa-cart-shopping"></i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             </div>
         </div>
     </header>
