@@ -54,6 +54,31 @@
         // Trả kết quả về
         return $result;
     }
+    function getAllDanhMuc(){
+        // Gọi tới biến toàn cục $conn
+        global $conn;
+        
+        // Hàm kết nối
+        connect_db();
+        
+        // Câu truy vấn lấy tất cả sinh viên
+        $sql = "select * from danhmuc";
+        
+        // Thực hiện câu truy vấn
+        $query = mysqli_query($conn, $sql);
+        
+        // Mảng chứa kết quả
+        $result = array();
+        
+        // Lặp qua từng record và đưa vào biến kết quả
+        if ($query){
+            while ($row = mysqli_fetch_assoc($query)){
+                $result[] = $row;
+            }
+        }
+        // Trả kết quả về
+        return $result;
+    }
     function getSP_DanhMuc($iddm){
         // Gọi tới biến toàn cục $conn
         global $conn;
@@ -151,24 +176,16 @@
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
-                    <li class="nam">
-                        <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <ul class="namnam">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
-                    <li class="nu">
-                        <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <ul class="nunu">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
+                    <?php foreach(getAllDanhMuc() as $datadm){ ?>
+                        <li class="nam">
+                            <a href="/XemDanhMuc/<?php echo $datadm['MaDanhMuc']?> "><?php echo $datadm['TenDanhMuc'] ?> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                            <ul class="namnam">
+                                <?php foreach(getAllTheLoai() as $data){ ?>
+                                    <li><a href="/XemTheLoai/<?php echo $data['MaTheLoai'] ?>"><?php echo $data['TenTheLoai'] ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php }?>
                     <li><a href="#">Trẻ em</a></li>
                 </ul>
             </nav>
