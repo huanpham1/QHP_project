@@ -25,8 +25,11 @@ Route::prefix('/')->group(function(){
     Route::get('/GioHang', function () {
         return view('GioHang');
     });
-    Route::get('/XemDanhMuc', function () {
-        return view('XemDanhMuc');
+    Route::get('/XemDanhMuc/{id}', function ($id) {
+        $iddm = [
+            'id' => $id
+        ];
+        return view('XemDanhMuc',$iddm);
     });
     Route::get('/XemTheLoai/{id}',function($id){
         $idtl = [

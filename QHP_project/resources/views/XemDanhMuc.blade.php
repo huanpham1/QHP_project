@@ -54,26 +54,49 @@
         // Trả kết quả về
         return $result;
     }
-    function getSP_TheLoai($idtl){
+    function getSP_DanhMuc($iddm){
         // Gọi tới biến toàn cục $conn
         global $conn;
         
         // Hàm kết nối
         connect_db();
         
-        // Câu truy vấn lấy san pham theo id
-        $sql = "select * from sanpham where MaTheLoai = {$idtl}";
+        // Câu truy vấn lấy tất cả sinh viên
+        $sql = "select * from sanpham where MaDanhMuc = {$iddm}";
         
         // Thực hiện câu truy vấn
         $query = mysqli_query($conn, $sql);
         
         // Mảng chứa kết quả
+        $result = array();
+        
+        // Lặp qua từng record và đưa vào biến kết quả
         if ($query){
             while ($row = mysqli_fetch_assoc($query)){
                 $result[] = $row;
             }
         }
+        // Trả kết quả về
+        return $result;
+    }
+    function getDanhMuc($iddm){
+        // Gọi tới biến toàn cục $conn
+        global $conn;
         
+        // Hàm kết nối
+        connect_db();
+        
+        // Câu truy vấn lấy tất cả sinh viên
+        $sql = "select * from danhmuc where MaDanhMuc = {$iddm}";
+        
+        // Thực hiện câu truy vấn
+        $query = mysqli_query($conn, $sql);
+        
+        // Mảng chứa kết quả
+        $result = array();
+        
+        $result = mysqli_fetch_assoc($query);
+        // Trả kết quả về
         return $result;
     }
     function getAllTheLoai(){
@@ -210,7 +233,8 @@
             </div>
         </div>
         <div class="product">
-            <div class="title0"><p>NAM</p></div>
+            <?php $tendm = getDanhMuc($id);  ?>
+            <div class="title0"><p><?php echo $tendm['TenDanhMuc'] ?></p></div>
             <div class="danhmuc">
                 <ul>
                     <?php
@@ -226,7 +250,7 @@
             </div>
             <div class="sp-nam">
                 <div class="hang">
-                    <?php foreach(getAllSanPham() as $data){ ?>
+                    <?php foreach(getSP_DanhMuc($id) as $data){ ?>
                         <div class="cot">
                         <a href="/xemChiTiet/id=<?php echo $data['MaSP']?>"><img src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                         <a href="<?php echo route('chiTiet',['id'=>$data['MaSP']]); ?>"><p class="tensp"><?php echo $data['TenSP'] ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
@@ -338,7 +362,7 @@
             <p>Activities</p>
             <p>Contact Us</p>
         </div>
-        <div class="LOGO"><img src="<?php asset('assets/images/Logo.PNG') ?>" alt="LOGO"></div>
+        <div class="LOGO"><img src="<?php echo asset('assets/images/Logo.png')?>" alt="LOGO"></div>
     </footer>
 </body>
 </html>

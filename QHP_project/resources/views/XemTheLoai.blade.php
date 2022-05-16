@@ -360,7 +360,7 @@
             <p>Activities</p>
             <p>Contact Us</p>
         </div>
-        <div class="LOGO"><img src="<?php asset('assets/images/Logo.PNG') ?>" alt="LOGO"></div>
+        <div class="LOGO"><img src="<?php echo asset('assets/images/Logo.png')?>" alt="LOGO"></div>
     </footer>
 </body>
 </html>
