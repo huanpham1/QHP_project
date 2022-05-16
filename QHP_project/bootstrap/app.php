@@ -10,10 +10,17 @@
 | the IoC container for the system binding all of the various parts.
 |
 */
+$app->configure('jwt');
+// Uncomment this line
+$app->register(App\Providers\AuthServiceProvider::class);
+
+// Add this line
+$app->register(Tymon\JWTAuth\Providers\LumenServiceProvider::class);
 
 $app = new Illuminate\Foundation\Application(
     $_ENV['APP_BASE_PATH'] ?? dirname(__DIR__)
 );
+
 
 /*
 |--------------------------------------------------------------------------
