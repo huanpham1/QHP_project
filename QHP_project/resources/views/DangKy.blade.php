@@ -67,7 +67,7 @@
                     <td><input type="text" name="fullname"></td>
                     <span>
                         @error('fullname')
-                            <div class="noti" style="top: 24%">{{$message}}</div>
+                            <div class="noti" style="top: 22%">{{$message}}</div>
                         @enderror
                     </span>
                 </tr>
@@ -76,7 +76,7 @@
                     <td><input type="date" name="dob"></td>
                     <span>
                         @error('dob')
-                            <div class="noti" style="top: 36%">{{$message}}</div>
+                            <div class="noti" style="top: 34%">{{$message}}</div>
                         @enderror
                     </span>
                 </tr>
@@ -85,7 +85,7 @@
                     <td><input type="text" name="username"></td>
                     <span>
                         @error('username')
-                            <div class="noti" style="top: 49%">{{$message}}</div>
+                            <div class="noti" style="top: 46%">{{$message}}</div>
                         @enderror
                     </span>
                 </tr>
@@ -94,7 +94,7 @@
                     <td><input type="text" name="email"></td>
                     <span>
                         @error('email')
-                            <div class="noti" style="top: 60%">{{$message}}</div>
+                            <div class="noti" style="top: 57%">{{$message}}</div>
                         @enderror
                     </span>
                 </tr>
@@ -103,7 +103,7 @@
                     <td><input type="password" name="password"></td>
                     <span>
                         @error('password')
-                            <div class="noti" style="top: 72%">{{$message}}</div>
+                            <div class="noti" style="top: 68%">{{$message}}</div>
                         @enderror
                     </span>
                 </tr>
@@ -112,7 +112,7 @@
                     <td><input type="text" name="phoneNum"></td>
                     <span>
                         @error('phoneNum')
-                            <div class="noti" style="top: 84.2%">{{$message}}</div>
+                            <div class="noti" style="top: 80.2%">{{$message}}</div>
                         @enderror
                     </span>
                     <div class="info">

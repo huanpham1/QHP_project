@@ -40,6 +40,10 @@ return [
             'driver' => 'session',
             'provider' => 'users',
         ],
+        'taikhoan' => [
+            'driver' => 'session',
+            'provider' => 'taikhoans',
+        ]
     ],
 
     /*
@@ -64,7 +68,10 @@ return [
             'driver' => 'eloquent',
             'model' => App\Models\User::class,
         ],
-
+        'taikhoans' => [
+            'driver' => 'eloquent',
+            'model' => App\Models\SignIn::class,
+        ],
         // 'users' => [
         //     'driver' => 'database',
         //     'table' => 'users',

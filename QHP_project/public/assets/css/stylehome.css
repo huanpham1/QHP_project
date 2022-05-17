@@ -134,6 +134,7 @@ nav>ul>.nu:hover > .nunu{
 }
 .acc_cart{
     margin-right: 20px;
+    position: relative;
 }
 .acc{
     font-size: 25px;

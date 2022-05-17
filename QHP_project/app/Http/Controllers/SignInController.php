@@ -46,7 +46,7 @@ class SignInController extends Controller
             $request->dob,
             $request->username,
             $request->email,
-            $request->password,
+            bcrypt($request->password),
             $request->phoneNum,
 
         ];

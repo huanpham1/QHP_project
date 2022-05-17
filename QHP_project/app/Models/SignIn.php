@@ -5,13 +5,24 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
+use Illuminate\Notifications\Notifiable;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Support\Facades\DB;
-class SignIn extends Model
+class SignIn extends Authenticatable
 {
-    use HasFactory;
+    use HasFactory, Notifiable;
     protected $table = 'taikhoan';
+    // protected $guarded = 'taikhoans';
+
+    protected $fillable=[
+        'TenTaiKhoan','password',
+    ];
+    // protected $hidden = [
+    //     'password', 'remember_token',
+    // ];
+
     public function addUser($data){
-        DB::insert('INSERT INTO '.$this->table.' (HoVaTen, NgaySinh, TenTaiKhoan, Email, MatKhau, SoDT, DiaChi,TTGioHang, TinhTrang)
+        DB::insert('INSERT INTO '.$this->table.' (HoVaTen, NgaySinh, TenTaiKhoan, Email, password, SoDT, DiaChi,TTGioHang, TinhTrang)
         VALUES (?, ?, ?, ?, ?, ?, 1, 0, 0)', $data);
     }
 }

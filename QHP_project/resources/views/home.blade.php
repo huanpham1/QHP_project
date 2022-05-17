@@ -12,7 +12,7 @@
     <header>
         <div class="htren">
             <div class="hotline"><p>Hotline: 0987666666</p></div>
-            <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
+            <div class="checking-order"><a href="#">Kiểm tra đơn hàn g</a></div>
             <div class="login">
                 <a href="./DangNhap">Log in</a>
                 <pre>|</pre>
@@ -51,8 +51,16 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-            <div class="acc_cart">
-                <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i></div></a>
+            <div class="acc_cart" style="background-color: red">
+                <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
+                    @if (session()->has('TenTaiKhoan'))
+                    <div style="font-size: 10px; position: absolute; top: 100%;">
+                        {{ session()->get('TenTaiKhoan') }}
+                    </div>
+                    @endif
+                </div>
+                </a>
+
                 <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>

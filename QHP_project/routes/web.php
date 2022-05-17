@@ -17,7 +17,7 @@ use App\Http\Controllers\SignInController;
 Route::prefix('/')->group(function(){
     Route::get('/', function () {
         return view('home');
-    });
+    })->name('home');
     Route::get('/DangNhap', [homeController::class, 'register'])->name('register');
     Route::get('/DangKy', function () {
         return view('DangKy');
