@@ -29,7 +29,7 @@
 		<div class="nav">
 			<ul class="main_select">
 				<li><a href="#"><i class="fa-solid fa-list-ul"></i>Dashboard</li></a>
-				<li><a href="#"><i class="fa-solid fa-shoe-prints"></i>Quản Lý Sản Phẩm</li></a>
+				<li><a href="{{route('products.index')}}"><i class="fa-solid fa-shoe-prints"></i>Quản Lý Sản Phẩm</li></a>
 				<li><a href="#"><i class="fa fa-industry"></i>Quản Lý Nhà Sản Xuất</li></a>
 				<li><a href="#"><i class="fa-solid fa-sheet-plastic"></i>Quản Lý Danh Mục</li></a>
 				<li><a href="#"><i class="fa-regular fa-rectangle-list"></i>Quản Lý Thể Loại</li></a>

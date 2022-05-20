@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UsersController;
@@ -34,7 +35,7 @@ Route::prefix('/')->group(function(){
 
 Route::prefix('/adminsite')->group(function () {
     Route::get('/', function(){
-        return view('adminsite');
+        return view('admin.adminsite');
     });
 
     Route::prefix('/user')->name('users.')->group(function(){
@@ -49,6 +50,18 @@ Route::prefix('/adminsite')->group(function () {
         Route::post('/update', [UsersController::class, 'handleEdit'])->name('post-edit');
 
         Route::get('/delete/{id}', [UsersController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/product')->name('products.')->group(function(){
+        Route::get('/', [ProductsController::class, 'index'])->name('index');
+
+        Route::get('/add', [ProductsController::class, 'add'])->name('add');
+
+        Route::post('/add', [ProductsController::class, 'handleAdd'])->name('post-add');
+
+        Route::get('/edit/{id}', [ProductsController::class, 'getEdit'])->name('edit');
+
+        Route::post('/update', [ProductsController::class, 'handleEdit'])->name('post-edit');
     });
 });
 

@@ -20,13 +20,13 @@ class UsersController extends Controller
 
         $usersList = $this->users->getAllUsers();
 
-        return view('users.list', compact('title', 'usersList'));
+        return view('admin.users.list', compact('title', 'usersList'));
     }
 
     public function add(){
         $title = 'Thêm tài khoản';
         
-        return view('users.add', compact('title'));
+        return view('admin.users.add', compact('title'));
     }
 
     public function handleAdd(Request $request){
@@ -75,8 +75,10 @@ class UsersController extends Controller
         if (!empty($id)){
             $userDetail = $this->users->getDetail($id);
             if (!empty($userDetail[0])){
-                $request->session()->put('id', $id);
+
+                $request->session()->put('id', $id);    //Lưu id vào 1 session để khi thực hiện cập nhật có thể lấy ra id
                 $userDetail = $userDetail[0];
+                
             } else {
                 return redirect()->route('users.index')->with('msg', 'Người dùng không tồn tại');
             }
@@ -84,7 +86,7 @@ class UsersController extends Controller
             return redirect()->route('users.index')->with('msg', 'Liên kết không tồn tại');
         }
 
-        return view('users.edit', compact('title', 'userDetail'));
+        return view('admin.users.edit', compact('title', 'userDetail'));
     }
 
     public function handleEdit(Request $request){

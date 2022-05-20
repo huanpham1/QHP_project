@@ -210,6 +210,16 @@
   .btn-back:hover{
     opacity: 80%;
   }
+  .cbo-danhmuc{
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+  }
+  .cbo-theloai{
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+  }
   .message{
     width: 95%;
     height: 50px;
