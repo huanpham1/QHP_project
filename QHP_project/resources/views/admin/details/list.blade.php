@@ -46,55 +46,48 @@
 
 			<div class="maincontent">
 				<h1>{{$title}}</h1>
-				<div class="table-list">
-					<button class="btn-add"><a href="{{route('users.add')}}">Thêm tài khoản</a></button>
+				<div class="table-list" style="width:70%; font-size:18px;">
+					<button class="btn-add"><a href="{{route('products.details.add', $id)}}">Thêm size</a></button>
 					<table class="user-list" border="1">
 						<thead>
 							<tr>
-								<th>STT</th>
-								<th>Tên</th>
-								<th>Ngày sinh</th>
-								<th>Tên tài khoản</th>
-								<th>Email</th>
-								<th>Mật khẩu</th>
-								<th>Số điện thoại</th>
-								<th>Admin</th>
-								<th>Địa chỉ</th>
-								<th>Sửa</th>
-								<th>Xóa</th>
+								<th width=10%>STT</th>
+								<th width=25%>Size</th>
+								<th>Số lượng còn</th>
+								<th width=10%>Sửa</th>
+								<th width=10%>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
-							@if (!empty($usersList))
-								@foreach ($usersList as $key => $item)
+							@if (!empty($detailList))
+								@foreach ($detailList as $key => $item)
 							<tr>
 								<td>{{$key+1}}</td>
-								<td>{{$item->HoVaTen}}</td>
-								<td>{{$item->NgaySinh}}</td>
-								<td>{{$item->TenTaiKhoan}}</td>
-								<td>{{$item->Email}}</td>
-								<td>{{$item->MatKhau}}</td>
-								<td>{{$item->SoDT}}</td>
-								<td>{{$item->IsAdmin}}</td>
-								<td>{{$item->DiaChi}}</td>
+								<td>{{$item->Size}}</td>
+								<td>{{$item->SoLuongCon}}</td>
 								<td>
-									<button class="btn-update"><a href="{{route('users.edit', ['id'=>$item->MaTK])}}">Sửa</a></button>
+									<button class="btn-update"><a href="{{route('products.details.edit', [$id, 'detailID'=>$item->ChiTietSPID])}}">Sửa</a></button>
 								</td>
 								<td>
 									<button class="btn-del">
 										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
-										href="{{route('users.delete', ['id'=>$item->MaTK])}}">Xóa</a>
+										href="{{route('products.details.delete', [$id, 'detailID'=>$item->ChiTietSPID])}}">Xóa</a>
 									</button>
 								</td>
 							</tr>
 							@endforeach
 							@else
 							<tr>
-								<td colspan="11">Không có người dùng</td>
+								<td colspan="5">Không có size nào</td>
 							</tr>
 							@endif
 						</tbody>
 					</table>
+					{{-- <button class="btn-add" style="margin-top: 10px;"><a href="{{route('products.index')}}">Quay lại</a></button> --}}
+					<a href="{{route('products.index')}}" class="back-to-list">
+                        <i class="fa-solid fa-circle-arrow-left"></i>
+                        Quay lại
+                    </a>
 				</div>
 
 				@if (session('msg'))

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\DanhMucController;
+use App\Http\Controllers\DetailProductController;
 use App\Http\Controllers\TheLoaiController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
@@ -66,6 +67,20 @@ Route::prefix('/adminsite')->group(function () {
         Route::post('/update', [ProductsController::class, 'handleEdit'])->name('post-edit');
 
         Route::get('/delete/{id}', [ProductsController::class, 'delete'])->name('delete');
+
+        Route::prefix('/detail')->name('details.')->group(function(){
+            Route::get('/{id}', [DetailProductController::class, 'index'])->name('index');
+
+            Route::get('/{id}/add', [DetailProductController::class, 'add'])->name('add');
+
+            Route::post('/{id}/add', [DetailProductController::class, 'handleAdd'])->name('post-add');
+
+            Route::get('/{id}/edit/{detailID}', [DetailProductController::class, 'getEdit'])->name('edit');
+
+            Route::post('/{id}/update', [DetailProductController::class, 'handleEdit'])->name('post-edit');
+
+            Route::get('/{id}/delete/{detailID}', [DetailProductController::class, 'delete'])->name('delete');
+        });
     });
 
     Route::prefix('/danhmuc')->name('danhmuc.')->group(function(){

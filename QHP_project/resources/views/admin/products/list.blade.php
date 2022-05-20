@@ -76,7 +76,7 @@
 								<td>{{$item->TenTheLoai}}</td>
 								<td>{{$item->TenDanhMuc}}</td>
                                 <td>
-                                    <button class="btn-detail"><a href="{{route('products.edit', ['id'=>$item->MaSP])}}">Chi tiết</a></button>
+                                    <button class="btn-detail"><a href="{{route('products.details.index', ['id'=>$item->MaSP])}}">Chi tiết</a></button>
                                 </td>
 								<td>
 									<button class="btn-update"><a href="{{route('products.edit', ['id'=>$item->MaSP])}}">Sửa</a></button>
@@ -91,7 +91,7 @@
 							@endforeach
 							@else
 							<tr>
-								<td colspan="4">Không có sản phẩm</td>
+								<td colspan="10">Không có sản phẩm</td>
 							</tr>
 							@endif
 						</tbody>

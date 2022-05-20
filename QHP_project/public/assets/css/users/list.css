@@ -245,6 +245,17 @@
   .btn-detail:hover{
     opacity: 70%;
   }
+  .back-to-list{
+    text-decoration: none;
+    display: inline-block;
+    color: #139ddd;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .back-to-list:hover{
+    color: black;
+    transition: all 0.3s ease-in-out;
+  }
   .message{
     width: 95%;
     height: 50px;

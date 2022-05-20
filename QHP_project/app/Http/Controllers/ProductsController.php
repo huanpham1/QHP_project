@@ -37,7 +37,7 @@ class ProductsController extends Controller
     public function handleAdd(Request $request){
         $request->validate([
             'productName' => 'required|unique:sanpham,TenSP',
-            'price' => 'required|numeric',
+            'price' => 'required|regex:/^[0-9]{1,3}(\.?[0-9]{1,3})*(\.?[0-9]{2})?$/',
             'description' => 'required',
             'image' => 'required|mimes:jpeg,jpg,png|max:2048',
             'group_danhmuc' => ['required', 'integer',function($attribute, $value, $fail){
@@ -52,13 +52,13 @@ class ProductsController extends Controller
             }],
         ], [
             'productName.required' => 'Tên sản phẩm bắt buộc phải nhập',
-            'productName.unique' => "Tên sản phẩm đã tồn tại",
-            'price.required' => "Giá bán bắt buộc phải nhập",
-            'price.numeric' => "Giá bán phải là số",
-            'description.required' => "Mô tả bắt buộc phải nhập",
-            'image.required' => "Ảnh bắt buộc phải có",
-            'image.mimes' => "Chỉ cho phép upload các file JPG, PNG và JPEG",
-            'image.max' => "Kích thước file quá lớn",
+            'productName.unique' => 'Tên sản phẩm đã tồn tại',
+            'price.required' => 'Giá bán bắt buộc phải nhập',
+            'price.regex' => 'Phải là số, chỉ được ngăn bởi dấu chấm và phần tiền lẻ(nếu có) phải là 2 số',
+            'description.required' => 'Mô tả bắt buộc phải nhập',
+            'image.required' => 'Ảnh bắt buộc phải có',
+            'image.mimes' => 'Chỉ cho phép upload các file JPG, PNG và JPEG',
+            'image.max' => 'Kích thước file quá lớn',
             'group_danhmuc.required' => 'Danh mục không được để trống',
             'group_danhmuc.integer' => 'Danh mục không hợp lệ',
             'group_theloai.required' => 'Thể loại không được để trống',
@@ -116,7 +116,7 @@ class ProductsController extends Controller
 
         $request->validate([
             'productName' => 'required|unique:sanpham,TenSP,'.$id.',MaSP',
-            'price' => 'required|numeric',
+            'price' => 'required|regex:/^[0-9]{1,3}(\.?[0-9]{3})*(\.?[0-9]{2})?$/',
             'description' => 'required',
             'image' => 'mimes:jpeg,jpg,png|max:2048',
             'group_danhmuc' => ['required', 'integer',function($attribute, $value, $fail){
@@ -133,7 +133,7 @@ class ProductsController extends Controller
             'productName.required' => 'Tên sản phẩm bắt buộc phải nhập',
             'productName.unique' => "Tên sản phẩm đã tồn tại",
             'price.required' => "Giá bán bắt buộc phải nhập",
-            'price.numeric' => "Giá bán phải là số",
+            'price.regex' => 'Phải là số, chỉ được ngăn bởi dấu chấm và phần tiền lẻ(nếu có) phải là 2 số',
             'description.required' => "Mô tả bắt buộc phải nhập",
             'image.mimes' => "Chỉ cho phép upload các file JPG, PNG và JPEG",
             'image.max' => "Kích thước file quá lớn",

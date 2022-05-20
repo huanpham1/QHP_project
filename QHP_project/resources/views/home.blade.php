@@ -79,55 +79,50 @@
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/clients/images/Image 4.png')}}" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
 
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
             </div>
             <div class="hang">
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><p class="price">$60</p></a>
+                </div>
+                <div class="cot">
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
@@ -137,57 +132,57 @@
             <a href="#"><button>VIEW MORE PRODUCTS</button></a>
         </div>
         <div class="sp-nu">
-            <div class="title2"><img src="./images/Image 11.png" alt="nu"></div>
+            <div class="title2"><img src="{{ asset('assets/images/Image 11.png')}}" alt="nu"></div>
             <div class="hang">
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
             </div>
             <div class="hang">
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
                     <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
@@ -200,14 +195,15 @@
     <div class="feed-back">
         <div class="title3"><p>HASHTAG QHP FOR THE CHANCE TO BE ON OUR WEBSITE</p></div>
         <div class="fb">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
-            <img src="./images/Image 26.png" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
+            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
         </div>
     </div>
     <footer>

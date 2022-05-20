@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="{{ asset('assets/css/users/list.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/users/add.css')}}">
 	<title>Document</title>
 </head>
 
@@ -43,61 +43,37 @@
 			</ul>
 		</div>
 		<div class="container">
-
 			<div class="maincontent">
-				<h1>{{$title}}</h1>
-				<div class="table-list">
-					<button class="btn-add"><a href="{{route('users.add')}}">Thêm tài khoản</a></button>
-					<table class="user-list" border="1">
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th>Tên</th>
-								<th>Ngày sinh</th>
-								<th>Tên tài khoản</th>
-								<th>Email</th>
-								<th>Mật khẩu</th>
-								<th>Số điện thoại</th>
-								<th>Admin</th>
-								<th>Địa chỉ</th>
-								<th>Sửa</th>
-								<th>Xóa</th>
-							</tr>
-						</thead>
-						<tbody>
-							@if (!empty($usersList))
-								@foreach ($usersList as $key => $item)
-							<tr>
-								<td>{{$key+1}}</td>
-								<td>{{$item->HoVaTen}}</td>
-								<td>{{$item->NgaySinh}}</td>
-								<td>{{$item->TenTaiKhoan}}</td>
-								<td>{{$item->Email}}</td>
-								<td>{{$item->MatKhau}}</td>
-								<td>{{$item->SoDT}}</td>
-								<td>{{$item->IsAdmin}}</td>
-								<td>{{$item->DiaChi}}</td>
-								<td>
-									<button class="btn-update"><a href="{{route('users.edit', ['id'=>$item->MaTK])}}">Sửa</a></button>
-								</td>
-								<td>
-									<button class="btn-del">
-										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
-										href="{{route('users.delete', ['id'=>$item->MaTK])}}">Xóa</a>
-									</button>
-								</td>
-							</tr>
-							@endforeach
-							@else
-							<tr>
-								<td colspan="11">Không có người dùng</td>
-							</tr>
-							@endif
-						</tbody>
-					</table>
-				</div>
-
-				@if (session('msg'))
+                <form action="{{route('products.details.post-edit', $id)}}" method="POST" style="padding-top: 20px;" enctype="multipart/form-data">
+                    <table style="padding-left:10%;">
+						<caption><h1>{{$title}}</h1></caption>
+                        <tr>
+                            <td width="15%"><label for="size">Size</label></td>
+                            <td width="95%"><input type="text" name="size" id="size" style="width:150px;" value="{{old('size') ?? $productDetail->Size}}">
+								@error('size')
+									<span style="color: red; font-size:14px;">*{{$message}}</span>
+								@enderror
+							</td>
+								
+                        </tr>
+                        <tr>
+                            <td><label for="quantity">Số lượng còn</label></td>
+                            <td><input type="text" name="quantity" id="quantity" style="width:150px;" value="{{old('quantity') ?? $productDetail->SoLuongCon}}">
+								@error('quantity')
+									<span style="color: red; font-size:14px;">*{{$message}}</span>
+								@enderror
+							</td>
+                        </tr>
+						<tr>
+							<td colspan="2" style="padding-left: 5%;">
+								<button class="btn-add" type="submit">Cập nhật</button>
+								<button class="btn-back"><a href="{{route('products.details.index', $id)}}">Quay lại</a></button>
+							</td>
+						</tr>
+                    </table>
+                    @csrf
+                </form>
+                @if (session('msg'))
 				<div class="message">{{session('msg')}}</div>
 				@endif
 			</div>

@@ -74,7 +74,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="another_option"><a href="dangKy.html">Chưa có tài khoản? Đăng ký</a></td>
+                    <td class="another_option"><a href="DangKy">Chưa có tài khoản? Đăng ký</a></td>
                 </tr>
                 <tr>
                     <td class="another_option"><a href="#" id="loginBtn">Quên mật khẩu?</a></td>
