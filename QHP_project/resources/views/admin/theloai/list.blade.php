@@ -46,52 +46,37 @@
 
 			<div class="maincontent">
 				<h1>{{$title}}</h1>
-				<div class="table-list">
-					<button class="btn-add"><a href="{{route('products.add')}}">Thêm sản phẩm</a></button>
+				<div class="table-list" style="width:70%; font-size:18px;">
+					<button class="btn-add"><a href="{{route('theloai.add')}}">Thêm thể loại</a></button>
 					<table class="user-list" border="1">
 						<thead>
 							<tr>
-								<th>STT</th>
-								<th>Tên sản phẩm</th>
-								<th>Giá bán</th>
-								<th>Mô tả</th>
-								<th>Hình ảnh</th>
-								<th>Thể loại</th>
-								<th>Danh mục</th>
-                                <th>Chi tiết</th>
-								<th>Sửa</th>
-								<th>Xóa</th>
+								<th width=10%>STT</th>
+								<th>Tên thể loại</th>
+								<th width=10%>Sửa</th>
+								<th width=10%>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
-							@if (!empty($productsList))
-								@foreach ($productsList as $key => $item)
+							@if (!empty($theloaiList))
+								@foreach ($theloaiList as $key => $item)
 							<tr>
 								<td>{{$key+1}}</td>
-								<td>{{$item->TenSP}}</td>
-								<td>${{$item->GiaBan}}</td>
-								<td>{{$item->MoTa}}</td>
-                                
-								<td><img src="{{ asset('storage/products/' . $item->HinhAnh) }}" alt="ảnh giày" style="width:60px; height:60px;"></td>
 								<td>{{$item->TenTheLoai}}</td>
-								<td>{{$item->TenDanhMuc}}</td>
-                                <td>
-                                    <button class="btn-detail"><a href="{{route('products.edit', ['id'=>$item->MaSP])}}">Chi tiết</a></button>
-                                </td>
 								<td>
-									<button class="btn-update"><a href="{{route('products.edit', ['id'=>$item->MaSP])}}">Sửa</a></button>
+									<button class="btn-update"><a href="{{route('theloai.edit', ['id'=>$item->MaTheLoai])}}">Sửa</a></button>
 								</td>
 								<td>
 									<button class="btn-del">
 										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
-										href="{{route('products.delete', ['id'=>$item->MaSP])}}">Xóa</a>
+										href="{{route('theloai.delete', ['id'=>$item->MaTheLoai])}}">Xóa</a>
 									</button>
 								</td>
 							</tr>
 							@endforeach
 							@else
 							<tr>
-								<td colspan="4">Không có sản phẩm</td>
+								<td colspan="4">Không có thể loại</td>
 							</tr>
 							@endif
 						</tbody>

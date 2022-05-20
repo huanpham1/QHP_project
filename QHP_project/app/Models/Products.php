@@ -28,4 +28,21 @@ class Products extends Model
     public function getDetail($id){
         return DB::select('SELECT * FROM '.$this->table.' WHERE MaSP = ?', [$id]);
     }
+
+    public function updateProduct($data, $id){
+        $data[] = $id;
+
+        return DB::update('UPDATE '.$this->table.' SET 
+        TenSP=?,
+        GiaBan=?,
+        MoTa=?,
+        HinhAnh=?,
+        MaTheLoai=?,
+        MaDanhMuc=?
+        WHERE MaSP = ?', $data);
+    }
+
+    public function deleteProduct($id){
+        return DB::delete('DELETE FROM '.$this->table.' WHERE MaSP=?', [$id]);
+    }
 }

@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="{{ asset('assets/css/adminsite.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/users/add.css')}}">
 	<title>Document</title>
 </head>
 
@@ -43,37 +43,27 @@
 			</ul>
 		</div>
 		<div class="container">
-
 			<div class="maincontent">
-				<div class="content">
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-				</div>
-				<div class="content">
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-				</div>
-				<div class="content">
-					<div class="dashboard_content">
-						<div class="QLSP">Quản Lý Sản Phẩm</div>
-					</div>
-
-					</div>
-				</div>
+                <form action="" method="POST">
+                    <table>
+						<caption><h1>{{$title}}</h1></caption>
+                        <tr>
+                            <td width="15%"><label for="name">Tên danh mục</label></td>
+                            <td width="95%"><input type="text" name="name" id="name" maxlength="15" value="{{old('name')}}">
+								@error('name')
+									<span style="color: red; font-size:14px;">*{{$message}}</span>
+								@enderror
+							</td>
+                        </tr>
+                        <tr>
+							<td colspan="2" style="padding-left: 15%;">
+								<button class="btn-add" type="submit">Thêm mới</button>
+								<button class="btn-back"><a href="{{route('danhmuc.index')}}">Quay lại</a></button>
+							</td>
+						</tr>
+                    </table>
+                    @csrf
+                </form>
 			</div>
 		</div>
 	</div>

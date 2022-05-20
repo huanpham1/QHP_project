@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="{{ asset('assets/css/users/list.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/users/add.css')}}">
 	<title>Document</title>
 </head>
 
@@ -43,60 +43,27 @@
 			</ul>
 		</div>
 		<div class="container">
-
 			<div class="maincontent">
-				<h1>{{$title}}</h1>
-				<div class="table-list">
-					<button class="btn-add"><a href="{{route('products.add')}}">Thêm sản phẩm</a></button>
-					<table class="user-list" border="1">
-						<thead>
-							<tr>
-								<th>STT</th>
-								<th>Tên sản phẩm</th>
-								<th>Giá bán</th>
-								<th>Mô tả</th>
-								<th>Hình ảnh</th>
-								<th>Thể loại</th>
-								<th>Danh mục</th>
-                                <th>Chi tiết</th>
-								<th>Sửa</th>
-								<th>Xóa</th>
-							</tr>
-						</thead>
-						<tbody>
-							@if (!empty($productsList))
-								@foreach ($productsList as $key => $item)
-							<tr>
-								<td>{{$key+1}}</td>
-								<td>{{$item->TenSP}}</td>
-								<td>${{$item->GiaBan}}</td>
-								<td>{{$item->MoTa}}</td>
-                                
-								<td><img src="{{ asset('storage/products/' . $item->HinhAnh) }}" alt="ảnh giày" style="width:60px; height:60px;"></td>
-								<td>{{$item->TenTheLoai}}</td>
-								<td>{{$item->TenDanhMuc}}</td>
-                                <td>
-                                    <button class="btn-detail"><a href="{{route('products.edit', ['id'=>$item->MaSP])}}">Chi tiết</a></button>
-                                </td>
-								<td>
-									<button class="btn-update"><a href="{{route('products.edit', ['id'=>$item->MaSP])}}">Sửa</a></button>
-								</td>
-								<td>
-									<button class="btn-del">
-										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
-										href="{{route('products.delete', ['id'=>$item->MaSP])}}">Xóa</a>
-									</button>
-								</td>
-							</tr>
-							@endforeach
-							@else
-							<tr>
-								<td colspan="4">Không có sản phẩm</td>
-							</tr>
-							@endif
-						</tbody>
-					</table>
-				</div>
+                <form action="{{route('danhmuc.post-edit')}}" method="POST">
+                    <table>
+						<caption><h1>{{$title}}</h1></caption>
+                        <tr>
+                            <td width="15%"><label for="name">Tên danh mục</label></td>
+                            <td width="95%"><input type="text" name="name" id="name" value="{{old('name') ?? $danhmucDetail->TenDanhMuc}}">
+								@error('name')
+									<span style="color: red; font-size:14px;">*{{$message}}</span>
+								@enderror
+							</td>	
+                        </tr>
+						<tr>
+							<td colspan="2" style="padding-left: 15%;">
+								<button class="btn-add" type="submit">Cập nhật</button>
+								<button class="btn-back"><a href="{{route('danhmuc.index')}}">Quay lại</a></button>
+							</td>
+						</tr>
+                    </table>
+                    @csrf
+                </form>
 
 				@if (session('msg'))
 				<div class="message">{{session('msg')}}</div>

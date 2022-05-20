@@ -29,12 +29,11 @@
 		<div class="nav">
 			<ul class="main_select">
 				<li><a href="#"><i class="fa-solid fa-list-ul"></i>Dashboard</li></a>
-				<li><a href="#"><i class="fa-solid fa-shoe-prints"></i>Quản Lý Sản Phẩm</li></a>
-				<li><a href="#"><i class="fa fa-industry"></i>Quản Lý Nhà Sản Xuất</li></a>
-				<li><a href="#"><i class="fa-solid fa-sheet-plastic"></i>Quản Lý Danh Mục</li></a>
-				<li><a href="#"><i class="fa-regular fa-rectangle-list"></i>Quản Lý Thể Loại</li></a>
+				<li><a href="{{route('products.index')}}"><i class="fa-solid fa-shoe-prints"></i>Quản Lý Sản Phẩm</li></a>
+				<li><a href="{{route('danhmuc.index')}}"><i class="fa-solid fa-sheet-plastic"></i>Quản Lý Danh Mục</li></a>
+				<li><a href="{{route('theloai.index')}}"><i class="fa-regular fa-rectangle-list"></i>Quản Lý Thể Loại</li></a>
 				<li><a href="#"><i class="fa-solid fa-bag-shopping"></i>Quản Lý Đơn Hàng</li></a>
-				<li><a href="#"><i class="fa-solid fa-user"></i>Quản Lý Tài Khoản</li></a>
+				<li><a href="{{route('users.index')}}"><i class="fa-solid fa-user"></i>Quản Lý Tài Khoản</li></a>
 				<li class="cha_TK"><i class="fa-solid fa-arrow-up-right-dots"></i>Báo Cáo Thống Kê
 					<ul class="con_TK">
 						<a href="#"><li>Xuất báo cáo theo sản phẩm</li></a>
@@ -50,7 +49,7 @@
 						<caption><h1>{{$title}}</h1></caption>
                         <tr>
                             <td width="15%"><label for="productName">Tên sản phẩm</label></td>
-                            <td width="95%"><input type="text" name="productName" id="productName" value="{{old('productName')}}">
+                            <td width="95%"><input type="text" name="productName" id="productName" maxlength="30" value="{{old('productName')}}">
 								@error('productName')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
