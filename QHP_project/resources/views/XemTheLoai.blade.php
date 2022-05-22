@@ -236,9 +236,6 @@
                     ?>
                     <li><a href="#"><?php echo $data['TenTheLoai'] ?></a></li>
                     <?php } ?>
-                    <!-- <li><a href="#">Giày training</a></li>
-                    <li><a href="#">Giày thời trang</a></li>
-                    <li><a href="#">Giày leo núi</a></li> -->
                 </ul>
             </div>
             <div class="sp-nam">
@@ -250,88 +247,15 @@
                         <a href="#"><p class="price"><?php echo $data['GiaBan'] ?>$</p></a>
                     </div>
                         <?php } ?>
-                    <!-- <div class="cot">
-                        <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div> -->
-                </div>
-                
-                <div class="hang">
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
                 </div>
                 <div class="hang">
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                </div>
-                <div class="hang">
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
-                    <div class="cot">
-                        <a href="#"><img src="<?php echo asset('assets/images/sp5.jpg')?>" alt="Giay"></a>
-                        <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                        <a href="#"><p class="price">$60</p></a>
-                    </div>
+                    <?php foreach(getSP_TheLoai($id) as $data){ ?>
+                        <div class="cot">
+                        <a href="/xemChiTiet/id=<?php echo $data['MaSP']?>"><img src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay"><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                        <a href="<?php echo route('chiTiet',['id'=>$data['MaSP']]); ?>"><p class="tensp"><?php echo $data['TenSP'] ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                        <a href="#"><p class="price"><?php echo $data['GiaBan'] ?>$</p></a>
+                        </div>
+                    <?php } ?>
                 </div>
                 <div class="view-more">
                     <a href="#"><button>VIEW MORE PRODUCTS</button></a>

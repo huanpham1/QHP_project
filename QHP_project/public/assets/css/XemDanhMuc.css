@@ -285,7 +285,7 @@ nav>ul>.nu:hover > .nunu{
 }
 .hang{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 .cot{
     width: 24%;

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{{ asset('assets/css/DangNhap.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/DangKy.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -58,46 +58,34 @@
         </div>
     </header>
     <section>
-        <form action="dangNhap.php" id="dangNhap" method="post">
+    <form action="/Sua/" method="post">
             <table>
-                <caption><h2>Đăng nhập</h2></caption>
+                <caption><h2>Sửa thông tin cá nhân</h2></caption>
                 <tr>
-                    <td>
-                        <div class="icon_form"><i class="fa-solid fa-user"></i></div>
-                        <input type="text" placeholder="Tên tài khoản">
-                    </td>
+                    <td><label for="name">Họ và tên</label></td>
+                    <td><input type="text" name="name"></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="icon_form"><i class="fa-solid fa-lock"></i></div>
-                        <input type="password" placeholder="Mật khẩu">
-                    </td>
+                    <td><label for="dateOfBirth">Ngày sinh</label></td>
+                    <td><input type="date" name="dateOfBirth"></td>
                 </tr>
                 <tr>
-                    <td class="another_option"><a href="dangKy.html">Chưa có tài khoản? Đăng ký</a></td>
+                    <td><label for="email">Email</label></td>
+                    <td><input type="text" name="email"></td>
                 </tr>
                 <tr>
-                    <td class="another_option"><a href="#" id="loginBtn">Quên mật khẩu?</a></td>
+                    <td><label for="DiaChi">Địa chỉ</label></td>
+                    <td><input type="text" name="DiaChi"></td>
                 </tr>
                 <tr>
-                    <td id="submit"><input type="submit" value="Đăng nhập"></td>
+                    <td><label for="phoneNum">Số điện thoại</label></td>
+                    <td><input type="text" name="phoneNum"></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center"><input type="submit" id="submit" value="LƯU"></td>
                 </tr>
             </table>
         </form>
-        <div id="forgot-pass-form">
-            <form>
-                <h3>Phục hồi mật khẩu</h3>
-                <span>Chúng tôi sẽ gửi mật khẩu về email của bạn</span><br>
-                <div class="form-box">
-                    <div class="icon_form"><i class="fa-solid fa-envelope"></i></div>
-                    <input type="text" placeholder="Email">
-                </div>
-                <div class="form-submit">
-                    <input type="submit" value="Gửi">
-                    <a href="#" id="submitBtn">Hủy bỏ</a>
-                </div>
-            </form>
-        </div>
     </section>
     <footer>
         <div class="container_footer">
@@ -124,6 +112,7 @@
         </div>
         <div class="LOGO"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></div>
         </div>
+
         <div class="copyright">© Copyright QHP Store</div>
     </footer>
 

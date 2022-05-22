@@ -1,9 +1,39 @@
+<?php
+    
+    global $conn;
+    function connect_db(){
+        $servername = "localhost";
+        $username = "root";
+        $password = "";
+        $database = "qhp_project";
+        global $conn;
+        if(!$conn){
+            $conn = mysqli_connect($servername,$username,$password,$database) or die("Khong the ket noi may chu");
+        }
+    }
+    function disconnect_db(){
+        global $conn;
+        if($conn){
+            mysqli_close($conn);
+        }
+    }
+    function layThongTinKH($MaTK){
+        global $conn;
+        connect_db();
+        $sql = "select * from taikhoan where MaTK = {$MaTK}";
+        $query = mysqli_query($conn,$sql);
+        $result = mysqli_fetch_assoc($query);
+        disconnect_db();
+        return $result;
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{{ asset('assets/css/DangNhap.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/DangKy.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -58,46 +88,41 @@
         </div>
     </header>
     <section>
-        <form action="dangNhap.php" id="dangNhap" method="post">
+        <?php $data = layThongTinKH(1); ?>
+    <form action="/SuaThongTinCaNhan/<?php echo $data['MaTK']?>" method="get">
             <table>
-                <caption><h2>Đăng nhập</h2></caption>
+                <caption><h2>Thông tin cá nhân</h2></caption>
                 <tr>
-                    <td>
-                        <div class="icon_form"><i class="fa-solid fa-user"></i></div>
-                        <input type="text" placeholder="Tên tài khoản">
-                    </td>
+                    <td><label for="name">Họ và tên</label></td>
+                    <td><div class="hoTen"><?php echo $data['HoVaTen']?></div></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="icon_form"><i class="fa-solid fa-lock"></i></div>
-                        <input type="password" placeholder="Mật khẩu">
-                    </td>
+                    <td><label for="dateOfBirth">Ngày sinh</label></td>
+                    <td><div class="ngaysinh"><?php echo $data['NgaySinh']?></div></td>
                 </tr>
                 <tr>
-                    <td class="another_option"><a href="dangKy.html">Chưa có tài khoản? Đăng ký</a></td>
+                    <td><label for="username">Tên tài khoản</label></td>
+                    <td><div class="username"><?php echo $data['TenTaiKhoan']?></div></td>
                 </tr>
                 <tr>
-                    <td class="another_option"><a href="#" id="loginBtn">Quên mật khẩu?</a></td>
+                    <td><label for="email">Email</label></td>
+                    <td><div class="email"><?php echo $data['Email']?></div></td>
                 </tr>
                 <tr>
-                    <td id="submit"><input type="submit" value="Đăng nhập"></td>
+                    <td><label for="DiaChi">Địa chỉ</label></td>
+                    <td><div class="DiaChi"><?php echo $data['DiaChi'] ?></div></td>
+                </tr>
+                <tr>
+                    <td><label for="SoDT">Số điện thoại</label></td>
+                    <td><div name="SoDT"><?php echo $data['SoDT']?></div></td>
+                </tr>
+                <tr>
+                    <td colspan="2" align="center">
+                        <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
+                        <input type="submit" id="submit" value="UPDATE"></td>
                 </tr>
             </table>
         </form>
-        <div id="forgot-pass-form">
-            <form>
-                <h3>Phục hồi mật khẩu</h3>
-                <span>Chúng tôi sẽ gửi mật khẩu về email của bạn</span><br>
-                <div class="form-box">
-                    <div class="icon_form"><i class="fa-solid fa-envelope"></i></div>
-                    <input type="text" placeholder="Email">
-                </div>
-                <div class="form-submit">
-                    <input type="submit" value="Gửi">
-                    <a href="#" id="submitBtn">Hủy bỏ</a>
-                </div>
-            </form>
-        </div>
     </section>
     <footer>
         <div class="container_footer">
@@ -124,6 +149,7 @@
         </div>
         <div class="LOGO"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></div>
         </div>
+
         <div class="copyright">© Copyright QHP Store</div>
     </footer>
 

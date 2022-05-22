@@ -43,6 +43,42 @@ Route::prefix('/')->group(function(){
         ];
         return view('xemChiTiet',$idsp);
     }) -> name('chiTiet');
+    Route::post('/xemChiTiet/name={name}', function ($name) {
+        $namesp = [
+            'name' => $name
+        ];
+        return view('xemChiTiet',$namesp);
+    });
+    Route::get('/SuaThongTinCaNhan/{MaTK}',function($MaTK){
+        $id = [
+            'MaTK'=>$MaTK
+        ];
+        return view('SuaThongTinCaNhan',$id);
+    });
+    Route::post('/Sua/{MaTK}/{HoVaTen}/{NgaySinh}/{Email}/{DiaChi}{SoDT}',function($MaTK,$HoVaTen,$NgaySinh,$Email,$DiaChi,$SoDT){
+        $id = [
+            'MaTK'=>$MaTK,
+        ];
+        $ten = [
+            'HoVaTen'=>$HoVaTen,
+        ];
+        $ngaysinh = [
+            'NgaySinh'=>$NgaySinh,
+        ];
+        $email = [
+            'Email'=>$Email,
+        ];
+        $diachi = [
+            'DiaChi'=>$DiaChi,
+        ];
+        $sdt = [
+            'SoDT'=>$SoDT,
+        ];
+        return view('SuaThongTinCaNhan',$id,$ten,$ngaysinh,$email,$diachi,$sdt);
+    });
+    Route::get('/ThongTinCaNhan',function(){
+        return view('ThongTinCaNhan');
+    });
 });
 
 Route::get('/adminsite', function () {

@@ -47,6 +47,24 @@
         
         return $result;
     }
+    function getSP_Name($name){
+        // Gọi tới biến toàn cục $conn
+        global $conn;
+        
+        // Hàm kết nối
+        connect_db();
+        
+        // Câu truy vấn lấy san pham theo id
+        $sql = "select * from sanpham where TenSP = {$name}";
+        
+        // Thực hiện câu truy vấn
+        $query = mysqli_query($conn, $sql);
+        
+        // Mảng chứa kết quả
+        $result = mysqli_fetch_assoc($query);
+        
+        return $result;
+    }
 ?>
 
 

@@ -98,7 +98,7 @@
             <hr style="margin-top: 30px;">
             <div class="cart-pay">
                 <div class="shop-support">
-                    <a href="index.html" class="buy-more">
+                    <a href="../" class="buy-more">
                         <i class="fa-solid fa-circle-arrow-left"></i>
                         Tiếp tục mua hàng
                     </a>
