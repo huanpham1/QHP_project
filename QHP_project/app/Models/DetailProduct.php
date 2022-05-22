@@ -35,6 +35,15 @@ class DetailProduct extends Model
     }
 
     public function deleteDetailProduct($detailID){
-        return DB::delete('DELETE FROM '.$this->table.' WHERE ChiTietSPID=?', [$detailID]);
+        //Lấy ra chi tiết đơn hàng có mã chi tiết sản phẩm tương ứng
+        $orderDetail = DB::select('SELECT * FROM chitietdonhang WHERE ChiTietSPID=?', [$detailID]);
+
+        //Nếu không tồn tại đơn hàng nào thì được phép xóa chi tiết sản phẩm
+        if (empty($orderDetail)){
+            return DB::delete('DELETE FROM '.$this->table.' WHERE ChiTietSPID=?', [$detailID]);
+        } else {
+            return False;
+        }
+        
     }
 }

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\DetailProductController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\TheLoaiController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
@@ -109,6 +110,14 @@ Route::prefix('/adminsite')->group(function () {
         Route::post('/update', [TheLoaiController::class, 'handleEdit'])->name('post-edit');
 
         Route::get('/delete/{id}', [TheLoaiController::class, 'delete'])->name('delete');
+    });
+
+    Route::prefix('/order')->name('orders.')->group(function(){
+        Route::get('/', [OrdersController::class, 'index'])->name('index');
+
+        Route::get('/detail/{id}', [OrdersController::class, 'detail'])->name('detail');
+
+        Route::get('/delete/{id}', [OrdersController::class, 'delete'])->name('delete');
     });
 });
 

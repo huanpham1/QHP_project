@@ -32,7 +32,7 @@
 				<li><a href="{{route('products.index')}}"><i class="fa-solid fa-shoe-prints"></i>Quản Lý Sản Phẩm</li></a>
 				<li><a href="{{route('danhmuc.index')}}"><i class="fa-solid fa-sheet-plastic"></i>Quản Lý Danh Mục</li></a>
 				<li><a href="{{route('theloai.index')}}"><i class="fa-regular fa-rectangle-list"></i>Quản Lý Thể Loại</li></a>
-				<li><a href="#"><i class="fa-solid fa-bag-shopping"></i>Quản Lý Đơn Hàng</li></a>
+				<li><a href="{{route('orders.index')}}"><i class="fa-solid fa-bag-shopping"></i>Quản Lý Đơn Hàng</li></a>
 				<li><a href="{{route('users.index')}}"><i class="fa-solid fa-user"></i>Quản Lý Tài Khoản</li></a>
 				<li class="cha_TK"><i class="fa-solid fa-arrow-up-right-dots"></i>Báo Cáo Thống Kê
 					<ul class="con_TK">
@@ -46,48 +46,46 @@
 
 			<div class="maincontent">
 				<h1>{{$title}}</h1>
-				<div class="table-list" style="width:70%; font-size:18px;">
-					<button class="btn-add"><a href="{{route('products.details.add', $id)}}">Thêm size</a></button>
+				<div class="table-list">
 					<table class="user-list" border="1">
 						<thead>
 							<tr>
-								<th width=10%>STT</th>
-								<th width=25%>Size</th>
-								<th>Số lượng còn</th>
-								<th width=10%>Sửa</th>
-								<th width=10%>Xóa</th>
+								<th>ID</th>
+								<th>Tên khách hàng</th>
+								<th>Địa chỉ</th>
+								<th>Ngày đặt hàng</th>
+								<th>Email</th>
+								<th>Chi tiết</th>
+								<th>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>
-							@if (!empty($detailList))
-								@foreach ($detailList as $key => $item)
+							@if (!empty($ordersList))
+								@foreach ($ordersList as $key => $item)
 							<tr>
-								<td>{{$key+1}}</td>
-								<td>{{$item->Size}}</td>
-								<td>{{$item->SoLuongCon}}</td>
-								<td>
-									<button class="btn-update"><a href="{{route('products.details.edit', [$id, 'detailID'=>$item->ChiTietSPID])}}">Sửa</a></button>
-								</td>
+								<td>{{$item->MaDonHang}}</td>
+								<td>{{$item->HoVaTen}}</td>
+								<td>{{$item->DiaChiNhanHang}}</td>
+								<td>{{$item->NgayDatHang}}</td>
+                                <td>{{$item->Email}}</td>
+                                <td>
+                                    <button class="btn-detail"><a href="{{route('orders.detail', ['id'=>$item->MaDonHang])}}">Chi tiết</a></button>
+                                </td>
 								<td>
 									<button class="btn-del">
 										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
-										href="{{route('products.details.delete', [$id, 'detailID'=>$item->ChiTietSPID])}}">Xóa</a>
+										href="{{route('orders.delete', ['id'=>$item->MaDonHang])}}">Xóa</a>
 									</button>
 								</td>
 							</tr>
 							@endforeach
 							@else
 							<tr>
-								<td colspan="5">Không có size nào</td>
+								<td colspan="7">Không có đơn hàng</td>
 							</tr>
 							@endif
 						</tbody>
 					</table>
-					{{-- <button class="btn-add" style="margin-top: 10px;"><a href="{{route('products.index')}}">Quay lại</a></button> --}}
-					<a href="{{route('products.index')}}" class="back-to-list">
-                        <i class="fa-solid fa-circle-arrow-left"></i>
-                        Quay lại
-                    </a>
 				</div>
 
 				@if (session('msg'))
