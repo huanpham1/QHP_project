@@ -1,7 +1,11 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\XemTheLoai;
+use App\Http\Controllers\XemTheLoaiController;
+use App\Http\Controllers\homeController;
+use App\Http\Controllers\XemDanhMucController;
+use App\Http\Controllers\xemChiTietController;
+use App\Http\Controllers\ThongTinCaNhanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -13,74 +17,32 @@ use App\Http\Controllers\XemTheLoai;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/XemTheLoai/{id}',[XemTheLoai::class,'getSP_TheLoai']);
-Route::prefix('/')->group(function(){
-    Route::get('/', function () {
-        return view('home');
-    });
-    Route::get('/dangNhap', function () {
-    return view('DangNhap');
-    });
-    Route::get('/dangKy', function () {
-        return view('DangKy');
-    });
-    Route::get('/GioHang', function () {
-        return view('GioHang');
-    });
-    Route::get('/XemDanhMuc/{id}', function ($id) {
-        $iddm = [
-            'id' => $id
-        ];
-        return view('XemDanhMuc',$iddm);
-    });
-    // Route::get('/XemTheLoai/{id}',function($id){
-    //     $idtl = [
-    //         'id' => $id
-    //     ];
-    //     return view('XemTheLoai',$idtl);
-    // }) -> name('xemTheLoai');
-    Route::get('/xemChiTiet/id={id}', function ($id) {
-        $idsp = [
-            'id' => $id
-        ];
-        return view('xemChiTiet',$idsp);
-    }) -> name('chiTiet');
-    Route::post('/xemChiTiet/name={name}', function ($name) {
-        $namesp = [
-            'name' => $name
-        ];
-        return view('xemChiTiet',$namesp);
-    });
-    Route::get('/SuaThongTinCaNhan/{MaTK}',function($MaTK){
-        $id = [
-            'MaTK'=>$MaTK
-        ];
-        return view('SuaThongTinCaNhan',$id);
-    });
-    Route::post('/Sua/{MaTK}/{HoVaTen}/{NgaySinh}/{Email}/{DiaChi}{SoDT}',function($MaTK,$HoVaTen,$NgaySinh,$Email,$DiaChi,$SoDT){
-        $id = [
-            'MaTK'=>$MaTK,
-        ];
-        $ten = [
-            'HoVaTen'=>$HoVaTen,
-        ];
-        $ngaysinh = [
-            'NgaySinh'=>$NgaySinh,
-        ];
-        $email = [
-            'Email'=>$Email,
-        ];
-        $diachi = [
-            'DiaChi'=>$DiaChi,
-        ];
-        $sdt = [
-            'SoDT'=>$SoDT,
-        ];
-        return view('SuaThongTinCaNhan',$id,$ten,$ngaysinh,$email,$diachi,$sdt);
-    });
-    Route::get('/ThongTinCaNhan',function(){
-        return view('ThongTinCaNhan');
-    });
+Route::prefix('/')->name('index')->group(function(){
+    Route::get('/', [homeController::class,'goHome'])->name('index');
+});
+Route::prefix('XemTheLoai')->name('XemTheLoai.')->group(function(){
+    Route::get('/{id}',[XemTheLoaiController::class,'getSP_TheLoai'])->name('index');
+});
+Route::prefix('XemDanhMuc')->name('XemDanhMuc.')->group(function(){
+    Route::get('/{id}',[XemDanhMucController::class,'goToXemDanhMuc'])->name('index');
+});
+Route::prefix('xemChiTiet')->name('xemChiTiet.')->group(function(){
+    Route::get('/{id}',[xemChiTietController::class,'goToXemChiTiet'])->name('index');
+});
+Route::prefix('ThongTinCaNhan')->name('ThongTinCaNhan.')->group(function(){
+    Route::get('/',[ThongTinCaNhanController::class,'goToThongTinCaNhan'])->name('index');
+    Route::get('/Sua',[ThongTinCaNhanController::class,'formSua'])->name('suaThongTin');
+});
+
+
+Route::get('/dangNhap', function () {
+return view('DangNhap');
+});
+Route::get('/dangKy', function () {
+    return view('DangKy');
+});
+Route::get('/GioHang', function () {
+    return view('GioHang');
 });
 
 Route::get('/adminsite', function () {

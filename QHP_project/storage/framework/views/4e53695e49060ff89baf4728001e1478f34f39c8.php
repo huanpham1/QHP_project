@@ -1,72 +1,3 @@
-<?php
-    global $conn;
- 
-    // Hàm kết nối database
-    function connect_db()
-    {
-        // Gọi tới biến toàn cục $conn
-        global $conn;
-        $servername = "localhost";
-        $database = "qhp_project";
-        $username = "root";
-        $password = "";
-         
-        // Nếu chưa kết nối thì thực hiện kết nối
-        if (!$conn){
-            $conn = mysqli_connect($servername,$username , $password, $database) or die ('Cant not connect to database');
-            // Thiết lập font chữ kết nối
-            mysqli_set_charset($conn, 'utf8');
-        }
-    }
-    // Hàm ngắt kết nối
-    function disconnect_db()
-    {
-        // Gọi tới biến toàn cục $conn
-        global $conn;
-        
-        // Nếu đã kêt nối thì thực hiện ngắt kết nối
-        if ($conn){
-            mysqli_close($conn);
-        }
-    }
-    function getSanPham($id){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
-        
-        // Hàm kết nối
-        connect_db();
-        
-        // Câu truy vấn lấy san pham theo id
-        $sql = "select * from sanpham where MaSP = {$id}";
-        
-        // Thực hiện câu truy vấn
-        $query = mysqli_query($conn, $sql);
-        
-        // Mảng chứa kết quả
-        $result = mysqli_fetch_assoc($query);
-        
-        return $result;
-    }
-    function getSP_Name($name){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
-        
-        // Hàm kết nối
-        connect_db();
-        
-        // Câu truy vấn lấy san pham theo id
-        $sql = "select * from sanpham where TenSP = {$name}";
-        
-        // Thực hiện câu truy vấn
-        $query = mysqli_query($conn, $sql);
-        
-        // Mảng chứa kết quả
-        $result = mysqli_fetch_assoc($query);
-        
-        return $result;
-    }
-?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -79,7 +10,7 @@
     <title>Giày QHP</title>
 </head>
 <body>
-    <header>
+<header>
         <div class="htren">
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
@@ -94,24 +25,16 @@
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
-                    <li class="nam">
-                        <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <ul class="namnam">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
-                    <li class="nu">
-                        <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <ul class="nunu">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
+                    <?php foreach($danhmuc as $datadm){ ?>
+                        <li class="nam">
+                            <a href="<?php echo e(route('XemDanhMuc.index',['id'=>$datadm->MaDanhMuc])); ?>"><?php echo $datadm->TenDanhMuc ?> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                            <ul class="namnam">
+                                <?php foreach($theloai as $data){ ?>
+                                    <li><a href="<?php echo e(route('XemTheLoai.index',['id'=>$data->MaTheLoai])); ?>"><?php echo $data->TenTheLoai ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php }?>
                     <li><a href="#">Trẻ em</a></li>
                 </ul>
             </nav>
@@ -129,7 +52,7 @@
     </header>
     <div class="chiTietSP">
         <?php
-            $data = getSanPham($id);
+            foreach($sanpham as $data){
         ?>
         <div class="img_sp">
             <div class="big_img">
@@ -145,17 +68,17 @@
         <form action="/GioHang" method="get" class="info_sp">
             <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
             <div class="name">
-                <h1><?php echo $data['TenSP']?></h1>
+                <h1><?php echo $data->TenSP?></h1>
             </div>
             <div class="maSP">
                 <p>Mã sản phẩm:</p>
-                <span id="MaSP" name="MaSP"><?php echo $data['MaSP'] ?></span>
+                <span id="MaSP" name="MaSP"><?php echo $data->MaSP ?></span>
             </div>
             <div class="moTa">
-                <p><?php echo $data['MoTa'] ?></p>
+                <p><?php echo $data->MoTa ?></p>
             </div>
         <?php
-            
+            }
         ?>
             <div class="size_soLuong">
                 <div class="size">

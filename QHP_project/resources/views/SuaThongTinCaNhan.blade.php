@@ -58,7 +58,12 @@
         </div>
     </header>
     <section>
-    <form action="/Sua/" method="post">
+        <?php
+            if($errors->any()){
+        ?>
+                <div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại !</div> 
+        <?php  } ?>
+    <form action="" method="post">
             <table>
                 <caption><h2>Sửa thông tin cá nhân</h2></caption>
                 <tr>

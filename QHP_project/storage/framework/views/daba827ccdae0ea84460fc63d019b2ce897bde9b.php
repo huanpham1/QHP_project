@@ -1,33 +1,4 @@
-<?php
-    
-    global $conn;
-    function connect_db(){
-        $servername = "localhost";
-        $username = "root";
-        $password = "";
-        $database = "qhp_project";
-        global $conn;
-        if(!$conn){
-            $conn = mysqli_connect($servername,$username,$password,$database) or die("Khong the ket noi may chu");
-        }
-    }
-    function disconnect_db(){
-        global $conn;
-        if($conn){
-            mysqli_close($conn);
-        }
-    }
-    function layThongTinKH($MaTK){
-        global $conn;
-        connect_db();
-        $sql = "select * from taikhoan where MaTK = {$MaTK}";
-        $query = mysqli_query($conn,$sql);
-        $result = mysqli_fetch_assoc($query);
-        disconnect_db();
-        return $result;
-    }
 
-?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -88,33 +59,33 @@
         </div>
     </header>
     <section>
-        <?php $data = layThongTinKH(1); ?>
-    <form action="/SuaThongTinCaNhan/<?php echo $data['MaTK']?>" method="get">
+        <?php foreach($taikhoan as $data){?>
+    <form action="<?php echo e(route('ThongTinCaNhan.suaThongTin')); ?>" method="get">
             <table>
                 <caption><h2>Thông tin cá nhân</h2></caption>
                 <tr>
                     <td><label for="name">Họ và tên</label></td>
-                    <td><div class="hoTen"><?php echo $data['HoVaTen']?></div></td>
+                    <td><div class="hoTen"><?php echo $data->HoVaTen?></div></td>
                 </tr>
                 <tr>
                     <td><label for="dateOfBirth">Ngày sinh</label></td>
-                    <td><div class="ngaysinh"><?php echo $data['NgaySinh']?></div></td>
+                    <td><div class="ngaysinh"><?php echo $data->NgaySinh?></div></td>
                 </tr>
                 <tr>
                     <td><label for="username">Tên tài khoản</label></td>
-                    <td><div class="username"><?php echo $data['TenTaiKhoan']?></div></td>
+                    <td><div class="username"><?php echo $data->TenTaiKhoan?></div></td>
                 </tr>
                 <tr>
                     <td><label for="email">Email</label></td>
-                    <td><div class="email"><?php echo $data['Email']?></div></td>
+                    <td><div class="email"><?php echo $data->Email?></div></td>
                 </tr>
                 <tr>
                     <td><label for="DiaChi">Địa chỉ</label></td>
-                    <td><div class="DiaChi"><?php echo $data['DiaChi'] ?></div></td>
+                    <td><div class="DiaChi"><?php echo $data->DiaChi?></div></td>
                 </tr>
                 <tr>
                     <td><label for="SoDT">Số điện thoại</label></td>
-                    <td><div name="SoDT"><?php echo $data['SoDT']?></div></td>
+                    <td><div name="SoDT"><?php echo $data->SoDT?></div></td>
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
@@ -123,6 +94,7 @@
                 </tr>
             </table>
         </form>
+        <?php } ?>
     </section>
     <footer>
         <div class="container_footer">
