@@ -31,11 +31,6 @@ class XemTheLoai extends Controller
         return $result;
     }
     public function getSP_TheLoai($id){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
-        
-        // Hàm kết nối
-        connect_db();
         
         // Câu truy vấn lấy san pham theo id
         $sql = "select * from sanpham where MaTheLoai = {$id}";
@@ -53,12 +48,7 @@ class XemTheLoai extends Controller
         return $result;
     }
     public function getAllTheLoai(){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
-        
-        // Hàm kết nối
-        connect_db();
-        
+
         // Câu truy vấn lấy tất cả sinh viên
         $sql = "select * from theloai";
         
@@ -78,12 +68,7 @@ class XemTheLoai extends Controller
         return $result;
     }
     public function getAllDanhMuc(){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
-        
-        // Hàm kết nối
-        connect_db();
-        
+
         // Câu truy vấn lấy tất cả sinh viên
         $sql = "select * from danhmuc";
         

@@ -1,131 +1,131 @@
 <?php
-    global $conn;
+    // global $conn;
  
-    // Hàm kết nối database
-    function connect_db()
-    {
-        // Gọi tới biến toàn cục $conn
-        global $conn;
-        $servername = "localhost";
-        $database = "qhp_project";
-        $username = "root";
-        $password = "";
+    // // Hàm kết nối database
+    // function connect_db()
+    // {
+    //     // Gọi tới biến toàn cục $conn
+    //     global $conn;
+    //     $servername = "localhost";
+    //     $database = "qhp_project";
+    //     $username = "root";
+    //     $password = "";
          
-        // Nếu chưa kết nối thì thực hiện kết nối
-        if (!$conn){
-            $conn = mysqli_connect($servername,$username , $password, $database) or die ('Cant not connect to database');
-            // Thiết lập font chữ kết nối
-            mysqli_set_charset($conn, 'utf8');
-        }
-    }
-    // Hàm ngắt kết nối
-    function disconnect_db()
-    {
-        // Gọi tới biến toàn cục $conn
-        global $conn;
+    //     // Nếu chưa kết nối thì thực hiện kết nối
+    //     if (!$conn){
+    //         $conn = mysqli_connect($servername,$username , $password, $database) or die ('Cant not connect to database');
+    //         // Thiết lập font chữ kết nối
+    //         mysqli_set_charset($conn, 'utf8');
+    //     }
+    // }
+    // // Hàm ngắt kết nối
+    // function disconnect_db()
+    // {
+    //     // Gọi tới biến toàn cục $conn
+    //     global $conn;
         
-        // Nếu đã kêt nối thì thực hiện ngắt kết nối
-        if ($conn){
-            mysqli_close($conn);
-        }
-    }
-    function getAllSanPham(){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
+    //     // Nếu đã kêt nối thì thực hiện ngắt kết nối
+    //     if ($conn){
+    //         mysqli_close($conn);
+    //     }
+    // }
+    // function getAllSanPham(){
+    //     // Gọi tới biến toàn cục $conn
+    //     global $conn;
         
-        // Hàm kết nối
-        connect_db();
+    //     // Hàm kết nối
+    //     connect_db();
         
-        // Câu truy vấn lấy tất cả sinh viên
-        $sql = "select * from sanpham";
+    //     // Câu truy vấn lấy tất cả sinh viên
+    //     $sql = "select * from sanpham";
         
-        // Thực hiện câu truy vấn
-        $query = mysqli_query($conn, $sql);
+    //     // Thực hiện câu truy vấn
+    //     $query = mysqli_query($conn, $sql);
         
-        // Mảng chứa kết quả
-        $result = array();
+    //     // Mảng chứa kết quả
+    //     $result = array();
         
-        // Lặp qua từng record và đưa vào biến kết quả
-        if ($query){
-            while ($row = mysqli_fetch_assoc($query)){
-                $result[] = $row;
-            }
-        }
-        // Trả kết quả về
-        return $result;
-    }
-    function getSP_TheLoai($id){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
+    //     // Lặp qua từng record và đưa vào biến kết quả
+    //     if ($query){
+    //         while ($row = mysqli_fetch_assoc($query)){
+    //             $result[] = $row;
+    //         }
+    //     }
+    //     // Trả kết quả về
+    //     return $result;
+    // }
+    // function getSP_TheLoai($id){
+    //     // Gọi tới biến toàn cục $conn
+    //     global $conn;
         
-        // Hàm kết nối
-        connect_db();
+    //     // Hàm kết nối
+    //     connect_db();
         
-        // Câu truy vấn lấy san pham theo id
-        $sql = "select * from sanpham where MaTheLoai = {$id}";
+    //     // Câu truy vấn lấy san pham theo id
+    //     $sql = "select * from sanpham where MaTheLoai = {$id}";
         
-        // Thực hiện câu truy vấn
-        $query = mysqli_query($conn, $sql);
+    //     // Thực hiện câu truy vấn
+    //     $query = mysqli_query($conn, $sql);
         
-        // Mảng chứa kết quả
-        if ($query){
-            while ($row = mysqli_fetch_assoc($query)){
-                $result[] = $row;
-            }
-        }
+    //     // Mảng chứa kết quả
+    //     if ($query){
+    //         while ($row = mysqli_fetch_assoc($query)){
+    //             $result[] = $row;
+    //         }
+    //     }
         
-        return $result;
-    }
-    function getAllTheLoai(){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
+    //     return $result;
+    // }
+    // function getAllTheLoai(){
+    //     // Gọi tới biến toàn cục $conn
+    //     global $conn;
         
-        // Hàm kết nối
-        connect_db();
+    //     // Hàm kết nối
+    //     connect_db();
         
-        // Câu truy vấn lấy tất cả sinh viên
-        $sql = "select * from theloai";
+    //     // Câu truy vấn lấy tất cả sinh viên
+    //     $sql = "select * from theloai";
         
-        // Thực hiện câu truy vấn
-        $query = mysqli_query($conn, $sql);
+    //     // Thực hiện câu truy vấn
+    //     $query = mysqli_query($conn, $sql);
         
-        // Mảng chứa kết quả
-        $result = array();
+    //     // Mảng chứa kết quả
+    //     $result = array();
         
-        // Lặp qua từng record và đưa vào biến kết quả
-        if ($query){
-            while ($row = mysqli_fetch_assoc($query)){
-                $result[] = $row;
-            }
-        }
-        // Trả kết quả về
-        return $result;
-    }
-    function getAllDanhMuc(){
-        // Gọi tới biến toàn cục $conn
-        global $conn;
+    //     // Lặp qua từng record và đưa vào biến kết quả
+    //     if ($query){
+    //         while ($row = mysqli_fetch_assoc($query)){
+    //             $result[] = $row;
+    //         }
+    //     }
+    //     // Trả kết quả về
+    //     return $result;
+    // }
+    // function getAllDanhMuc(){
+    //     // Gọi tới biến toàn cục $conn
+    //     global $conn;
         
-        // Hàm kết nối
-        connect_db();
+    //     // Hàm kết nối
+    //     connect_db();
         
-        // Câu truy vấn lấy tất cả sinh viên
-        $sql = "select * from danhmuc";
+    //     // Câu truy vấn lấy tất cả sinh viên
+    //     $sql = "select * from danhmuc";
         
-        // Thực hiện câu truy vấn
-        $query = mysqli_query($conn, $sql);
+    //     // Thực hiện câu truy vấn
+    //     $query = mysqli_query($conn, $sql);
         
-        // Mảng chứa kết quả
-        $result = array();
+    //     // Mảng chứa kết quả
+    //     $result = array();
         
-        // Lặp qua từng record và đưa vào biến kết quả
-        if ($query){
-            while ($row = mysqli_fetch_assoc($query)){
-                $result[] = $row;
-            }
-        }
-        // Trả kết quả về
-        return $result;
-    }
+    //     // Lặp qua từng record và đưa vào biến kết quả
+    //     if ($query){
+    //         while ($row = mysqli_fetch_assoc($query)){
+    //             $result[] = $row;
+    //         }
+    //     }
+    //     // Trả kết quả về
+    //     return $result;
+    // }
 ?>
 <!DOCTYPE html>
 <html lang="en">

@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\XemTheLoai;
 
 /*
 |--------------------------------------------------------------------------
@@ -12,6 +13,7 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
+Route::get('/XemTheLoai/{id}',[XemTheLoai::class,'getSP_TheLoai']);
 Route::prefix('/')->group(function(){
     Route::get('/', function () {
         return view('home');
@@ -31,12 +33,12 @@ Route::prefix('/')->group(function(){
         ];
         return view('XemDanhMuc',$iddm);
     });
-    Route::get('/XemTheLoai/{id}',function($id){
-        $idtl = [
-            'id' => $id
-        ];
-        return view('XemTheLoai',$idtl);
-    }) -> name('xemTheLoai');
+    // Route::get('/XemTheLoai/{id}',function($id){
+    //     $idtl = [
+    //         'id' => $id
+    //     ];
+    //     return view('XemTheLoai',$idtl);
+    // }) -> name('xemTheLoai');
     Route::get('/xemChiTiet/id={id}', function ($id) {
         $idsp = [
             'id' => $id
