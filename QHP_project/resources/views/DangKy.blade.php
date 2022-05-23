@@ -20,12 +20,12 @@
             </div>
         </div>
         <div class="hduoi">
-            <a href="index.html"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
                     <li><a href="#">Về chúng tôi</a></li>
                     <li class="nam">
-                        <a href="XemDanhMuc.html">Nam</a>
+                        <a href="DanhMuc">Nam</a>
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -34,7 +34,7 @@
                         </ul>
                     </li>
                     <li class="nu">
-                        <a href="XemDanhMuc.html">Nữ</a>
+                        <a href="DanhMuc">Nữ</a>
                         <ul class="nunu">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>

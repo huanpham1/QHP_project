@@ -1,5 +1,9 @@
 <?php
 
+use App\Http\Controllers\DanhMucController;
+use App\Http\Controllers\DetailProductController;
+use App\Http\Controllers\TheLoaiController;
+use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\LoginController;

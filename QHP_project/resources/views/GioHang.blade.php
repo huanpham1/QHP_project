@@ -14,18 +14,22 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-                <a href="dangNhap.html">Log in</a>
+                <a href="DangNhap">Log in</a>
                 <pre>|</pre>
-                <a href="dangKy.html">Register</a>
+                <a href="DangKy">Register</a>
             </div>
         </div>
         <div class="hduoi">
+<<<<<<< HEAD
             <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+=======
+            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+>>>>>>> QuanBranch
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
                     <li class="nam">
-                        <a href="XemDanhMuc.html">Nam</a>
+                        <a href="DanhMuc">Nam</a>
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -34,7 +38,7 @@
                         </ul>
                     </li>
                     <li class="nu">
-                        <a href="XemDanhMuc.html">Nữ</a>
+                        <a href="DanhMuc">Nữ</a>
                         <ul class="nunu">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -51,6 +55,7 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
+<<<<<<< HEAD
             <div class="acc_cart" style="padding-right: 10px">
                 @if (session()->has('TenTaiKhoan'))
 
@@ -59,6 +64,11 @@
                 </div>
                 </a>
                 <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
+=======
+            <div class="acc_cart">
+                <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
+                <a href="GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
+>>>>>>> QuanBranch
             </div>
         </div>
     </header>
@@ -79,7 +89,7 @@
                     <th style="width: 15%; text-align: right;">THÀNH TIỀN</th>
                 </tr>
                 <tr>
-                    <td style="padding: 0px;"><div class="cart-image"><img src="./images/Image 4.png" alt="Giay"></div></td>
+                    <td style="padding: 0px;"><div class="cart-image"><img src="{{asset('assets/images/Image 4.png')}}" alt="Giay"></div></td>
                     <td class="item-name">
                        <a href="#">Multicolor Men's Sneaker</a>
                         <div class="item-infor">

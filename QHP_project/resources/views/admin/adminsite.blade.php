@@ -28,17 +28,16 @@
 	<div class="mainlayout">
 		<div class="nav">
 			<ul class="main_select">
-				<li><i class="fa-solid fa-list-ul"></i>Dashboard</li>
-				<li><i class="fa-solid fa-shoe-prints"></i>Quản Lý Sản Phẩm</li>
-				<li><i class="fa fa-industry"></i>Quản Lý Nhà Sản Xuất</li>
-				<li><i class="fa-solid fa-sheet-plastic"></i>Quản Lý Danh Mục</li>
-				<li><i class="fa-regular fa-rectangle-list"></i>Quản Lý Thể Loại</li>
-				<li><i class="fa-solid fa-bag-shopping"></i>Quản Lý Đơn Hàng</li>
-				<li><i class="fa-solid fa-user"></i>Quản Lý Tài Khoản</li>
+				<li><a href="#"><i class="fa-solid fa-list-ul"></i>Dashboard</li></a>
+				<li><a href="{{route('products.index')}}"><i class="fa-solid fa-shoe-prints"></i>Quản Lý Sản Phẩm</li></a>
+				<li><a href="{{route('danhmuc.index')}}"><i class="fa-solid fa-sheet-plastic"></i>Quản Lý Danh Mục</li></a>
+				<li><a href="{{route('theloai.index')}}"><i class="fa-regular fa-rectangle-list"></i>Quản Lý Thể Loại</li></a>
+				<li><a href="#"><i class="fa-solid fa-bag-shopping"></i>Quản Lý Đơn Hàng</li></a>
+				<li><a href="{{route('users.index')}}"><i class="fa-solid fa-user"></i>Quản Lý Tài Khoản</li></a>
 				<li class="cha_TK"><i class="fa-solid fa-arrow-up-right-dots"></i>Báo Cáo Thống Kê
 					<ul class="con_TK">
-						<li>Xuất báo cáo theo sản phẩm</li>
-						<li>Xuất báo cáo theo ngày tháng</li>
+						<a href="#"><li>Xuất báo cáo theo sản phẩm</li></a>
+						<a href="#"><li>Xuất báo cáo theo ngày tháng</li></a>
 					</ul>
 				</li>
 			</ul>

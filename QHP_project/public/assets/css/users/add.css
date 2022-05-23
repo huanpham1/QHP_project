@@ -156,3 +156,78 @@
     color: #f9f9f9;
     cursor: pointer;
   }
+  form{
+      width: 80%;
+      margin-left: 20%;
+  }
+  form table{
+      width: 90%;
+      margin: auto;
+      font-size: 18px;
+  }
+  form table caption{
+    margin-left: -400px;
+  }
+  form table td{
+      padding: 5px;
+  }
+  form table td input{
+      width: 300px;
+      font-size: 16px;
+      padding-left: 5px;
+  }
+  .rad{
+      width: 20px;
+  }
+  .btn-add{
+    background-color: #3366ff;
+    border-radius: 3px;
+    width: 100px;
+    height: 30px;
+    border: none;
+    margin-bottom: 10px;
+    color: white;
+    font-size: 16px;
+  }
+  .btn-add:hover{
+    opacity: 90%;
+    cursor: pointer;
+  }
+  .btn-back{
+    border-radius: 3px;
+    width: 100px;
+    height: 30px;
+    border: none;
+    background-color: #ffcc00;
+    font-size: 16px;
+  }
+  .btn-back a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    line-height: 30px;
+  }
+  .btn-back:hover{
+    opacity: 80%;
+  }
+  .cbo-danhmuc{
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+  }
+  .cbo-theloai{
+    width: 150px;
+    height: 30px;
+    font-size: 16px;
+  }
+  .message{
+    width: 95%;
+    height: 50px;
+    margin: auto;
+    line-height: 50px;
+    font-size: 18px;
+    background-color: rgb(215, 250, 229);
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 30px;
+  }

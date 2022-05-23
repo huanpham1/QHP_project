@@ -156,3 +156,114 @@
     color: #f9f9f9;
     cursor: pointer;
   }
+  .maincontent h1{
+      margin-bottom: 10px;
+      text-align: center;
+  }
+  .user-list{
+    width: 100%;
+    border-collapse: collapse;
+    margin: auto;
+    text-align: center;
+}
+  .table-list{
+    width: 95%;
+    margin: auto;
+  }
+  .user-list th{
+      padding: 5px;
+  }
+  .user-list td{
+      padding: 5px;
+  }
+  .btn-add{
+    background-color: #3366ff;
+    border-radius: 3px;
+    width: 130px;
+    height: 30px;
+    border: none;
+    margin-bottom: 10px;
+    font-size: 14px;
+  }
+  .btn-add:hover{
+    opacity: 90%;
+  }
+  .btn-add a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    line-height: 30px;
+  }
+  .btn-update{
+    background-color: #ffcc00;
+    width: 40px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+  }
+  .btn-update a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+  }
+  .btn-update:hover{
+    opacity: 70%;
+  }
+  .btn-del{
+    background-color: red;
+    width: 40px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+  }
+  .btn-del a{
+    text-decoration: none;
+    color: white;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+  }
+  .btn-del:hover{
+    opacity: 70%;
+  }
+  .btn-detail{
+    background-color: #ffcc00;
+    width: 70px;
+    height: 30px;
+    border-radius: 3px;
+    border: none;
+  }
+  .btn-detail a{
+    text-decoration: none;
+    color: black;
+    display: block;
+    font-weight: bold;
+    line-height: 30px;
+  }
+  .btn-detail:hover{
+    opacity: 70%;
+  }
+  .back-to-list{
+    text-decoration: none;
+    display: inline-block;
+    color: #139ddd;
+    font-size: 18px;
+    margin-top: 20px;
+  }
+  .back-to-list:hover{
+    color: black;
+    transition: all 0.3s ease-in-out;
+  }
+  .message{
+    width: 95%;
+    height: 50px;
+    margin: auto;
+    line-height: 50px;
+    font-size: 18px;
+    background-color: rgb(215, 250, 229);
+    text-align: center;
+    border-radius: 5px;
+    margin-top: 30px;
+  }

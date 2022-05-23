@@ -14,9 +14,15 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
+<<<<<<< HEAD
                 <a href="/DangNhap">Đăng Nhập</a>
                 <pre>|</pre>
                 <a href="/DangKy">Đăng Ký</a>
+=======
+                <a href="DangNhap">Log in</a>
+                <pre>|</pre>
+                <a href="DangKy">Register</a>
+>>>>>>> QuanBranch
             </div>
         </div>
         <div class="hduoi">
@@ -25,7 +31,7 @@
                 <ul>
                     <li><a href="#">Về chúng tôi</a></li>
                     <li class="nam">
-                        <a href="XemDanhMuc.html">Nam</a>
+                        <a href="DanhMuc">Nam</a>
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -34,7 +40,7 @@
                         </ul>
                     </li>
                     <li class="nu">
-                        <a href="XemDanhMuc.html">Nữ</a>
+                        <a href="DanhMuc">Nữ</a>
                         <ul class="nunu">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -51,6 +57,7 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
+<<<<<<< HEAD
             <div class="acc_cart" style="padding-right: 10px">
                 @if (session()->has('TenTaiKhoan'))
 
@@ -59,6 +66,11 @@
                 </div>
                 </a>
                 <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+=======
+            <div class="acc_cart">
+                <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
+                <a href="GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
+>>>>>>> QuanBranch
             </div>
         </div>
     </header>
@@ -93,7 +105,7 @@
                     </td>
                 </tr>
                 <tr>
-                    <td class="another_option"><a href="dangKy.html">Chưa có tài khoản? Đăng ký</a></td>
+                    <td class="another_option"><a href="DangKy">Chưa có tài khoản? Đăng ký</a></td>
                 </tr>
                 <tr>
                     <td class="another_option"><a href="#" id="loginBtn">Quên mật khẩu?</a></td>
