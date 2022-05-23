@@ -44,6 +44,13 @@ class Users extends Model
     }
 
     public function deleteUser($id){
-        return DB::delete('DELETE FROM '.$this->table.' WHERE MaTK=?', [$id]);
+        $orders = DB::select('SELECT * FROM donhang WHERE MaTK=?', [$id]);
+
+        if (empty($orders)){
+            return DB::delete('DELETE FROM '.$this->table.' WHERE MaTK=?', [$id]);
+        } else {
+            return False;
+        }
+        
     }
 }

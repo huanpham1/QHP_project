@@ -43,6 +43,31 @@ class Products extends Model
     }
 
     public function deleteProduct($id){
-        return DB::delete('DELETE FROM '.$this->table.' WHERE MaSP=?', [$id]);
+        $deleteOK = 1;
+        //Lấy ra các mã chi tiết sản phẩm tương ứng với mã sản phẩm
+        $detailID = DB::select('SELECT ChiTietSPID FROM chitietsanpham WHERE MaSP=?', [$id]);
+        //Kiểm tra xem có đơn hàng nào có chứa sản phẩm cần xóa hay không
+        foreach($detailID as $item){
+            //Lấy ra mã đơn hàng
+            $orderDetail = DB::select('SELECT * FROM chitietdonhang WHERE ChiTietSPID=?', [$item->ChiTietSPID]);
+            if (empty($orderDetail)){
+                continue;
+            } else {
+                $deleteOK = 0;
+                break;
+            }
+        }
+        
+        //Nếu không có đơn hàng nào có sản phẩm cần xóa thì được phép xóa sản phẩm
+        if ($deleteOK == 1){
+            return DB::delete('DELETE FROM '.$this->table.' WHERE MaSP=?', [$id]);
+        } else {
+            return False;
+        }
+
+    }
+
+    public function searchProduct($key){
+        return DB::select('SELECT * FROM '.$this->table.' WHERE (TenSP LIKE "%'.$key.'%") OR (GiaBan = '.$key.')');
     }
 }

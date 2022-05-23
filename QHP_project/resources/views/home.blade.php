@@ -56,9 +56,9 @@
                 </ul>
             </nav>
             <div class="search">
-                <form action="#">
+                <form action="{{route('search-products')}}" method="get">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" name="search" id="search">
+                    <input type="text" name="search" id="search" placeholder="Tìm kiếm sản phẩm...">
                 </form>
             </div>
             <div class="acc_cart">

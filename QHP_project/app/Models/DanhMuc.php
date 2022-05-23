@@ -35,6 +35,38 @@ class DanhMuc extends Model
     }
 
     public function deleteDanhMuc($id){
-        return DB::delete('DELETE FROM '.$this->table.' WHERE MaDanhMuc=?', [$id]);
+        $deleteOK = 1;
+        //Lấy ra danh sách mã sản phẩm tương ứng với mã danh mục
+        $productID = DB::select('SELECT MaSP FROM sanpham WHERE MaDanhMuc=?', [$id]);
+        //Kiểm tra xem có sản phẩm nào tồn tại trong đơn hàng nào không
+        foreach ($productID as $item){
+            //Lấy ra các mã chi tiết sản phẩm
+            $detailID = DB::select('SELECT ChiTietSPID FROM chitietsanpham WHERE MaSP=?', [$item->MaSP]);
+            if (empty($detailID)){
+                continue;
+            } else {
+                foreach($detailID as $detail){
+                    //Lấy ra mã đơn hàng
+                    $orderDetail = DB::select('SELECT * FROM chitietdonhang WHERE ChiTietSPID=?', [$detail->ChiTietSPID]);
+                    if (empty($orderDetail)){
+                        continue;
+                    } else {
+                        $deleteOK = 0;
+                        break;
+                    }
+                }
+                if ($deleteOK == 0){
+                    break;
+                }
+            }
+        }
+        
+        //Nếu trong các đơn hàng không có đơn hàng nào có sản phẩm nằm trong danh mục thì được phép xóa
+        if ($deleteOK == 1){
+            return DB::delete('DELETE FROM '.$this->table.' WHERE MaDanhMuc=?', [$id]);
+        } else {
+            return False;
+        }
+        
     }
 }

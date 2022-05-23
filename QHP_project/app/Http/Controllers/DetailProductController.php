@@ -22,13 +22,13 @@ class DetailProductController extends Controller
 
         $detailList = $this->product->getAllDetail($id);
 
-        return view('admin.details.list', compact('title', 'id', 'detailList'));
+        return view('admin.productDetails.list', compact('title', 'id', 'detailList'));
     }
 
     public function add($id){
         $title = 'Thêm size';
 
-        return view('admin.details.add', compact('title', 'id'));
+        return view('admin.productDetails.add', compact('title', 'id'));
     }
 
     public function handleAdd(Request $request, $id){
@@ -79,7 +79,7 @@ class DetailProductController extends Controller
             return redirect()->route('products.details.index', $id)->with('msg', 'Liên kết không tồn tại');
         }
 
-        return view('admin.details.edit', compact('title', 'productDetail', 'id'));
+        return view('admin.productDetails.edit', compact('title', 'productDetail', 'id'));
     }
 
     public function handleEdit(Request $request, $id){

@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\DanhMucController;
 use App\Http\Controllers\DetailProductController;
+use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\TheLoaiController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
