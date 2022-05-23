@@ -66,4 +66,8 @@ class Products extends Model
         }
 
     }
+
+    public function searchProduct($key){
+        return DB::select('SELECT * FROM '.$this->table.' WHERE (TenSP LIKE "%'.$key.'%") OR (GiaBan = '.$key.')');
+    }
 }

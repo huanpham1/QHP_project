@@ -197,4 +197,15 @@ class ProductsController extends Controller
         return redirect()->route('products.index')->with('msg', $msg);
     }
 
+    public function search(Request $request){
+        $key = $request->search;
+        if (!empty($key)){
+            $foundProducts = $this->products->searchProduct($key);
+            return view('Search', compact('key', 'foundProducts'));
+        } else {
+            redirect()->route('home');
+        }
+        
+    }
+
 }

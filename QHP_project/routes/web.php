@@ -22,7 +22,7 @@ use App\Http\Controllers\UsersController;
 Route::prefix('/')->group(function(){
     Route::get('/', function () {
         return view('home');
-    });
+    })->name('home');
     Route::get('/DangNhap', function () {
         return view('DangNhap');
     });
@@ -35,6 +35,7 @@ Route::prefix('/')->group(function(){
     Route::get('/DanhMuc', function(){
         return view('DanhMuc');
     });
+    Route::get('/search-products', [ProductsController::class, 'search'])->name('search-products');
 });
 
 Route::prefix('/adminsite')->group(function () {
