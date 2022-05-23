@@ -14,15 +14,9 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
-<<<<<<< HEAD
                 <a href="/DangNhap">Đăng Nhập</a>
                 <pre>|</pre>
                 <a href="/DangKy">Đăng Ký</a>
-=======
-                <a href="DangNhap">Log in</a>
-                <pre>|</pre>
-                <a href="DangKy">Register</a>
->>>>>>> QuanBranch
             </div>
         </div>
         <div class="hduoi">
@@ -57,7 +51,6 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-<<<<<<< HEAD
             <div class="acc_cart" style="padding-right: 10px">
                 @if (session()->has('TenTaiKhoan'))
 
@@ -66,11 +59,6 @@
                 </div>
                 </a>
                 <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-=======
-            <div class="acc_cart">
-                <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
->>>>>>> QuanBranch
             </div>
         </div>
     </header>

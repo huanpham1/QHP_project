@@ -27,7 +27,7 @@ class LoginController extends Controller
         ]);
         $arr = [
             'TenTaiKhoan' =>$request->username,
-            'MatKhau' =>bcrypt($request->password),
+            'password' =>($request->password),
             'IsAdmin' => 0
         ];
         // dd($arr);

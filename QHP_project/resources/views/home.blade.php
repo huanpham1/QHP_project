@@ -14,7 +14,6 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-<<<<<<< HEAD
                 <a href="{{route('DangNhap')}}">Đăng Nhập</a>
                 <pre>|</pre>
                 <a href="./DangKy">Đăng Ký</a>
@@ -22,15 +21,6 @@
         </div>
         <div class="hduoi">
             <a href="./"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
-=======
-                <a href="DangNhap">Log in</a>
-                <pre>|</pre>
-                <a href="DangKy">Register</a>
-            </div>
-        </div>
-        <div class="hduoi">
-            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
->>>>>>> QuanBranch
             <nav>
                 <ul>
                     <li><a href="#">Về chúng tôi</a></li>
@@ -62,17 +52,12 @@
                 </form>
             </div>
             <div class="acc_cart">
-<<<<<<< HEAD
                     @if (session()->has('TenTaiKhoan'))
                         <a class="acc" href=""><div><i class="fa-solid fa-user"></i>
                     @endif
                 </div>
                 </a>
                 <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
-=======
-                <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
->>>>>>> QuanBranch
             </div>
         </div>
     </header>
@@ -81,7 +66,6 @@
         <div class="title0"><p>SẢN PHẨM</p></div>
         <div class="sp-nam">
             <div class="title1"><img src="{{ asset('assets/images/Image 3.png')}}" alt="nam"></div>
-<<<<<<< HEAD
                 @if (!empty($SanPhamList))
                     <div class="hang">
                         @for($j = 0; $j < 5; $j++)
@@ -99,72 +83,6 @@
 							</tr>
 				@endif
 
-=======
-            <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-            </div>
-            <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
->>>>>>> QuanBranch
             </div>
         </div>
         <div class="view-more">

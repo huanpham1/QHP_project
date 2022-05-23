@@ -55,7 +55,6 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-<<<<<<< HEAD
             <div class="acc_cart" style="padding-right: 10px">
                 @if (session()->has('TenTaiKhoan'))
 
@@ -64,11 +63,6 @@
                 </div>
                 </a>
                 <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
-=======
-            <div class="acc_cart">
-                <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
->>>>>>> QuanBranch
             </div>
         </div>
     </header>
