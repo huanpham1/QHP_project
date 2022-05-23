@@ -61,6 +61,7 @@
         <form action="" method="post">
             <table>
                 <caption><h2>Sửa thông tin cá nhân</h2></caption>
+                <?php foreach($taikhoan as $data){ ?>
                 <tr>
                     <?php if($errors->any()): ?>
                     <td colspan="2" class="alert">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại !</td>
@@ -68,7 +69,7 @@
                 </tr>
                 <tr>
                     <td><label for="name">Họ và tên</label></td>
-                    <td><input type="text" name="name" value="<?php echo e(old('name')); ?>"></td>
+                    <td><input type="text" name="name" value="<?php echo e(old('name')??$data->HoVaTen); ?>"></td>
                 </tr>
                 <tr>
                     <?php $__errorArgs = ['name'];
@@ -83,8 +84,8 @@ endif;
 unset($__errorArgs, $__bag); ?>
                 </tr>
                 <tr>
-                    <td><label for="dateOfBirth">Ngày sinh</label><span>(YYYY/MM/DD)</span></td>
-                    <td><input type="text" name="dateOfBirth" value="<?php echo e(old('dateOfBirth')); ?>"></td>
+                    <td><label for="dateOfBirth">Ngày sinh</label></td>
+                    <td><input type="date" name="dateOfBirth" value="<?php echo e(old('dateOfBirth')??$data->NgaySinh); ?>"></td>
                 </tr>
                 <tr>
                     <?php $__errorArgs = ['dateOfBirth'];
@@ -100,7 +101,7 @@ unset($__errorArgs, $__bag); ?>
                 </tr>
                 <tr>
                     <td><label for="email">Email</label></td>
-                    <td><input type="text" name="email" value="<?php echo e(old('email')); ?>"></td>
+                    <td><input type="text" name="email" value="<?php echo e(old('email')??$data->Email); ?>"></td>
                     <td colspan="2"><?php  ?></td>
                 </tr>
                 <tr>
@@ -117,11 +118,11 @@ unset($__errorArgs, $__bag); ?>
                 </tr>
                 <tr>
                     <td><label for="DiaChi">Địa chỉ</label></td>
-                    <td><input type="text" name="DiaChi" value="<?php echo e(old('DiaChi')); ?>"></td>
+                    <td><input type="text" name="DiaChi" value="<?php echo e(old('DiaChi')??$data->DiaChi); ?>"></td>
                 </tr>
                 <tr>
                     <td><label for="phoneNum">Số điện thoại</label></td>
-                    <td><input type="text" name="phoneNum" value="<?php echo e(old('phoneNum')); ?>"></td>
+                    <td><input type="text" name="phoneNum" value="<?php echo e(old('phoneNum')??$data->SoDT); ?>"></td>
                 </tr>
                 <tr>
                     <?php $__errorArgs = ['phoneNum'];
@@ -135,6 +136,7 @@ if (isset($__messageOriginal)) { $message = $__messageOriginal; }
 endif;
 unset($__errorArgs, $__bag); ?>
                 </tr>
+                <?php } ?>
                 <tr>
                     <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
                     <td colspan="2" align="center">

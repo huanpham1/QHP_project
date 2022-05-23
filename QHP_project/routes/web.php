@@ -34,8 +34,6 @@ Route::prefix('ThongTinCaNhan')->name('ThongTinCaNhan.')->group(function(){
     Route::get('/Form_sua',[ThongTinCaNhanController::class,'formSua'])->name('suaThongTin');
     Route::post('/Form_sua',[ThongTinCaNhanController::class,'postSua'])->name('post_suaThongTin'); 
 });
-
-
 Route::get('/dangNhap', function () {
 return view('DangNhap');
 });

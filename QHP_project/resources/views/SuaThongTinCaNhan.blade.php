@@ -61,6 +61,7 @@
         <form action="" method="post">
             <table>
                 <caption><h2>Sửa thông tin cá nhân</h2></caption>
+                <?php foreach($taikhoan as $data){ ?>
                 <tr>
                     @if($errors->any())
                     <td colspan="2" class="alert">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại !</td>
@@ -68,7 +69,7 @@
                 </tr>
                 <tr>
                     <td><label for="name">Họ và tên</label></td>
-                    <td><input type="text" name="name" value="{{old('name')}}"></td>
+                    <td><input type="text" name="name" value="{{old('name')??$data->HoVaTen}}"></td>
                 </tr>
                 <tr>
                     @error('name')
@@ -76,8 +77,8 @@
                     @enderror
                 </tr>
                 <tr>
-                    <td><label for="dateOfBirth">Ngày sinh</label><span>(YYYY/MM/DD)</span></td>
-                    <td><input type="text" name="dateOfBirth" value="{{old('dateOfBirth')}}"></td>
+                    <td><label for="dateOfBirth">Ngày sinh</label></td>
+                    <td><input type="date" name="dateOfBirth" value="{{old('dateOfBirth')??$data->NgaySinh}}"></td>
                 </tr>
                 <tr>
                     @error('dateOfBirth')
@@ -86,7 +87,7 @@
                 </tr>
                 <tr>
                     <td><label for="email">Email</label></td>
-                    <td><input type="text" name="email" value="{{old('email')}}"></td>
+                    <td><input type="text" name="email" value="{{old('email')??$data->Email}}"></td>
                     <td colspan="2"><?php  ?></td>
                 </tr>
                 <tr>
@@ -96,17 +97,18 @@
                 </tr>
                 <tr>
                     <td><label for="DiaChi">Địa chỉ</label></td>
-                    <td><input type="text" name="DiaChi" value="{{old('DiaChi')}}"></td>
+                    <td><input type="text" name="DiaChi" value="{{old('DiaChi')??$data->DiaChi}}"></td>
                 </tr>
                 <tr>
                     <td><label for="phoneNum">Số điện thoại</label></td>
-                    <td><input type="text" name="phoneNum" value="{{old('phoneNum')}}"></td>
+                    <td><input type="text" name="phoneNum" value="{{old('phoneNum')??$data->SoDT}}"></td>
                 </tr>
                 <tr>
                     @error('phoneNum')
                         <td colspan="2"><span class="alert">{{$message}}</span></td>
                     @enderror
                 </tr>
+                <?php } ?>
                 <tr>
                     <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
                     <td colspan="2" align="center">

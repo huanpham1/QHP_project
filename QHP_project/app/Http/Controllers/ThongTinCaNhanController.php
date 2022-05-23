@@ -17,8 +17,11 @@ class ThongTinCaNhanController extends Controller
         $taikhoan = $tk->layThongTinKH($MaTK);
         return view('ThongTinCaNhan', compact('taikhoan'));
     }
-    public function formSua(){
-        return view('SuaThongTinCaNhan');
+    public function formSua(Request $request){
+        $MaTK = $request->session()->get('MaTK',1);
+        $tk = new taikhoan();
+        $taikhoan = $tk->layThongTinKH($MaTK);
+        return view('SuaThongTinCaNhan',compact('taikhoan'));
     }
     public function postSua(Request $request){
         $rule = [
@@ -45,6 +48,7 @@ class ThongTinCaNhanController extends Controller
             $MaTK
         ];
         $taikhoan = $tk->SuaThongTin($data);
+        
         return redirect()->route('ThongTinCaNhan.index')->with('Sửa thành công !!!');
     }
 }
