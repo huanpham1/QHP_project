@@ -6,7 +6,6 @@ use App\Http\Controllers\OrdersController;
 use App\Http\Controllers\TheLoaiController;
 use App\Http\Controllers\ProductsController;
 use Illuminate\Support\Facades\Route;
-<<<<<<< HEAD
 use App\Http\Controllers\homeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignInController;
@@ -14,14 +13,6 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\GioHangController;
 use App\Http\Controllers\UsersController;
-=======
-use App\Http\Controllers\XemTheLoaiController;
-use App\Http\Controllers\homeController;
-use App\Http\Controllers\XemDanhMucController;
-use App\Http\Controllers\xemChiTietController;
-use App\Http\Controllers\ThongTinCaNhanController;
-
->>>>>>> PhongBranch
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -32,7 +23,6 @@ use App\Http\Controllers\ThongTinCaNhanController;
 | contains the "web" middleware group. Now create something great!
 |
 */
-<<<<<<< HEAD
 Route::prefix('/')->group(function(){
     Route::get('/', [homeController::class, 'home'])->name('home');
     Route::get('/DangNhap', [homeController::class, 'register'])->name('DangNhap');
@@ -48,33 +38,6 @@ Route::prefix('/')->group(function(){
     Route::post('/DangKyinfo',[SignInController::class,'checkinfo']);
     Route::get('/Products/ChiTiet/{id}', [SanPhamController::class, 'ChiTiet'])->name('chitiet');
     Route::get('/search-products', [ProductsController::class, 'search'])->name('search-products');
-=======
-Route::prefix('/')->name('index')->group(function(){
-    Route::get('/', [homeController::class,'goHome'])->name('index');
-});
-Route::prefix('XemTheLoai')->name('XemTheLoai.')->group(function(){
-    Route::get('/{id}',[XemTheLoaiController::class,'getSP_TheLoai'])->name('index');
-});
-Route::prefix('XemDanhMuc')->name('XemDanhMuc.')->group(function(){
-    Route::get('/{id}',[XemDanhMucController::class,'goToXemDanhMuc'])->name('index');
-});
-Route::prefix('xemChiTiet')->name('xemChiTiet.')->group(function(){
-    Route::get('/{id}',[xemChiTietController::class,'goToXemChiTiet'])->name('index');
-});
-Route::prefix('ThongTinCaNhan')->name('ThongTinCaNhan.')->group(function(){
-    Route::get('/',[ThongTinCaNhanController::class,'goToThongTinCaNhan'])->name('index');
-    Route::get('/Form_sua',[ThongTinCaNhanController::class,'formSua'])->name('suaThongTin');
-    Route::post('/Form_sua',[ThongTinCaNhanController::class,'postSua'])->name('post_suaThongTin'); 
-});
-Route::get('/dangNhap', function () {
-return view('DangNhap');
-});
-Route::get('/dangKy', function () {
-    return view('DangKy');
-});
-Route::get('/GioHang', function () {
-    return view('GioHang');
->>>>>>> PhongBranch
 });
 route::get('/test', [homeController::class, 'test'])->name('test');
 Route::post('getsl', [SanPhamController::class, 'GetSL'])->name('getSL');
