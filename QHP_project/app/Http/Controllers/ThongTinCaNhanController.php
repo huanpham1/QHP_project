@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\taikhoan;
+use App\Models\LayTaiKhoan;
 
 class ThongTinCaNhanController extends Controller
 {
@@ -13,13 +13,13 @@ class ThongTinCaNhanController extends Controller
     }
     public function goToThongTinCaNhan(Request $request){
         $MaTK = $request->session()->get('MaTK',1);
-        $tk = new taikhoan();
+        $tk = new LayTaiKhoan();
         $taikhoan = $tk->layThongTinKH($MaTK);
         return view('ThongTinCaNhan', compact('taikhoan'));
     }
     public function formSua(Request $request){
         $MaTK = $request->session()->get('MaTK',1);
-        $tk = new taikhoan();
+        $tk = new LayTaiKhoan();
         $taikhoan = $tk->layThongTinKH($MaTK);
         return view('SuaThongTinCaNhan',compact('taikhoan'));
     }
@@ -38,7 +38,7 @@ class ThongTinCaNhanController extends Controller
         ];
         $request->validate($rule,$message);
         $MaTK = $request->session()->get('MaTK',1);
-        $tk = new taikhoan();
+        $tk = new LayTaiKhoan();
         $data = [
             $request->name,
             $request->dateOfBirth,

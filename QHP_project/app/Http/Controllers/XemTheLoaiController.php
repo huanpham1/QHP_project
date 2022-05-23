@@ -5,9 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use DB;
-use App\Models\theloai;
-use App\Models\danhmuc;
-use App\Models\sanpham;
+use App\Models\LaySanPham;
+use App\Models\LayTheLoai;
+use App\Models\LayDanhMuc;
 class XemTheLoaiController extends Controller
 {
     //Action index
@@ -17,13 +17,13 @@ class XemTheLoaiController extends Controller
     public function getSP_TheLoai($id){
         
         // Câu truy vấn lấy san pham theo id
-        $sp= new sanpham();
+        $sp= new LaySanPham();
         $sanpham = $sp->getSP_TheLoai($id);
 
-        $tl = new theloai();
+        $tl = new LayTheLoai();
         $theloai = $tl->getAllTheLoai();
 
-        $dm = new danhmuc();
+        $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
         
         return view('XemTheLoai', compact('sanpham','theloai','danhmuc'));

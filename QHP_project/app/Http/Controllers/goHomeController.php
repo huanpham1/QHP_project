@@ -4,27 +4,27 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\sanpham;
-use App\Models\theloai;
-use App\Models\danhmuc;
+use App\Models\LaySanPham;
+use App\Models\LayTheLoai;
+use App\Models\LayDanhMuc;
 
-class homeController extends Controller
+class goHomeController extends Controller
 {
     public function index(){
         return view('home');
     }
     public function goHome(){
         
-        $spnam = new sanpham();
+        $spnam = new LaySanPham();
         $sanphamnam = $spnam->getAllSanPham_Nam();
 
-        $spnu = new sanpham();
+        $spnu = new LaySanPham();
         $sanphamnu = $spnu->getAllSanPham_Nu();
 
-        $tl = new theloai();
+        $tl = new LayTheLoai();
         $theloai = $tl->getAllTheLoai();
 
-        $dm = new danhmuc();
+        $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
         
         return view('home', compact('sanphamnam','sanphamnu','theloai','danhmuc'));

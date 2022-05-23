@@ -2,7 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\XemTheLoaiController;
-use App\Http\Controllers\homeController;
+use App\Http\Controllers\goHomeController;
 use App\Http\Controllers\XemDanhMucController;
 use App\Http\Controllers\xemChiTietController;
 use App\Http\Controllers\ThongTinCaNhanController;
@@ -18,7 +18,7 @@ use App\Http\Controllers\ThongTinCaNhanController;
 |
 */
 Route::prefix('/')->name('index')->group(function(){
-    Route::get('/', [homeController::class,'goHome'])->name('index');
+    Route::get('/', [goHomeController::class,'goHome'])->name('index');
 });
 Route::prefix('XemTheLoai')->name('XemTheLoai.')->group(function(){
     Route::get('/{id}',[XemTheLoaiController::class,'getSP_TheLoai'])->name('index');

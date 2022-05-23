@@ -4,9 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
-use App\Models\sanpham;
-use App\Models\theloai;
-use App\Models\danhmuc;
+use App\Models\LaySanPham;
+use App\Models\LayTheLoai;
+use App\Models\LayDanhMuc;
 
 class xemChiTietController extends Controller
 {
@@ -15,13 +15,13 @@ class xemChiTietController extends Controller
         return view('xemChiTiet');
     }
     public function goToXemChiTiet($id){
-        $sp = new sanpham();
+        $sp = new LaySanPham();
         $sanpham = $sp->getSanPham($id);
 
-        $tl = new theloai();
+        $tl = new LayTheLoai();
         $theloai = $tl->getAllTheLoai();
 
-        $dm = new danhmuc();
+        $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
         return view('xemChiTiet', compact('sanpham','theloai','danhmuc'));
     }

@@ -5,7 +5,7 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
-class sanpham extends Model
+class LaySanPham extends Model
 {
     public function getSP_TheLoai($id){
         

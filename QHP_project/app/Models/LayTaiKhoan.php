@@ -6,7 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use DB;
 
-class taikhoan extends Model
+class LayTaiKhoan extends Model
 {
     
     public function layThongTinKH($MaTK){
