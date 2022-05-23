@@ -5,6 +5,8 @@ use App\Http\Controllers\homeController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\SignInController;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Controllers\SanPhamController;
+use App\Http\Controllers\GioHangController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,22 +18,24 @@ use Illuminate\Support\Facades\Auth;
 |
 */
 Route::prefix('/')->group(function(){
-    Route::get('/', function () {
-        return view('home');
-    })->name('home');
-    Route::get('/DangNhap', [homeController::class, 'register'])->name('register');
+    Route::get('/', [homeController::class, 'home'])->name('home');
+    Route::get('/DangNhap', [homeController::class, 'register'])->name('DangNhap');
     Route::get('/DangKy', function () {
         return view('DangKy');
     })->name('DangKy');
     Route::get('/GioHang', function () {
         return view('GioHang');
-    });
+    })->name('giohang');
     Route::get('/LogInAdmin', function () {
         return view('LogInAdmin');
     });
     Route::post('/DangKyinfo',[SignInController::class,'checkinfo']);
+    Route::get('/Products/ChiTiet/{id}', [SanPhamController::class, 'ChiTiet'])->name('chitiet');
 
 });
+route::get('/test', [homeController::class, 'test'])->name('test');
+Route::post('getsl', [SanPhamController::class, 'GetSL'])->name('getSL');
+route::post('/ThemGH', [GioHangController::class, 'ThemGH'])->name('ThemGH');
 Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);
 Route::get('/adminsite', function () {
     return view('adminsite');

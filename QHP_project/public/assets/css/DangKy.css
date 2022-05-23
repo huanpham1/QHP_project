@@ -243,3 +243,6 @@ footer p{
     top:82%;
     left:45%;
 }
+header{
+    border-bottom:1px solid #ddd;
+}

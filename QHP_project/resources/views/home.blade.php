@@ -14,16 +14,16 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-                <a href="./DangNhap">Log in</a>
+                <a href="{{route('DangNhap')}}">Đăng Nhập</a>
                 <pre>|</pre>
-                <a href="./DangKy">Register</a>
+                <a href="./DangKy">Đăng Ký</a>
             </div>
         </div>
         <div class="hduoi">
             <a href="./"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
                     <li class="nam">
                         <a href="XemDanhMuc.html">Nam</a>
                         <ul class="namnam">
@@ -52,15 +52,11 @@
                 </form>
             </div>
             <div class="acc_cart">
-                <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
                     @if (session()->has('TenTaiKhoan'))
-                    <div style="font-size: 10px; position: absolute; top: 100%;">
-                        {{ session()->get('TenTaiKhoan') }}
-                    </div>
+                        <a class="acc" href=""><div><i class="fa-solid fa-user"></i>
                     @endif
                 </div>
                 </a>
-
                 <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
@@ -70,75 +66,23 @@
         <div class="title0"><p>SẢN PHẨM</p></div>
         <div class="sp-nam">
             <div class="title1"><img src="{{ asset('assets/images/Image 3.png')}}" alt="nam"></div>
-            <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/clients/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
+                @if (!empty($SanPhamList))
+                    <div class="hang">
+                        @for($j = 0; $j < 5; $j++)
+                        <div class="cot">
+                            {{-- {{ route('displayProject', ['projects' => $projects->id]) }} --}}
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
+                            <a href="#"><p class="tensp">{{$SanPhamList[$j]->MaSP}}</p></a>
+                             <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
+                        </div>
+                        @endfor
+                    </div>
+							@else
+							<tr>
+								<td colspan="4">Không có danh mục</td>
+							</tr>
+				@endif
 
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-            </div>
-            <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
             </div>
         </div>
         <div class="view-more">

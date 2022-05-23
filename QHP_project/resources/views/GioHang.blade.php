@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="hduoi">
-            <a href="index.html"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+            <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
@@ -51,8 +51,13 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-            <div class="acc_cart">
-                <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
+            <div class="acc_cart" style="padding-right: 10px">
+                @if (session()->has('TenTaiKhoan'))
+
+                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
+                    @endif
+                </div>
+                </a>
                 <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>

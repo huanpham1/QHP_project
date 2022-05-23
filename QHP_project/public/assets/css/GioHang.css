@@ -379,3 +379,6 @@ footer{
 footer p{
     font-size: 20px;
 }
+header{
+    border-bottom:1px solid #ddd;
+}

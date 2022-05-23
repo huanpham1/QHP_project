@@ -15,14 +15,14 @@ class SignIn extends Authenticatable
     // protected $guarded = 'taikhoans';
 
     protected $fillable=[
-        'TenTaiKhoan','password',
+        'TenTaiKhoan','MatKhau',
     ];
     // protected $hidden = [
     //     'password', 'remember_token',
     // ];
 
     public function addUser($data){
-        DB::insert('INSERT INTO '.$this->table.' (HoVaTen, NgaySinh, TenTaiKhoan, Email, password, SoDT, DiaChi,TTGioHang, TinhTrang)
-        VALUES (?, ?, ?, ?, ?, ?, 1, 0, 0)', $data);
+        DB::insert('INSERT INTO '.$this->table.' (HoVaTen, NgaySinh, TenTaiKhoan, Email, password, SoDT,IsAdmin, DiaChi,TTGioHang, TinhTrang)
+        VALUES (?, ?, ?, ?, ?, ?,0, 1, 0, 0)', $data);
     }
 }

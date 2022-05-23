@@ -28,7 +28,9 @@ class LoginController extends Controller
         $arr = [
             'TenTaiKhoan' =>$request->username,
             'password' =>$request->password,
+            'IsAdmin' => 0
         ];
+        // dd($arr);
         // dd($arr);
         if(Auth::guard('taikhoan')->attempt($arr)){
             // dd('thành công');
@@ -38,7 +40,7 @@ class LoginController extends Controller
             // dd(session()->get('TenTaiKhoan'));
             return redirect()->route('home')->with('username', $request->username);
         }else{
-            dd('thất bại');
+            return redirect()->back()->with('fail', 'Mật Khẩu hoặc tài khoản chưa chính xác');
         }
     }
     public function checkdata(){

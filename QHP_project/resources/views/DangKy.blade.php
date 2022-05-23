@@ -14,16 +14,16 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
-                <a href="dangNhap.html">Log in</a>
+                <a href="{{route('DangNhap')}}">Đăng Nhập</a>
                 <pre>|</pre>
-                <a href="dangKy.html">Register</a>
+                <a href="{{route('DangKy')}}">Đăng Ký</a>
             </div>
         </div>
         <div class="hduoi">
             <a href="index.html"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
                     <li class="nam">
                         <a href="XemDanhMuc.html">Nam</a>
                         <ul class="namnam">
@@ -51,9 +51,14 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-            <div class="acc_cart">
-                <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
+            <div class="acc_cart" style="padding-right: 10px">
+                @if (session()->has('TenTaiKhoan'))
+
+                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
+                    @endif
+                </div>
+                </a>
+                <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
     </header>

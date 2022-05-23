@@ -51,7 +51,9 @@ class SignInController extends Controller
 
         ];
         $this->users->addUser($dataInsert);
-
-        return redirect()->back()->with('success', 'Đăng Ký thành công');
+        // $request->session()->put('TenTaiKhoan', $request->username);
+        $request->session()->forget('TenTaiKhoan');
+        return view('home');
+        // redirect()->back()->with('success', 'Đăng Ký thành công')
     }
 }
