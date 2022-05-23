@@ -15,8 +15,8 @@ class taikhoan extends Model
 
         return $tk;
     }
-    public function SuaThongTin($MaTK,$HoVaTen,$NgaySinh,$Email,$DiaChi,$SoDT){
-        $suaThongTin = DB::update('UPDATE taikhoan SET HoVaTen ='.$HoVaTen.',NgaySinh ='.$NgaySinh.',Email = '.$Email.',Diachi = '.$DiaChi.',SoDT = '.$SoDT);
+    public function SuaThongTin($data){
+        $suaThongTin = DB::update('UPDATE taikhoan SET HoVaTen = ?,NgaySinh = ?,Email = ?,DiaChi = ?,SoDT = ? WHERE MaTK = ?',$data);
         return $suaThongTin;
     }
 }

@@ -31,7 +31,8 @@ Route::prefix('xemChiTiet')->name('xemChiTiet.')->group(function(){
 });
 Route::prefix('ThongTinCaNhan')->name('ThongTinCaNhan.')->group(function(){
     Route::get('/',[ThongTinCaNhanController::class,'goToThongTinCaNhan'])->name('index');
-    Route::get('/Sua',[ThongTinCaNhanController::class,'formSua'])->name('suaThongTin');
+    Route::get('/Form_sua',[ThongTinCaNhanController::class,'formSua'])->name('suaThongTin');
+    Route::post('/Form_sua',[ThongTinCaNhanController::class,'postSua'])->name('post_suaThongTin'); 
 });
 
 

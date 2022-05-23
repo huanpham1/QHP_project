@@ -58,36 +58,61 @@
         </div>
     </header>
     <section>
-        <?php
-            if($errors->any()){
-        ?>
-                <div class="alert alert-danger">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại !</div> 
-        <?php  } ?>
-    <form action="" method="post">
+        <form action="" method="post">
             <table>
                 <caption><h2>Sửa thông tin cá nhân</h2></caption>
                 <tr>
-                    <td><label for="name">Họ và tên</label></td>
-                    <td><input type="text" name="name"></td>
+                    @if($errors->any())
+                    <td colspan="2" class="alert">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại !</td>
+                    @endif 
                 </tr>
                 <tr>
-                    <td><label for="dateOfBirth">Ngày sinh</label></td>
-                    <td><input type="date" name="dateOfBirth"></td>
+                    <td><label for="name">Họ và tên</label></td>
+                    <td><input type="text" name="name" value="{{old('name')}}"></td>
+                </tr>
+                <tr>
+                    @error('name')
+                        <td colspan="2"><span class="alert">{{$message}}</span></td>
+                    @enderror
+                </tr>
+                <tr>
+                    <td><label for="dateOfBirth">Ngày sinh</label><span>(YYYY/MM/DD)</span></td>
+                    <td><input type="text" name="dateOfBirth" value="{{old('dateOfBirth')}}"></td>
+                </tr>
+                <tr>
+                    @error('dateOfBirth')
+                        <td colspan="2"><span class="alert">{{$message}}</span></td>
+                    @enderror
                 </tr>
                 <tr>
                     <td><label for="email">Email</label></td>
-                    <td><input type="text" name="email"></td>
+                    <td><input type="text" name="email" value="{{old('email')}}"></td>
+                    <td colspan="2"><?php  ?></td>
+                </tr>
+                <tr>
+                    @error('email')
+                        <td colspan="2"><span class="alert">{{$message}}</span></td>
+                    @enderror
                 </tr>
                 <tr>
                     <td><label for="DiaChi">Địa chỉ</label></td>
-                    <td><input type="text" name="DiaChi"></td>
+                    <td><input type="text" name="DiaChi" value="{{old('DiaChi')}}"></td>
                 </tr>
                 <tr>
                     <td><label for="phoneNum">Số điện thoại</label></td>
-                    <td><input type="text" name="phoneNum"></td>
+                    <td><input type="text" name="phoneNum" value="{{old('phoneNum')}}"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center"><input type="submit" id="submit" value="LƯU"></td>
+                    @error('phoneNum')
+                        <td colspan="2"><span class="alert">{{$message}}</span></td>
+                    @enderror
+                </tr>
+                <tr>
+                    <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
+                    <td colspan="2" align="center">
+                        <a href="{{route('ThongTinCaNhan.index')}}"><input class="btn_back" type="button" value="Quay lại"></a>
+                        <input type="submit" id="submit" value="LƯU">
+                    </td>
                 </tr>
             </table>
         </form>

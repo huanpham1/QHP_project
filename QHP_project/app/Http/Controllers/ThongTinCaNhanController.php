@@ -8,7 +8,6 @@ use App\Models\taikhoan;
 
 class ThongTinCaNhanController extends Controller
 {
-    //
     public function index(){
         return view('ThongTinCaNhan');
     }
@@ -19,20 +18,33 @@ class ThongTinCaNhanController extends Controller
         return view('ThongTinCaNhan', compact('taikhoan'));
     }
     public function formSua(){
-        session(['canhbao'=>'']);
         return view('SuaThongTinCaNhan');
     }
     public function postSua(Request $request){
-        $request->validate([
+        $rule = [
             'name' => 'required|min:5',
-            'email' => 'reqired|email',
-            'dateOfBirth' => 'required|date'
-        ],[
-            'name.required' => 'Ho va ten bat buoc phai nhap !',
-            'name.min' => 'Ho ten phai co it nhat :min ki tu !',
-            'email.required' => 'Email bat buoc phai nhap !',
-            'email.email' => 'Email khong dung dinh dang!'
-        ]);
-        return 'ok';
+            'email' => 'required|email',
+            'dateOfBirth' => 'required',
+            'phoneNum' => 'numeric'
+        ];
+        $message = [
+            'required' => ':attribute bat buoc phai nhap !',
+            'min' => ':attribute phai co it nhat :min ki tu !',
+            'email' => ':attribute khong dung dinh dang!',
+            'numeric' => ':attribute khong dung dinh dang !'
+        ];
+        $request->validate($rule,$message);
+        $MaTK = $request->session()->get('MaTK',1);
+        $tk = new taikhoan();
+        $data = [
+            $request->name,
+            $request->dateOfBirth,
+            $request->email,
+            $request->DiaChi,
+            $request->phoneNum,
+            $MaTK
+        ];
+        $taikhoan = $tk->SuaThongTin($data);
+        return redirect()->route('ThongTinCaNhan.index')->with('Sửa thành công !!!');
     }
 }

@@ -162,27 +162,27 @@ section{
     margin-bottom: 100px;
 }
 
-section>form{
+section>.ThongTinCaNhan{
     width: 50%;
     margin: auto;
     background-color: #f2f2f2;
     border-radius: 5px;
 }
-section>form>table {
+section>.ThongTinCaNhan>table {
     margin: auto;
     font-size: 20px;
 }
-section>form>table caption{
+section>.ThongTinCaNhan>table caption{
     margin: 10px 0px;
 }
-section>form>table td {
+section>.ThongTinCaNhan>table td {
     padding: 10px;
 }
-section>form>table input{
+section>.ThongTinCaNhan>table input{
     width: 300px;
     font-size: 20px;
 }
-#submit{
+#btn_thaydoi{
     width: 100px;
     height: 36px;;
     color: white;
@@ -193,7 +193,7 @@ section>form>table input{
     border: none;
     cursor: pointer;
 }
-#submit:hover{
+#btn_thaydoi:hover{
     background-color: black;
     transition: all 0.3s ease-in-out;
 }
@@ -226,23 +226,4 @@ footer{
 }
 footer p{
     font-size: 20px;
-}
-.alert{
-    color: red;
-    font-size: 15px;
-}
-.btn_back{
-    width: 100px;
-    height: 36px;;
-    color: white;
-    background-color: #ef5b5b;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    padding: 0px;
-    border: none;
-    cursor: pointer;
-}
-.btn_back:hover{
-    background-color: black;
-    transition: all 0.3s ease-in-out;
 }

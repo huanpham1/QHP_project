@@ -4,7 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="<?php echo e(asset('assets/css/DangKy.css')); ?>">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/ThongTinCaNhan.css')); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -60,7 +60,7 @@
     </header>
     <section>
         <?php foreach($taikhoan as $data){?>
-    <form action="<?php echo e(route('ThongTinCaNhan.suaThongTin')); ?>" method="get">
+    <div class="ThongTinCaNhan">
             <table>
                 <caption><h2>Thông tin cá nhân</h2></caption>
                 <tr>
@@ -89,11 +89,10 @@
                 </tr>
                 <tr>
                     <td colspan="2" align="center">
-                        <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
-                        <input type="submit" id="submit" value="UPDATE"></td>
+                        <a href="<?php echo e(route('ThongTinCaNhan.suaThongTin')); ?>"><input id="btn_thaydoi" type="button" value="Thay đổi"></a></td>
                 </tr>
             </table>
-        </form>
+        </div>
         <?php } ?>
     </section>
     <footer>

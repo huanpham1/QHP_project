@@ -58,31 +58,89 @@
         </div>
     </header>
     <section>
-    <form action="/Sua/" method="post">
+        <form action="" method="post">
             <table>
                 <caption><h2>Sửa thông tin cá nhân</h2></caption>
                 <tr>
-                    <td><label for="name">Họ và tên</label></td>
-                    <td><input type="text" name="name"></td>
+                    <?php if($errors->any()): ?>
+                    <td colspan="2" class="alert">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại !</td>
+                    <?php endif; ?> 
                 </tr>
                 <tr>
-                    <td><label for="dateOfBirth">Ngày sinh</label></td>
-                    <td><input type="date" name="dateOfBirth"></td>
+                    <td><label for="name">Họ và tên</label></td>
+                    <td><input type="text" name="name" value="<?php echo e(old('name')); ?>"></td>
+                </tr>
+                <tr>
+                    <?php $__errorArgs = ['name'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <td colspan="2"><span class="alert"><?php echo e($message); ?></span></td>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </tr>
+                <tr>
+                    <td><label for="dateOfBirth">Ngày sinh</label><span>(YYYY/MM/DD)</span></td>
+                    <td><input type="text" name="dateOfBirth" value="<?php echo e(old('dateOfBirth')); ?>"></td>
+                </tr>
+                <tr>
+                    <?php $__errorArgs = ['dateOfBirth'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <td colspan="2"><span class="alert"><?php echo e($message); ?></span></td>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 </tr>
                 <tr>
                     <td><label for="email">Email</label></td>
-                    <td><input type="text" name="email"></td>
+                    <td><input type="text" name="email" value="<?php echo e(old('email')); ?>"></td>
+                    <td colspan="2"><?php  ?></td>
+                </tr>
+                <tr>
+                    <?php $__errorArgs = ['email'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <td colspan="2"><span class="alert"><?php echo e($message); ?></span></td>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
                 </tr>
                 <tr>
                     <td><label for="DiaChi">Địa chỉ</label></td>
-                    <td><input type="text" name="DiaChi"></td>
+                    <td><input type="text" name="DiaChi" value="<?php echo e(old('DiaChi')); ?>"></td>
                 </tr>
                 <tr>
                     <td><label for="phoneNum">Số điện thoại</label></td>
-                    <td><input type="text" name="phoneNum"></td>
+                    <td><input type="text" name="phoneNum" value="<?php echo e(old('phoneNum')); ?>"></td>
                 </tr>
                 <tr>
-                    <td colspan="2" align="center"><input type="submit" id="submit" value="LƯU"></td>
+                    <?php $__errorArgs = ['phoneNum'];
+$__bag = $errors->getBag($__errorArgs[1] ?? 'default');
+if ($__bag->has($__errorArgs[0])) :
+if (isset($message)) { $__messageOriginal = $message; }
+$message = $__bag->first($__errorArgs[0]); ?>
+                        <td colspan="2"><span class="alert"><?php echo e($message); ?></span></td>
+                    <?php unset($message);
+if (isset($__messageOriginal)) { $message = $__messageOriginal; }
+endif;
+unset($__errorArgs, $__bag); ?>
+                </tr>
+                <tr>
+                    <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
+                    <td colspan="2" align="center">
+                        <a href="<?php echo e(route('ThongTinCaNhan.index')); ?>"><input class="btn_back" type="button" value="Quay lại"></a>
+                        <input type="submit" id="submit" value="LƯU">
+                    </td>
                 </tr>
             </table>
         </form>
