@@ -99,8 +99,6 @@
             <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
             <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
             <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
-            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
-            <img src="<?php echo asset('assets/images/Image 26.png')?>" alt="feed back">
         </div>
     </div>
     <footer>
