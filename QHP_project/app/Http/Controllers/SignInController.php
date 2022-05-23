@@ -51,9 +51,13 @@ class SignInController extends Controller
 
         ];
         $this->users->addUser($dataInsert);
-        // $request->session()->put('TenTaiKhoan', $request->username);
-        $request->session()->forget('TenTaiKhoan');
+        $request->session()->put('TenTaiKhoan', $request->username);
+        // $request->session()->forget('TenTaiKhoan');
         return view('home');
         // redirect()->back()->with('success', 'Đăng Ký thành công')
+    }
+    public function checkout(){
+        session()->forget('TenTaiKhoan');
+        return view('home');
     }
 }

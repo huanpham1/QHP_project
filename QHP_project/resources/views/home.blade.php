@@ -3,6 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets/css/stylehome.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -14,9 +15,13 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-                <a href="{{route('DangNhap')}}">Đăng Nhập</a>
-                <pre>|</pre>
-                <a href="./DangKy">Đăng Ký</a>
+                @if (!(session()->has('TenTaiKhoan')))
+                    <a href="{{route('DangNhap')}}">Đăng Nhập</a>
+                    <pre>|</pre>
+                    <a href="./DangKy">Đăng Ký</a>
+
+                    @endif
+
             </div>
         </div>
         <div class="hduoi">
@@ -53,10 +58,13 @@
             </div>
             <div class="acc_cart">
                     @if (session()->has('TenTaiKhoan'))
-                        <a class="acc" href=""><div><i class="fa-solid fa-user"></i>
+                        <a class="acc" ><div><i class="fa-solid fa-user"></i></div>
+                            <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
+                            <div class="loguot" onclick="logout()">Logout </div>
+                        </a>
+
                     @endif
-                </div>
-                </a>
+
                 <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
@@ -192,4 +200,11 @@
         <div class="copyright">© Copyright QHP Store</div>
     </footer>
 </body>
+<script>
+    function logout(){
+        let url = "{{ route('checkout') }}";
+
+        document.location.href=url;
+    }
+</script>
 </html>

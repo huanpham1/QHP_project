@@ -52,12 +52,7 @@
                 </form>
             </div>
             <div class="acc_cart" style="padding-right: 10px">
-                @if (session()->has('TenTaiKhoan'))
 
-                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
-                    @endif
-                </div>
-                </a>
                 <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>
@@ -102,9 +97,7 @@
                     <div class="infofail">
                         @if (\Session::has('fail'))
                         <div class="fail">
-                            <ul>
-                                <li>{!! \Session::get('fail') !!}</li>
-                            </ul>
+                            {!! \Session::get('fail') !!}
                         </div>
                         @endif
                     </div>
@@ -114,9 +107,6 @@
                     <td id="submit"><input type="submit" value="Đăng nhập"></td>
                     @csrf
                 </tr>
-
-
-
             </table>
         </form>
         <div id="forgot-pass-form">
@@ -175,5 +165,5 @@
             return false;
         }
     </script>
-</body>
+</body>z
 </html>

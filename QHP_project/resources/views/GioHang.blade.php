@@ -14,17 +14,16 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-                <a href="DangNhap">Log in</a>
-                <pre>|</pre>
-                <a href="DangKy">Register</a>
+                @if (!(session()->has('TenTaiKhoan')))
+                    <a href="{{route('DangNhap')}}">Đăng Nhập</a>
+                    <pre>|</pre>
+                    <a href="./DangKy">Đăng Ký</a>
+
+                    @endif
             </div>
         </div>
         <div class="hduoi">
-<<<<<<< HEAD
             <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
-=======
-            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
->>>>>>> QuanBranch
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
@@ -55,15 +54,17 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-            <div class="acc_cart" style="padding-right: 10px">
+            <div class="acc_cart">
                 @if (session()->has('TenTaiKhoan'))
+                    <a class="acc" ><div><i class="fa-solid fa-user"></i></div>
+                        <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
+                        <div class="loguot" onclick="logout()">Logout </div>
+                    </a>
 
-                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
-                    @endif
-                </div>
-                </a>
-                <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
+                @endif
+
+            <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
         </div>
     </header>
     <div class="cart">
@@ -167,4 +168,11 @@
         <div class="copyright">© Copyright QHP Store</div>
     </footer>
 </body>
+<script>
+    function logout(){
+        let url = "{{ route('checkout') }}";
+
+        document.location.href=url;
+    }
+</script>
 </html>

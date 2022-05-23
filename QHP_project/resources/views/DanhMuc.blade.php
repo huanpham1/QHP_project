@@ -52,9 +52,16 @@
                 </form>
             </div>
             <div class="acc_cart">
-                <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
-            </div>
+                @if (session()->has('TenTaiKhoan'))
+                    <a class="acc" ><div><i class="fa-solid fa-user"></i></div>
+                        <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
+                        <div class="loguot" onclick="logout()">Logout </div>
+                    </a>
+
+                @endif
+
+            <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
         </div>
     </header>
     <div class="content">
@@ -249,4 +256,11 @@
         <div class="LOGO"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></div>
     </footer>
 </body>
+<script>
+    function logout(){
+        let url = "{{ route('checkout') }}";
+
+        document.location.href=url;
+    }
+</script>
 </html>

@@ -73,7 +73,7 @@
 								<td>{{$item->NgaySinh}}</td>
 								<td>{{$item->TenTaiKhoan}}</td>
 								<td>{{$item->Email}}</td>
-								<td>{{$item->MatKhau}}</td>
+								<td>{{$item->password}}</td>
 								<td>{{$item->SoDT}}</td>
 								<td>{{$item->IsAdmin}}</td>
 								<td>{{$item->DiaChi}}</td>
@@ -82,7 +82,7 @@
 								</td>
 								<td>
 									<button class="btn-del">
-										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
+										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
 										href="{{route('users.delete', ['id'=>$item->MaTK])}}">Xóa</a>
 									</button>
 								</td>

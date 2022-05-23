@@ -15,10 +15,12 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-                <a href="/dangNhap">Log in <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                <pre>|</pre>
-                <a href="/dangKy">Register <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-            </div>
+                @if (!(session()->has('TenTaiKhoan')))
+                    <a href="{{route('DangNhap')}}">Đăng Nhập</a>
+                    <pre>|</pre>
+                    <a href="./DangKy">Đăng Ký</a>
+                @endif
+                </div>
         </div>
         <div class="hduoi">
             <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
@@ -52,14 +54,16 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-            <div class="acc_cart" style="padding-right: 10px">
+            <div class="acc_cart">
                 @if (session()->has('TenTaiKhoan'))
+                    <a class="acc" ><div><i class="fa-solid fa-user"></i></div>
+                        <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
+                        <div class="loguot" onclick="logout()">Logout </div>
+                    </a>
 
-                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
-                    @endif
-                </div>
-                </a>
-                <a href="/GioHang"><i class="fa-solid fa-cart-shopping GioHang">
+                @endif
+
+            <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
                     <div class="SoLuongSP">5</div>
                     </i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
 
@@ -150,6 +154,13 @@
     <script>
         function getvalue(){
             return Number(document.querySelector('.input-qty').value);
+        }
+    </script>
+    <script>
+        function logout(){
+            let url = "{{ route('checkout') }}";
+
+            document.location.href=url;
         }
     </script>
 </html>

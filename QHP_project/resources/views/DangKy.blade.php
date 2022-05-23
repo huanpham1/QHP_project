@@ -52,12 +52,7 @@
                 </form>
             </div>
             <div class="acc_cart" style="padding-right: 10px">
-                @if (session()->has('TenTaiKhoan'))
-
-                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
-                    @endif
-                </div>
-                </a>
+                
                 <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
             </div>
         </div>

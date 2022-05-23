@@ -25,7 +25,7 @@ class UsersController extends Controller
 
     public function add(){
         $title = 'Thêm tài khoản';
-        
+
         return view('admin.users.add', compact('title'));
     }
 
@@ -59,7 +59,7 @@ class UsersController extends Controller
             $request->dob,
             $request->username,
             $request->email,
-            $request->password,
+            bcrypt($request->password),
             $request->phoneNum,
             (int)$request->admin,
             $request->address
@@ -78,7 +78,7 @@ class UsersController extends Controller
 
                 $request->session()->put('id', $id);    //Lưu id vào 1 session để khi thực hiện cập nhật có thể lấy ra id
                 $userDetail = $userDetail[0];
-                
+
             } else {
                 return redirect()->route('users.index')->with('msg', 'Người dùng không tồn tại');
             }
@@ -95,7 +95,7 @@ class UsersController extends Controller
         if (empty($id)){
             return back()->with('msg', 'Liên kết không tồn tại');
         }
-        
+
         $request->validate([
             'fullname' => 'required|min:5',
             'dob' => 'required|date',
