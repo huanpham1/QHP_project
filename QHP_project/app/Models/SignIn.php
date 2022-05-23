@@ -22,7 +22,7 @@ class SignIn extends Authenticatable
     // ];
 
     public function addUser($data){
-        DB::insert('INSERT INTO '.$this->table.' (HoVaTen, NgaySinh, TenTaiKhoan, Email, password, SoDT,IsAdmin, DiaChi,TTGioHang, TinhTrang)
+        DB::insert('INSERT INTO '.$this->table.' (HoVaTen, NgaySinh, TenTaiKhoan, Email, MatKhau, SoDT,IsAdmin, DiaChi,TTGioHang, TinhTrang)
         VALUES (?, ?, ?, ?, ?, ?,0, 1, 0, 0)', $data);
     }
 }

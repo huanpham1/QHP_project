@@ -100,7 +100,6 @@
                 </tr>
                 <tr>
                     <div class="infofail">
-                        Mật Khẩu hoặc tài khoản chưa chính xác
                         @if (\Session::has('fail'))
                         <div class="fail">
                             <ul>
