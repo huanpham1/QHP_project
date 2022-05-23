@@ -44,26 +44,38 @@
 		</div>
 		<div class="container">
 			<div class="maincontent">
-                <form action="" method="POST">
-                    <table>
+                <form action="{{route('products.details.post-edit', $id)}}" method="POST" style="padding-top: 20px;" enctype="multipart/form-data">
+                    <table style="padding-left:10%;">
 						<caption><h1>{{$title}}</h1></caption>
                         <tr>
-                            <td width="15%"><label for="name">Tên danh mục</label></td>
-                            <td width="95%"><input type="text" name="name" id="name" maxlength="15" value="{{old('name')}}">
-								@error('name')
+                            <td width="15%"><label for="size">Size</label></td>
+                            <td width="95%"><input type="text" name="size" id="size" style="width:150px;" value="{{old('size') ?? $productDetail->Size}}">
+								@error('size')
+									<span style="color: red; font-size:14px;">*{{$message}}</span>
+								@enderror
+							</td>
+								
+                        </tr>
+                        <tr>
+                            <td><label for="quantity">Số lượng còn</label></td>
+                            <td><input type="text" name="quantity" id="quantity" style="width:150px;" value="{{old('quantity') ?? $productDetail->SoLuongCon}}">
+								@error('quantity')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
 							</td>
                         </tr>
-                        <tr>
-							<td colspan="2" style="padding-left: 15%;">
-								<button class="btn-add" type="submit">Thêm mới</button>
-								<button class="btn-back"><a href="{{route('danhmuc.index')}}">Quay lại</a></button>
+						<tr>
+							<td colspan="2" style="padding-left: 5%;">
+								<button class="btn-add" type="submit">Cập nhật</button>
+								<button class="btn-back"><a href="{{route('products.details.index', $id)}}">Quay lại</a></button>
 							</td>
 						</tr>
                     </table>
                     @csrf
                 </form>
+                @if (session('msg'))
+				<div class="message">{{session('msg')}}</div>
+				@endif
 			</div>
 		</div>
 	</div>

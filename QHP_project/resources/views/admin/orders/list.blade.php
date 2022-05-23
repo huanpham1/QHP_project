@@ -5,7 +5,7 @@
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
 	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css" integrity="sha512-KfkfwYDsLkIlwQp6LFnl8zNdLGxu9YAA1QvwINks4PhcElQSvqcyVLLD9aMhXd13uQjoXtEKNosOWaZqXgel0g==" crossorigin="anonymous" referrerpolicy="no-referrer" />
-	<link rel="stylesheet" href="{{ asset('assets/css/users/add.css')}}">
+	<link rel="stylesheet" href="{{ asset('assets/css/users/list.css')}}">
 	<title>Document</title>
 </head>
 
@@ -43,27 +43,54 @@
 			</ul>
 		</div>
 		<div class="container">
+
 			<div class="maincontent">
-                <form action="" method="POST">
-                    <table>
-						<caption><h1>{{$title}}</h1></caption>
-                        <tr>
-                            <td width="15%"><label for="name">Tên danh mục</label></td>
-                            <td width="95%"><input type="text" name="name" id="name" maxlength="15" value="{{old('name')}}">
-								@error('name')
-									<span style="color: red; font-size:14px;">*{{$message}}</span>
-								@enderror
-							</td>
-                        </tr>
-                        <tr>
-							<td colspan="2" style="padding-left: 15%;">
-								<button class="btn-add" type="submit">Thêm mới</button>
-								<button class="btn-back"><a href="{{route('danhmuc.index')}}">Quay lại</a></button>
-							</td>
-						</tr>
-                    </table>
-                    @csrf
-                </form>
+				<h1>{{$title}}</h1>
+				<div class="table-list">
+					<table class="user-list" border="1">
+						<thead>
+							<tr>
+								<th>ID</th>
+								<th>Tên khách hàng</th>
+								<th>Địa chỉ</th>
+								<th>Ngày đặt hàng</th>
+								<th>Email</th>
+								<th>Chi tiết</th>
+								<th>Xóa</th>
+							</tr>
+						</thead>
+						<tbody>
+							@if (!empty($ordersList))
+								@foreach ($ordersList as $key => $item)
+							<tr>
+								<td>{{$item->MaDonHang}}</td>
+								<td>{{$item->HoVaTen}}</td>
+								<td>{{$item->DiaChiNhanHang}}</td>
+								<td>{{$item->NgayDatHang}}</td>
+                                <td>{{$item->Email}}</td>
+                                <td>
+                                    <button class="btn-detail"><a href="{{route('orders.detail', ['id'=>$item->MaDonHang])}}">Chi tiết</a></button>
+                                </td>
+								<td>
+									<button class="btn-del">
+										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
+										href="{{route('orders.delete', ['id'=>$item->MaDonHang])}}">Xóa</a>
+									</button>
+								</td>
+							</tr>
+							@endforeach
+							@else
+							<tr>
+								<td colspan="7">Không có đơn hàng</td>
+							</tr>
+							@endif
+						</tbody>
+					</table>
+				</div>
+
+				@if (session('msg'))
+				<div class="message">{{session('msg')}}</div>
+				@endif
 			</div>
 		</div>
 	</div>
