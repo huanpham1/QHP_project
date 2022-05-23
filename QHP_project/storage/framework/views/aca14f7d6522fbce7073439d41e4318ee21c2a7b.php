@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/stylehome.css')); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -20,7 +20,7 @@
             </div>
         </div>
         <div class="hduoi">
-            <a href="index.html"><img src="./images/Capture.PNG" alt="LOGO"></a>
+            <a href="index.html"><img src="<?php echo e(asset('assets/images/Logo.PNG')); ?>" alt="LOGO"></a>
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
@@ -57,62 +57,78 @@
             </div>
         </div>
     </header>
-    <div class="banner"><img src="./images/Image 1.png" alt="banner1"></div>
+    <div class="banner"><img src="<?php echo e(asset('assets/images/Image 1.png')); ?>" alt="banner1"></div>
     <div class="content">
         <div class="title0"><p>SẢN PHẨM</p></div>
         <div class="sp-nam">
-            <div class="title1"><img src="./images/Image 3.png" alt="nam"></div>
+            <div class="title1"><img src="<?php echo e(asset('assets/images/Image 3.png')); ?>" alt="nam"></div>
             <div class="hang">
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="<?php echo asset('assets/images/Image 4.png')?>" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="<?php echo e(asset('assets/clients/images/Image 4.png')); ?>" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><p class="price">$60</p></a>
+                </div>
+
+                <div class="cot">
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><p class="price">$60</p></a>
+                </div>
+                <div class="cot">
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><p class="price">$60</p></a>
+                </div>
+                <div class="cot">
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
             </div>
             <div class="hang">
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
             </div>
@@ -124,55 +140,55 @@
             <div class="title2"><img src="./images/Image 11.png" alt="nu"></div>
             <div class="hang">
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
             </div>
             <div class="hang">
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
                 <div class="cot">
-                    <a href="./xemChiTiet.html"><img src="./images/Image 4.png" alt="Giay"></a>
-                    <a href="./xemChiTiet.html"><p class="tensp">Multicolor Men's Sneaker</p></a>
+                    <a href="#"><img src="./images/Image 4.png" alt="Giay"></a>
+                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
                     <a href="#"><p class="price">$60</p></a>
                 </div>
             </div>
@@ -195,6 +211,7 @@
         </div>
     </div>
     <footer>
+        <div class="container_footer">
         <div class="support">
             <p class="bold">SUPPORT</p>
             <p>Checking order</p>
@@ -216,7 +233,11 @@
             <p>Activities</p>
             <p>Contact Us</p>
         </div>
-        <div class="LOGO"><img src="./images/Capture.PNG" alt="LOGO"></div>
+        <div class="LOGO"><img src="<?php echo e(asset('assets/images/Logo.PNG')); ?>" alt="LOGO"></div>
+        </div>
+
+        <div class="copyright">© Copyright QHP Store</div>
     </footer>
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\QHP_project\QHP_project\resources\views/home.blade.php ENDPATH**/ ?>

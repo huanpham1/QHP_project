@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{{ asset('assets/css/DangKy.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/DangKy.css')); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -14,32 +14,18 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
-<<<<<<< HEAD
-                <a href="{{route('DangNhap')}}">Đăng Nhập</a>
-                <pre>|</pre>
-                <a href="{{route('DangKy')}}">Đăng Ký</a>
-            </div>
-        </div>
-        <div class="hduoi">
-            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
-=======
                 <a href="/dangNhap">Log in <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                 <pre>|</pre>
                 <a href="/dangKy">Register <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             </div>
         </div>
         <div class="hduoi">
-            <a href="../"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
+            <a href="../"><img src="<?php echo e(asset('assets/images/Logo.PNG')); ?>" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             <nav>
                 <ul>
-                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">About us</a></li>
                     <li class="nam">
-<<<<<<< HEAD
-                        <a href="DanhMuc">Nam</a>
-=======
                         <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -48,11 +34,7 @@
                         </ul>
                     </li>
                     <li class="nu">
-<<<<<<< HEAD
-                        <a href="DanhMuc">Nữ</a>
-=======
                         <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
                         <ul class="nunu">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -69,95 +51,42 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-<<<<<<< HEAD
-            <div class="acc_cart" style="padding-right: 10px">
-                @if (session()->has('TenTaiKhoan'))
-
-                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
-                    @endif
-                </div>
-                </a>
-                <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-=======
             <div class="acc_cart">
                 <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
                 <a href="/GioHang"><i class="fa-solid fa-cart-shopping"></i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
             </div>
         </div>
     </header>
     <section>
-        <form action="/DangKyinfo" method="post">
+        <form action="dangky.php" method="post">
             <table>
-
                 <caption><h2>Đăng ký tài khoản</h2></caption>
                 <tr>
                     <td><label for="name">Họ và tên</label></td>
-                    <td><input type="text" name="fullname"></td>
-                    <span>
-                        @error('fullname')
-                            <div class="noti" style="top: 22%">{{$message}}</div>
-                        @enderror
-                    </span>
+                    <td><input type="text" name="name"></td>
                 </tr>
                 <tr>
                     <td><label for="dateOfBirth">Ngày sinh</label></td>
-                    <td><input type="date" name="dob"></td>
-                    <span>
-                        @error('dob')
-                            <div class="noti" style="top: 34%">{{$message}}</div>
-                        @enderror
-                    </span>
+                    <td><input type="date" name="dateOfBirth"></td>
                 </tr>
                 <tr>
                     <td><label for="username">Tên tài khoản</label></td>
                     <td><input type="text" name="username"></td>
-                    <span>
-                        @error('username')
-                            <div class="noti" style="top: 46%">{{$message}}</div>
-                        @enderror
-                    </span>
                 </tr>
                 <tr>
                     <td><label for="email">Email</label></td>
                     <td><input type="text" name="email"></td>
-                    <span>
-                        @error('email')
-                            <div class="noti" style="top: 57%">{{$message}}</div>
-                        @enderror
-                    </span>
                 </tr>
                 <tr>
                     <td><label for="password">Mật khẩu</label></td>
                     <td><input type="password" name="password"></td>
-                    <span>
-                        @error('password')
-                            <div class="noti" style="top: 68%">{{$message}}</div>
-                        @enderror
-                    </span>
                 </tr>
                 <tr>
                     <td><label for="phoneNum">Số điện thoại</label></td>
                     <td><input type="text" name="phoneNum"></td>
-                    <span>
-                        @error('phoneNum')
-                            <div class="noti" style="top: 80.2%">{{$message}}</div>
-                        @enderror
-                    </span>
-                    <div class="info">
-                        @if (\Session::has('success'))
-                        <div class="alert alert-success">
-                            <ul>
-                                <li>{!! \Session::get('success') !!}</li>
-                            </ul>
-                        </div>
-                        @endif
-                    </div>
                 </tr>
                 <tr>
-                    <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
-                    <td colspan="2" align="center" style="padding-top: 30px"><input type="submit" id="submit" value="SUBMIT"></td>
-                    @csrf
+                    <td colspan="2" align="center"><input type="submit" id="submit" value="SUBMIT"></td>
                 </tr>
             </table>
         </form>
@@ -185,9 +114,10 @@
             <p>Activities</p>
             <p>Contact Us</p>
         </div>
-        <div class="LOGO"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></div>
+        <div class="LOGO"><img src="<?php echo e(asset('assets/images/Logo.PNG')); ?>" alt="LOGO"></div>
         </div>
         <div class="copyright">© Copyright QHP Store</div>
     </footer>
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\htdocs\QHP_project\QHP_project\resources\views/DangKy.blade.php ENDPATH**/ ?>

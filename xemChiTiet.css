@@ -27,8 +27,9 @@ header{
 }
 .checking-order a{
     text-decoration: none;
+    color: white;
 }
-.checking-order a p:hover{
+.checking-order a:hover{
     color: grey;
 }
 .htren p{
@@ -64,7 +65,7 @@ header{
     width: 50%;
     height: 100%;
 }
-ul{
+nav ul{
     margin: 0;
     padding: 0;
     display: flex;
@@ -155,72 +156,23 @@ nav>ul>.nu:hover > .nunu{
     font-size: 30px;
     margin-left: 10px;
 }
-
-section{
-    width: 100%;
-    margin-top: 30px;
+.cart{
+    width: 70%;
+    margin: auto;
+    margin-top: 50px;
     margin-bottom: 100px;
-    position: relative;
 }
-
-section>form{
-    width: 50%;
-    margin: auto;
-    background-color: #f2f2f2;
-    border-radius: 5px;
-}
-section>form>table {
-    margin: auto;
-    font-size: 20px;
-}
-section>form>table caption{
-    margin: 10px 0px;
-}
-section>form>table td {
-    padding: 10px;
-}
-section>form>table input{
-    width: 300px;
-    font-size: 20px;
-}
-#submit{
-    width: 100px;
-    height: 36px;;
-    color: white;
-    background-color: #ef5b5b;
-    font-family: Arial, Helvetica, sans-serif;
-    font-size: 18px;
-    padding: 0px;
-    border: none;
-    cursor: pointer;
-}
-#submit:hover{
-    background-color: black;
-    transition: all 0.3s ease-in-out;
-}
-.LOGO img{
-    height: 150px;
+.cart-title{
+    text-align: center;
+    margin: auto;;
 }
 footer{
-    height: 260px;
-    align-items: center;
-    justify-content: space-around;
-    border-top: 1px solid rgb(156, 153, 153);
-    margin-top: 10px;
-}
-.container_footer{
     display: flex;
     height: 260px;
     align-items: center;
     justify-content: space-around;
+    border-top: 1px solid;
     margin-top: 10px;
-}
-.copyright{
-    text-align: center;
-    background-color: black;
-    line-height: 55px;
-    color: aliceblue;
-
 }
 .bold{
     font-weight: bold;
@@ -228,43 +180,110 @@ footer{
 footer p{
     font-size: 20px;
 }
-<<<<<<< HEAD
-.noti
-{
-    left: 45%;
-    color: red;
-    font-size: 12px;
-    position: absolute;
+.chiTietSP{
+    display: flex;
 }
-.info{
-    background-color: rgb(176, 244, 221);
-    color: rgb(49, 241, 49);
-    line-height: 25px;
-    position: absolute;
-    top:82%;
-    left:45%;
+.img_sp{
+    width: 60%;
 }
-header{
-    border-bottom:1px solid #ddd;
+
+.small_img{
+    display: flex;
+    justify-content:space-around;
 }
-=======
-.alert{
-    color: red;
-    font-size: 15px;
+.big_img img{
+    width: 100%;
 }
-.btn_back{
-    width: 100px;
-    height: 36px;;
-    color: white;
-    background-color: #ef5b5b;
-    font-family: Arial, Helvetica, sans-serif;
+.small_img img{
+    width: 25%;
+}
+.img_sp{
+    padding: 10px;
+}
+.info_sp{
+    width: 40%;
+    padding: 10px;
+}
+.name{
+    height: 10%;
+}
+.maSP{
+    height: 10%;
+    display: flex;
+    justify-content: left;
+    align-items: center;
+}
+.maSP p{
+    font-size: 21px;
+}
+.maSP span{
+    font-size: 21px;
+    font-weight: bold;
+    margin-left: 10px;
+}
+.moTa{
+    height: 20%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-top: 1px grey dotted;
+    border-bottom: 1px grey dotted;
+}
+.moTa p{
     font-size: 18px;
-    padding: 0px;
+    text-align: justify;
+}
+.size_soLuong{
+    height: 20%;
+    display: flex;
+    justify-content: space-between;
+    padding: 10px 0px;
+}
+.size{
+    width: 45%;
+}
+.soLuong{
+    width: 45%;
+}
+.soLuong input{
+    height: 50px;
+    width: 100%;
+    border-radius: 0;
+    font-size: 17px;
+    border:0.5px grey dotted;
+}
+.size select{
+    height: 50px;
+    width: 100%;
+    border-radius: 0;
+    font-size: 17px;
+}
+.btn{
+    height: 40%;
+}
+.themVaoGio button{
+    height: 70px;
+    width: 100%;
+    font-size: 25px;
     border: none;
-    cursor: pointer;
-}
-.btn_back:hover{
+    border-radius: 0;
     background-color: black;
-    transition: all 0.3s ease-in-out;
+    color: white;
+    font-weight: bold;
 }
->>>>>>> PhongBranch
+.thanhToan{
+    margin-top: 20px;
+}
+.thanhToan button{
+    height: 70px;
+    width: 100%;
+    font-size: 25px;
+    border: none;
+    border-radius: 0;
+    background-color: rgb(169 25 25);
+    color: white;
+    font-weight: bold;
+}
+.btn button:hover{
+    opacity: 60%;
+}

@@ -1,9 +1,10 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{{ asset('assets/css/DangNhap.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/ThongTinCaNhan.css')); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -14,32 +15,18 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
-<<<<<<< HEAD
-                <a href="/DangNhap">Đăng Nhập</a>
-                <pre>|</pre>
-                <a href="/DangKy">Đăng Ký</a>
-            </div>
-        </div>
-        <div class="hduoi">
-            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
-=======
                 <a href="/dangNhap">Log in <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                 <pre>|</pre>
                 <a href="/dangKy">Register <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             </div>
         </div>
         <div class="hduoi">
-            <a href="../"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
+            <a href="../"><img src="<?php echo e(asset('assets/images/Logo.PNG')); ?>" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             <nav>
                 <ul>
-                    <li><a href="#">Về chúng tôi</a></li>
+                    <li><a href="#">About us</a></li>
                     <li class="nam">
-<<<<<<< HEAD
-                        <a href="DanhMuc">Nam</a>
-=======
                         <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -48,11 +35,7 @@
                         </ul>
                     </li>
                     <li class="nu">
-<<<<<<< HEAD
-                        <a href="DanhMuc">Nữ</a>
-=======
                         <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
                         <ul class="nunu">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -69,94 +52,48 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-<<<<<<< HEAD
-            <div class="acc_cart" style="padding-right: 10px">
-                @if (session()->has('TenTaiKhoan'))
-
-                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
-                    @endif
-                </div>
-                </a>
-                <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
-=======
             <div class="acc_cart">
                 <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
                 <a href="/GioHang"><i class="fa-solid fa-cart-shopping"></i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
             </div>
         </div>
     </header>
     <section>
-        <form action="/DangNhap/Auth" id="dangNhap" method="post">
+        <?php foreach($taikhoan as $data){?>
+    <div class="ThongTinCaNhan">
             <table>
-                <caption><h2>Đăng nhập</h2></caption>
+                <caption><h2>Thông tin cá nhân</h2></caption>
                 <tr>
-                    <td>
-                        <div class="icon_form"><i class="fa-solid fa-user"></i></div>
-                        <input type="text" placeholder="Tên tài khoản" name="username" maxlength="20">
-                    </td>
+                    <td><label for="name">Họ và tên</label></td>
+                    <td><div class="hoTen"><?php echo $data->HoVaTen?></div></td>
                 </tr>
                 <tr>
-                    <td>
-                        @error('username')
-                            <span style="color: red; font-size: " class="thongbao">{{$message}}</span>
-                        @enderror
-                    </td>
+                    <td><label for="dateOfBirth">Ngày sinh</label></td>
+                    <td><div class="ngaysinh"><?php echo $data->NgaySinh?></div></td>
                 </tr>
                 <tr>
-                    <td>
-                        <div class="icon_form"><i class="fa-solid fa-lock"></i></div>
-                        <input type="password" placeholder="Mật khẩu" name= "password">
-                    </td>
+                    <td><label for="username">Tên tài khoản</label></td>
+                    <td><div class="username"><?php echo $data->TenTaiKhoan?></div></td>
                 </tr>
                 <tr>
-                    <td>
-                        @error('password')
-                            <span style="color: red; font-size: " class="thongbao1">{{$message}}</span>
-                        @enderror
-                    </td>
+                    <td><label for="email">Email</label></td>
+                    <td><div class="email"><?php echo $data->Email?></div></td>
                 </tr>
                 <tr>
-                    <td class="another_option"><a href="DangKy">Chưa có tài khoản? Đăng ký</a></td>
+                    <td><label for="DiaChi">Địa chỉ</label></td>
+                    <td><div class="DiaChi"><?php echo $data->DiaChi?></div></td>
                 </tr>
                 <tr>
-                    <td class="another_option"><a href="#" id="loginBtn">Quên mật khẩu?</a></td>
+                    <td><label for="SoDT">Số điện thoại</label></td>
+                    <td><div name="SoDT"><?php echo $data->SoDT?></div></td>
                 </tr>
                 <tr>
-                    <div class="infofail">
-                        @if (\Session::has('fail'))
-                        <div class="fail">
-                            <ul>
-                                <li>{!! \Session::get('fail') !!}</li>
-                            </ul>
-                        </div>
-                        @endif
-                    </div>
+                    <td colspan="2" align="center">
+                        <a href="<?php echo e(route('ThongTinCaNhan.suaThongTin')); ?>"><input id="btn_thaydoi" type="button" value="Thay đổi"></a></td>
                 </tr>
-                <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
-                <tr>
-                    <td id="submit"><input type="submit" value="Đăng nhập"></td>
-                    @csrf
-                </tr>
-
-
-
             </table>
-        </form>
-        <div id="forgot-pass-form">
-            <form>
-                <h3>Phục hồi mật khẩu</h3>
-                <span>Chúng tôi sẽ gửi mật khẩu về email của bạn</span><br>
-                <div class="form-box">
-                    <div class="icon_form"><i class="fa-solid fa-envelope"></i></div>
-                    <input type="text" placeholder="Email">
-                </div>
-                <div class="form-submit">
-                    <input type="submit" value="Gửi">
-                    <a href="#" id="submitBtn">Hủy bỏ</a>
-                </div>
-            </form>
         </div>
+        <?php } ?>
     </section>
     <footer>
         <div class="container_footer">
@@ -181,8 +118,9 @@
             <p>Activities</p>
             <p>Contact Us</p>
         </div>
-        <div class="LOGO"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></div>
+        <div class="LOGO"><img src="<?php echo e(asset('assets/images/Logo.PNG')); ?>" alt="LOGO"></div>
         </div>
+
         <div class="copyright">© Copyright QHP Store</div>
     </footer>
 
@@ -199,4 +137,4 @@
         }
     </script>
 </body>
-</html>
+</html><?php /**PATH C:\xampp\htdocs\htdocs\QHP_project\QHP_project\resources\views/ThongTinCaNhan.blade.php ENDPATH**/ ?>

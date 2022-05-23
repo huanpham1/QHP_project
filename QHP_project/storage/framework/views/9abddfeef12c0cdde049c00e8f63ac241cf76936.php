@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <link rel="stylesheet" href="{{ asset('assets/css/GioHang.css')}}">
+    <link rel="stylesheet" href="<?php echo e(asset('assets/css/GioHang.css')); ?>">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -14,36 +14,18 @@
             <div class="hotline"><p>Hotline: 0987666666</p></div>
             <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
             <div class="login">
-<<<<<<< HEAD
-                <a href="DangNhap">Log in</a>
-                <pre>|</pre>
-                <a href="DangKy">Register</a>
-            </div>
-        </div>
-        <div class="hduoi">
-<<<<<<< HEAD
-            <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
-=======
-            <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
->>>>>>> QuanBranch
-=======
                 <a href="/dangNhap">Log in <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
                 <pre>|</pre>
                 <a href="/dangKy">Register <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             </div>
         </div>
         <div class="hduoi">
-            <a href="../"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
+            <a href="../"><img src="<?php echo e(asset('assets/images/Logo.PNG')); ?>" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             <nav>
                 <ul>
                     <li><a href="#">About us</a></li>
                     <li class="nam">
-<<<<<<< HEAD
-                        <a href="DanhMuc">Nam</a>
-=======
                         <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -52,11 +34,7 @@
                         </ul>
                     </li>
                     <li class="nu">
-<<<<<<< HEAD
-                        <a href="DanhMuc">Nữ</a>
-=======
                         <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
                         <ul class="nunu">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -73,20 +51,9 @@
                     <input type="text" name="search" id="search">
                 </form>
             </div>
-<<<<<<< HEAD
-            <div class="acc_cart" style="padding-right: 10px">
-                @if (session()->has('TenTaiKhoan'))
-
-                        <a class="acc" href="GioHang.html"><div><i class="fa-solid fa-user"></i>
-                    @endif
-                </div>
-                </a>
-                <a href="GioHang.html"><i class="fa-solid fa-cart-shopping"></i></a>
-=======
             <div class="acc_cart">
                 <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
                 <a href="/GioHang"><i class="fa-solid fa-cart-shopping"></i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
->>>>>>> PhongBranch
             </div>
         </div>
     </header>
@@ -107,7 +74,7 @@
                     <th style="width: 15%; text-align: right;">THÀNH TIỀN</th>
                 </tr>
                 <tr>
-                    <td style="padding: 0px;"><div class="cart-image"><img src="{{asset('assets/images/Image 4.png')}}" alt="Giay"></div></td>
+                    <td style="padding: 0px;"><div class="cart-image"><img src="./images/Image 4.png" alt="Giay"></div></td>
                     <td class="item-name">
                        <a href="#">Multicolor Men's Sneaker</a>
                         <div class="item-infor">
@@ -185,10 +152,11 @@
             <p>Activities</p>
             <p>Contact Us</p>
         </div>
-        <div class="LOGO"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></div>
+        <div class="LOGO"><img src="<?php echo e(asset('assets/images/Logo.PNG')); ?>" alt="LOGO"></div>
         </div>
 
         <div class="copyright">© Copyright QHP Store</div>
     </footer>
 </body>
 </html>
+<?php /**PATH C:\xampp\htdocs\htdocs\QHP_project\QHP_project\resources\views/GioHang.blade.php ENDPATH**/ ?>
