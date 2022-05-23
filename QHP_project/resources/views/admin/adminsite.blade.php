@@ -19,7 +19,7 @@
             <div class="account">
                 <div class="name_acc"> Xin Chào {{session()->get('admin')}}
                     <ul class="info_acc">
-                        <li>logout</li>
+                        <li onclick="logout()">logout</li>
                     </ul>
                 </div>
              </div>
@@ -82,5 +82,12 @@
 	<footer>
 
 	</footer>
+    <script>
+        function logout(){
+        let url = "{{ route('checkoutadmin') }}";
+
+        document.location.href=url;
+    }
+    </script>
 </body>
 </html>

@@ -44,11 +44,11 @@ route::get('/test', [homeController::class, 'test'])->name('test');
 Route::post('getsl', [SanPhamController::class, 'GetSL'])->name('getSL');
 route::post('/ThemGH', [GioHangController::class, 'ThemGH'])->name('ThemGH');
 Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);
-Route::post("/DangNhap/Admin",[LoginController::class , 'LoginAdmin']);
+Route::post("/DangNhap/Admin",[LoginController::class , 'LoginAdmin'])->name('LoginAdmin');
 Route::get('/adminsite', function () {
     return view('adminsite');
 });
-
+Route::get('/checkoutAdmin',[SignInController::class, 'checkoutadmin'])->name('checkoutadmin');
 
 // Route::prefix('/')->group(function(){
 //     Route::get('/', function () {

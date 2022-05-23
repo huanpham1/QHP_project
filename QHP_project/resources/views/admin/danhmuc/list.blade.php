@@ -15,14 +15,15 @@
 			<img src="{{ asset('assets/images/admin site.PNG')}}" class="image_banner" alt="">
 		</div>
 		<div class="content_header">
-			<div class="account">
-					<div class="name_acc">Admin Name
-						<ul class="info_acc">
-							<li>logout</li>
-						</ul>
-					</div>
-
-			</div>
+			@if (session()->has('admin'))
+            <div class="account">
+                <div class="name_acc"> Xin Chào {{session()->get('admin')}}
+                    <ul class="info_acc">
+                        <li onclick="logout()">logout</li>
+                    </ul>
+                </div>
+             </div>
+         @endif
 		</div>
 	</header>
 	<div class="mainlayout">
@@ -68,7 +69,7 @@
 								</td>
 								<td>
 									<button class="btn-del">
-										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')" 
+										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
 										href="{{route('danhmuc.delete', ['id'=>$item->MaDanhMuc])}}">Xóa</a>
 									</button>
 								</td>
@@ -93,4 +94,11 @@
 
 	</footer>
 </body>
+<script>
+    function logout(){
+let url = "{{ route('checkoutadmin') }}";
+
+document.location.href=url;
+}
+</script>
 </html>

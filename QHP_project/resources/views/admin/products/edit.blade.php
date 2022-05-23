@@ -15,14 +15,15 @@
 			<img src="{{ asset('assets/images/admin site.PNG')}}" class="image_banner" alt="">
 		</div>
 		<div class="content_header">
-			<div class="account">
-					<div class="name_acc">Admin Name
-						<ul class="info_acc">
-							<li>logout</li>
-						</ul>
-					</div>
-
-			</div>
+			@if (session()->has('admin'))
+            <div class="account">
+                <div class="name_acc"> Xin Chào {{session()->get('admin')}}
+                    <ul class="info_acc">
+                        <li onclick="logout()">logout</li>
+                    </ul>
+                </div>
+             </div>
+         @endif
 		</div>
 	</header>
 	<div class="mainlayout">
@@ -54,7 +55,7 @@
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
 							</td>
-								
+
                         </tr>
                         <tr>
                             <td><label for="price">Giá bán</label></td>
@@ -87,7 +88,7 @@
 									<option value="0">Chọn danh mục</option>
 									@if (!empty($allDanhMuc))
 										@foreach ($allDanhMuc as $item)
-											<option value="{{$item->MaDanhMuc}}" {{old('group_danhmuc')==$item->MaDanhMuc 
+											<option value="{{$item->MaDanhMuc}}" {{old('group_danhmuc')==$item->MaDanhMuc
                                             || $productDetail->MaDanhMuc==$item->MaDanhMuc?'selected':false}}>
 												{{$item->TenDanhMuc}}
 											</option>
@@ -136,5 +137,12 @@
 	<footer>
 
 	</footer>
+    <script>
+        function logout(){
+    let url = "{{ route('checkoutadmin') }}";
+
+    document.location.href=url;
+}
+</script>
 </body>
 </html>

@@ -60,4 +60,8 @@ class SignInController extends Controller
         session()->forget('TenTaiKhoan');
         return view('home');
     }
+    public function checkoutadmin(){
+        session()->forget('admin');
+        return view('LoginAdmin');
+    }
 }
