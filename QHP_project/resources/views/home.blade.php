@@ -30,7 +30,7 @@
                 <ul>
                     <li><a href="#">Về chúng tôi</a></li>
                     <li class="nam">
-                        <a href="DanhMuc">Nam</a>
+                        <a href="XemDanhMuc/">Nam</a>
                         <ul class="namnam">
                             <li><a href="#">Giày chạy bộ</a></li>
                             <li><a href="#">Giày training</a></li>
@@ -47,6 +47,7 @@
                             <li><a href="#">Giày leo núi</a></li>
                         </ul>
                     </li>
+
                     <li><a href="#">Trẻ em</a></li>
                 </ul>
             </nav>
@@ -56,9 +57,10 @@
                     <input type="text" name="search" id="search" placeholder="Tìm kiếm sản phẩm...">
                 </form>
             </div>
+            {{-- href="{{route('ThongTinCaNhan.index')}}" --}}
             <div class="acc_cart">
                     @if (session()->has('TenTaiKhoan'))
-                        <a class="acc" ><div><i class="fa-solid fa-user"></i></div>
+                        <a class="acc"  ><div><i class="fa-solid fa-user"></i></div>
                             <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
                             <div class="loguot" onclick="logout()">Logout </div>
                         </a>
@@ -78,7 +80,6 @@
                     <div class="hang">
                         @for($j = 0; $j < 5; $j++)
                         <div class="cot">
-
                             <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
                             <a href="#"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
                              <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>

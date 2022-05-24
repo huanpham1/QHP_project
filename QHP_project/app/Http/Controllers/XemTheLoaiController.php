@@ -8,6 +8,7 @@ use DB;
 use App\Models\theloai;
 use App\Models\danhmuc;
 use App\Models\sanpham;
+use App\Models\LaySanPham;
 class XemTheLoaiController extends Controller
 {
     //Action index
@@ -15,9 +16,9 @@ class XemTheLoaiController extends Controller
         return view('XemTheLoai');
     }
     public function getSP_TheLoai($id){
-        
+
         // Câu truy vấn lấy san pham theo id
-        $sp= new sanpham();
+        $sp= new LaySanPham();
         $sanpham = $sp->getSP_TheLoai($id);
 
         $tl = new theloai();
@@ -25,7 +26,7 @@ class XemTheLoaiController extends Controller
 
         $dm = new danhmuc();
         $danhmuc = $dm->getAllDanhMuc();
-        
+
         return view('XemTheLoai', compact('sanpham','theloai','danhmuc'));
     }
 }

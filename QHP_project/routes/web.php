@@ -13,6 +13,10 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Controllers\SanPhamController;
 use App\Http\Controllers\GioHangController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\xemChiTietController;
+use App\Http\Controllers\XemDanhMucController;
+use App\Http\Controllers\XemTheLoaiController;
+use App\Http\Controllers\ThongTinCaNhanController;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -50,30 +54,26 @@ Route::post("/DangNhap/Admin",[LoginController::class , 'LoginAdmin'])->name('Lo
 // });
 Route::get('/checkoutAdmin',[SignInController::class, 'checkoutadmin'])->name('checkoutadmin');
 
-// Route::prefix('/')->group(function(){
-//     Route::get('/', function () {
-//         return view('home');
-//     })->name('home');
-//     Route::get('/DangNhap', function () {
-//         return view('DangNhap');
-//     });
-//     Route::get('/DangKy', function () {
-//         return view('DangKy');
-//     });
-//     Route::get('/GioHang', function () {
-//         return view('GioHang');
-//     });
-//     Route::get('/DanhMuc', function(){
-//         return view('DanhMuc');
-//     });
-
-// });
+Route::prefix('XemTheLoai')->name('XemTheLoai.')->group(function(){
+    Route::get('/{id}',[XemTheLoaiController::class,'getSP_TheLoai'])->name('index');
+});
+Route::prefix('XemDanhMuc')->name('XemDanhMuc.')->group(function(){
+    Route::get('/{id}',[XemDanhMucController::class,'goToXemDanhMuc'])->name('index');
+});
+Route::prefix('xemChiTiet')->name('xemChiTiet.')->group(function(){
+    Route::get('/{id}',[xemChiTietController::class,'goToXemChiTiet'])->name('index');
+});
+Route::prefix('ThongTinCaNhan')->name('ThongTinCaNhan.')->group(function(){
+    Route::get('/',[ThongTinCaNhanController::class,'goToThongTinCaNhan'])->name('index');
+    Route::get('/Form_sua',[ThongTinCaNhanController::class,'formSua'])->name('suaThongTin');
+    Route::post('/Form_sua',[ThongTinCaNhanController::class,'postSua'])->name('post_suaThongTin');
+});
 
 Route::middleware('checkadmin')->prefix('/adminsite')->group(function () {
     Route::get('/', function(){
         return view('admin.adminsite');
     })->name('adminsite');
-    
+
     Route::prefix('/user')->name('users.')->group(function(){
         Route::get('/', [UsersController::class, 'index'])->name('index');
 
