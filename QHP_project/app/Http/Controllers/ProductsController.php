@@ -20,6 +20,7 @@ class ProductsController extends Controller
         $title = 'Danh sách sản phẩm';
 
         $productsList = $this->products->getAllProducts();
+        //dd($productsList);
 
         return view('admin.products.list', compact('title', 'productsList'));
     }

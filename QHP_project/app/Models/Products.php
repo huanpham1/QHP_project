@@ -15,7 +15,7 @@ class Products extends Model
 
     public function getAllProducts(){
         $products = DB::select('SELECT MaSP, TenSP, GiaBan, MoTa, HinhAnh, TenTheLoai, TenDanhMuc FROM '. $this->table . ', theloai, danhmuc
-        WHERE ' . $this->table . '.MaTheLoai = theloai.MaTheLoai AND ' . $this->table . '.MaDanhMuc = danhmuc.MaDanhMuc');
+        WHERE ' . $this->table . '.MaTheLoai = theloai.MaTheLoai AND ' . $this->table . '.MaDanhMuc = danhmuc.MaDanhMuc ORDER BY MaSP');
 
         return $products;
     }

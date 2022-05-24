@@ -66,7 +66,7 @@
                         </tr>
                         <tr>
                             <td><label for="description">Mô tả</label></td>
-                            <td><input type="text" name="description" id="description" value="{{old('description')}}" maxlength="30">
+                            <td><input type="text" name="description" id="description" value="{{old('description')}}" maxlength="100">
 								@error('description')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror

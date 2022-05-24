@@ -14,6 +14,7 @@ class DetailProduct extends Model
     protected $table = 'chitietsanpham';
 
     public function getAllDetail($id){
+        //Nối bảng chitietsanpham va sanpham để lấy tất cả chi tiết của tất cả sản phẩm
         return DB::select('SELECT * FROM '.$this->table.', sanpham WHERE '.$this->table.'.MaSP=sanpham.MaSP AND sanpham.MaSP=?', [$id]);
     }
 
