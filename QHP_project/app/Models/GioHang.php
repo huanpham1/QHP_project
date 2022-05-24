@@ -17,18 +17,18 @@ class GioHang extends Model
         }
     }
     public function ThemGH($IDSP){
-        $newSP = ['SL'=>$IDSP];
+        $newSP = ['SL'=>'1'];
         // dd($IDSP);
         $this->SanPham[$IDSP] = $newSP;
         // dd($SanPham);
-        // if($this->SanPham){
-        //     if(array_key_exists($IDSP,$this->SanPham))
-        //         // $SP = $this->ChiTietSP[$id];
-        //         $this->SoLuong+=$SL;
-        //     else
-        //         $this->SanPham[$IDSP]=$IDSP;
-        //         $this->SoLuong=$SL;
-        // }
+        if($this->SanPham){
+            if(isset($this->SanPham[$IDSP]))
+                // $SP = $this->ChiTietSP[$id];
+                $this->SoLuong+=1;
+            else
+                $this->SanPham[$IDSP]=$IDSP;
+                // $this->SoLuong='1';
+        }
         // $SPM['SoLuong']++;
         // $this->SanPham[$IDSP] = $SPM;
         // $this->SoLuong += $SPM['SoLuong'];

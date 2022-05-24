@@ -73,7 +73,7 @@ Route::middleware('checkadmin')->prefix('/adminsite')->group(function () {
     Route::get('/', function(){
         return view('admin.adminsite');
     })->name('adminsite');
-
+    
     Route::prefix('/user')->name('users.')->group(function(){
         Route::get('/', [UsersController::class, 'index'])->name('index');
 

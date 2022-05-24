@@ -72,7 +72,7 @@
     </header>
     <div class="chiTietSP">
         <div class="Containerimage">
-            <img name = "img_sp" src="<?php echo asset('assets/images/'.$img)?>" alt="Giay">
+            <img name = "img_sp" src="<?php echo asset('storage/products/'.$img)?>" alt="Giay">
 
         </div>
         <div class="containerInfor">

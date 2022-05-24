@@ -76,14 +76,14 @@
             <div class="title1"><img src="{{ asset('assets/images/Image 3.png')}}" alt="nam"></div>
                 @if (!empty($SanPhamList))
                     <div class="hang">
-                        {{-- @for($j = 0; $j < 5; $j++)
+                        @for($j = 0; $j < 5; $j++)
                         <div class="cot">
-                            
-                            {{-- <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
-                            <a href="#"><p class="tensp">{{$SanPhamList[$j]->MaSP}}</p></a>
+
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
+                            <a href="#"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
                              <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
                         </div>
-                        @endfor --}}
+                        @endfor
                     </div>
 							@else
 							<tr>
@@ -98,79 +98,44 @@
         </div>
         <div class="sp-nu">
             <div class="title2"><img src="{{ asset('assets/images/Image 11.png')}}" alt="nu"></div>
+            @if (!empty($SanPhamList))
             <div class="hang">
+                @for($j = 0; $j < 5; $j++)
                 <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
+
+                    <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
+                    <a href="#"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                     <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
                 </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
+                @endfor
             </div>
-            <div class="hang">
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
-                <div class="cot">
-                    <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">Multicolor Men's Sneaker</p></a>
-                    <a href="#"><p class="price">$60</p></a>
-                </div>
+                    @else
+                    <tr>
+                        <td colspan="4">Không có danh mục</td>
+                    </tr>
+        @endif
+        @if (!empty($SanPhamList))
+        <div class="hang">
+            @for($j = 5; $j < 10; $j++)
+            <div class="cot">
+
+                <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
+                <a href="#"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                 <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
             </div>
-            <div class="view-more">
-                <a href="#"><button>VIEW MORE PRODUCTS</button></a>
-            </div>
+            @endfor
+        </div>
+                @else
+                <tr>
+                    <td colspan="4">Không có danh mục</td>
+                </tr>
+    @endif
+        </div>
+        <div class="view-more">
+            <a href="#"><button>VIEW MORE PRODUCTS</button></a>
         </div>
     </div>
-    <div class="feed-back">
-        <div class="title3"><p>HASHTAG QHP FOR THE CHANCE TO BE ON OUR WEBSITE</p></div>
-        <div class="fb">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-            <img src="{{ asset('assets/images/Image 26.png')}}" alt="feed back">
-        </div>
-    </div>
+
     <footer>
         <div class="container_footer">
         <div class="support">

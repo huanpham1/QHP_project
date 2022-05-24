@@ -104,7 +104,7 @@
   .maincontent{
     margin: 20px;
     width: 98%;
-
+    display: flex;
     background-color: #ffffff;
     min-height: 400px;
   }
@@ -156,3 +156,7 @@
     color: #f9f9f9;
     cursor: pointer;
   }
+.content{
+    font-size: 40px;
+    align-items: center;
+}
