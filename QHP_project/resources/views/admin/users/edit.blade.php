@@ -83,7 +83,7 @@
                         </tr>
                         <tr>
                             <td><label for="password">Mật khẩu</label></td>
-                            <td><input type="password" name="password" id="password" value="{{old('password') ?? $userDetail->MatKhau}}">
+                            <td><input type="password" name="password" id="password" value="{{old('password') ?? $userDetail->password}}">
 								@error('password')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror

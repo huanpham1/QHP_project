@@ -36,7 +36,7 @@ class Users extends Model
         NgaySinh=?,
         TenTaiKhoan=?,
         Email=?,
-        MatKhau=?,
+        password=?,
         SoDT=?,
         IsAdmin=?,
         DiaChi=?

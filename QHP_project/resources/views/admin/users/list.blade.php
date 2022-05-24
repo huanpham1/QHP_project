@@ -49,7 +49,7 @@
 				<h1>{{$title}}</h1>
 				<div class="table-list">
 					<button class="btn-add"><a href="{{route('users.add')}}">Thêm tài khoản</a></button>
-					<table class="user-list" border="1">
+					<table class="user-list" border="1" style="table-layout: fixed; word-wrap:break-word;">
 						<thead>
 							<tr>
 								<th>STT</th>
@@ -61,8 +61,8 @@
 								<th>Số điện thoại</th>
 								<th>Admin</th>
 								<th>Địa chỉ</th>
-								<th>Sửa</th>
-								<th>Xóa</th>
+								<th width=5%>Sửa</th>
+								<th width=5%>Xóa</th>
 							</tr>
 						</thead>
 						<tbody>

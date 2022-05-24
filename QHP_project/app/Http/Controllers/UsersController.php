@@ -122,7 +122,8 @@ class UsersController extends Controller
             $request->dob,
             $request->username,
             $request->email,
-            $request->password,
+            //$request->password,
+            bcrypt($request->password),
             $request->phoneNum,
             (int)$request->admin,
             $request->address
