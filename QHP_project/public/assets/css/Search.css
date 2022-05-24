@@ -27,6 +27,7 @@ header{
 }
 .checking-order a{
     text-decoration: none;
+    color: white;
 }
 .checking-order a p:hover{
     color: grey;
@@ -207,7 +208,7 @@ p{
 }
 .view-more{
     text-align: center;
-    margin: 25px 0; 
+    margin: 25px 0;
 }
 .view-more button{
     height: 55px;
@@ -253,7 +254,7 @@ footer p{
     width: 100px;
     line-height: 30px;
     text-align: center;
-    top: 97%;
+    top: 90%;
     left: -45%;
     display: none;
     border: 1px solid #828181;

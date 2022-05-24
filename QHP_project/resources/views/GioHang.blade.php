@@ -26,7 +26,7 @@
             <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
                     <li class="nam">
                         <a href="DanhMuc">Nam</a>
                         <ul class="namnam">
