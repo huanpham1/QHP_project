@@ -12,18 +12,22 @@
     <header>
         <div class="htren">
             <div class="hotline"><p>Hotline: 0987666666</p></div>
-            <div class="checking-order"><a href="#"><p>Kiểm tra đơn hàng</p></a></div>
+            <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
-                <a href="DangNhap">Log in</a>
-                <pre>|</pre>
-                <a href="DangKy">Register</a>
+                @if (!(session()->has('TenTaiKhoan')))
+                    <a href="{{route('DangNhap')}}">Đăng Nhập</a>
+                    <pre>|</pre>
+                    <a href="./DangKy">Đăng Ký</a>
+
+                    @endif
+
             </div>
         </div>
         <div class="hduoi">
             <a href="/"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
-                    <li><a href="#">About us</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
                     <li class="nam">
                         <a href="DanhMuc">Nam</a>
                         <ul class="namnam">

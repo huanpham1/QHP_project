@@ -68,6 +68,11 @@ class Products extends Model
     }
 
     public function searchProduct($key){
-        return DB::select('SELECT * FROM '.$this->table.' WHERE (TenSP LIKE "%'.$key.'%") OR (GiaBan = '.$key.')');
+        if (is_numeric($key)){
+            return DB::select('SELECT * FROM '.$this->table.' WHERE GiaBan = '.$key);
+        } else {
+            return DB::select('SELECT * FROM '.$this->table.' WHERE (TenSP LIKE "%'.$key.'%")');
+        }
+        
     }
 }
