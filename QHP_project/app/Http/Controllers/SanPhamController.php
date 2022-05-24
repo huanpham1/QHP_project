@@ -19,11 +19,13 @@ class SanPhamController extends Controller
         $data =  $this->SanPham->GetSanPham($id);
         // dd($id);
         $SoLuong =  ($this->SanPham->GetSoLuong($id));
-        
+
         $Size = ($this->SanPham->getSize($id));
         // dd($Size[0]);
         $CTSPID = $this->SanPham->getCTSPID($id, $Size[0]->Size);
-        return view('ChiTietSP', compact('data', 'SoLuong', 'Size', 'CTSPID'));
+        $img = DB::table('sanpham')->where('MaSP',$id)->get('HinhAnh')[0]->HinhAnh;
+        // dd($img);
+        return view('ChiTietSP', compact('data', 'SoLuong', 'Size', 'CTSPID', 'img'));
     }
     public function GetSL(Request $data){
         // dd($data);

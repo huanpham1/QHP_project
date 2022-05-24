@@ -40,14 +40,14 @@ Route::prefix('/')->group(function(){
     Route::get('/search-products', [ProductsController::class, 'search'])->name('search-products');
     Route::get('/checkout',[SignInController::class, 'checkout'])->name('checkout');
 });
-route::get('/test', [homeController::class, 'test'])->name('test');
+route::get('/test', [homeController::class, 'test'])->name('test')->middleware('checkadmin');
 Route::post('getsl', [SanPhamController::class, 'GetSL'])->name('getSL');
-route::post('/ThemGH', [GioHangController::class, 'ThemGH'])->name('ThemGH');
+route::get('/ThemGH/{id}', [GioHangController::class, 'ThemGH'])->name('ThemGH');
 Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);
 Route::post("/DangNhap/Admin",[LoginController::class , 'LoginAdmin'])->name('LoginAdmin');
-Route::get('/adminsite', function () {
-    return view('adminsite');
-});
+// Route::get('/adminsite', function () {
+//     return view('adminsite');
+// });
 Route::get('/checkoutAdmin',[SignInController::class, 'checkoutadmin'])->name('checkoutadmin');
 
 // Route::prefix('/')->group(function(){
@@ -69,7 +69,7 @@ Route::get('/checkoutAdmin',[SignInController::class, 'checkoutadmin'])->name('c
 
 // });
 
-Route::prefix('/adminsite')->group(function () {
+Route::middleware('checkadmin')->prefix('/adminsite')->group(function () {
     Route::get('/', function(){
         return view('admin.adminsite');
     })->name('adminsite');

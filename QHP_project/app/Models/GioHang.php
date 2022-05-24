@@ -16,8 +16,9 @@ class GioHang extends Model
             $this->SanPham = $GH->SanPham;
         }
     }
-    public function ThemGH($IDSP, $SL){
-        $newSP = ['CTSPID'=>$IDSP, 'SoLuong'=>$SL];
+    public function ThemGH($IDSP){
+        $newSP = ['SL'=>$IDSP];
+        // dd($IDSP);
         $this->SanPham[$IDSP] = $newSP;
         // dd($SanPham);
         // if($this->SanPham){

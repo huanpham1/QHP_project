@@ -206,6 +206,6 @@
 
         document.location.href=url;
     }
-    
+
 </script>
 </html>

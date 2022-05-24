@@ -7,13 +7,19 @@ use Illuminate\Http\Request;
 
 use App\Models\Products;
 use Illuminate\Support\Facades\Storage;
+use App\Models\DanhMuc;
+use App\Models\TheLoai;
 
 class ProductsController extends Controller
 {
     private $products;
+    private $DM;
+    private $TL;
     public function __construct()
     {
         $this->products = new Products();
+        $this->DM = new DanhMuc();
+        $this->TL = new TheLoai();
     }
 
     public function index(){
@@ -27,10 +33,10 @@ class ProductsController extends Controller
     public function add(){
         $title = 'Thêm sản phẩm';
 
-        $allDanhMuc = getAllDanhMuc();
+        $allDanhMuc = $this->DM->getAllDanhMuc();
 
-        $allTheLoai = getAllTheLoai();
-        
+        $allTheLoai = $this->TL->getAllTheLoai();
+
         return view('admin.products.add', compact('title', 'allDanhMuc', 'allTheLoai'));
     }
 
@@ -93,7 +99,7 @@ class ProductsController extends Controller
 
                 $request->session()->put('id', $id);    //Lưu id vào 1 session để khi thực hiện cập nhật có thể lấy ra id
                 $productDetail = $productDetail[0];
-                
+
             } else {
                 return redirect()->route('products.index')->with('msg', 'Sản phẩm không tồn tại');
             }
@@ -205,7 +211,7 @@ class ProductsController extends Controller
         } else {
             redirect()->route('home');
         }
-        
+
     }
 
 }

@@ -14,7 +14,7 @@ class homeController extends Controller
         return view("home", compact('SanPhamList'));
     }
     public function register(){
-        return view('DangNhap');
+        return view('Them');
     }
     public function test(){
         session()->put('GH',['a']);
