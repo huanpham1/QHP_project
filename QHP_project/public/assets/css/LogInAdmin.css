@@ -42,6 +42,8 @@ body{
     border: 1px solid black;
     width: 90%;
     height: 50%;
+    padding-left: 10px;
+    position: relative;
 }
 .login_btn{
     width: 100%;
@@ -57,4 +59,25 @@ body{
     border: none;
     color: white;
     background-color: #79aec8;
+}
+.thongbao{
+    top: 42%;
+}
+.thongbao1{
+    top: 54%;
+}
+.thongbao, .thongbao1{
+    position: absolute;
+
+    left: 36%;
+}
+.infofail{
+    position: absolute;
+    color: red;
+    left: 41%;
+    top: 54%;
+    list-style-type: none;
+}
+.LoginBtn:hover{
+    background-color: #417690;
 }

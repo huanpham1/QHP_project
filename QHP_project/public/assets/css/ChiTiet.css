@@ -406,3 +406,24 @@ header{
 .GioHang{
     position: relative;
 }
+.acc{
+    position: relative;
+}
+.loguot{
+    position: absolute;
+    background-color: white;
+    width: 100px;
+    line-height: 30px;
+    text-align: center;
+    top: 97%;
+    left: -45%;
+    display: none;
+    border: 1px solid #828181;
+}
+.loguot:hover{
+    background-color: #d5cece;
+    cursor: pointer;
+}
+.acc:hover .loguot{
+    display: block;
+}

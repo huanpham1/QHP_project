@@ -20,7 +20,7 @@ class Users extends Model
     }
 
     public function addUser($data){
-        DB::insert('INSERT INTO '.$this->table.' (HoVaTen, NgaySinh, TenTaiKhoan, Email, MatKhau, SoDT, IsAdmin, DiaChi)
+        DB::insert('INSERT INTO '.$this->table.' (HoVaTen, NgaySinh, TenTaiKhoan, Email, password, SoDT, IsAdmin, DiaChi)
         VALUES (?, ?, ?, ?, ?, ?, ?, ?)', $data);
     }
 
@@ -31,7 +31,7 @@ class Users extends Model
     public function updateUser($data, $id){
         $data[] = $id;
 
-        return DB::update('UPDATE '.$this->table.' SET 
+        return DB::update('UPDATE '.$this->table.' SET
         HoVaTen=?,
         NgaySinh=?,
         TenTaiKhoan=?,
@@ -51,6 +51,6 @@ class Users extends Model
         } else {
             return False;
         }
-        
+
     }
 }

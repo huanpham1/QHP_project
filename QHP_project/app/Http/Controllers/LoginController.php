@@ -47,6 +47,36 @@ class LoginController extends Controller
         $data = DB::select('SELECT * FROM `taikhoan` WHERE 1');
         dd($data);
     }
+    public function LoginAdmin(Request $request){
+
+        $request->validate([
+            'username'=>'required|max:20',
+            'password'=>'required|min:6'
+        ],[
+            'username.required'=>'Bắt buộc nhập tên tài khoản',
+            // 'usernane.regex'=>'tài khoản phải không hợp lệ',
+            'password.required'=>'Bắt buộc nhập Mật khẩu',
+            'password.min'=>'Mật khẩu quá ngắn',
+
+        ]);
+        $arr = [
+            'TenTaiKhoan' =>$request->username,
+            'password' =>($request->password),
+            'IsAdmin' => 1
+        ];
+        // dd($arr);
+        // dd($arr);
+        if(Auth::guard('taikhoan')->attempt($arr)){
+            // dd('thành công');
+            $request->session()->put('admin', $request->username);
+            // dd($request->session()->all());
+            // return view('home')->with('username', $request->username);
+            // dd(session()->get('TenTaiKhoan'));
+            return redirect()->route('adminsite')->with('username', $request->username);
+        }else{
+            return redirect()->back()->with('fail', 'Mật Khẩu hoặc tài khoản chưa chính xác');
+        }
+    }
     // public function authenticate(Request $request){
     //     $user['info'] = $request->username;
     //     $arr = [

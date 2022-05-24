@@ -10,25 +10,33 @@
 <body>
     <div class="form_group">
         <div class="banner">QHP Administrator</div>
-        <form action="" class="from_main">
+        <form action="/DangNhap/Admin" method="post" class="from_main" >
             <div class="form_group_Inp">
                 <input type="text"
-                 name="usernameInp"
-                 id="usm"
+                 name="username"
                  class="usernameInp"
-                 placeholder="  User name"
+                 placeholder="  Tài Khoản"
                  >
             </div>
+            @error('username')
+                            <span style="color: red; font-size: " class="thongbao">{{$message}}</span>
+                        @enderror
             <div class="form_group_Inp">
-                <input type="text"
-                 name="PassInp"
-                 id="psm"
-                 class="PassInp"
-                 placeholder="  Password"
-                 >
+                <input type="password" placeholder="Mật khẩu" name= "password" class="PassInp"  >
+            </div>
+            @error('password')
+            <span style="color: red; font-size: " class="thongbao1">{{$message}}</span>
+            @enderror
+            <div class="infofail">
+                @if (\Session::has('fail'))
+                <div class="fail">{!! \Session::get('fail') !!}
+                </div>
+                @endif
             </div>
             <div class="login_btn">
-                <button class="LoginBtn">Login</button></div>
+                <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
+                <input type="submit" class="LoginBtn"  value="Đăng nhập">
+                {{-- <button class="LoginBtn">Login</button></div> --}}
         </form>
     </div>
 

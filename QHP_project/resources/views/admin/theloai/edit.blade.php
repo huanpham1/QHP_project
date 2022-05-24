@@ -15,14 +15,15 @@
 			<img src="{{ asset('assets/images/admin site.PNG')}}" class="image_banner" alt="">
 		</div>
 		<div class="content_header">
-			<div class="account">
-					<div class="name_acc">Admin Name
-						<ul class="info_acc">
-							<li>logout</li>
-						</ul>
-					</div>
-
-			</div>
+			@if (session()->has('admin'))
+            <div class="account">
+                <div class="name_acc"> Xin Chào {{session()->get('admin')}}
+                    <ul class="info_acc">
+                        <li onclick="logout()">logout</li>
+                    </ul>
+                </div>
+             </div>
+         @endif
 		</div>
 	</header>
 	<div class="mainlayout">
@@ -53,7 +54,7 @@
 								@error('name')
 									<span style="color: red; font-size:14px;">*{{$message}}</span>
 								@enderror
-							</td>	
+							</td>
                         </tr>
 						<tr>
 							<td colspan="2" style="padding-left: 15%;">
@@ -75,4 +76,11 @@
 
 	</footer>
 </body>
+<script>
+    function logout(){
+let url = "{{ route('checkoutadmin') }}";
+
+document.location.href=url;
+}
+</script>
 </html>

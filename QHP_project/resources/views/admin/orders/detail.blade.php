@@ -15,14 +15,15 @@
 			<img src="{{ asset('assets/images/admin site.PNG')}}" class="image_banner" alt="">
 		</div>
 		<div class="content_header">
-			<div class="account">
-					<div class="name_acc">Admin Name
-						<ul class="info_acc">
-							<li>logout</li>
-						</ul>
-					</div>
-
-			</div>
+			@if (session()->has('admin'))
+            <div class="account">
+                <div class="name_acc"> Xin Chào {{session()->get('admin')}}
+                    <ul class="info_acc">
+                        <li onclick="logout()">logout</li>
+                    </ul>
+                </div>
+             </div>
+         @endif
 		</div>
 	</header>
 	<div class="mainlayout">
@@ -82,7 +83,7 @@
                         </tr>
                     </table>
                 </div>
-				
+
 				<div class="table-list">
 					<table class="user-list" border="1">
 						<thead>
@@ -97,7 +98,7 @@
 						<tbody>
 							@if (!empty($productsList))
 								@foreach ($productsList as $key => $item)
-                                
+
                                 <tr>
                                     <td>{{$key+1}}</td>
                                     <td>{{$item->TenSP}}</td>
@@ -130,4 +131,11 @@
 
 	</footer>
 </body>
+<script>
+    function logout(){
+let url = "{{ route('checkoutadmin') }}";
+
+document.location.href=url;
+}
+</script>
 </html>
