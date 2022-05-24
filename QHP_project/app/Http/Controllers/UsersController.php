@@ -34,7 +34,7 @@ class UsersController extends Controller
             'fullname' => 'required|min:5',
             'dob' => 'required|date',
             'username' => 'required|regex:/^[\w_-]+$/|max:20|unique:taikhoan,TenTaiKhoan',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:taikhoan,Email',
             'password' => 'required|min:6|regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!$#%*]).*$/',
             'phoneNum' => 'required|regex:/^[0-9]{10}$/',
         ], [
@@ -47,6 +47,7 @@ class UsersController extends Controller
             'username.unique' => "Tên tài khoản đã tồn tại",
             'email.required' => "Email bắt buộc phải nhập",
             'email.email' => "Email không đúng định dạng",
+            'email.unique' => 'Email đã tồn tại',
             'password.required' => "Password bắt buộc phải nhập",
             'password.min' => "Password phải có ít nhất 6 ký tự",
             'password.regex' => "Password phải chứa ít nhất 1 ký tự viết hoa, viết thường, ký tự đặc biệt, và số",
@@ -100,7 +101,7 @@ class UsersController extends Controller
             'fullname' => 'required|min:5',
             'dob' => 'required|date',
             'username' => 'required|regex:/^[\w_-]+$/|max:20|unique:taikhoan,TenTaiKhoan,'.$id.',MaTK',
-            'email' => 'required|email',
+            'email' => 'required|email|unique:taikhoan,Email,'.$id.',MaTK',
             'password' => 'required|min:6|regex: /^(?=.*[a-z])(?=.*[A-Z])(?=.*[0-9])(?=.*[!$#%*]).*$/',
             'phoneNum' => 'required|regex:/^[0-9]{10}$/',
         ], [
@@ -110,6 +111,7 @@ class UsersController extends Controller
             'dob.date' => "Ngày sinh không hợp lệ",
             'email.required' => "Email bắt buộc phải nhập",
             'email.email' => "Email không đúng định dạng",
+            'email.unique' => 'Email đã tồn tại',
             'password.required' => "Password bắt buộc phải nhập",
             'password.min' => "Password phải có ít nhất 6 ký tự",
             'password.regex' => "Password phải chứa ít nhất 1 ký tự viết hoa, viết thường, ký tự đặc biệt, và số",

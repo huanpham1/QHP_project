@@ -60,7 +60,8 @@
             {{-- href="{{route('ThongTinCaNhan.index')}}" --}}
             <div class="acc_cart">
                     @if (session()->has('TenTaiKhoan'))
-                        <a class="acc"  ><div><i class="fa-solid fa-user"></i></div>
+                        <a class="acc"  >
+                            <div><i class="fa-solid fa-user"></i></div>
                             <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
                             <div class="loguot" onclick="logout()">Logout </div>
                         </a>
