@@ -88,7 +88,7 @@
                     </div>
 							@else
 							<tr>
-								<td colspan="4">Không có danh mục</td>
+								<td colspan="4">Sản phẩm</td>
 							</tr>
 				@endif
 
@@ -112,7 +112,7 @@
             </div>
                     @else
                     <tr>
-                        <td colspan="4">Không có danh mục</td>
+                        <td colspan="4">Không có sản phẩm</td>
                     </tr>
         @endif
         @if (!empty($SanPhamList))
