@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 
 use App\Models\DetailProduct;
+use Illuminate\Validation\Rule;
 
 class DetailProductController extends Controller
 {
@@ -32,9 +33,23 @@ class DetailProductController extends Controller
     }
 
     public function handleAdd(Request $request, $id){
+        $size = $request->size;
 
+        $productID = $id < 10 ? '0'.$id : $id;
+        $numberOfSize = count($this->product->getAllDetail($id)) + 1;
+        if ($numberOfSize < 10){
+            $numberOfSize = '0'.$numberOfSize;
+        }
+        $chiTietID = 'CTSP' . $productID . $numberOfSize;
+        
         $request->validate([
-            'size' => 'required|regex:/^[0-9]{2}$/|unique:chitietsanpham,Size',
+            //'size' => 'required|regex:/^[0-9]{2}$/|unique:chitietsanpham,Size',
+            'size' => ['required', 'regex:/^[0-9]{2}$/', 
+                Rule::unique('chitietsanpham')->where(function($query) use($size, $chiTietID){
+                    //return $query->where('ChiTietSPID', $chiTietID)->where('Size', $size);
+                    return $query->where('Size', $size)->where('ChiTietSPID', $chiTietID);
+                }),
+            ],
             'quantity' => 'required|regex:/^[0-9]+$/',
         ], [
             'size.required' => 'Size không được để trống',
@@ -43,13 +58,6 @@ class DetailProductController extends Controller
             'quantity.required' => 'Số lượng còn không được để trống',
             'quantity.regex' => 'Số lượng còn phải là số',
         ]);
-
-        $productID = $id < 9 ? '0'.$id : $id;
-        $numberOfSize = count($this->product->getAllDetail($id)) + 1;
-        if ($numberOfSize < 9){
-            $numberOfSize = '0'.$numberOfSize;
-        }
-        $chiTietID = 'CTSP' . $productID . $numberOfSize;
 
         $dataInsert = [
             $chiTietID,
@@ -98,9 +106,9 @@ class DetailProductController extends Controller
             'quantity.required' => 'Số lượng còn không được để trống',
             'quantity.regex' => 'Số lượng còn phải là số',
         ]);
-        $productID = $id < 9 ? '0'.$id : $id;
+        $productID = $id < 10 ? '0'.$id : $id;
         $numberOfSize = count($this->product->getAllDetail($id)) + 1;
-        if ($numberOfSize < 9){
+        if ($numberOfSize < 10){
             $numberOfSize = '0'.$numberOfSize;
         }
         $chiTietID = 'CTSP' . $productID . $numberOfSize;

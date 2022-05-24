@@ -76,14 +76,14 @@
             <div class="title1"><img src="{{ asset('assets/images/Image 3.png')}}" alt="nam"></div>
                 @if (!empty($SanPhamList))
                     <div class="hang">
-                        @for($j = 0; $j < 5; $j++)
+                        {{-- @for($j = 0; $j < 5; $j++)
                         <div class="cot">
-                            {{-- {{ route('displayProject', ['projects' => $projects->id]) }} --}}
-                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
+                            
+                            {{-- <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
                             <a href="#"><p class="tensp">{{$SanPhamList[$j]->MaSP}}</p></a>
                              <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
                         </div>
-                        @endfor
+                        @endfor --}}
                     </div>
 							@else
 							<tr>
