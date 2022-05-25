@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <link rel="stylesheet" href="{{ asset('assets/css/GioHang.css')}}">
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -95,7 +96,7 @@
                         <div class="item-infor">
                             <div class="color">Màu: <div class="item-color"></div></div>
                             <div class="size">Size: <div class="item-size">{{$item[0]->Size}}</div></div>
-                            <div class="btn-delete">
+                            <div class="btn-delete" onclick="DeleteCart('{{$id}}')">
                                 <a href="#">
                                 <strong><i class="fa-solid fa-square-xmark"></i>
                                 Xóa</strong>
@@ -181,5 +182,34 @@
 
         document.location.href=url;
     }
+    async function DeleteCart(id){
+        let isExecuted = confirm("Xác Nhận Xóa Sản Phẩm?");
+
+        if(isExecuted){
+            id = String(id);
+        const data = {ID: id};
+        console.log(data)
+            // const size = document.getElementById("size").value;
+            const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+            fetch('/XoaGH', {
+                method: 'post',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-CSRF-Token": csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+            window.location.reload();
+        }
+
+        }
+
 </script>
 </html>

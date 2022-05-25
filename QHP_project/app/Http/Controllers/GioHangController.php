@@ -87,13 +87,16 @@ class GioHangController extends Controller
      */
     public function remove(Request $request)
     {
-        if($request->id) {
+        $id =  $request->json('ID');
+
+        if($request) {
             $cart = session()->get('cart');
-            if(isset($cart[$request->id])) {
-                unset($cart[$request->id]);
+            if(isset($cart[$id])) {
+                unset($cart[$id]);
                 session()->put('cart', $cart);
             }
             session()->flash('success', 'Product removed successfully');
         }
+        return response()->json([$id],200);
     }
 }
