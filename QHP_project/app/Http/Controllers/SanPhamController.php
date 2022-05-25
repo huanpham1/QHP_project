@@ -32,4 +32,5 @@ class SanPhamController extends Controller
         $SoLuong = ($this->SanPham->getSizenew($data->json('MaSP'), $data->json('Size')));
         return response()->json([$SoLuong],200);
     }
+    
 }

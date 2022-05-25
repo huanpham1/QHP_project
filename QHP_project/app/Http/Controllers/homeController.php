@@ -17,8 +17,7 @@ class homeController extends Controller
         return view('DangNhap');
     }
     public function test(){
-        session()->put('GH',['a']);
-        session()->put('GH',['b']);
-        dd(Session()->get('GH'));
+
+        dd(session('cart'));
     }
 }

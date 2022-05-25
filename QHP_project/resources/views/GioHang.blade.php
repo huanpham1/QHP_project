@@ -22,6 +22,7 @@
                     @endif
             </div>
         </div>
+        {{ count((array) session('cart')) }}
         <div class="hduoi">
             <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
@@ -83,6 +84,9 @@
                     <th style="width: 15%; text-align: right;">GIÁ</th>
                     <th style="width: 15%; text-align: right;">THÀNH TIỀN</th>
                 </tr>
+                {{ count((array) session('cart')) }}
+                @foreach (session('cart') as $id => $item)
+                {{-- @php $home =  $item['SoLuong'] @endphp --}}
                 <tr>
                     <td style="padding: 0px;"><div class="cart-image"><img src="{{asset('assets/images/Image 4.png')}}" alt="Giay"></div></td>
                     <td class="item-name">
@@ -99,11 +103,13 @@
                         </div>
                     </td>
                     <td class="item-quantity">
-                        <input type="number" min="1" max="12" value="1">
+
+                        <input type="number" min="1" max="12" value="{{$item['SoLuong']}}" placeholder="">
                     </td>
                     <td class="item-price">$60</td>
                     <td class="item-total">$60</td>
                 </tr>
+                @endforeach
             </table>
             <hr style="margin-top: 30px;">
             <div class="cart-pay">

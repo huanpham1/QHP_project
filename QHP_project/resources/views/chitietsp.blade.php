@@ -63,8 +63,8 @@
 
                 @endif
 
-            <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
-                    <div class="SoLuongSP">5</div>
+            <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+                    {{-- <div class="SoLuongSP">5</div> --}}
                     </i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
 
             </div>
@@ -109,8 +109,8 @@
             @endif
             {{-- onclick="window.location='{{ route('giohang') }}'" --}}
             <div class="btn">
-                    <button class="themVaoGio" onclick="ThemGH({{$data->MaSP}})">THÊM VÀO GIỎ</button>
-                    <button class="thanhToan"  type="submit">THANH TOÁN</button>
+                <button class="themVaoGio" onclick="ThemGHMOI()">THÊM VÀO GIỎ</button>
+                <button class="thanhToan" type="submit">THANH TOÁN</button>
             </div>
         </div>
 
@@ -141,6 +141,7 @@
         <div class="LOGO"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></div>
         </div>
         <div class="copyright">© Copyright QHP Store </div>
+        <input type="hidden" class="abc" id="" value="{{$CTSPID}}">
     </footer>
     {{-- {{$CTSPID}} --}}
 </body>
@@ -157,10 +158,32 @@
         }
     </script>
     <script>
-        function logout(){
-            let url = "{{ route('checkout') }}";
+        async function ThemGHMOI(){
+            const ma = document.querySelector(".abc").value;
+            const size = document.getElementById("size").value;
+            const sl = document.querySelector(".input-qty").value;
+            const data = { CTSPID: ma, SoLuong: sl};
+            // console.log(sl);
+            // console.log(data)
+            // console.log(giatri);
 
-            document.location.href=url;
+            const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+            fetch('/ThemGH', {
+                method: 'post',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-CSRF-Token": csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+            window.location.reload();
         }
     </script>
 </html>

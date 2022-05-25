@@ -17,6 +17,7 @@ use App\Http\Controllers\xemChiTietController;
 use App\Http\Controllers\XemDanhMucController;
 use App\Http\Controllers\XemTheLoaiController;
 use App\Http\Controllers\ThongTinCaNhanController;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -27,15 +28,14 @@ use App\Http\Controllers\ThongTinCaNhanController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
 Route::prefix('/')->group(function(){
     Route::get('/', [homeController::class, 'home'])->name('home');
     Route::get('/DangNhap', [homeController::class, 'register'])->name('DangNhap');
     Route::get('/DangKy', function () {
         return view('DangKy');
     })->name('DangKy');
-    Route::get('/GioHang', function () {
-        return view('GioHang');
-    })->name('giohang');
+    Route::get('/GioHang', [GioHangController::class, 'index'])->name('giohang');
     Route::get('/LogInAdmin', function () {
         return view('LogInAdmin');
     });
@@ -43,12 +43,13 @@ Route::prefix('/')->group(function(){
     Route::get('/Products/ChiTiet/{id}', [SanPhamController::class, 'ChiTiet'])->name('chitiet');
     Route::get('/search-products', [ProductsController::class, 'search'])->name('search-products');
     Route::get('/checkout',[SignInController::class, 'checkout'])->name('checkout');
+    route::get('/test', [homeController::class, 'test'])->name('test');
+    Route::post('getsl', [SanPhamController::class, 'GetSL'])->name('getSL');
+    route::post('/ThemGH', [GioHangController::class, 'addToCart'])->name('ThemGH');
+    Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);
+    Route::post("/DangNhap/Admin",[LoginController::class , 'LoginAdmin'])->name('LoginAdmin');
 });
-route::get('/test', [homeController::class, 'test'])->name('test')->middleware('checkadmin');
-Route::post('getsl', [SanPhamController::class, 'GetSL'])->name('getSL');
-route::get('/ThemGH/{id}', [GioHangController::class, 'ThemGH'])->name('ThemGH');
-Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);
-Route::post("/DangNhap/Admin",[LoginController::class , 'LoginAdmin'])->name('LoginAdmin');
+
 // Route::get('/adminsite', function () {
 //     return view('adminsite');
 // });

@@ -8,8 +8,10 @@ use Illuminate\Support\Facades\DB;
 class SanPham extends Model
 {
     use HasFactory;
+    protected $table = 'sanpham';
+
     protected $fillable=[
-        'TenTaiKhoan','matkhau',
+        'ChiTietSPID', 'Size', 'SoLuongCon', 'MaSP'
     ];
 
     public function GetSanPham($id){
@@ -37,6 +39,8 @@ class SanPham extends Model
         return $data;
     }
     public function getCT($id){
-
+        $data = DB::table('chitietsanpham')->where('ChiTietSanPhamID', $id);
+        // $data = (DB::table('chitietsanpham')->where('MaSP', (string)$id)->where('Size', (string)$size)->get('ChiTietSPID'));
+        return $data;
     }
 }

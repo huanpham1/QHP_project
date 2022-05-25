@@ -75,4 +75,29 @@ async function getSL(ma){
         .catch((error) => {
         console.error('Error:', error);
         });
-}
+        async function ThemGH(ma){
+            const size = document.getElementById("size").value;
+            const sl = document.querySelector(".input-qty").value;
+            const data = { MaSP: ma, SoLuong: sl, Size: size };
+            // console.log(sl);
+            // console.log(data)
+            // console.log(giatri);
+
+            const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+            fetch('/ThemGH', {
+                method: 'post',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-CSRF-Token": csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                console.log(response);
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+}}
+
