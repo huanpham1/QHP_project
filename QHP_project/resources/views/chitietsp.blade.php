@@ -105,6 +105,7 @@
                 <div class="soluong">
                     <div class="txtsl">Tình trạng:</div>
                     <div class="kq"> còn {{$SoLuong->SoLuongCon}} sản phẩm</div>
+                    <input type="hidden" name="" id="" class="SLC" value="{{$SoLuong->SoLuongCon}}">
                 </div>
             @endif
             {{-- onclick="window.location='{{ route('giohang') }}'" --}}

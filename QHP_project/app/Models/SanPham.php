@@ -19,6 +19,11 @@ class SanPham extends Model
         // dd($data);
         return $data;
     }
+    public function GetIDSP($id){
+        $data = DB::table('chitietsanpham')->where('ChiTietSPID', $id)->get("MaSP");
+        // dd($data);
+        return $data;
+    }
     public function GetSoLuong($id){
         $data = (DB::table('chitietsanpham')->where('MaSP', $id)->first());
 
@@ -39,7 +44,7 @@ class SanPham extends Model
         return $data;
     }
     public function getCT($id){
-        $data = DB::table('chitietsanpham')->where('ChiTietSanPhamID', $id);
+        $data = DB::table('chitietsanpham')->where('ChiTietSPID', $id)->first();
         // $data = (DB::table('chitietsanpham')->where('MaSP', (string)$id)->where('Size', (string)$size)->get('ChiTietSPID'));
         return $data;
     }

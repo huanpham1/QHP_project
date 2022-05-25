@@ -15,12 +15,13 @@ class GioHangController extends Controller
     }
     public function index(){
         // dd(session()->get('cart'));
-        $SanPham = null;
+        $SP = null;
         foreach(session('cart') as $id => $item){
-            dd($this->SanPham->getCT($id));
-            // $SanPham[$id] =
+            $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
+
         }
-        return view('GioHang');
+        // dd($SP);
+        return view('GioHang', compact("SP"));
     }
     public function ThemGH(Request $req, $id){
         $ma = DB::table('chitietsanpham')->where('MaSP', $id)->get('ChiTietSPID')[0]->ChiTietSPID;
@@ -68,5 +69,31 @@ class GioHangController extends Controller
         // return view('GioHang');
         // return redirect()->back();
         return response()->json([$id],200);
+    }
+    public function update(Request $request)
+    {
+        if($request->id && $request->quantity){
+            $cart = session()->get('cart');
+            $cart[$request->id]["quantity"] = $request->quantity;
+            session()->put('cart', $cart);
+            session()->flash('success', 'Cart updated successfully');
+        }
+    }
+
+    /**
+     * Write code on Method
+     *
+     * @return response()
+     */
+    public function remove(Request $request)
+    {
+        if($request->id) {
+            $cart = session()->get('cart');
+            if(isset($cart[$request->id])) {
+                unset($cart[$request->id]);
+                session()->put('cart', $cart);
+            }
+            session()->flash('success', 'Product removed successfully');
+        }
     }
 }

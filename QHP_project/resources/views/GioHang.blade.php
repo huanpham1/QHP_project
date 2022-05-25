@@ -22,7 +22,7 @@
                     @endif
             </div>
         </div>
-        {{ count((array) session('cart')) }}
+        {{-- {{ count((array) session('cart')) }} --}}
         <div class="hduoi">
             <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
@@ -84,16 +84,17 @@
                     <th style="width: 15%; text-align: right;">GIÁ</th>
                     <th style="width: 15%; text-align: right;">THÀNH TIỀN</th>
                 </tr>
-                {{ count((array) session('cart')) }}
-                @foreach (session('cart') as $id => $item)
+                {{-- {{ count((array) session('cart')) }} --}}
+                @foreach ($SP as $id => $item)
+                {{-- @php dd($item); @endphp --}}
                 {{-- @php $home =  $item['SoLuong'] @endphp --}}
                 <tr>
-                    <td style="padding: 0px;"><div class="cart-image"><img src="{{asset('assets/images/Image 4.png')}}" alt="Giay"></div></td>
+                    <td style="padding: 0px;"><div class="cart-image"><img src="{{asset('storage/products/'.$item[1]->HinhAnh)}}" alt="Giay"></div></td>
                     <td class="item-name">
-                       <a href="#">Multicolor Men's Sneaker</a>
+                       <a href="#">{{$item[1]->TenSP}}</a>
                         <div class="item-infor">
                             <div class="color">Màu: <div class="item-color"></div></div>
-                            <div class="size">Size: <div class="item-size">38</div></div>
+                            <div class="size">Size: <div class="item-size">{{$item[0]->Size}}</div></div>
                             <div class="btn-delete">
                                 <a href="#">
                                 <strong><i class="fa-solid fa-square-xmark"></i>

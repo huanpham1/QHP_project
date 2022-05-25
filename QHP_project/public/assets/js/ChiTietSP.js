@@ -1,8 +1,15 @@
 const plus = document.querySelector('.plus');
 const minus = document.querySelector('.minus');
 plus.onclick = function(){
+    let SLC = document.querySelector(".SLC").value;
     const box = document.querySelector('.input-qty');
-    box.value= Number(box.value) + 1;
+    if(Number(box.value)<Number(SLC)){
+        box.value= Number(box.value) + 1;
+    }
+    else{
+        console.log("Số lượng không hợp lệ" + SLC);
+    }
+
 }
 minus.onclick = function(){
     const box = document.querySelector('.input-qty');
