@@ -65,7 +65,15 @@
 
                 @endif
 
-            <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping GH">
+                    @if(count(Session::get('cart', array()))>0)
+                        <div class="carthover">
+                            @if(session('cart'))
+                                @php echo count(Session::get('cart', array())); @endphp
+                            @endif
+                        </div>
+                    @endif
+                </i></a>
         </div>
         </div>
     </header>
@@ -86,15 +94,18 @@
                     <th style="width: 15%; text-align: right;">THÀNH TIỀN</th>
                 </tr>
                 {{-- {{ count((array) session('cart')) }} --}}
+                @php $total = 0; @endphp
+                @if(isset($SP))
                 @foreach ($SP as $id => $item)
-                {{-- @php dd($item); @endphp --}}
+                {{-- @php dd($item[0]->SoLuongCon); @endphp --}}
                 {{-- @php $home =  $item['SoLuong'] @endphp --}}
                 <tr>
-                    <td style="padding: 0px;"><div class="cart-image"><img src="{{asset('storage/products/'.$item[1]->HinhAnh)}}" alt="Giay"></div></td>
+                    <td style="padding: 0px;"><div class="cart-image"><a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}"><img src="{{asset('storage/products/'.$item[1]->HinhAnh)}}" alt="Giay"></div></a></td>
                     <td class="item-name">
-                       <a href="#">{{$item[1]->TenSP}}</a>
+                       <a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}">{{$item[1]->TenSP}}</a>
                         <div class="item-infor">
-                            <div class="color">Màu: <div class="item-color"></div></div>
+                            {{-- <div class="color">Màu: <div class="item-color"></div></div> --}}
+                            @php $total += $item[1]->GiaBan * $item['SoLuong']; @endphp
                             <div class="size">Size: <div class="item-size">{{$item[0]->Size}}</div></div>
                             <div class="btn-delete" onclick="DeleteCart('{{$id}}')">
                                 <a href="#">
@@ -106,12 +117,15 @@
                     </td>
                     <td class="item-quantity">
 
-                        <input type="number" min="1" max="12" value="{{$item['SoLuong']}}" placeholder="">
+                        <input type="number" class="SoLuong" min="1"  value="{{$item['SoLuong']}}" onchange="UpdateCart('{{$id}}')" placeholder="">
+                        <div class="slKhongHopLe"></div>
                     </td>
-                    <td class="item-price">$60</td>
-                    <td class="item-total">$60</td>
+                    <td class="item-price">{{$item[1]->GiaBan}}đ</td>
+                    <td class="item-total">{{$item[1]->GiaBan * $item['SoLuong']}}đ</td>
                 </tr>
                 @endforeach
+                @endif
+
             </table>
             <hr style="margin-top: 30px;">
             <div class="cart-pay">
@@ -138,7 +152,7 @@
                 </div>
                 <div class="user-total-price">
                     <div class="total-price">
-                        <strong>Tạm Tính: <span style="color: red;">$60</span></strong>
+                        <strong>Tạm Tính: <span style="color: red;">{{$total }}đ</span></strong>
                     </div>
                     <div class="user-pay">
                         <input type="submit" value="ĐẶT HÀNG">
@@ -177,6 +191,9 @@
     </footer>
 </body>
 <script>
+
+</script>
+<script>
     function logout(){
         let url = "{{ route('checkout') }}";
 
@@ -210,6 +227,39 @@
         }
 
         }
+    async function UpdateCart(id){
+        let SoLuong = document.querySelector(".SoLuong").value;
+
+            id = String(id);
+        const data = {ID: id, SL: SoLuong};
+        console.log(data)
+            // const size = document.getElementById("size").value;
+            const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
+            fetch('/SuaGH', {
+                method: 'post',
+                body: JSON.stringify(data),
+                headers: {
+                    'Content-Type': 'application/json',
+                    "X-CSRF-Token": csrfToken
+                }
+            })
+            .then(response => response.json())
+            .then(response => {
+                if(response==400){
+                    document.querySelector(".slKhongHopLe").innerHTML="Số lượng yêu cầu không có sẵn";
+                    document.querySelector(".SoLuong").value = SoLuong - 1;
+                }else{
+                    console.log(response);
+                    window.location.reload();
+                }
+            })
+            .catch((error) => {
+            console.error('Error:', error);
+            });
+
+        }
+
+
 
 </script>
 </html>

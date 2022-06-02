@@ -19,7 +19,6 @@
                     <a href="{{route('DangNhap')}}">Đăng Nhập</a>
                     <pre>|</pre>
                     <a href="./DangKy">Đăng Ký</a>
-
                     @endif
 
             </div>
@@ -68,7 +67,16 @@
 
                     @endif
 
-                <a href="./GioHang"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping GH">
+                    @if(count(Session::get('cart', array()))>0)
+                        <div class="carthover">
+                            @if(session('cart'))
+                                @php echo count(Session::get('cart', array())); @endphp
+                            @endif
+                        </div>
+                    @endif
+
+                </i></a>
             </div>
         </div>
     </header>

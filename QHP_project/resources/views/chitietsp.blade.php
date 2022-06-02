@@ -63,7 +63,21 @@
 
                 @endif
 
-            <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping"></i></a>
+                <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping GH">
+                    @if(count(Session::get('cart', array()))>0)
+                        <div class="carthover" style="background-color: rgb(249, 97, 97)">
+                            @if(session('cart'))
+                                @php echo count(Session::get('cart', array())); @endphp
+                            @endif
+                        </div>
+                    @else
+                    <div class="carthover">
+                        @if(session('cart'))
+
+                        @endif
+                    </div>
+                    @endif
+                </i></a>
                     {{-- <div class="SoLuongSP">5</div> --}}
                     </i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
 
@@ -95,6 +109,7 @@
                     <input aria-label="quantity" class="input-qty" min="1" name="" type="number" value="1">
                     <input class="plus is-form" type="button" value="+">
                   </div>
+                <div class="SLKHL"></div>
             </div>
             @if(($SoLuong=== NULL))
                 <div class="soluong">
@@ -114,7 +129,14 @@
                 <button class="thanhToan" type="submit">THANH TOÁN</button>
             </div>
         </div>
-
+        <div class="alert-green hide">
+            <span class="fas fa-check-circle"></span>
+            <span class="msg">Thêm thành công</span>
+            <div class="close-btn-green ">
+               <span class="fas fa-times" ></span>
+            </div>
+         </div>
+        </div>
     </div>
     <footer>
         <div class="container_footer">
@@ -159,10 +181,35 @@
         }
     </script>
     <script>
+        function Alertgreen(){
+            const alert = document.querySelector('.alert-green')
+            const closebtn = document.querySelector('.close-btn-green')
+            alert.style.display = "block";
+            alert.classList.add("show");
+            alert.classList.remove("hide");
+            alert.classList.add("showAlert");
+            setTimeout(function(){
+                alert.classList.remove("show");
+                alert.classList.add("hide");
+                setTimeout(function(){
+                alert.style.display = "none"
+            },1000);
+            },1000);
+            closebtn.onclick = ()=>{
+
+            alert.classList.remove("show");
+            alert.classList.add("hide");
+            setTimeout(function(){
+                alert.style.display = "none"
+            },1000);
+            };
+        };
         async function ThemGHMOI(){
             const ma = document.querySelector(".abc").value;
             const size = document.getElementById("size").value;
+            const SLKHL = document.querySelector(".SLKHL");
             const sl = document.querySelector(".input-qty").value;
+
             const data = { CTSPID: ma, SoLuong: sl};
             // console.log(sl);
             // console.log(data)
@@ -179,12 +226,20 @@
             })
             .then(response => response.json())
             .then(response => {
-                console.log(response);
+                // console.log(response);
+                if(response==400){
+                    SLKHL.innerHTML="Số lượng yêu cầu không có sẵn";
+                }
+                else{
+                    document.querySelector(".carthover").innerHTML = response;
+                    document.querySelector(".carthover").style.backgroundColor = "rgb(249, 97, 97)";
+                    Alertgreen()
+                }
             })
             .catch((error) => {
-            console.error('Error:', error);
+                console.error('Error:', error);
             });
-            window.location.reload();
+            // window.location.reload();
         }
     </script>
 </html>

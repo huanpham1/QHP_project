@@ -16,8 +16,11 @@ class GioHangController extends Controller
     public function index(){
         // dd(session()->get('cart'));
         $SP = null;
-        foreach(session('cart') as $id => $item){
-            $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
+        if(session('cart')){
+            foreach(session('cart') as $id => $item){
+                $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
+
+            }
 
         }
         // dd($SP);
@@ -35,8 +38,9 @@ class GioHangController extends Controller
                 $data = session()->get('GH');
                 // $data1 = $data->session()->get('GH');
                 // dd($data);
+
             }
-        return view('GioHang', compact('data'));
+        return view('GioHang', compact('sl'));
         // $ma = DB::table('chitietsanpham')->where('MaSP', [$data->json('MaSP')])->where('Size', [$data->json('Size')])->get('ChiTietSPID')[0]->ChiTietSPID;
         // if($data !=null){
         //     $GHC = Session('GH')?Session('GH') : null;
@@ -54,30 +58,52 @@ class GioHangController extends Controller
         // $ma = DB::table('chitietsanpham')->where('MaSP', $id)->get('ChiTietSPID')[0]->ChiTietSPID;
         $id =  $request->json('CTSPID');
         $cart = session()->get('cart', []);
-        // $id = '2';
+        $slCon = ($this->SanPham->getCT($id))->SoLuongCon;
+        $slthem = $request->json('SoLuong');
         if(isset($cart[$id])) {
-            $cart[$id]['SoLuong']+=$request->json('SoLuong');
+            $slco = $cart[$id]['SoLuong'] + $slthem;
+            if($slco<$slCon){
+                $cart[$id]['SoLuong']+=$request->json('SoLuong');
+                session()->put('cart', $cart);
+                $sl = count(Session('cart'));
+                return response()->json([$sl],200);
+            }
+            else return response()->json(["400"],400);
+
         } else {
-            $cart[$id] = [
-                "SoLuong" => $request->json('SoLuong')
-            ];
+            if($slthem<$slCon){
+                $cart[$id] = [
+                    "SoLuong" => $request->json('SoLuong')
+                ];
+                session()->put('cart', $cart);
+                $sl = count(Session('cart'));
+                return response()->json([$sl],200);
+            }else return response()->json(["403"],400);
         }
 
-        session()->put('cart', $cart);
-        // dd(session()->get('cart'));
-        // dd($ma);
-        // return view('GioHang');
-        // return redirect()->back();
-        return response()->json([$id],200);
+
+
+
     }
     public function update(Request $request)
     {
-        if($request->id && $request->quantity){
+        $id =  $request->json('ID');
+        $sl = $request->json('SL');
+        $slCon = ($this->SanPham->getCT($id))->SoLuongCon;
+        if($sl<$slCon){
             $cart = session()->get('cart');
-            $cart[$request->id]["quantity"] = $request->quantity;
+            $cart[$id]["SoLuong"] = $sl;
             session()->put('cart', $cart);
-            session()->flash('success', 'Cart updated successfully');
+            return response()->json([" "],200);
         }
+        else
+            return response()->json(400);
+        // if($request->id && $request->quantity){
+        //     $cart = session()->get('cart');
+        //     $cart[$request->id]["quantity"] = $request->quantity;
+        //     session()->put('cart', $cart);
+        //     session()->flash('success', 'Cart updated successfully');
+        // }
     }
 
     /**

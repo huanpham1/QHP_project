@@ -58,7 +58,7 @@ class SignInController extends Controller
     }
     public function checkout(){
         session()->forget('TenTaiKhoan');
-        return view('home');
+        return (redirect('/'));
     }
     public function checkoutadmin(){
         session()->forget('admin');

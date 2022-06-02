@@ -317,7 +317,7 @@ p{
 }
 .view-more{
     text-align: center;
-    margin: 25px 0; 
+    margin: 25px 0;
 }
 .view-more button{
     height: 55px;
@@ -364,4 +364,19 @@ footer{
 }
 footer p{
     font-size: 20px;
+}
+.GH{
+    position: relative;
+}
+.carthover{
+    background-color: rgb(249, 97, 97);
+    color: azure;
+    width: 50%;
+    height:50%;
+    font-size: 15px;
+    clip-path: ellipse(50% 50% at center);
+    position: absolute;
+    text-align: center;
+    top: -10%;
+    right: -20%;
 }

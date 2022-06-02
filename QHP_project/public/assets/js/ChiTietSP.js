@@ -1,4 +1,5 @@
 const plus = document.querySelector('.plus');
+const SLKHL = document.querySelector('.SLKHL');
 const minus = document.querySelector('.minus');
 plus.onclick = function(){
     let SLC = document.querySelector(".SLC").value;
@@ -7,7 +8,7 @@ plus.onclick = function(){
         box.value= Number(box.value) + 1;
     }
     else{
-        console.log("Số lượng không hợp lệ" + SLC);
+        SLKHL.innerHTML="Số lượng yêu cầu không có sẵn";
     }
 
 }

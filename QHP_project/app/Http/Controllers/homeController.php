@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Symfony\Component\HttpFoundation\Session\Session;
 
 class homeController extends Controller
 {
@@ -18,6 +19,6 @@ class homeController extends Controller
     }
     public function test(){
 
-        dd(session('cart'));
+        dd(count(Session('cart')));
     }
 }

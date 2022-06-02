@@ -47,6 +47,7 @@ Route::prefix('/')->group(function(){
     Route::post('getsl', [SanPhamController::class, 'GetSL'])->name('getSL');
     route::post('/ThemGH', [GioHangController::class, 'addToCart'])->name('ThemGH');
     route::post('/XoaGH', [GioHangController::class, 'remove'])->name('XoaGH');
+    route::post('/SuaGH', [GioHangController::class, 'update'])->name('SuaGH');
     Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);
     Route::post("/DangNhap/Admin",[LoginController::class , 'LoginAdmin'])->name('LoginAdmin');
 });
