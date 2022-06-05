@@ -16,7 +16,7 @@ class LaySanPham extends Model
     }
     function getAllSanPham_Nu(){
 
-        $sp = DB::select('SELECT * FROM sanpham WHERE MaDanhMuc = 2');
+        $sp = DB::select('SELECT * FROM sanpham WHERE MaDanhMuc = 2 ');
         
         return $sp;
     }
@@ -36,7 +36,7 @@ class LaySanPham extends Model
     function getSanPham($id){
 
         // Câu truy vấn lấy san pham theo id
-        $sp = DB::select('SELECT * FROM sanpham WHERE MaSP = '.$id);
+        $sp = DB::select('SELECT * FROM sanpham, chitietsanpham WHERE sanpham.MaSP = chitietsanpham.MaSP  AND sanpham.MaSP = '.$id);
         
         return $sp;
     }
@@ -47,4 +47,5 @@ class LaySanPham extends Model
     
         return $sp;
     }
+    
 }

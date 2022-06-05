@@ -34,7 +34,6 @@
                             </ul>
                         </li>
                     <?php }?>
-                    <li><a href="#">Trẻ em</a></li>
                 </ul>
             </nav>
             <div class="search">

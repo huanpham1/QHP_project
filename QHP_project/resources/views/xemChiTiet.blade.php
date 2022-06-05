@@ -35,7 +35,6 @@
                             </ul>
                         </li>
                     <?php }?>
-                    <li><a href="#">Trẻ em</a></li>
                 </ul>
             </nav>
             <div class="search">
@@ -59,10 +58,10 @@
                 <img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay">
             </div>
             <div class="small_img">
-                <img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay">
-                <img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>">
-                <img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>">
-                <img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>">
+                <div><img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay"></div>
+                <div><img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay"></div>
+                <div><img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay"></div>
+                <div><img name = "img_sp" src="<?php echo asset('assets/images/sp1.jpg')?>" alt="Giay"></div>
             </div>
         </div>
         <form action="/GioHang" method="get" class="info_sp">
@@ -84,11 +83,13 @@
                 <div class="size">
                     <h2>SIZE</h2>
                     <select name="SIZE" id="size">
-                        <option value="39">39</option>
-                        <option value="40">40</option>
+                        <?php foreach($sanpham as $data){ ?>
+                            <option value="<?php echo $data->Size ?>"><?php echo $data->Size ?></option>
+                        <?php } ?>
+                        <!-- <option value="40">40</option>
                         <option value="41">41</option>
                         <option value="41">42</option>
-                        <option value="41">43</option>
+                        <option value="41">43</option> -->
                     </select>
                 </div>
                 <div class="soLuong">
