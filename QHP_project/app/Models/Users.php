@@ -13,8 +13,13 @@ class Users extends Model
 
     protected $table = 'taikhoan';
 
-    public function getAllUsers(){
-        $users = DB::select('SELECT * FROM '.$this->table);
+    public function getAllUsers($filter = [], $keywords = ''){
+        if (empty($filter)){
+            $users = DB::select("SELECT * FROM ".$this->table." WHERE HoVaTen LIKE '%".$keywords."%' OR DiaChi LIKE '%".$keywords."%'");
+        } else {
+            $users = DB::select("SELECT * FROM ".$this->table." WHERE IsAdmin='".$filter[0]."' AND (HoVaTen LIKE '%".$keywords."%' OR DiaChi LIKE '%".$keywords."%')");
+            
+        }
 
         return $users;
     }

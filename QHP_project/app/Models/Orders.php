@@ -34,4 +34,9 @@ class Orders extends Model
     public function deleteOrder($id){
         return DB::delete('DELETE FROM '.$this->table.' WHERE MaDonHang=?', [$id]);
     }
+
+    public function updateStatus($data, $id){
+        $data[] = $id;
+        return DB::update('UPDATE '. $this->table .' SET TrangThai=? WHERE MaDonHang=?', $data);
+    }
 }

@@ -56,6 +56,7 @@
 								<th>Địa chỉ</th>
 								<th>Ngày đặt hàng</th>
 								<th>Email</th>
+								<th>Trạng thái</th>
 								<th>Chi tiết</th>
 								<th>Xóa</th>
 							</tr>
@@ -69,6 +70,7 @@
 								<td>{{$item->DiaChiNhanHang}}</td>
 								<td>{{$item->NgayDatHang}}</td>
                                 <td>{{$item->Email}}</td>
+								<td>{{$item->TrangThai}}</td>
                                 <td>
                                     <button class="btn-detail"><a href="{{route('orders.detail', ['id'=>$item->MaDonHang])}}">Chi tiết</a></button>
                                 </td>

@@ -118,6 +118,17 @@
 							@endif
 						</tbody>
 					</table>
+					<form class="order-status" action="{{route('orders.post-edit')}}" method="POST" enctype="multipart/form-data">
+						<label style="font-weight: bold;">Trạng thái giao hàng</label><br>
+						<select name="status" id="status" class="status">
+							<option value="Chưa giao" <?php if ($orderDetail->TrangThai == "Chưa giao") echo 'selected'; ?>>Chưa giao</option>
+							<option value="Đang giao" <?php if ($orderDetail->TrangThai == "Đang giao") echo 'selected'; ?>>Đang giao</option>
+							<option value="Đã giao" <?php if ($orderDetail->TrangThai == "Đã giao") echo 'selected'; ?>>Đã giao</option>
+						</select>
+						<button class="btn-status" type="submit">Xử lý</button>
+						@csrf
+					</form>
+
                     <button class="btn-add"><a href="{{route('orders.index')}}">Quay lại</a></button>
 				</div>
 

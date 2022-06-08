@@ -22,7 +22,7 @@ class OrdersController extends Controller
         return view('admin.orders.list', compact('title', 'ordersList'));
     }
 
-    public function detail($id){
+    public function detail(Request $request, $id=0){
         $title = 'Chi tiết đơn hàng';
 
         if (!empty($id)){
@@ -31,6 +31,7 @@ class OrdersController extends Controller
             $productsList = $this->orders->getProductsInOrder($id);
             
             if (!empty($orderDetail[0])){
+                $request->session()->put('id', $id);
                 $orderDetail = $orderDetail[0];
             } else {
                 return redirect()->route('orders.index')->with('msg', 'Chi tiết đơn hàng không tồn tại');
@@ -63,5 +64,16 @@ class OrdersController extends Controller
 
         return redirect()->route('orders.index')->with('msg', $msg);
         
+    }
+
+    public function update(Request $request){
+        $id = session('id');
+        if (empty($id)){
+            return back()->with('msg', 'Liên kết không tồn tại');
+        }
+        $updateData = [$request->status];
+        $this->orders->updateStatus($updateData, $id);
+
+        return back()->with('msg', 'Cập nhật trạng thái thành công');
     }
 }
