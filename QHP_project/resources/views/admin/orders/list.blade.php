@@ -48,6 +48,29 @@
 			<div class="maincontent">
 				<h1>{{$title}}</h1>
 				<div class="table-list">
+					<form action="" class="orders-filter">
+						<div class="filter-col">
+							<label for="from_date" style="font-size:18px; margin-right:5px;">Từ ngày</label>
+							<input type="date" name="from_date" id="from_date" class="date-filter" value="{{ request()->from_date }}">
+							<label for="to_date" style="font-size:18px; margin-right:5px; margin-left:5px;">Đến ngày</label>
+							<input type="date" name="to_date" id="to_date" class="date-filter" value="{{ request()->to_date }}">
+						</div>
+						<div class="filter-col">
+								<select name="status" id="status" class="select-categories">
+									<option value="0">Tất cả trạng thái</option>
+									<option value="Chưa giao" {{request()->status=='Chưa giao'?'selected':false}}>Chưa giao</option>
+									<option value="Đang giao" {{request()->status=='Đang giao giao'?'selected':false}}>Đang giao</option>
+									<option value="Đã giao" {{request()->status=='Đã giao'?'selected':false}}>Đã giao</option>
+								</select>
+						</div>
+						<div class="filter-col">
+							<input type="search" name="keywords" class="filter-keywords" 
+							placeholder="Từ khóa tìm kiếm..." value="{{request()->keywords}}">
+						</div>
+						<div class="filter-col">
+							<button type="submit" class="filter-btn">Lọc</button>
+						</div>
+					</form>
 					<table class="user-list" border="1">
 						<thead>
 							<tr>

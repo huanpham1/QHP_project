@@ -14,10 +14,43 @@ class OrdersController extends Controller
         $this->orders = new Orders();
     }
 
-    public function index(){
+    public function index(Request $request){
         $title = 'Danh sách đơn hàng';
 
-        $ordersList = $this->orders->getAllOrders();
+        $status = '';
+        $dates = [];
+
+        if (!empty($request->from_date)){
+            $fromDate = $request->from_date;
+            
+            $arr = explode('-', $fromDate);
+
+            $dates[] = ''.$arr[0].$arr[1].$arr[2];
+        } else {
+            $dates[] = '00000000';
+        }
+
+        if (!empty($request->to_date)){
+            $toDate = $request->to_date;
+
+            $arr = explode('-', $toDate);
+
+            $dates[] = ''.$arr[0].$arr[1].$arr[2];
+        } else {
+            $dates[] = date('ymd');
+        }
+
+        if (!empty($request->status)){
+            $status = $request->status;
+        }
+
+        if (!empty($request->keywords)){
+            $keywords = $request->keywords;
+        } else {
+            $keywords = '';
+        }
+
+        $ordersList = $this->orders->getAllOrders($dates, $status, $keywords);
 
         return view('admin.orders.list', compact('title', 'ordersList'));
     }

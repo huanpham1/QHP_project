@@ -303,6 +303,19 @@
     display: flex;
     justify-content: space-between;
   }
+  .orders-filter{
+    width: 90%;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    display: flex;
+    justify-content: space-between;
+  }
+  .date-filter{
+    width: 150px;
+    height: 25px;
+    font-size: 16px;
+    padding-left: 5px;
+  }
   .message{
     width: 95%;
     height: 50px;
