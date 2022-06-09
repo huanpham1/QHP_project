@@ -9,6 +9,7 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\Models\LaySanPham;
 use App\Models\LayTheLoai;
 use App\Models\LayDanhMuc;
+use App\Models\SanPham;
 
 class homeController extends Controller
 {
