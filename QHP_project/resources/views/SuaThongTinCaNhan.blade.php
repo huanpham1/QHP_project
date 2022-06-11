@@ -23,37 +23,46 @@
             <a href="../"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             <nav>
                 <ul>
-                    <li><a href="#">About us</a></li>
-                    <li class="nam">
-                        <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <ul class="namnam">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
-                    <li class="nu">
-                        <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <ul class="nunu">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Trẻ em</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <?php foreach($danhmuc as $datadm){ ?>
+                        <li class="nam">
+                            <a href="{{route('XemDanhMuc.index',['id'=>$datadm->MaDanhMuc])}}"><?php echo $datadm->TenDanhMuc ?> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                            <ul class="namnam">
+                                <?php foreach($theloai as $data){ ?>
+                                    <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}"><?php echo $data->TenTheLoai ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php }?>
                 </ul>
             </nav>
             <div class="search">
-                <form action="#">
+                <form action="{{route('search-products')}}" method="get">
                     <button type="submit"><i class="fa-solid fa-magnifying-glass"></i></button>
-                    <input type="text" name="search" id="search">
+                    <input type="text" name="search" id="search" placeholder="Tìm kiếm sản phẩm...">
                 </form>
             </div>
+            {{-- href="{{route('ThongTinCaNhan.index')}}" --}}
             <div class="acc_cart">
-                <a class="acc" href="#"><div><i class="fa-solid fa-user"></i></div></a>
-                <a href="/GioHang"><i class="fa-solid fa-cart-shopping"></i><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    @if (session()->has('TenTaiKhoan'))
+                        <a class="acc"  >
+                            <div><i class="fa-solid fa-user"></i></div>
+                            <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
+                            <div class="loguot" onclick="logout()">Logout </div>
+                        </a>
+
+                    @endif
+
+                <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping GH">
+                    @if(count(Session::get('cart', array()))>0)
+                        <div class="carthover">
+                            @if(session('cart'))
+                                @php echo count(Session::get('cart', array())); @endphp
+                            @endif
+                        </div>
+                    @endif
+
+                </i></a>
             </div>
         </div>
     </header>
