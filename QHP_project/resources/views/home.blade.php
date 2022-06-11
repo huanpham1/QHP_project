@@ -28,26 +28,16 @@
             <nav>
                 <ul>
                     <li><a href="#">Về chúng tôi</a></li>
-                    <li class="nam">
-                        <a href="XemDanhMuc/">Nam</a>
-                        <ul class="namnam">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
-                    <li class="nu">
-                        <a href="XemDanhMuc.html">Nữ</a>
-                        <ul class="nunu">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
-
-                    <li><a href="#">Trẻ em</a></li>
+                    <?php foreach($danhmuc as $datadm){ ?>
+                        <li class="nam">
+                            <a href="{{route('XemDanhMuc.index',['id'=>$datadm->MaDanhMuc])}}"><?php echo $datadm->TenDanhMuc ?> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                            <ul class="namnam">
+                                <?php foreach($theloai as $data){ ?>
+                                    <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}"><?php echo $data->TenTheLoai ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php }?>
                 </ul>
             </nav>
             <div class="search">
@@ -89,8 +79,8 @@
                     <div class="hang">
                         @for($j = 0; $j < 5; $j++)
                         <div class="cot">
-                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
-                            <a href="#"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
                              <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
                         </div>
                         @endfor
@@ -108,14 +98,14 @@
         </div>
         <div class="sp-nu">
             <div class="title2"><img src="{{ asset('assets/images/Image 11.png')}}" alt="nu"></div>
-            @if (!empty($SanPhamList))
+            @if (!empty($sanphamnu))
             <div class="hang">
-                @for($j = 0; $j < 5; $j++)
+                @for($j = 0; $j < 4; $j++)
                 <div class="cot">
 
-                    <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
-                    <a href="#"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
-                     <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
+                    <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$sanphamnu[$j]->HinhAnh)}}" alt="Giay"></a>
+                    <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><p class="tensp">{{$sanphamnu[$j]->TenSP}}</p></a>
+                     <a href="#"><p class="price">{{$sanphamnu[$j]->GiaBan}}</p></a>
                 </div>
                 @endfor
             </div>
@@ -124,15 +114,14 @@
                         <td colspan="4">Không có sản phẩm</td>
                     </tr>
         @endif
-        @if (!empty($SanPhamList))
+        @if (!empty($sanphamnu))
         <div class="hang">
-            @for($j = 5; $j < 10; $j++)
-            <div class="cot">
-
-                <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
-                <a href="#"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
-                 <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
-            </div>
+            @for($j = 0; $j < 4; $j++)
+                <div class="cot">
+                    <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$sanphamnu[$j]->HinhAnh)}}" alt="Giay"></a>
+                    <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><p class="tensp">{{$sanphamnu[$j]->TenSP}}</p></a>
+                    <a href="#"><p class="price">{{$sanphamnu[$j]->GiaBan}}</p></a>
+                </div>
             @endfor
         </div>
                 @else
