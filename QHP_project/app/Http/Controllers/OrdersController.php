@@ -14,15 +14,48 @@ class OrdersController extends Controller
         $this->orders = new Orders();
     }
 
-    public function index(){
+    public function index(Request $request){
         $title = 'Danh sách đơn hàng';
 
-        $ordersList = $this->orders->getAllOrders();
+        $status = '';
+        $dates = [];
+
+        if (!empty($request->from_date)){
+            $fromDate = $request->from_date;
+            
+            $arr = explode('-', $fromDate);
+
+            $dates[] = ''.$arr[0].$arr[1].$arr[2];
+        } else {
+            $dates[] = '00000000';
+        }
+
+        if (!empty($request->to_date)){
+            $toDate = $request->to_date;
+
+            $arr = explode('-', $toDate);
+
+            $dates[] = ''.$arr[0].$arr[1].$arr[2];
+        } else {
+            $dates[] = date('ymd');
+        }
+
+        if (!empty($request->status)){
+            $status = $request->status;
+        }
+
+        if (!empty($request->keywords)){
+            $keywords = $request->keywords;
+        } else {
+            $keywords = '';
+        }
+
+        $ordersList = $this->orders->getAllOrders($dates, $status, $keywords);
 
         return view('admin.orders.list', compact('title', 'ordersList'));
     }
 
-    public function detail($id){
+    public function detail(Request $request, $id=0){
         $title = 'Chi tiết đơn hàng';
 
         if (!empty($id)){
@@ -31,6 +64,7 @@ class OrdersController extends Controller
             $productsList = $this->orders->getProductsInOrder($id);
             
             if (!empty($orderDetail[0])){
+                $request->session()->put('id', $id);
                 $orderDetail = $orderDetail[0];
             } else {
                 return redirect()->route('orders.index')->with('msg', 'Chi tiết đơn hàng không tồn tại');
@@ -63,5 +97,16 @@ class OrdersController extends Controller
 
         return redirect()->route('orders.index')->with('msg', $msg);
         
+    }
+
+    public function update(Request $request){
+        $id = session('id');
+        if (empty($id)){
+            return back()->with('msg', 'Liên kết không tồn tại');
+        }
+        $updateData = [$request->status];
+        $this->orders->updateStatus($updateData, $id);
+
+        return back()->with('msg', 'Cập nhật trạng thái thành công');
     }
 }

@@ -16,9 +16,13 @@
             <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
             <div class="login">
                 @if (!(session()->has('TenTaiKhoan')))
-                    <a href="{{route('DangNhap')}}">Đăng Nhập</a>
-                    <pre>|</pre>
-                    <a href="./DangKy">Đăng Ký</a>
+                <a href="{{route('DangNhap')}}">Đăng Nhập</a>
+                <pre>|</pre>
+                <a href="./DangKy">Đăng Ký</a>
+                @else
+                <a href="#">@php echo session()->get('TenTaiKhoan') @endphp</a>
+                <pre>|</pre>
+                <a href="{{ route('checkout') }}">Đăng xuất</a>
                 @endif
                 </div>
         </div>
@@ -46,27 +50,27 @@
                 </form>
             </div>
             <div class="acc_cart">
-                @if (session()->has('TenTaiKhoan'))
+                {{-- @if (session()->has('TenTaiKhoan'))
                     <a class="acc" ><div><i class="fa-solid fa-user"></i></div>
                         <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
                         <div class="loguot" onclick="logout()">Logout </div>
                     </a>
 
-                @endif
+                @endif --}}
 
                 <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping GH">
-                    @if(count(Session::get('cart', array()))>0)
-                        <div class="carthover" style="background-color: rgb(249, 97, 97)">
-                            @if(session('cart'))
-                                @php echo count(Session::get('cart', array())); @endphp
+                        @php
+                        if (session()->has('TenTaiKhoan'))
+                            $loaigio = 'GH';
+                        else
+                            $loaigio = 'cart';
+                    @endphp
+                    @if(Session($loaigio)!=null)
+                        <div class="carthover">
+                            @if(session($loaigio))
+                                @php echo count(Session::get($loaigio, array())); @endphp
                             @endif
                         </div>
-                    @else
-                    <div class="carthover">
-                        @if(session('cart'))
-
-                        @endif
-                    </div>
                     @endif
                 </i></a>
                     {{-- <div class="SoLuongSP">5</div> --}}
@@ -77,7 +81,7 @@
     </header>
     <div class="chiTietSP">
         <div class="Containerimage">
-            <img name = "img_sp" src="<?php echo asset('assets/images/'.$img)?>" alt="Giay">
+            <img name = "img_sp" src="<?php echo asset('storage/products/'.$img)?>" alt="Giay">
 
         </div>
         <div class="containerInfor">
@@ -184,6 +188,7 @@
                 alert.classList.add("hide");
                 setTimeout(function(){
                 alert.style.display = "none"
+                window.location.reload()
             },1000);
             },1000);
             closebtn.onclick = ()=>{
@@ -192,6 +197,7 @@
             alert.classList.add("hide");
             setTimeout(function(){
                 alert.style.display = "none"
+                window.location.reload()
             },1000);
             };
         };
@@ -205,7 +211,7 @@
             // console.log(sl);
             // console.log(data)
             // console.log(giatri);
-
+            console.log(data);
             const csrfToken = document.head.querySelector("[name~=csrf-token][content]").content;
             fetch('/ThemGH', {
                 method: 'post',
@@ -222,9 +228,10 @@
                     SLKHL.innerHTML="Số lượng yêu cầu không có sẵn";
                 }
                 else{
+                    Alertgreen()
                     document.querySelector(".carthover").innerHTML = response;
                     document.querySelector(".carthover").style.backgroundColor = "rgb(249, 97, 97)";
-                    Alertgreen()
+                    // setTimeout(window.location.reload(), 1000);
                 }
             })
             .catch((error) => {

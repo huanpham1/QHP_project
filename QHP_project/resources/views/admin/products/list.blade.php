@@ -49,6 +49,40 @@
 				<h1>{{$title}}</h1>
 				<div class="table-list">
 					<button class="btn-add"><a href="{{route('products.add')}}">Thêm sản phẩm</a></button>
+					<hr>
+					<form action="" class="data-filter">
+						<div class="filter-col">
+							<select name="collections" id="collections" class="select-collections">
+								<option value="0">Tất cả danh mục</option>
+								@if (!empty(getAllDanhMuc()))
+									@foreach (getAllDanhMuc() as $item)
+										<option value="{{$item->MaDanhMuc}}" {{request()->collections==$item->MaDanhMuc?'selected':false}}>
+											{{$item->TenDanhMuc}}
+										</option>
+									@endforeach
+								@endif
+							</select>
+						</div>
+						<div class="filter-col">
+							<select name="categories" id="categories" class="select-categories">
+								<option value="0">Tất cả thể loại</option>
+								@if (!empty(getAllTheLoai()))
+									@foreach (getAllTheLoai() as $item)
+										<option value="{{$item->MaTheLoai}}" {{request()->categories==$item->MaTheLoai?'selected':false}}>
+											{{$item->TenTheLoai}}
+										</option>
+									@endforeach
+								@endif
+							</select>
+						</div>
+						<div class="filter-col">
+							<input type="search" name="keywords" class="filter-keywords" 
+							placeholder="Từ khóa tìm kiếm..." value="{{request()->keywords}}">
+						</div>
+						<div class="filter-col">
+							<button type="submit" class="filter-btn">Lọc</button>
+						</div>
+					</form>
 					<table class="user-list" border="1">
 						<thead>
 							<tr>

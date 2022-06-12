@@ -19,8 +19,11 @@
                     <a href="{{route('DangNhap')}}">Đăng Nhập</a>
                     <pre>|</pre>
                     <a href="./DangKy">Đăng Ký</a>
-
-                    @endif
+                @else
+                <a href="#">@php echo session()->get('TenTaiKhoan') @endphp</a>
+                <pre>|</pre>
+                <a href="{{ route('checkout') }}">Đăng xuất</a>
+                @endif
             </div>
         </div>
         {{-- {{ count((array) session('cart')) }} --}}
@@ -57,19 +60,25 @@
                 </form>
             </div>
             <div class="acc_cart">
-                @if (session()->has('TenTaiKhoan'))
+                {{-- @if (session()->has('TenTaiKhoan'))
                     <a class="acc" ><div><i class="fa-solid fa-user"></i></div>
                         <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
                         <div class="loguot" onclick="logout()">Logout </div>
                     </a>
 
-                @endif
+                @endif --}}
 
                 <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping GH">
-                    @if(count(Session::get('cart', array()))>0)
+                    @php
+                        if (session()->has('TenTaiKhoan'))
+                            $loaigio = 'GH';
+                        else
+                            $loaigio = 'cart';
+                    @endphp
+                    @if(Session($loaigio)!=null)
                         <div class="carthover">
-                            @if(session('cart'))
-                                @php echo count(Session::get('cart', array())); @endphp
+                            @if(session($loaigio))
+                                @php echo count(Session::get($loaigio, array())); @endphp
                             @endif
                         </div>
                     @endif

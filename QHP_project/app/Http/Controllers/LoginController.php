@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
 class LoginController extends Controller
 {
     //
@@ -38,6 +39,8 @@ class LoginController extends Controller
             // dd($request->session()->all());
             // return view('home')->with('username', $request->username);
             // dd(session()->get('TenTaiKhoan'));
+            $cart = json_decode((Storage::disk('local')->get(session()->get('TenTaiKhoan').'.txt')), true);
+            session()->put('GH', $cart);
             return redirect()->route('home')->with('username', $request->username);
         }else{
             return redirect()->back()->with('fail', 'Mật Khẩu hoặc tài khoản chưa chính xác');
@@ -72,6 +75,7 @@ class LoginController extends Controller
             // dd($request->session()->all());
             // return view('home')->with('username', $request->username);
             // dd(session()->get('TenTaiKhoan'));
+
             return redirect()->route('adminsite')->with('username', $request->username);
         }else{
             return redirect()->back()->with('fail', 'Mật Khẩu hoặc tài khoản chưa chính xác');

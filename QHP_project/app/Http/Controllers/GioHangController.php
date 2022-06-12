@@ -7,6 +7,7 @@ use App\Models\GioHang;
 use App\Models\SanPham;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
+use Illuminate\Support\Facades\Storage;
 class GioHangController extends Controller
 {
     public function __construct()
@@ -16,12 +17,18 @@ class GioHangController extends Controller
     public function index(){
         // dd(session()->get('cart'));
         $SP = null;
-        if(session('cart')){
-            foreach(session('cart') as $id => $item){
+        if((session()->has('TenTaiKhoan'))){
+            $loaigio = 'GH';
+            $cart = json_decode((Storage::disk('local')->get(session()->get('TenTaiKhoan').'.txt')), true);
+            session()->put($loaigio, $cart);
+            // dd((session('GH')));
+        }
+        else
+            $loaigio = 'cart';
+        if(session($loaigio)){
+            foreach(session($loaigio) as $id => $item){
                 $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
-
             }
-
         }
         // dd($SP);
         return view('GioHang', compact("SP"));
@@ -55,17 +62,29 @@ class GioHangController extends Controller
     }
     public function addToCart(Request $request)
     {
+        if((session()->has('TenTaiKhoan')))
+            $loaigio = 'GH';
+        else
+            $loaigio = 'cart';
         // $ma = DB::table('chitietsanpham')->where('MaSP', $id)->get('ChiTietSPID')[0]->ChiTietSPID;
         $id =  $request->json('CTSPID');
-        $cart = session()->get('cart', []);
+        if(session()->has($loaigio)){
+            $cart = session()->get($loaigio, []);
+
+        }
+        else $cart = [];
         $slCon = ($this->SanPham->getCT($id))->SoLuongCon;
         $slthem = $request->json('SoLuong');
         if(isset($cart[$id])) {
             $slco = $cart[$id]['SoLuong'] + $slthem;
             if($slco<$slCon){
                 $cart[$id]['SoLuong']+=$request->json('SoLuong');
-                session()->put('cart', $cart);
-                $sl = count(Session('cart'));
+                session()->put($loaigio, $cart);
+                $sl = count(Session($loaigio));
+                if((session()->has('TenTaiKhoan')))
+                {
+                    Storage::disk('local')->put(session()->get('TenTaiKhoan').'.txt', json_encode(Session($loaigio)));
+                }
                 return response()->json([$sl],200);
             }
             else return response()->json(["400"],400);
@@ -75,8 +94,15 @@ class GioHangController extends Controller
                 $cart[$id] = [
                     "SoLuong" => $request->json('SoLuong')
                 ];
-                session()->put('cart', $cart);
-                $sl = count(Session('cart'));
+                session()->put($loaigio, $cart);
+
+                $sl = count(Session($loaigio));
+
+                if((session()->has('TenTaiKhoan')))
+                {
+                    Storage::disk('local')->put(session()->get('TenTaiKhoan').'.txt', json_encode(Session($loaigio)));
+                }
+        // dd(( (array)json_decode((Storage::disk('local')->get('example.txt')))));
                 return response()->json([$sl],200);
             }else return response()->json(["403"],400);
         }
@@ -87,13 +113,21 @@ class GioHangController extends Controller
     }
     public function update(Request $request)
     {
+        if((session()->has('TenTaiKhoan')))
+            $loaigio = 'GH';
+        else
+            $loaigio = 'cart';
         $id =  $request->json('ID');
         $sl = $request->json('SL');
         $slCon = ($this->SanPham->getCT($id))->SoLuongCon;
         if($sl<$slCon){
-            $cart = session()->get('cart');
+            $cart = session()->get($loaigio);
             $cart[$id]["SoLuong"] = $sl;
-            session()->put('cart', $cart);
+            session()->put($loaigio, $cart);
+            if((session()->has('TenTaiKhoan')))
+                {
+                    Storage::disk('local')->put(session()->get('TenTaiKhoan').'.txt', json_encode(Session($loaigio)));
+                }
             return response()->json([" "],200);
         }
         else
@@ -114,12 +148,19 @@ class GioHangController extends Controller
     public function remove(Request $request)
     {
         $id =  $request->json('ID');
-
+        if((session()->has('TenTaiKhoan')))
+            $loaigio = 'GH';
+        else
+            $loaigio = 'cart';
         if($request) {
-            $cart = session()->get('cart');
+            $cart = session()->get($loaigio);
             if(isset($cart[$id])) {
                 unset($cart[$id]);
-                session()->put('cart', $cart);
+                session()->put($loaigio, $cart);
+                if((session()->has('TenTaiKhoan')))
+                {
+                    Storage::disk('local')->put(session()->get('TenTaiKhoan').'.txt', json_encode(Session($loaigio)));
+                }
             }
             session()->flash('success', 'Product removed successfully');
         }

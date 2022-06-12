@@ -145,6 +145,9 @@ nav>ul>.nu:hover > .nunu{
     height: 40px;
     text-align: center;
 }
+.carthover{
+    background-color: rgb(249, 97, 97);
+}
 .acc:hover{
     color: red;
 }
@@ -381,6 +384,11 @@ footer p{
     width: 200px;
     height: 40px;
 }
+.thanhToan:hover{
+    opacity: 80%;
+    transition: all 0.3s ease-in-out;
+    cursor: pointer;
+}
 
 header{
     border-bottom:1px solid #ddd;
@@ -388,6 +396,8 @@ header{
 .themVaoGio:hover{
     background-color: white;
     color: black;
+    cursor: pointer;
+    transition: all 0.3s ease-in-out;
 }
 .SoLuongSP{
     background-color: red;
