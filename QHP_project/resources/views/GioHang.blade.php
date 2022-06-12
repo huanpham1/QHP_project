@@ -109,7 +109,7 @@
                 {{-- @php dd($item[0]->SoLuongCon); @endphp --}}
                 {{-- @php $home =  $item['SoLuong'] @endphp --}}
                 <tr>
-                    <td style="padding: 0px;"><div class="cart-image"><a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}"><img src="{{asset('storage/products/'.$item[1]->HinhAnh)}}" alt="Giay"></div></a></td>
+                    <td style="padding: 0px;"><div class="cart-image"><a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}"><img src="{{asset('assets/images/'.$item[1]->HinhAnh)}}" alt="Giay"></div></a></td>
                     <td class="item-name">
                        <a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}">{{$item[1]->TenSP}}</a>
                         <div class="item-infor">
@@ -164,7 +164,7 @@
                         <strong>Tạm Tính: <span style="color: red;">{{$total }}đ</span></strong>
                     </div>
                     <div class="user-pay">
-                        <input type="submit" value="ĐẶT HÀNG">
+                        <a href="{{route('ThanhToan.index')}}"><input type="button" value="Đặt hàng"></a>
                     </div>
                 </div>
             </div>

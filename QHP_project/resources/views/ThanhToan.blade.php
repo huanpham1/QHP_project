@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
-    <link rel="stylesheet" href="{{ asset('assets/css/stylehome.css')}}">
+    <link rel="stylesheet" href="{{ asset('assets/css/ThanhToan.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -70,22 +70,42 @@
             </div>
         </div>
     </header>
-    <div class="content" style="display:flex;">
+    <div class="content">
+        <form action="" method="post" style="display:flex;">
         <div class="thongTinGiaoHang">
-            <div class="title1">Thông tin giao hàng</div>
-            <div class="info">
-                                        
+            <div class="title1">THÔNG TIN GIAO HÀNG</div>
+            <div class="inforGiaoHang">
+                <table>
+                    <tr>
+                        <td><input type="text" name="name" id="name" placeholder="HỌ TÊN"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="DiaChi" id="DiaChi" placeholder="ĐỊA CHỈ"></td>
+                    </tr>           
+                    <tr>
+                        <td><input type="text" name="phoneNum" id="phoneNum" placeholder="SỐ ĐIỆN THOẠI"></td>
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="ghiChu" id="ghiChu" placeholder="GHI CHÚ"></td>
+                    </tr>
+                     <tr>
+                        <td><input type="text" name="diaChiNhanHang" id="diaChiNhanHang" placeholder="ĐỊA CHỈ NHẬN HÀNG"></td>
+                    </tr>         
+                    <tr>
+                        <td style="padding-left:20px;height: 30px;font-size: 15px;"><b>HÌNH THỨC VẬN CHUYỂN:</b><b>COD (giao hàng thanh toán)</b></td>
+                    </tr>    
+                </table>                        
             </div>
         </div>
-        <div class="sanpham">
         <div class="cart-item">
+            <div class="title1">ĐƠN HÀNG</div>
             <table>
                 <tr>
-                    <th style="width: 15%;"></th>
-                    <th style="width: 40%; text-align: left; padding-left: 10px;">TÊN SẢN PHẨM</th>
+                    <th style="width: 20%;"></th>
+                    <th style="width: 30%; text-align: left; padding-left: 10px;">TÊN SẢN PHẨM</th>
                     <th style="width: 15%; text-align: center;">SỐ LƯỢNG</th>
                     <th style="width: 15%; text-align: right;">GIÁ</th>
-                    <th style="width: 15%; text-align: right;">THÀNH TIỀN</th>
+                    <th style="width: 20%; text-align: right;">THÀNH TIỀN</th>
                 </tr>
                 {{-- {{ count((array) session('cart')) }} --}}
                 @php $total = 0; @endphp
@@ -94,19 +114,13 @@
                 {{-- @php dd($item[0]->SoLuongCon); @endphp --}}
                 {{-- @php $home =  $item['SoLuong'] @endphp --}}
                 <tr>
-                    <td style="padding: 0px;"><div class="cart-image"><a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}"><img src="{{asset('storage/products/'.$item[1]->HinhAnh)}}" alt="Giay"></div></a></td>
+                    <td style="padding: 0px;"><div class="cart-image"><a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}"><img src="{{asset('assets/images/'.$item[1]->HinhAnh)}}" alt="Giay"></div></a></td>
                     <td class="item-name">
                        <a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}">{{$item[1]->TenSP}}</a>
                         <div class="item-infor">
                             {{-- <div class="color">Màu: <div class="item-color"></div></div> --}}
                             @php $total += $item[1]->GiaBan * $item['SoLuong']; @endphp
                             <div class="size">Size: <div class="item-size">{{$item[0]->Size}}</div></div>
-                            <div class="btn-delete" onclick="DeleteCart('{{$id}}')">
-                                <a href="#">
-                                <strong><i class="fa-solid fa-square-xmark"></i>
-                                Xóa</strong>
-                                </a>
-                            </div>
                         </div>
                     </td>
                     <td class="item-quantity">
@@ -119,42 +133,18 @@
                 </tr>
                 @endforeach
                 @endif
-
             </table>
             <hr style="margin-top: 30px;">
-            <div class="cart-pay">
-                <div class="shop-support">
-                    <a href="index.html" class="buy-more">
-                        <i class="fa-solid fa-circle-arrow-left"></i>
-                        Tiếp tục mua hàng
-                    </a>
-
-                    <div class="shop-contact">
-                        <p>Để nhận tư vấn hoặc hỗ trợ khi phát sinh khó khăn trong lúc mua hàng, hãy liên hệ QHP thông qua:</p>
-                        <ul>
-                            <li>
-                                Gọi <span class="phone-number"><strong>0987666666</strong></span>
-                            </li>
-                            <li>
-                                Email tới địa chỉ
-                                <a href="mailto:tuvan_online@qhp.com.vn" class="email">
-                                    <strong>tuvan_online@qhp.com.vn</strong>
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <div class="user-total-price">
-                    <div class="total-price">
-                        <strong>Tạm Tính: <span style="color: red;">{{$total }}đ</span></strong>
-                    </div>
-                    <div class="user-pay">
-                        <input type="submit" value="ĐẶT HÀNG">
-                    </div>
-                </div>
+            <div class="user-total-price">
+                <div class="total-price" style="margin-top: 10px;" >
+                    <strong>TỔNG CỘNG: <span style="color: red;">{{$total }}đ</span></strong>
+                </div>               
             </div>
+            <div class="thanhToan">
+                    <input type="submit" value="THANH TOÁN">
+                </div>
         </div>
-        </div>
+        </form>
     </div>
     <footer>
         <div class="container_footer">
