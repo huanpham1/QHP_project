@@ -59,7 +59,7 @@
 								<select name="status" id="status" class="select-categories">
 									<option value="0">Tất cả trạng thái</option>
 									<option value="Chưa giao" {{request()->status=='Chưa giao'?'selected':false}}>Chưa giao</option>
-									<option value="Đang giao" {{request()->status=='Đang giao giao'?'selected':false}}>Đang giao</option>
+									<option value="Đang giao" {{request()->status=='Đang giao'?'selected':false}}>Đang giao</option>
 									<option value="Đã giao" {{request()->status=='Đã giao'?'selected':false}}>Đã giao</option>
 								</select>
 						</div>
