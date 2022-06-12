@@ -30,26 +30,17 @@
             <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
             <nav>
                 <ul>
-                    <li><a href="#">About us</a></li>
-                    <li class="nam">
-                        <a href="/XemDanhMuc">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <ul class="namnam">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
-                    <li class="nu">
-                        <a href="/XemDanhMuc">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <ul class="nunu">
-                            <li><a href="#">Giày chạy bộ</a></li>
-                            <li><a href="#">Giày training</a></li>
-                            <li><a href="#">Giày thời trang</a></li>
-                            <li><a href="#">Giày leo núi</a></li>
-                        </ul>
-                    </li>
-                    <li><a href="#">Trẻ em</a></li>
+                    <li><a href="#">Về chúng tôi</a></li>
+                    <?php foreach($danhmuc as $datadm){ ?>
+                        <li class="nam">
+                            <a href="{{route('XemDanhMuc.index',['id'=>$datadm->MaDanhMuc])}}"><?php echo $datadm->TenDanhMuc ?> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                            <ul class="namnam">
+                                <?php foreach($theloai as $datatl){ ?>
+                                    <li><a href="{{route('XemTheLoai.index',['id'=>$datatl->MaTheLoai])}}"><?php echo $datatl->TenTheLoai ?></a></li>
+                                <?php } ?>
+                            </ul>
+                        </li>
+                    <?php }?>
                 </ul>
             </nav>
             <div class="search">

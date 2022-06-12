@@ -5,23 +5,38 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\taikhoan;
+use App\Models\LayTheLoai;
+use App\Models\LayDanhMuc;
 
 class ThongTinCaNhanController extends Controller
 {
     public function index(){
+        
         return view('ThongTinCaNhan');
     }
     public function goToThongTinCaNhan(Request $request){
+        $tl = new LayTheLoai();
+        $theloai = $tl->getAllTheLoai();
+
+        $dm = new LayDanhMuc();
+        $danhmuc = $dm->getAllDanhMuc();
+
         $MaTK = $request->session()->get('MaTK',1);
         $tk = new taikhoan();
         $taikhoan = $tk->layThongTinKH($MaTK);
-        return view('ThongTinCaNhan', compact('taikhoan'));
+        return view('ThongTinCaNhan', compact('taikhoan', 'danhmuc', 'theloai'));
     }
     public function formSua(Request $request){
+        $tl = new LayTheLoai();
+        $theloai = $tl->getAllTheLoai();
+
+        $dm = new LayDanhMuc();
+        $danhmuc = $dm->getAllDanhMuc();
+
         $MaTK = $request->session()->get('MaTK',1);
         $tk = new taikhoan();
         $taikhoan = $tk->layThongTinKH($MaTK);
-        return view('SuaThongTinCaNhan',compact('taikhoan'));
+        return view('SuaThongTinCaNhan',compact('taikhoan', 'danhmuc', 'theloai'));
     }
     public function postSua(Request $request){
         $rule = [

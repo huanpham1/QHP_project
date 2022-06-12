@@ -92,7 +92,21 @@
 								<td colspan="4">Sản phẩm</td>
 							</tr>
 				@endif
-
+                @if (!empty($SanPhamList))
+                    <div class="hang">
+                        @for($j = 0; $j < 5; $j++)
+                        <div class="cot">
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                             <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
+                        </div>
+                        @endfor
+                    </div>
+							@else
+							<tr>
+								<td colspan="4">Sản phẩm</td>
+							</tr>
+				@endif
             </div>
         </div>
         <div class="view-more">

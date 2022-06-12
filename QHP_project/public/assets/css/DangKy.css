@@ -261,3 +261,6 @@ header{
     top: -10%;
     right: -20%;
 }
+.alert{
+    color: red;
+}
