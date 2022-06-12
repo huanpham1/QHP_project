@@ -81,7 +81,7 @@
                             <div class="hang">
                         @endif
                         <div class="cot">
-                            <a href="#"><img src="{{ asset('assets/images/Image 4.png')}}" alt="Giay"></a>
+                            <a href="#"><img src="{{ asset('storage/products/' . $item->HinhAnh) }}" alt="Giay"></a>
                             <a href="#"><p class="tensp">{{$item->TenSP}}</p></a>
                             <a href="#"><p class="price">${{$item->GiaBan}}</p></a>
                         </div>

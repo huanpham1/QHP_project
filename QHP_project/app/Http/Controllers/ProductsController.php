@@ -22,10 +22,38 @@ class ProductsController extends Controller
         $this->TL = new TheLoai();
     }
 
-    public function index(){
+    public function index(Request $request){
         $title = 'Danh sách sản phẩm';
 
-        $productsList = $this->products->getAllProducts();
+        $filters = [];
+
+        if (!empty($request->collections)){
+            $collections = $request->collections;
+            
+            $filters[] = $collections;
+        } else {
+            $filters[] = 'danhmuc.MaDanhMuc OR danhmuc.MaDanhMuc IS NULL';
+        }
+
+        if (!empty($request->categories)){
+            $categories = $request->categories;
+            
+            $filters[] = $categories;
+        } else {
+            $filters[] = 'theloai.MaTheLoai OR theloai.MaTheLoai IS NULL';
+        }
+
+        if(empty($request->collections) && empty($request->categories)){
+            $filters = [];
+        }
+
+        if(!empty($request->keywords)){
+            $keywords = $request->keywords;
+        } else {
+            $keywords = '';
+        }
+
+        $productsList = $this->products->getAllProducts($filters, $keywords);
         //dd($productsList);
 
         return view('admin.products.list', compact('title', 'productsList'));

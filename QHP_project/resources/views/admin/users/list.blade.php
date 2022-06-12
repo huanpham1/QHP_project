@@ -49,6 +49,23 @@
 				<h1>{{$title}}</h1>
 				<div class="table-list">
 					<button class="btn-add"><a href="{{route('users.add')}}">Thêm tài khoản</a></button>
+					<hr>
+					<form action="" class="user-filter">
+						<div class="filter-col">
+							<select name="isAdmin" id="isAdmin" class="select-categories">
+								<option value="0">Tất cả người dùng</option>
+								<option value="admin" {{request()->isAdmin=='admin'?'selected':false}}>Admin</option>
+								<option value="client" {{request()->isAdmin=='client'?'selected':false}}>Khách hàng</option>
+							</select>
+						</div>
+						<div class="filter-col">
+							<input type="search" name="keywords" class="filter-keywords" 
+							placeholder="Từ khóa tìm kiếm..." value="{{request()->keywords}}">
+						</div>
+						<div class="filter-col">
+							<button type="submit" class="filter-btn">Lọc</button>
+						</div>
+					</form>
 					<table class="user-list" border="1" style="table-layout: fixed; word-wrap:break-word;">
 						<thead>
 							<tr>
