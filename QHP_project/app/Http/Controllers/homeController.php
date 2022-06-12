@@ -9,6 +9,8 @@ use Symfony\Component\HttpFoundation\Session\Session;
 use App\Models\LaySanPham;
 use App\Models\LayTheLoai;
 use App\Models\LayDanhMuc;
+use Illuminate\Support\Facades\Storage;
+
 use App\Models\SanPham;
 
 class homeController extends Controller
@@ -26,15 +28,18 @@ class homeController extends Controller
 
         $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
-        
+
         //return view('home', compact('sanphamnam','sanphamnu','theloai','danhmuc'));
         return view("home", compact('SanPhamList','sanphamnu','theloai','danhmuc'));
     }
     public function register(){
+        
         return view('DangNhap');
     }
     public function test(){
 
-        dd(count(Session('cart')));
+        Storage::disk('local')->put('example.txt', json_encode(Session('cart')));
+        dd((session('GH')));
+        // .var_export
     }
 }

@@ -19,7 +19,11 @@
                     <a href="{{route('DangNhap')}}">Đăng Nhập</a>
                     <pre>|</pre>
                     <a href="./DangKy">Đăng Ký</a>
-                    @endif
+                @else
+                <a href="#">@php echo session()->get('TenTaiKhoan') @endphp</a>
+                <pre>|</pre>
+                <a href="{{ route('checkout') }}">Đăng xuất</a>
+                @endif
 
             </div>
         </div>
@@ -48,20 +52,18 @@
             </div>
             {{-- href="{{route('ThongTinCaNhan.index')}}" --}}
             <div class="acc_cart">
-                    @if (session()->has('TenTaiKhoan'))
-                        <a class="acc"  >
-                            <div><i class="fa-solid fa-user"></i></div>
-                            <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
-                            <div class="loguot" onclick="logout()">Logout </div>
-                        </a>
-
-                    @endif
-
+                    
                 <a href="{{route('giohang')}}"><i class="fa-solid fa-cart-shopping GH">
-                    @if(count(Session::get('cart', array()))>0)
+                    @php
+                        if (session()->has('TenTaiKhoan'))
+                            $loaigio = 'GH';
+                        else
+                            $loaigio = 'cart';
+                    @endphp
+                    @if(Session($loaigio)!=null)
                         <div class="carthover">
-                            @if(session('cart'))
-                                @php echo count(Session::get('cart', array())); @endphp
+                            @if(session($loaigio))
+                                @php echo count(Session::get($loaigio, array())); @endphp
                             @endif
                         </div>
                     @endif
@@ -79,7 +81,7 @@
                     <div class="hang">
                         @for($j = 0; $j < 5; $j++)
                         <div class="cot">
-                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
                             <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
                              <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan}}</p></a>
                         </div>
