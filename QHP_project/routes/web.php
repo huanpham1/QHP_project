@@ -149,6 +149,8 @@ Route::middleware('checkadmin')->prefix('/adminsite')->group(function () {
 
         Route::get('/detail/{id}', [OrdersController::class, 'detail'])->name('detail');
 
+        Route::post('/update', [OrdersController::class, 'update'])->name('post-edit');
+
         Route::get('/delete/{id}', [OrdersController::class, 'delete'])->name('delete');
     });
 });

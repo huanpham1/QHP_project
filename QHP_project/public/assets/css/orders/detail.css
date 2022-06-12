@@ -197,7 +197,7 @@
     width: 130px;
     height: 30px;
     border: none;
-    margin-top: 20px;
+    margin-top: 80px;
     font-size: 14px;
   }
   .btn-add:hover{
@@ -230,4 +230,30 @@
     text-align: center;
     border-radius: 5px;
     margin-top: 30px;
+  }
+  .order-status{
+    width: 300px;
+    position: absolute;
+    right: 10px;
+    font-size: 16px;
+    margin-top: 20px;
+  }
+  .status{
+    width: 200px;
+    height: 30px;
+    font-size: 16px;
+    padding-left: 10px;
+    margin-top: 5px;
+  }
+  .btn-status{
+    width: 50px;
+    height: 30px;
+    border: none;
+    background-color:#ffcc00;
+    border-radius: 3px;
+    font-weight: bold;
+  }
+  .btn-status:hover{
+    opacity: 70%;
+    cursor: pointer;
   }

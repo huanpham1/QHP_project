@@ -15,10 +15,29 @@ class UsersController extends Controller
         $this->users = new Users();
     }
 
-    public function index(){
+    public function index(Request $request){
         $title = 'Danh sách tài khoản';
 
-        $usersList = $this->users->getAllUsers();
+        $filter=[];
+
+        if (!empty($request->isAdmin)){
+            $isAdmin = $request->isAdmin;
+            if ($isAdmin=='admin'){
+                $isAdmin = '1';
+            } else {
+                $isAdmin = '0';
+            }
+
+            $filter[] = $isAdmin;
+        }
+
+        if(!empty($request->keywords)){
+            $keywords = $request->keywords;
+        } else {
+            $keywords = '';
+        }
+
+        $usersList = $this->users->getAllUsers($filter, $keywords);
 
         return view('admin.users.list', compact('title', 'usersList'));
     }
