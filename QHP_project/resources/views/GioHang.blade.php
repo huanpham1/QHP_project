@@ -125,9 +125,9 @@
                         </div>
                     </td>
                     <td class="item-quantity">
-
-                        <input type="number" class="SoLuong" min="1"  value="{{$item['SoLuong']}}" onchange="UpdateCart('{{$id}}')" placeholder="">
-                        <div class="slKhongHopLe"></div>
+                        <input type="number" class="SoLuong" min="1" name="{{$id}}"  value="{{$item['SoLuong']}}" onchange="UpdateCart('{{$id}}')" placeholder="">
+                        <input type="hidden" name="" id="{{$id}}" value="{{$item[0]->SoLuongCon}}">
+                        <div class="slKhongHopLe" value="{{$id}}"></div>
                     </td>
                     <td class="item-price">{{$item[1]->GiaBan}}đ</td>
                     <td class="item-total">{{$item[1]->GiaBan * $item['SoLuong']}}đ</td>
@@ -237,7 +237,7 @@
 
         }
     async function UpdateCart(id){
-        let SoLuong = document.querySelector(".SoLuong").value;
+        let SoLuong = document.querySelector('[name='+id+'').value;
 
             id = String(id);
         const data = {ID: id, SL: SoLuong};
@@ -255,15 +255,15 @@
             .then(response => response.json())
             .then(response => {
                 if(response==400){
-                    document.querySelector(".slKhongHopLe").innerHTML="Số lượng yêu cầu không có sẵn";
-                    document.querySelector(".SoLuong").value = SoLuong - 1;
+                    document.querySelector('[value='+id+'').innerHTML="Số lượng yêu cầu không có sẵn";
+                    document.querySelector('[name='+id+'').value = document.querySelector('[id='+id+'').value;
                 }else{
                     console.log(response);
-                    window.location.reload();
+                    // window.location.reload();
                 }
             })
             .catch((error) => {
-            console.error('Error:', error);
+                console.error('Error:');
             });
 
         }
