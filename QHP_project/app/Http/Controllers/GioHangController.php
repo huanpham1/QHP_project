@@ -27,6 +27,7 @@ class GioHangController extends Controller
             $loaigio = 'cart';
         if(session($loaigio)){
             foreach(session($loaigio) as $id => $item){
+
                 $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
             }
         }
@@ -90,7 +91,7 @@ class GioHangController extends Controller
             else return response()->json(["400"],400);
 
         } else {
-            if($slthem<$slCon){
+            if($slthem<=$slCon){
                 $cart[$id] = [
                     "SoLuong" => $request->json('SoLuong')
                 ];
@@ -120,7 +121,7 @@ class GioHangController extends Controller
         $id =  $request->json('ID');
         $sl = $request->json('SL');
         $slCon = ($this->SanPham->getCT($id))->SoLuongCon;
-        if($sl<$slCon){
+        if($sl<=$slCon){
             $cart = session()->get($loaigio);
             $cart[$id]["SoLuong"] = $sl;
             session()->put($loaigio, $cart);
