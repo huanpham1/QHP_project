@@ -111,6 +111,7 @@
                 @php $total = 0; @endphp
                 @if(isset($SP))
                 @foreach ($SP as $id => $item)
+                @php dd($SP); @endphp
                 {{-- @php dd($item[0]->SoLuongCon); @endphp --}}
                 {{-- @php $home =  $item['SoLuong'] @endphp --}}
                 <tr>

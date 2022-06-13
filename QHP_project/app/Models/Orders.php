@@ -48,4 +48,8 @@ class Orders extends Model
         $data[] = $id;
         return DB::update('UPDATE '. $this->table .' SET TrangThai=? WHERE MaDonHang=?', $data);
     }
+    public function insertDH($data){
+        $query = DB::insert('INSERT INTO'. $this->table .'(MaDonHang,NgayDatHang,HinhThucVanChuyen,NgayNhanHang,DiaChiNhanHang,SoDT,GhiChu,MaTK,TongTien) VALUES (?,?,?,?,?,?,?,?,?)',$data);
+        return $query;  
+    }
 }

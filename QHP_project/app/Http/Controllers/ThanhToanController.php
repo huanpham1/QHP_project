@@ -5,6 +5,7 @@ use App\Models\LayDanhMuc;
 use App\Models\LayTheLoai;
 use App\Models\GioHang;
 use App\Models\SanPham;
+use App\Models\Orders;
 
 use Illuminate\Http\Request;
 
@@ -40,4 +41,20 @@ class ThanhToanController extends Controller
         // dd($SP);
         return view("ThanhToan", compact('theloai','danhmuc', 'SP'));
     } 
+    public function insertDH(Request $request,$diaChiNhanHang,$sdt,$ghiChu,$tongTien,$item){
+        $rule = [
+            'name' => 'required|min:5',
+            'email' => 'required|email',
+            '' => 'required',
+            'phoneNum' => 'numeric'
+        ];
+        $message = [
+            'required' => ':attribute bat buoc phai nhap !',
+            'min' => ':attribute phai co it nhat :min ki tu !',
+            'email' => ':attribute khong dung dinh dang!',
+            'numeric' => ':attribute khong dung dinh dang !'
+        ];
+        $request->validate($rule,$message);
+        $order = new Orders();
+    }
 }
