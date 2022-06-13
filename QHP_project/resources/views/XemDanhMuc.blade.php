@@ -90,18 +90,7 @@
                     </ul>
                 </div>
             </div>
-            <div class="color-filter">
-                <strong><p>Màu Sắc:</p></strong>
-                <div class="color-boxes">
-                    <div class="color-box" style="background-color: black;"></div>
-                    <div class="color-box" style="background-color: orange;"></div>
-                    <div class="color-box" style="background-color: #ecdcc2;"></div>
-                    <div class="color-box" style="background-color: red;"></div>
-                    <div class="color-box" style="background-color: green;"></div>
-                    <div class="color-box" style="background-color: lightblue;"></div>
-                    <div class="color-box" style="background-color: brown;"></div>
-                </div>
-            </div>
+            
             <div class="price-filter">
                 <strong><p>Giá:</p></strong>
                 <div class="price-scope">
@@ -126,7 +115,7 @@
                 <ul>
                     <?php
                         foreach($theloai as $data){
-                            
+
                     ?>
                     <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}"><?php echo $data->TenTheLoai ?></a></li>
                     <?php } ?>
@@ -134,7 +123,7 @@
             </div>
             <div class="sp-nam">
                 <div class="hang">
-                    <?php $i=0; foreach($sanpham as $data){ 
+                    <?php $i=0; foreach($sanpham as $data){
                             $i++;
                             if($i==5)
                                 break;
@@ -146,9 +135,9 @@
                     </div>
                         <?php } ?>
                 </div>
-                
+
                 <div class="hang">
-                    <?php $i=0; foreach($sanpham as $data){ 
+                    <?php $i=0; foreach($sanpham as $data){
                             $i++;
                             if($i==5)
                                 break;

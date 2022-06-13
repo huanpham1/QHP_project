@@ -12,7 +12,9 @@
 }
 .hang{
     display: flex;
-    justify-content: space-between;
+    justify-content: space-around;
+    margin: 10px;
+    margin-bottom: 50px;
 }
 .cot a img{
     height: 240px;
@@ -69,3 +71,33 @@ p{
 .acc{
     position: relative;
 }
+
+/* .cot:hover {
+    transform: translateY(-10px);
+} */
+.cot:hover >a>img{
+    transform: translateY(-10px);
+}
+.cot:hover >a>.sale{
+    transform: translateY(-10px);
+}
+.cot>a>img{
+    transition: transform 250ms;
+
+}
+.cot{
+    position: relative;
+}
+
+.cot>a>.sale{
+    transition: transform 250ms;
+    position: absolute;
+    color: white;
+    background-color: #ff0036;
+    line-height: 15px;
+    font-family: 'Courier New', Courier, monospace;
+    padding: 2px;
+    top: 0%;
+    left: 2%;
+}
+

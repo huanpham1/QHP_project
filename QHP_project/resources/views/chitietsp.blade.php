@@ -8,9 +8,18 @@
 
         </div>
         <div class="containerInfor">
+            <input type="hidden" class="abc" name="" id="" value="{{$CTSPID}}">
             <div class="name">{{$data->TenSP}}</div>
             <div class="ma">Mã sản phẩm: {{$data->MaSP}}</div>
-            <div class="gia">{{$data->GiaBan}}đ</div>
+            <div class="gia" style="display: flex;">
+                @if($data->KhuyenMai != null)
+                <a href="#" style="text-decoration: none; color: #ea5848; padding-right: 10px"><p >{{$data->GiaBan*(100-$data->KhuyenMai)/100}}$</p></a>
+                <p  style="text-decoration: none; text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$data->GiaBan}}$</p>
+                @else
+                <a href="#" style="text-decoration: none; color: #ea5848; padding-right: 10px"><p  >{{$data->GiaBan}}$</p></a>
+                @endif
+                {{-- {{$data->GiaBan}}đ</div> --}}
+            </div>
             <div class="kichco">
                 <div class="text">Kích cỡ: </div>
                 <select name="SIZE" class="size" id="size" onchange="getSL({{$data->MaSP}})">

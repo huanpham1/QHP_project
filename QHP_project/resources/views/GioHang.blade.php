@@ -25,7 +25,7 @@
                 {{-- @php dd($item[0]->SoLuongCon); @endphp --}}
                 {{-- @php $home =  $item['SoLuong'] @endphp --}}
                 <tr>
-                    <td style="padding: 0px;"><div class="cart-image"><a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}"><img src="{{asset('assets/images/'.$item[1]->HinhAnh)}}" alt="Giay"></div></a></td>
+                    <td style="padding: 0px;"><div class="cart-image"><a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}"><img src="{{asset('storage/products/'.$item[1]->HinhAnh)}}" alt="Giay"></div></a></td>
                     <td class="item-name">
                        <a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}">{{$item[1]->TenSP}}</a>
                         <div class="item-infor">
@@ -45,7 +45,7 @@
                         <input type="hidden" name="" id="{{$id}}" value="{{$item[0]->SoLuongCon}}">
                         <div class="slKhongHopLe" value="{{$id}}"></div>
                     </td>
-                    <td class="item-price">{{$item[1]->GiaBan}}đ</td>
+                    <td ><div class="item-price ">{{$item[1]->GiaBan}}đ</div></td>
                     <td class="item-total">{{$item[1]->GiaBan * $item['SoLuong']}}đ</td>
                 </tr>
                 @endforeach

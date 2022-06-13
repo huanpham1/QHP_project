@@ -31,7 +31,7 @@
             </div>
         </div>
         <div class="hduoi">
-            <a href="./"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
+            <a href="{{route('home')}}"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></a>
             <nav>
                 <ul>
                     <li><a href="#">Về chúng tôi</a></li>
