@@ -17,6 +17,7 @@ use App\Http\Controllers\xemChiTietController;
 use App\Http\Controllers\XemDanhMucController;
 use App\Http\Controllers\XemTheLoaiController;
 use App\Http\Controllers\ThongTinCaNhanController;
+use App\Http\Controllers\ThanhToanController;
 
 /*
 |--------------------------------------------------------------------------
@@ -70,6 +71,9 @@ Route::prefix('ThongTinCaNhan')->name('ThongTinCaNhan.')->group(function(){
     Route::get('/',[ThongTinCaNhanController::class,'goToThongTinCaNhan'])->name('index');
     Route::get('/Form_sua',[ThongTinCaNhanController::class,'formSua'])->name('suaThongTin');
     Route::post('/Form_sua',[ThongTinCaNhanController::class,'postSua'])->name('post_suaThongTin');
+});
+Route::prefix('ThanhToan')->name('ThanhToan.')->group(function(){
+    Route::get('/',[ThanhToanController::class,'goToThanhToan'])->name('index');
 });
 
 Route::middleware('checkadmin')->prefix('/adminsite')->group(function () {
