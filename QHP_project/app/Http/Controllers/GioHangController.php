@@ -8,6 +8,9 @@ use App\Models\SanPham;
 use Illuminate\Support\Facades\DB;
 use Symfony\Component\HttpFoundation\Session\Session;
 use Illuminate\Support\Facades\Storage;
+use App\Models\LaySanPham;
+use App\Models\LayTheLoai;
+use App\Models\LayDanhMuc;
 class GioHangController extends Controller
 {
     public function __construct()
@@ -32,7 +35,18 @@ class GioHangController extends Controller
             }
         }
         // dd($SP);
-        return view('GioHang', compact("SP"));
+        $spnam = new LaySanPham();
+        $SanPhamList = $spnam->getAllSanPham_Nam();
+
+        $spnu = new LaySanPham();
+        $sanphamnu = $spnu->getAllSanPham_Nu();
+
+        $tl = new LayTheLoai();
+        $theloai = $tl->getAllTheLoai();
+
+        $dm = new LayDanhMuc();
+        $danhmuc = $dm->getAllDanhMuc();
+        return view('GioHang', compact("SP",'SanPhamList','sanphamnu','theloai','danhmuc'));
     }
     public function ThemGH(Request $req, $id){
         $ma = DB::table('chitietsanpham')->where('MaSP', $id)->get('ChiTietSPID')[0]->ChiTietSPID;
