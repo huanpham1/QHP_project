@@ -470,3 +470,6 @@ header{
 .thanhToan input:hover{
     background-color: red;
 }
+.alert{
+    color: red;
+}

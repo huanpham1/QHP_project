@@ -49,7 +49,15 @@ class Orders extends Model
         return DB::update('UPDATE '. $this->table .' SET TrangThai=? WHERE MaDonHang=?', $data);
     }
     public function insertDH($data){
-        $query = DB::insert('INSERT INTO'. $this->table .'(MaDonHang,NgayDatHang,HinhThucVanChuyen,NgayNhanHang,DiaChiNhanHang,SoDT,GhiChu,MaTK,TongTien) VALUES (?,?,?,?,?,?,?,?,?)',$data);
+        $query = DB::insert('INSERT INTO '. $this->table .'(MaDonHang,NgayDatHang,HinhThucVanChuyen,NgayNhanHang,DiaChiNhanHang,SoDT,GhiChu,MaTK,TongTien,TrangThai) VALUES (?,?,?,?,?,?,?,?,?,?)',$data);
         return $query;  
+    }
+    public function layDSDH(){
+        $query = DB::select('SELECT * FROM donhang');
+        return $query;
+    }
+    public function insertCTDH($data){
+        $query = DB::insert('INSERT INTO chitietdonhang(MaDonHang,ChiTietSPID,SoLuong,GiaTien) VALUES(?,?,?,?)',$data);
+        return $query;
     }
 }

@@ -71,30 +71,57 @@
         </div>
     </header>
     <div class="content">
-        <form action="" method="post" style="display:flex;">
+        <form action="{{route('ThanhToan.postHD')}}" method="post" style="display:flex;" entype="mulitpart/form-data">
         <div class="thongTinGiaoHang">
-            <div class="title1">THÔNG TIN GIAO HÀNG</div>
+            <div class="title1">THÔNG TIN GIAO HÀNG</div>           
             <div class="inforGiaoHang">
+                @foreach($taikhoan as $tk)
                 <table>
                     <tr>
-                        <td><input type="text" name="name" id="name" placeholder="HỌ TÊN"></td>
+                        @if($errors->any())
+                        <td style="padding-left:20px;height: 30px;font-size: 15px;" colspan="2" class="alert">Dữ liệu nhập vào không hợp lệ. Vui lòng kiểm tra lại !</td>
+                        @endif 
                     </tr>
                     <tr>
-                        <td><input type="text" name="DiaChi" id="DiaChi" placeholder="ĐỊA CHỈ"></td>
+                        <td><input type="text" name="name" id="name" placeholder="HỌ TÊN" value="{{old('name')??$tk->HoVaTen}}"></td>
+                    </tr>
+                    <tr>
+                        @error('name')
+                            <td style="padding-left:20px;height: 30px;font-size: 15px;" colspan="2"><span class="alert">{{$message}}</span></td>
+                        @enderror
+                    </tr>
+                    <tr>
+                        <td><input type="text" name="DiaChi" id="DiaChi" placeholder="ĐỊA CHỈ" value="{{old('name')??$tk->DiaChi}}"></td>
+                    </tr>
+                    <tr>
+                        @error('DiaChi')
+                            <td style="padding-left:20px;height: 30px;font-size: 15px;" colspan="2"><span class="alert">{{$message}}</span></td>
+                        @enderror
                     </tr>           
                     <tr>
-                        <td><input type="text" name="phoneNum" id="phoneNum" placeholder="SỐ ĐIỆN THOẠI"></td>
+                        <td><input type="text" name="phoneNum" id="phoneNum" placeholder="SỐ ĐIỆN THOẠI" value="{{old('name')??$tk->SoDT}}"></td>
+                    </tr>
+                    <tr>
+                        @error('phoneNum')
+                            <td style="padding-left:20px;height: 30px;font-size: 15px;" colspan="2"><span class="alert">{{$message}}</span></td>
+                        @enderror
                     </tr>
                     <tr>
                         <td><input type="text" name="ghiChu" id="ghiChu" placeholder="GHI CHÚ"></td>
                     </tr>
                      <tr>
                         <td><input type="text" name="diaChiNhanHang" id="diaChiNhanHang" placeholder="ĐỊA CHỈ NHẬN HÀNG"></td>
-                    </tr>         
+                    </tr>  
+                    <tr>
+                        @error('diaChiNhanHang')
+                            <td style="padding-left:20px;height: 30px;font-size: 15px;" colspan="2"><span class="alert">{{$message}}</span></td>
+                        @enderror
+                    </tr>       
                     <tr>
                         <td style="padding-left:20px;height: 30px;font-size: 15px;"><b>HÌNH THỨC VẬN CHUYỂN:</b><b>COD (giao hàng thanh toán)</b></td>
                     </tr>    
-                </table>                        
+                </table> 
+                @endforeach                   
             </div>
         </div>
         <div class="cart-item">
@@ -109,9 +136,8 @@
                 </tr>
                 {{-- {{ count((array) session('cart')) }} --}}
                 @php $total = 0; @endphp
-                @if(isset($SP))
                 @foreach ($SP as $id => $item)
-                @php dd($SP); @endphp
+                @php  @endphp
                 {{-- @php dd($item[0]->SoLuongCon); @endphp --}}
                 {{-- @php $home =  $item['SoLuong'] @endphp --}}
                 <tr>
@@ -133,7 +159,6 @@
                     <td class="item-total">{{$item[1]->GiaBan * $item['SoLuong']}}đ</td>
                 </tr>
                 @endforeach
-                @endif
             </table>
             <hr style="margin-top: 30px;">
             <div class="user-total-price">
@@ -141,10 +166,17 @@
                     <strong>TỔNG CỘNG: <span style="color: red;">{{$total }}đ</span></strong>
                 </div>               
             </div>
+            @php 
+                
+                session()->put('SP',$SP);
+ 
+                @endphp
+            <input type="hidden" name="tongTien" value="{{$total}}">
             <div class="thanhToan">
                     <input type="submit" value="THANH TOÁN">
                 </div>
-        </div>
+            </div>
+            <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
         </form>
     </div>
     <footer>
@@ -179,7 +211,6 @@
 <script>
     function logout(){
         let url = "{{ route('checkout') }}";
-
         document.location.href=url;
     }
 

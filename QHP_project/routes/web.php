@@ -74,6 +74,7 @@ Route::prefix('ThongTinCaNhan')->name('ThongTinCaNhan.')->group(function(){
 });
 Route::prefix('ThanhToan')->name('ThanhToan.')->group(function(){
     Route::get('/',[ThanhToanController::class,'goToThanhToan'])->name('index');
+    Route::post('/',[ThanhToanController::class,'insertDH'])->name('postHD');
 });
 
 Route::middleware('checkadmin')->prefix('/adminsite')->group(function () {

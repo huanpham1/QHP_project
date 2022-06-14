@@ -6,6 +6,7 @@ use App\Models\LayTheLoai;
 use App\Models\GioHang;
 use App\Models\SanPham;
 use App\Models\Orders;
+use App\Models\taikhoan;
 
 use Illuminate\Http\Request;
 
@@ -15,7 +16,7 @@ class ThanhToanController extends Controller
     {
         $this->SanPham = new SanPham();
     }
-    public function goToThanhToan(){
+    public function goToThanhToan(Request $request){
 
         $tl = new LayTheLoai();
         $theloai = $tl->getAllTheLoai();
@@ -24,6 +25,9 @@ class ThanhToanController extends Controller
         $danhmuc = $dm->getAllDanhMuc();
 
         // dd(session()->get('cart'));
+        $MaTK = $request->session()->get('MaTK',1);
+        $tk = new taikhoan();
+        $taikhoan = $tk->layThongTinKH($MaTK);
         $SP = null;
         if((session()->has('TenTaiKhoan'))){
             $loaigio = 'GH';
@@ -39,22 +43,63 @@ class ThanhToanController extends Controller
             }
         }
         // dd($SP);
-        return view("ThanhToan", compact('theloai','danhmuc', 'SP'));
+        return view("ThanhToan", compact('taikhoan','theloai','danhmuc', 'SP'));
     } 
-    public function insertDH(Request $request,$diaChiNhanHang,$sdt,$ghiChu,$tongTien,$item){
+    public function insertDH(Request $request){
         $rule = [
             'name' => 'required|min:5',
-            'email' => 'required|email',
-            '' => 'required',
-            'phoneNum' => 'numeric'
+            'DiaChi' => 'required',
+            'diaChiNhanHang' => 'required|min:20',
+            'phoneNum' => 'numeric|min:10'
         ];
         $message = [
-            'required' => ':attribute bat buoc phai nhap !',
-            'min' => ':attribute phai co it nhat :min ki tu !',
-            'email' => ':attribute khong dung dinh dang!',
-            'numeric' => ':attribute khong dung dinh dang !'
+            'required' => ':attribute không được để trống !',
+            'min' => ':attribute phải có ít nhất :min kí tự !',
+            'numeric' => ':attribute không đúng định dạng !'
         ];
         $request->validate($rule,$message);
+        $MaTK = $request->session()->get('MaTK',1);
         $order = new Orders();
+        $dsdh[] = $order->layDSDH();       
+        $key = count($dsdh[0]);     
+        //DD($dsdh);
+        if(count($dsdh) > 0){
+            $madh = 'DH'.($key+1);
+        }
+        else
+            $madh = 'DH1';
+        $ngayDatHang = date('Y-m-d',time());
+        $ngayNhanHang = date('Y-m-d',time() + 5*24*60*60);
+        $hinhThucVanChuyen = 'COD';
+        $data = [
+            $madh,
+            $ngayDatHang,
+            $hinhThucVanChuyen,
+            $ngayNhanHang,
+            $request->diaChiNhanHang,   
+            $request->phoneNum,
+            $request->ghiChu,
+            $MaTK,
+            $request->tongTien,
+            $trangthai = NULL
+        ];
+        $order->insertDH($data);
+        $listSP[] = $request->session()->get('SP');
+        //DD($listSP);
+        foreach($listSP as $SP){
+            //DD($SP);
+            $chiTietSPID = $SP[2][0]->ChiTietSPID;
+            $soLuong = $SP[2]["SoLuong"];
+            $giaBan = $SP[2][1]->GiaBan;
+            $datactdh = [
+                $madh,
+                $chiTietSPID,
+                $soLuong,
+                $giaBan
+            ];
+            $order->insertCTDH($datactdh);
+        }
+        
+        return redirect()->route('home')->with('Đặt hàng thành công !!!');
     }
 }
