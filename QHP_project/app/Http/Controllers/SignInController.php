@@ -96,4 +96,5 @@ class SignInController extends Controller
         session()->forget('admin');
         return view('LoginAdmin');
     }
+    
 }

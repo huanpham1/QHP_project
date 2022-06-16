@@ -86,4 +86,7 @@ class homeController extends Controller
         dd(session()->get('TenTaiKhoan'));
         // .var_export
     }
+    public function KTDonHang(){
+        return view('KTDonHang');
+    }
 }

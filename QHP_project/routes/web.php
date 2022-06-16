@@ -39,6 +39,7 @@ Route::prefix('/')->group(function(){
         return view('LogInAdmin');
     });
     Route::get('/ThongBao', [homeController::class, 'notification'])->name('ThongBao');
+    Route::get('/KTDonHang', [homeController::class, 'KTDonHang'])->name('KTDonHang');
     Route::post('/DangKyinfo',[SignInController::class,'checkinfo']);
     Route::get('/Products/ChiTiet/{id}', [SanPhamController::class, 'ChiTiet'])->name('chitiet');
     Route::get('/search-products', [ProductsController::class, 'search'])->name('search-products');
