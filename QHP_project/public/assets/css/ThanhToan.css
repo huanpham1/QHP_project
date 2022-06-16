@@ -194,6 +194,7 @@ nav>ul>.nu:hover > .nunu{
 }
 .cart-item{
     width: 40%;
+    margin-top: 0px;
 }
 .cart-item table{
     margin-top: 10px;

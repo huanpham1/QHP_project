@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/GioHang.css')}}">
 
     <div class="cart">
         <!-- <div class="cart-title"><h2>GIỎ HÀNG CỦA BẠN</h2></div>

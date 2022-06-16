@@ -33,13 +33,12 @@ use App\Http\Controllers\ThanhToanController;
 Route::prefix('/')->group(function(){
     Route::get('/', [homeController::class, 'home'])->name('home');
     Route::get('/DangNhap', [homeController::class, 'register'])->name('DangNhap');
-    Route::get('/DangKy', function () {
-        return view('DangKy');
-    })->name('DangKy');
+    Route::get('/DangKy', [homeController::class, 'signin'])->name('DangKy');
     Route::get('/GioHang', [GioHangController::class, 'index'])->name('giohang');
     Route::get('/LogInAdmin', function () {
         return view('LogInAdmin');
     });
+    Route::get('/ThongBao', [homeController::class, 'notification'])->name('ThongBao');
     Route::post('/DangKyinfo',[SignInController::class,'checkinfo']);
     Route::get('/Products/ChiTiet/{id}', [SanPhamController::class, 'ChiTiet'])->name('chitiet');
     Route::get('/search-products', [ProductsController::class, 'search'])->name('search-products');
@@ -74,6 +73,7 @@ Route::prefix('ThongTinCaNhan')->name('ThongTinCaNhan.')->group(function(){
 });
 Route::prefix('ThanhToan')->name('ThanhToan.')->group(function(){
     Route::get('/',[ThanhToanController::class,'goToThanhToan'])->name('index');
+    Route::get('/DHN',[ThanhToanController::class,'DatHangNgay'])->name('DHN');
     Route::post('/',[ThanhToanController::class,'insertDH'])->name('postHD');
 });
 

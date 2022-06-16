@@ -11,7 +11,7 @@ use App\Models\LayDanhMuc;
 class ThongTinCaNhanController extends Controller
 {
     public function index(){
-        
+
         return view('ThongTinCaNhan');
     }
     public function goToThongTinCaNhan(Request $request){
@@ -21,7 +21,7 @@ class ThongTinCaNhanController extends Controller
         $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
 
-        $MaTK = $request->session()->get('MaTK',1);
+        $MaTK = $request->session()->get('TenTaiKhoan');
         $tk = new taikhoan();
         $taikhoan = $tk->layThongTinKH($MaTK);
         return view('ThongTinCaNhan', compact('taikhoan', 'danhmuc', 'theloai'));
@@ -33,7 +33,7 @@ class ThongTinCaNhanController extends Controller
         $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
 
-        $MaTK = $request->session()->get('MaTK',1);
+        $MaTK = $request->session()->get('TenTaiKhoan');
         $tk = new taikhoan();
         $taikhoan = $tk->layThongTinKH($MaTK);
         return view('SuaThongTinCaNhan',compact('taikhoan', 'danhmuc', 'theloai'));
@@ -52,7 +52,7 @@ class ThongTinCaNhanController extends Controller
             'numeric' => ':attribute khong dung dinh dang !'
         ];
         $request->validate($rule,$message);
-        $MaTK = $request->session()->get('MaTK',1);
+        $MaTK = $request->session()->get('TenTaiKhoan');
         $tk = new taikhoan();
         $data = [
             $request->name,
@@ -63,7 +63,7 @@ class ThongTinCaNhanController extends Controller
             $MaTK
         ];
         $taikhoan = $tk->SuaThongTin($data);
-        
+
         return redirect()->route('ThongTinCaNhan.index')->with('Sửa thành công !!!');
     }
 }

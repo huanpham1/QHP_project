@@ -5,9 +5,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <link rel="stylesheet" href="{{ asset('assets/css/layout.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/chitiet.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/GioHang.css')}}">
-    <link rel="stylesheet" href="{{ asset('assets/css/stylehome.css')}}">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.1/css/all.min.css">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Giày QHP</title>
@@ -21,9 +18,9 @@
                 @if (!(session()->has('TenTaiKhoan')))
                     <a href="{{route('DangNhap')}}">Đăng Nhập</a>
                     <pre>|</pre>
-                    <a href="./DangKy">Đăng Ký</a>
+                    <a href="{{route('DangKy')}}">Đăng Ký</a>
                 @else
-                <a href="#">@php echo session()->get('TenTaiKhoan') @endphp</a>
+                <a href="{{route('ThongTinCaNhan.index')}}">@php echo session()->get('TenTaiKhoan') @endphp</a>
                 <pre>|</pre>
                 <a href="{{ route('checkout') }}">Đăng xuất</a>
                 @endif
@@ -35,16 +32,19 @@
             <nav>
                 <ul>
                     <li><a href="#">Về chúng tôi</a></li>
-                    <?php foreach($danhmuc as $datadm){ ?>
-                        <li class="nam">
-                            <a href="{{route('XemDanhMuc.index',['id'=>$datadm->MaDanhMuc])}}"><?php echo $datadm->TenDanhMuc ?> <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                            <ul class="namnam">
-                                <?php foreach($theloai as $data){ ?>
-                                    <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}"><?php echo $data->TenTheLoai ?></a></li>
-                                <?php } ?>
-                            </ul>
-                        </li>
-                    <?php }?>
+                    @if(@isset($danhmuc))
+                        @foreach($danhmuc as $datadm)
+                            <li class="nam">
+                                <a href="{{route('XemDanhMuc.index',['id'=>$datadm->MaDanhMuc])}}">{{$datadm->TenDanhMuc}} <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                                {{-- <ul class="namnam">
+                                    @foreach($theloai as $data)
+                                        <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}">{{$data->TenTheLoai}}</a></li>
+                                    @endforeach
+                                </ul> --}}
+                            </li>
+
+                        @endforeach
+                    @endif
                 </ul>
             </nav>
             <div class="search">
@@ -69,6 +69,8 @@
                                 @php echo count(Session::get($loaigio, array())); @endphp
                             @endif
                         </div>
+                    @else
+                        <div class="carthover" style="display: none"></div>
                     @endif
 
                 </i></a>

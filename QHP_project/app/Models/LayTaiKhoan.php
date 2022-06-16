@@ -8,9 +8,9 @@ use Illuminate\Support\Facades\DB;
 
 class LayTaiKhoan extends Model
 {
-    
+
     public function layThongTinKH($MaTK){
-        
+
         $tk = DB::select('SELECT * FROM taikhoan WHERE MaTK = '.$MaTK);
 
         return $tk;
@@ -18,5 +18,9 @@ class LayTaiKhoan extends Model
     public function SuaThongTin($data){
         $suaThongTin = DB::update('UPDATE taikhoan SET HoVaTen = ?,NgaySinh = ?,Email = ?,DiaChi = ?,SoDT = ? WHERE MaTK = ?',$data);
         return $suaThongTin;
+    }
+    public function GETIDTK($data){
+        $MaTK = DB::select('SELECT MaTK FROM taikhoan WHERE TenTaiKhoan = '.$data);
+        return $MaTK;
     }
 }

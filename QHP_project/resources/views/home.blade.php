@@ -1,7 +1,10 @@
 @extends('layout')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/stylehome.css')}}">
 
+
+<div class="thongbao"></div>
     <div class="banner"><img src="{{ asset('assets/images/Image 1.png')}}" alt="banner1"></div>
     <div class="content">
         <div class="title0"><p>SẢN PHẨM</p></div>
@@ -9,7 +12,7 @@
             <div class="title1"><img src="{{ asset('assets/images/Image 3.png')}}" alt="nam"></div>
                 @if (!empty($SanPhamList))
                     <div class="hang">
-                        @for($j = 0; $j < 5; $j++)
+                        @for($j = 0; $j < 4; $j++)
                         <div class="cot">
                             <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay"></a>
                             <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
@@ -57,7 +60,7 @@
                 @for($j = 0; $j < 4; $j++)
                 <div class="cot">
 
-                    <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><img src="{{ asset('assets/images/'.$sanphamnu[$j]->HinhAnh)}}" alt="Giay"></a>
+                    <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$sanphamnu[$j]->HinhAnh)}}" alt="Giay"></a>
                     <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><p class="tensp">{{$sanphamnu[$j]->TenSP}}</p></a>
                      <a href="#"><p class="price">{{$sanphamnu[$j]->GiaBan}}</p></a>
                 </div>
