@@ -15,10 +15,10 @@
                     <div class="ma">Mã sản phẩm: {{$data->MaSP}}</div>
                     <div class="gia" style="display: flex;">
                         @if($data->KhuyenMai != null)
-                        <a href="#" style="text-decoration: none; color: #ea5848; padding-right: 10px"><p >{{$data->GiaBan*(100-$data->KhuyenMai)/100}}$</p></a>
-                        <p  style="text-decoration: none; text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$data->GiaBan}}$</p>
+                        <a href="#" style="text-decoration: none; color: #ea5848; padding-right: 10px"><p >{{$data->GiaBan*(100-$data->KhuyenMai)/100}}đ</p></a>
+                        <p  style="text-decoration: none; text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$data->GiaBan}}đ</p>
                         @else
-                        <a href="#" style="text-decoration: none; color: #ea5848; padding-right: 10px"><p  >{{$data->GiaBan}}$</p></a>
+                        <a href="#" style="text-decoration: none; color: #ea5848; padding-right: 10px"><p  >{{$data->GiaBan}}đ</p></a>
                         @endif
                         {{-- {{$data->GiaBan}}đ</div> --}}
                     </div>
@@ -55,11 +55,11 @@
                     {{-- onclick="window.location='{{ route('giohang') }}'" --}}
                     <div class="btn">
 
-                        <input class="themVaoGio" style="background-color: #e34848; border: none" type="submit" value=" ĐẶT HÀNG NGAY">
+                        <input class="themVaoGio" style="background-color: #e34848; border: none; width: 100%;" type="submit" value=" ĐẶT HÀNG NGAY">
 
                     </div>
             </form>
-            <button class="themVaoGio" onclick="ThemGHMOI()" style="margin-top: 5px">THÊM VÀO GIỎ</button>
+            <button class="themVaoGio" onclick="ThemGHMOI()" style="margin-top: 5px;width: 100%;" >THÊM VÀO GIỎ</button>
         </div>
 
         <div class="alert-green hide">

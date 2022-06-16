@@ -127,7 +127,15 @@
                        <a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}">{{$item[1]->TenSP}}</a>
                         <div class="item-infor">
                             {{-- <div class="color">Màu: <div class="item-color"></div></div> --}}
-                            @php $total += $item[1]->GiaBan * $item['SoLuong']; @endphp
+                            @php
+                                if($item[1]->KhuyenMai != null)
+                                    $total +=($item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100)* $item['SoLuong'];
+                                else
+                                    $total += $item[1]->GiaBan * $item['SoLuong'];
+
+
+
+                            @endphp
                             <div class="size">Size: <div class="item-size">{{$item[0]->Size}}</div></div>
                         </div>
                     </td>
@@ -136,7 +144,18 @@
                         <input type="number" class="SoLuong" min="1"  value="{{$item['SoLuong']}}" readonly onchange="UpdateCart('{{$id}}')" placeholder="">
                         <div class="slKhongHopLe"></div>
                     </td>
-                    <td class="item-price">{{$item[1]->GiaBan}}đ</td>
+
+                    @if($item[1]->KhuyenMai != null)
+                        <td class="item-price">
+                            <p >{{$item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100}}đ</p>
+                            <p  style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$item[1]->GiaBan}}đ</p>
+
+                        </td>
+                        {{-- <td class="item-price"></td> --}}
+                    @else
+                        <td><div class="item-price ">{{$item[1]->GiaBan}}đ</div></td>
+                    @endif
+                    {{-- <td class="item-price">{{$item[1]->GiaBan}}đ</td> --}}
                     <td class="item-total">{{$item[1]->GiaBan * $item['SoLuong']}}đ</td>
                 </tr>
                 @endforeach
@@ -166,7 +185,7 @@
                         $SP["LoaiGio"] = $loaigio;
                         session()->put('SP',$SP);
                     @endphp
-                
+
                 @endif
             <input type="hidden" name="tongTien" value="{{$total}}">
             <div class="thanhToan">
