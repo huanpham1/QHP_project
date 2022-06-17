@@ -33,6 +33,10 @@ class Orders extends Model
         return DB::select('SELECT tb1.*, tb2.HoVaTen, tb2.Email FROM '.$this->table.' tb1 JOIN taikhoan tb2
         on tb1.MaTK = tb2.MaTK WHERE MaDonHang=?', [$id]);
     }
+    public function getDetailAcc($id){
+        return DB::select('SELECT tb1.* FROM donhang tb1 JOIN taikhoan tb2
+        on tb1.MaTK = tb2.MaTK WHERE TenTaiKhoan=?', [$id]);
+    }
 
     public function getProductsInOrder($id){
         return DB::select('SELECT tb1.*, tb2.Size, tb3.TenSP FROM chitietdonhang tb1 JOIN chitietsanpham tb2

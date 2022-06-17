@@ -54,6 +54,13 @@ class OrdersController extends Controller
 
         return view('admin.orders.list', compact('title', 'ordersList'));
     }
+    public function checkdetailView(Request $request){
+        
+
+        $ordersList = $this->orders->getDetailAcc(session()->get('TenTaiKhoan'));
+        // dd($ordersList);
+        return view('ThongTinCaNhan', compact('ordersList'));
+    }
 
     public function detail(Request $request, $id=0){
         $title = 'Chi tiết đơn hàng';
@@ -95,6 +102,27 @@ class OrdersController extends Controller
         }
 
         return view('KTDonHang', compact('title', 'orderDetail', 'productsList'));
+    }
+    public function detailUserView($id){
+        $title = 'Chi tiết đơn hàng';
+        
+        if (!empty($id)){
+            $orderDetail = $this->orders->getDetail($id);
+            // dd($orderDetail);
+            //Danh sách sản phẩm trong đơn hàng
+            $productsList = $this->orders->getProductsInOrder($id);
+            
+            if (!empty($orderDetail[0])){
+                session()->put('id', $id);
+                $orderDetail = $orderDetail[0];
+            } else {
+                return redirect()->route('CTDH')->with('msg', 'Chi tiết đơn hàng không tồn tại');
+            }
+        } else {
+            return redirect()->route('CTDH')->with('msg', 'Liên kết không tồn tại');
+        }
+
+        return view('ChiTietDonHang', compact('title', 'orderDetail', 'productsList'));
     }
     public function delete($id = 0){
         if (!empty($id)){

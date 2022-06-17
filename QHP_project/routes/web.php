@@ -41,6 +41,8 @@ Route::prefix('/')->group(function(){
     Route::get('/ThongBao', [homeController::class, 'notification'])->name('ThongBao');
     Route::get('/KTDonHang', [homeController::class, 'KTDonHang'])->name('KTDonHang');
     Route::get('/KTDH', [OrdersController::class, 'detailView'])->name('KTDH');
+    Route::get('/CTDH/{id}', [OrdersController::class, 'detailUserView'])->name('CTDH');
+    Route::get('/KTDHview', [OrdersController::class, 'checkdetailView'])->name('KTDHview');
     Route::post('/DangKyinfo',[SignInController::class,'checkinfo']);
     Route::get('/Products/ChiTiet/{id}', [SanPhamController::class, 'ChiTiet'])->name('chitiet');
     Route::get('/search-products', [ProductsController::class, 'search'])->name('search-products');
