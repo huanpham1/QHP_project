@@ -82,8 +82,8 @@ class homeController extends Controller
 
     public function test(){
 
-        Storage::disk('local')->put('example.txt', json_encode(Session('cart')));
-        dd(session()->get('TenTaiKhoan'));
+        // Storage::disk('local')->put('example.txt', json_encode(Session('cart')));
+        dd(session()->get('GH'));
         // .var_export
     }
     public function KTDonHang(){

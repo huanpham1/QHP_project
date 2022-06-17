@@ -89,7 +89,7 @@ class GioHangController extends Controller
             $cart = session()->get($loaigio, []);
 
         }
-        else $cart = [];
+        else $cart = session()->get($loaigio, []);;
 
         $slCon = ($this->SanPham->getCT($id))->SoLuongCon;
         $slthem = $request->json('SoLuong');
@@ -114,7 +114,8 @@ class GioHangController extends Controller
                 $cart[$id] = [
                     "SoLuong" => $request->json('SoLuong')
                 ];
-                // return response()->json([$cart],200);
+                // 
+                
                 // return response()->json([($cart)],200);
                 session()->put($loaigio, $cart);
 

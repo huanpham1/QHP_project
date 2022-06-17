@@ -63,8 +63,8 @@ class ThanhToanController extends Controller
         $SP = null;
         if((session()->has('TenTaiKhoan'))){
             $loaigio = 'GH';
-            $cart = json_decode((Storage::disk('local')->get(session()->get('TenTaiKhoan').'.txt')), true);
-            session()->put($loaigio, $cart);
+            // $cart = json_decode((Storage::disk('local')->get(session()->get('TenTaiKhoan').'.txt')), true);
+            // session()->put($loaigio, $cart);
             // dd((session('GH')));
             $taikhoan = $tk->layThongTinKH($TenTK);
 
@@ -157,7 +157,7 @@ class ThanhToanController extends Controller
             if($loaigio == "GH"){
                 Storage::disk('local')->put(session()->get('TenTaiKhoan').'.txt', json_encode(''));
                 $request->session()->forget('GH');
-
+                // session()->put('GH', "abc");
             }elseif($loaigio == "cart"){
                 $request->session()->forget('cart');
             }
