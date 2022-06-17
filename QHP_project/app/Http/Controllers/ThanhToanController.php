@@ -124,7 +124,7 @@ class ThanhToanController extends Controller
             $request->ghiChu,
             $MaTK,
             $request->tongTien,
-            $trangthai = NULL
+            $trangthai = 'Chưa giao'
         ];
         $order->insertDH($data);
         if(!isset($request->DHN)){

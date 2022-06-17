@@ -13,7 +13,7 @@
     <header>
         <div class="htren">
             <div class="hotline"><p>Hotline: 0987666666</p></div>
-            <div class="checking-order"><a href="#">Kiểm tra đơn hàng</a></div>
+            <div class="checking-order"><a href="{{route('KTDonHang')}}">Kiểm tra đơn hàng</a></div>
             <div class="login">
                 @if (!(session()->has('TenTaiKhoan')))
                     <a href="{{route('DangNhap')}}">Đăng Nhập</a>

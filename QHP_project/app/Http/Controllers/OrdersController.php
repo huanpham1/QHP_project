@@ -75,7 +75,27 @@ class OrdersController extends Controller
 
         return view('admin.orders.detail', compact('title', 'orderDetail', 'productsList'));
     }
+    public function detailView(Request $request, $id=0){
+        $title = 'Chi tiết đơn hàng';
+        
+        if (!empty($request->MaDH)){
+            $orderDetail = $this->orders->getDetail($request->MaDH);
+            // dd($orderDetail);
+            //Danh sách sản phẩm trong đơn hàng
+            $productsList = $this->orders->getProductsInOrder($request->MaDH);
+            
+            if (!empty($orderDetail[0])){
+                $request->session()->put('id', $id);
+                $orderDetail = $orderDetail[0];
+            } else {
+                return redirect()->route('KTDonHang')->with('msg', 'Chi tiết đơn hàng không tồn tại');
+            }
+        } else {
+            return redirect()->route('KTDonHang')->with('msg', 'Liên kết không tồn tại');
+        }
 
+        return view('KTDonHang', compact('title', 'orderDetail', 'productsList'));
+    }
     public function delete($id = 0){
         if (!empty($id)){
             $order = $this->orders->getDetail($id);
