@@ -81,7 +81,7 @@
 								<th>Email</th>
 								<th>Trạng thái</th>
 								<th>Chi tiết</th>
-								<th>Xóa</th>
+								<th>Hủy</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -100,7 +100,7 @@
 								<td>
 									<button class="btn-del">
 										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-										href="{{route('orders.delete', ['id'=>$item->MaDonHang])}}">Xóa</a>
+										href="{{route('orders.delete', ['id'=>$item->MaDonHang])}}">Hủy</a>
 									</button>
 								</td>
 							</tr>
