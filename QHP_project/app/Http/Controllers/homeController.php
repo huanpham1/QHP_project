@@ -81,9 +81,11 @@ class homeController extends Controller
     }
 
     public function test(){
-
+        $data = $data = DB::table('chitietsanpham')->where('Size', 30)->get('ChiTietSPID');
         // Storage::disk('local')->put('example.txt', json_encode(Session('cart')));
-        dd(session()->get('GH'));
+        $sp= DB::select('SELECT * FROM chitietsanpham WHERE Size = 30 or Size = 31');
+
+        dd($sp);
         // .var_export
     }
     public function KTDonHang(){

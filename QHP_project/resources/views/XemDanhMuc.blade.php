@@ -8,10 +8,14 @@
     <div class="content">
         <div class="filters">
             <div class="size-filter">
+            <form action="{{route('LocDM')}}" method="POST" >
                 <strong><p>Size:</p></strong>
                 <div class="size">
                     <ul>
-                        <li><a href="#">24</a></li><li><a href="#">25</a></li>
+                        @for ( $i = 24; $i < 46; $i++)
+                            <li id="{{$i}}"  onclick="SelecetSize({{$i}})"><input id="giatri" name="one" value="1000">{{$i}}</div></li>
+                        @endfor
+                        {{-- <li><a href="#">24</a></li><li><a href="#">25</a></li>
                         <li><a href="#">26</a></li><li><a href="#">27</a></li>
                         <li><a href="#">28</a></li><li><a href="#">29</a></li>
                         <li><a href="#">30</a></li><li><a href="#">31</a></li>
@@ -21,7 +25,7 @@
                         <li><a href="#">38</a></li><li><a href="#">39</a></li>
                         <li><a href="#">40</a></li><li><a href="#">41</a></li>
                         <li><a href="#">42</a></li><li><a href="#">43</a></li>
-                        <li><a href="#">44</a></li><li><a href="#">45</a></li>
+                        <li><a href="#">44</a></li><li><a href="#">45</a></li> --}}
                     </ul>
                 </div>
             </div>
@@ -33,11 +37,15 @@
                 <div class="range-slider">
                     <p>Giá từ:</p>
                   <span class="rangeValues"></span>
-                  <input value="1000" min="1000" max="50000" step="500" type="range" class="Rang1Value" onchange="getVals1()">
-                  <input value="50000" min="1000" max="50000" step="500" type="range">
+                  <input value="1000" min="1000" max="50000" name="Value1" step="500" type="range" class="Rang1Value">
+                  <input value="50000" min="1000" max="50000" name="Value2" step="500" type="range">
                 </div>
-              
+                <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
+                <input type="hidden" class="abc" name="MaSP" id="" value="123">
               </div>
+              <input type="submit" name="" id="" value="Lọc">
+            </form>
+                
         </div>
         <div class="product">
             <?php foreach($dmid as $tendm){  ?>
@@ -117,6 +125,13 @@ window.onload = function(){
           }
         }
       }
+}
+
+</script>
+<script type="text/javascript">
+    function SelecetSize(size){
+    (document.getElementById(""+size).style.backgroundColor = 'red' ); 
+    (document.getElementById(""+size).name = "Ma"+size );
 }
 </script>
 

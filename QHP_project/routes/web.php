@@ -53,6 +53,7 @@ Route::prefix('/')->group(function(){
     route::post('/ThemGH', [GioHangController::class, 'addToCart'])->name('ThemGH');
     route::post('/XoaGH', [GioHangController::class, 'remove'])->name('XoaGH');
     route::post('/SuaGH', [GioHangController::class, 'update'])->name('SuaGH');
+    Route::post('/LocDM', [XemDanhMucController::class, 'LocDanhMuc'])->name('LocDM');
     Route::post("/DangNhap/Auth",[LoginController::class , 'LoginAuth']);
     Route::post("/DangNhap/Admin",[LoginController::class , 'LoginAdmin'])->name('LoginAdmin');
 });

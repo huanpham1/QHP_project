@@ -36,4 +36,8 @@ class XemDanhMucController extends Controller
 
         return view('XemDanhMuc', compact('SanPhamList','sanpham','danhmuc','dmid','theloai'));
     }
+    public function LocDanhMuc(Request $request){
+        
+        dd($request);
+    }
 }
