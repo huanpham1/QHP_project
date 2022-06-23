@@ -156,7 +156,7 @@
                         <td><div class="item-price ">{{$item[1]->GiaBan}}đ</div></td>
                     @endif
                     {{-- <td class="item-price">{{$item[1]->GiaBan}}đ</td> --}}
-                    <td class="item-total">{{$item[1]->GiaBan * $item['SoLuong']}}đ</td>
+                    <td class="item-total">{{$item[1]->GiaBan *(100-$item[1]->KhuyenMai)/100 * $item['SoLuong']}}đ</td>
                 </tr>
                 @endforeach
             </table>

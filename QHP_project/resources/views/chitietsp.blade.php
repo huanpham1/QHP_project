@@ -10,7 +10,8 @@
         </div>
         <div class="containerInfor" style="position: relative">
             <form action="{{route('ThanhToan.DHN')}}" method="GET" >
-                    <input type="hidden" class="abc" name="CTSPID" id="" value="{{$CTSPID}}">
+                
+                    <input type="hidden" class="abc" name="MaSP" id="" value="{{$data->MaSP}}">
                     <div class="name">{{$data->TenSP}}</div>
                     <div class="ma">Mã sản phẩm: {{$data->MaSP}}</div>
                     <div class="gia" style="display: flex;">
@@ -24,9 +25,9 @@
                     </div>
                     <div class="kichco">
                         <div class="text">Kích cỡ: </div>
-                        <select name="SIZE" class="size" id="size" onchange="getSL({{$data->MaSP}})">
+                        <select name="Size" class="Size" id="Size" onchange="getSL({{$data->MaSP}})">
                             @foreach ($Size as $item)
-                                <option herf="/a" value="{{$item->Size}}">{{$item->Size}}</option>
+                                <option  value="{{$item->Size}}">{{$item->Size}}</option>
                             @endforeach
                         </select>
                     </div>
@@ -112,11 +113,11 @@
         };
         async function ThemGHMOI(){
             const ma = document.querySelector(".abc").value;
-            const size = document.getElementById("size").value;
+            // const size = document.getElementById("size").value;
             const SLKHL = document.querySelector(".SLKHL");
             const sl = document.querySelector(".input-qty").value;
-
-            const data = { CTSPID: ma, SoLuong: sl};
+            const size = document.querySelector(".Size").value;
+            const data = { MaSP: ma, SoLuong: sl, Size: size};
             // console.log(sl);
             // console.log(data)
             // console.log(giatri);

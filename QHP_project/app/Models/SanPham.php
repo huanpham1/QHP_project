@@ -43,6 +43,7 @@ class SanPham extends Model
         // $data = (DB::table('chitietsanpham')->where('MaSP', (string)$id)->where('Size', (string)$size)->get('ChiTietSPID'));
         return $data;
     }
+    
     public function getCT($id){
         $data = DB::table('chitietsanpham')->where('ChiTietSPID', $id)->first();
         // $data = (DB::table('chitietsanpham')->where('MaSP', (string)$id)->where('Size', (string)$size)->get('ChiTietSPID'));

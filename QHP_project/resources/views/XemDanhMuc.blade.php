@@ -27,20 +27,17 @@
             </div>
 
             <div class="price-filter">
-                <strong><p>Giá:</p></strong>
-                <div class="price-scope">
-                    <input type="checkbox" id="scope1">
-                    <label for="scope1">$30 - $40</label>
+
+                
+              
+                <div class="range-slider">
+                    <p>Giá từ:</p>
+                  <span class="rangeValues"></span>
+                  <input value="1000" min="1000" max="50000" step="500" type="range" class="Rang1Value" onchange="getVals1()">
+                  <input value="50000" min="1000" max="50000" step="500" type="range">
                 </div>
-                <div class="price-scope">
-                    <input type="checkbox" id="scope2">
-                    <label for="scope2">$40 - $50</label>
-                </div>
-                <div class="price-scope">
-                    <input type="checkbox" id="scope3">
-                    <label for="scope3">$50 - $60</label>
-                </div>
-            </div>
+              
+              </div>
         </div>
         <div class="product">
             <?php foreach($dmid as $tendm){  ?>
@@ -88,5 +85,40 @@
         </div>
 
     </div>
+@section('scripts')
+<script>
+    function getVals(){
+  // Get slider values
+  let parent = this.parentNode;
+  let slides = parent.getElementsByTagName("input");
+    let slide1 = parseFloat( slides[0].value );
+    let slide2 = parseFloat( slides[1].value );
+  // Neither slider will clip the other, so make sure we determine which is larger
+  if( slide1 > slide2 ){ let tmp = slide2; slide2 = slide1; slide1 = tmp; }
+  
+  let displayElement = parent.getElementsByClassName("rangeValues")[0];
+//innerHTML property allows Javascript code to manipulate a website being displayed
+      displayElement.innerHTML =  slide1 + " - đ" + slide2 +"đ";
+}
 
+window.onload = function(){
+  // Initialize Sliders
+  let sliderSections = document.getElementsByClassName("range-slider");
+      for( let x = 0; x < sliderSections.length; x++ ){
+        let sliders = sliderSections[x].getElementsByTagName("input");
+        for( let y = 0; y < sliders.length; y++ ){
+          if( sliders[y].type ==="range" ){
+     //oninput attribute fires when the value of an <input> element is changed
+            sliders[y].oninput = getVals;
+            // Manually trigger event first time to display values
+            sliders[y].oninput();
+           
+            
+          }
+        }
+      }
+}
+</script>
+
+@endsection
 @endsection

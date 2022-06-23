@@ -71,8 +71,8 @@ class ThanhToanController extends Controller
         }
         else
             $loaigio = 'cart';
-
-        $SP[0] = [$this->SanPham->getCT($request->CTSPID), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($request->CTSPID)[0]->MaSP),"SoLuong"=>$request->SoLuong];
+        $CTSP = $this->SanPham->getCTSPID($request->MaSP, $request->Size);
+        $SP[0] = [$this->SanPham->getCT($CTSP), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($CTSP)[0]->MaSP),"SoLuong"=>$request->SoLuong];
         $DHN = 1;
         // dd($SP);
         return view("ThanhToan", compact('taikhoan','theloai','danhmuc', 'SP', 'DHN'));

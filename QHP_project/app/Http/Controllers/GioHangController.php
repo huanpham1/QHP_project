@@ -84,7 +84,7 @@ class GioHangController extends Controller
 
             // dd($loaigio);
         // $ma = DB::table('chitietsanpham')->where('MaSP', $id)->get('ChiTietSPID')[0]->ChiTietSPID;
-        $id =  $request->json('CTSPID');
+        $id =  $this->SanPham->getCTSPID($request->json('MaSP'), $request->json('Size'));
         if(session()->has($loaigio)){
             $cart = session()->get($loaigio, []);
 
