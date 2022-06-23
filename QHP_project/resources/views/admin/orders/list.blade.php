@@ -78,7 +78,7 @@
 								<th>Tên khách hàng</th>
 								<th>Địa chỉ</th>
 								<th>Ngày đặt hàng</th>
-								<th>Email</th>
+								<th>Số điện thoại</th>
 								<th>Trạng thái</th>
 								<th>Chi tiết</th>
 								<th>Hủy</th>
@@ -92,7 +92,7 @@
 								<td>{{$item->HoVaTen}}</td>
 								<td>{{$item->DiaChiNhanHang}}</td>
 								<td>{{$item->NgayDatHang}}</td>
-                                <td>{{$item->Email}}</td>
+                                <td>{{$item->SoDT}}</td>
 								<td>{{$item->TrangThai}}</td>
                                 <td>
                                     <button class="btn-detail"><a href="{{route('orders.detail', ['id'=>$item->MaDonHang])}}">Chi tiết</a></button>
