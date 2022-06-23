@@ -106,7 +106,7 @@ class ThanhToanController extends Controller
         $key = count($dsdh[0]);
         //DD($dsdh);
         if(count($dsdh) > 0){
-            $madh = 'DH'.($key+1);
+            $madh = 'DH'.time();
         }
         else
             $madh = 'DH1';

@@ -6,6 +6,9 @@ use App\Http\Controllers\Controller;
 use App\Models\Orders;
 use Illuminate\Http\Request;
 
+use App\Models\LaySanPham;
+use App\Models\LayTheLoai;
+use App\Models\LayDanhMuc;
 class OrdersController extends Controller
 {
     private $orders;
@@ -90,7 +93,17 @@ class OrdersController extends Controller
             // dd($orderDetail);
             //Danh sách sản phẩm trong đơn hàng
             $productsList = $this->orders->getProductsInOrder($request->MaDH);
-            
+            $spnam = new LaySanPham();
+            $SanPhamList = $spnam->getAllSanPham_Nam();
+    
+            $spnu = new LaySanPham();
+            $sanphamnu = $spnu->getAllSanPham_Nu();
+    
+            $tl = new LayTheLoai();
+            $theloai = $tl->getAllTheLoai();
+    
+            $dm = new LayDanhMuc();
+            $danhmuc = $dm->getAllDanhMuc();
             if (!empty($orderDetail[0])){
                 $request->session()->put('id', $id);
                 $orderDetail = $orderDetail[0];
@@ -101,7 +114,7 @@ class OrdersController extends Controller
             return redirect()->route('KTDonHang')->with('msg', 'Liên kết không tồn tại');
         }
 
-        return view('KTDonHang', compact('title', 'orderDetail', 'productsList'));
+        return view('KTDonHang', compact('title', 'orderDetail', 'productsList','SanPhamList','sanphamnu','theloai','danhmuc'));
     }
     public function detailUserView($id){
         $title = 'Chi tiết đơn hàng';
@@ -144,6 +157,28 @@ class OrdersController extends Controller
         }
 
         return redirect()->route('orders.index')->with('msg', $msg);
+        
+    }
+    public function deleteUser($id = 0){
+        if (!empty($id)){
+            $order = $this->orders->getDetail($id);
+
+            if (!empty($order[0])){
+                $status = $this->orders->deleteOrder($id);
+
+                if ($status){
+                    $msg = 'Xóa đơn hàng thành công';
+                } else {
+                    $msg = 'Bạn không thể xóa đơn hàng lúc này. Vui lòng thử lại sau';
+                }
+            } else {
+                $msg = 'Đơn hàng không tồn tại';
+            }
+        } else {
+            $msg = 'Liên kết không tồn tại';
+        }
+
+        return redirect()->route('KTDonHang')->with('msg', $msg);
         
     }
 

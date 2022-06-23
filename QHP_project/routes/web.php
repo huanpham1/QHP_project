@@ -38,6 +38,7 @@ Route::prefix('/')->group(function(){
     Route::get('/LogInAdmin', function () {
         return view('LogInAdmin');
     });
+    Route::get('/delete/{id}', [OrdersController::class, 'deleteUser'])->name('deleteUser');
     Route::get('/ThongBao', [homeController::class, 'notification'])->name('ThongBao');
     Route::get('/KTDonHang', [homeController::class, 'KTDonHang'])->name('KTDonHang');
     Route::get('/KTDH', [OrdersController::class, 'detailView'])->name('KTDH');
