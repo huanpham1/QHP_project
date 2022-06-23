@@ -104,7 +104,7 @@
                                     <td>{{$item->TenSP}}</td>
                                     <td>{{$item->Size}}</td>
                                     <td>{{$item->SoLuong}}</td>
-                                    <td align="right">${{$item->GiaTien}}</td>
+                                    <td align="right">{{$item->GiaTien}}đ</td>
                                 </tr>
 							    @endforeach
                                 <tr>
