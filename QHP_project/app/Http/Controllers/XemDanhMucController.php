@@ -38,6 +38,6 @@ class XemDanhMucController extends Controller
     }
     public function LocDanhMuc(Request $request){
         
-        dd($request);
+        dd($request->all());
     }
 }

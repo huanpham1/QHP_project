@@ -8,12 +8,12 @@
     <div class="content">
         <div class="filters">
             <div class="size-filter">
-            <form action="{{route('LocDM')}}" method="POST" >
+            <form action="{{route('LocDM')}}" method="POST" id="form">
                 <strong><p>Size:</p></strong>
                 <div class="size">
                     <ul>
                         @for ( $i = 24; $i < 46; $i++)
-                            <li id="{{$i}}"  onclick="SelecetSize({{$i}})"><input id="giatri" name="one" value="1000">{{$i}}</div></li>
+                            <li id="{{$i}}"  onclick="SelecetSize({{$i}})">{{$i}}</li>
                         @endfor
                         {{-- <li><a href="#">24</a></li><li><a href="#">25</a></li>
                         <li><a href="#">26</a></li><li><a href="#">27</a></li>
@@ -42,10 +42,11 @@
                 </div>
                 <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
                 <input type="hidden" class="abc" name="MaSP" id="" value="123">
+                
               </div>
               <input type="submit" name="" id="" value="Lọc">
             </form>
-                
+            <button onclick="testremove()">remove</button>
         </div>
         <div class="product">
             <?php foreach($dmid as $tendm){  ?>
@@ -128,11 +129,10 @@ window.onload = function(){
 }
 
 </script>
+<script src="{{ asset('assets/js/XemDanhMuc.js')}}">
+</script>
 <script type="text/javascript">
-    function SelecetSize(size){
-    (document.getElementById(""+size).style.backgroundColor = 'red' ); 
-    (document.getElementById(""+size).name = "Ma"+size );
-}
+    
 </script>
 
 @endsection
