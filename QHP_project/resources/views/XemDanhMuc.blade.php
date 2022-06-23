@@ -75,7 +75,7 @@
                             @else
                             <a href="#"><p class="price" >{{$SanPhamList[$j]->GiaBan}}đ</p></a>
                             @endif
-                            {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}$</p></a> --}}
+                            {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
                         </div>
                         @endfor
                             </div>

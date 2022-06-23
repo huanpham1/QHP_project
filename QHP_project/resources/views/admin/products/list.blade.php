@@ -104,7 +104,7 @@
 							<tr>
 								<td>{{$key+1}}</td>
 								<td>{{$item->TenSP}}</td>
-								<td>${{$item->GiaBan}}</td>
+								<td>{{$item->GiaBan}}đ</td>
 								<td>{{$item->MoTa}}</td>
 
 								<td><img src="{{ asset('storage/products/' . $item->HinhAnh) }}" alt="ảnh giày" style="width:60px; height:60px;"></td>

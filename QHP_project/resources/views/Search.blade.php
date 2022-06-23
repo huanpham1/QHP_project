@@ -16,8 +16,12 @@
                         @endif
                         <div class="cot">
                             <a href="#"><img src="{{ asset('storage/products/' . $item->HinhAnh) }}" alt="Giay"></a>
-                            <a href="#"><p class="tensp">{{$item->TenSP}}</p></a>
-                            <a href="#"><p class="price">${{$item->GiaBan}}</p></a>
+                            @if($item->KhuyenMai != null)
+                    <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$item->GiaBan}}đ</p></a>
+                    <a href="#"><p class="price">{{$item->GiaBan*(100-$item->KhuyenMai)/100}}đ</p></a>
+                    @else
+                    <a href="#"><p class="price" >{{$item->GiaBan}}đ</p></a>
+                    @endif
                         </div>
                         @if ($key % 4 == 3 || ($key+1 == count($foundProducts)))
                             </div>

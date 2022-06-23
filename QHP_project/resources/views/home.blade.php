@@ -23,7 +23,7 @@
                             @else
                             <a href="#"><p class="price" >{{$SanPhamList[$j]->GiaBan}}đ</p></a>
                             @endif
-                            {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}$</p></a> --}}
+                            {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
                         </div>
                         @endfor
                     </div>
@@ -48,12 +48,12 @@
                     <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$sanphamnu[$j]->HinhAnh)}}" alt="Giay">@if($sanphamnu[$j]->KhuyenMai != null) <div class="sale">{{"-".$sanphamnu[$j]->KhuyenMai ."%"}}</div>  @endif</a>
                     <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><p class="tensp">{{$sanphamnu[$j]->TenSP}}</p></a>
                     @if($sanphamnu[$j]->KhuyenMai != null)
-                    <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$sanphamnu[$j]->GiaBan}}$</p></a>
-                    <a href="#"><p class="price">{{$sanphamnu[$j]->GiaBan*(100-$sanphamnu[$j]->KhuyenMai)/100}}$</p></a>
+                    <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$sanphamnu[$j]->GiaBan}}đ</p></a>
+                    <a href="#"><p class="price">{{$sanphamnu[$j]->GiaBan*(100-$sanphamnu[$j]->KhuyenMai)/100}}đ</p></a>
                     @else
-                    <a href="#"><p class="price" >{{$sanphamnu[$j]->GiaBan}}$</p></a>
+                    <a href="#"><p class="price" >{{$sanphamnu[$j]->GiaBan}}đ</p></a>
                     @endif
-                    {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}$</p></a> --}}
+                    {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
                 </div>
                 @endfor
             </div>

@@ -73,7 +73,7 @@
                 </tr>
                 <tr>
                     <input type="hidden" name="_token" id="" value="<?php echo csrf_token() ?>">
-                    <td colspan="2" align="center" style="padding-top: 30px"><input type="submit" id="submit" value="SUBMIT"></td>
+                    <td colspan="2" align="center" style="padding-top: 30px"><input type="submit" id="submit" value="Đăng Ký"></td>
                     @csrf
                 </tr>
             </table>

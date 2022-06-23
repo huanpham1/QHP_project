@@ -109,7 +109,7 @@
 							    @endforeach
                                 <tr>
                                     <th>Tổng tiền</th>
-                                    <td colspan="4" align="right" style="color:red;"><strong>${{$orderDetail->TongTien}}</strong></td>
+                                    <td colspan="4" align="right" style="color:red;"><strong>{{$orderDetail->TongTien}}đ</strong></td>
                                 </tr>
 							@else
 							<tr>

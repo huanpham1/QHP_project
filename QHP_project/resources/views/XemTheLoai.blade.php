@@ -61,7 +61,7 @@
                         <div class="cot">
                         <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><img src="{{ asset('storage/products/'.$data->HinhAnh)}}" alt="Giay"></a>
                         <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><p class="tensp"><?php echo $data->TenSP ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <a href="#"><p class="price"><?php echo $data->GiaBan?>$</p></a>
+                        <a href="#"><p class="price"><?php echo $data->GiaBan?>đ</p></a>
                     </div>
                         <?php } ?>
                 </div>
@@ -75,7 +75,7 @@
                         <div class="cot">
                         <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><img src="{{ asset('storage/products/'.$data->HinhAnh)}}" alt="Giay"></a>
                         <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><p class="tensp"><?php echo $data->TenSP ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <a href="#"><p class="price"><?php echo $data->GiaBan?>$</p></a>
+                        <a href="#"><p class="price"><?php echo $data->GiaBan?>đ</p></a>
                     </div>
                         <?php } ?>
                 </div>
