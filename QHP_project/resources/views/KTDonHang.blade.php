@@ -18,6 +18,9 @@
                     <input type="submit" name="" id="" value="Kiểm Tra" class="btn">
                 </form>
             </div>
+            @if (session('msg')!='Xóa đơn hàng thành công'&&session('msg'))
+                        <div class="message">{{session('msg')}}</div>
+                        @endif
             @if (isset($title))
                 <div class="container">
 
@@ -57,6 +60,10 @@
                                     <td>Ghi chú</td>
                                     <td>{{$orderDetail->GhiChu}}</td>
                                 </tr>
+                                <tr>
+                                    <td>Trạng thái</td>
+                                    <td>{{$orderDetail->TrangThai}}</td>
+                                </tr>
                             </table>
                         </div>
 
@@ -68,7 +75,6 @@
                                         <th>Tên sản phẩm</th>
                                         <th>Size</th>
                                         <th>Số lượng</th>
-                                        <th>Trạng Thái</th>
                                         <th>Giá tiền</th>
                                     </tr>
                                 </thead>
@@ -81,7 +87,6 @@
                                             <td>{{$item->TenSP}}</td>
                                             <td>{{$item->Size}}</td>
                                             <td>{{$item->SoLuong}}</td>
-                                            <td>{{$orderDetail->TrangThai}}</td>
                                             <td align="right">${{$item->GiaTien}}</td>
                                             
                                         </tr>
@@ -93,13 +98,20 @@
                                         </tr>
                                     @else
                                     <tr>
-                                        <td colspan="5">Không có sản phẩm</td>
+                                        <td colspan="4">Không có sản phẩm</td>
                                     </tr>
                                     @endif
                                 </tbody>
                             </table>
+                            @if($orderDetail->TrangThai=="Chưa giao")
+                            <div class="huy">
+                                <button class="btn-del">
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                    href="{{route('deleteUser', ['id'=>$item->MaDonHang])}}">Hủy</a>
+                                </button>
+                            </div>
                             
-
+                            @endif
                             
                         </div>
 

@@ -167,3 +167,44 @@
   opacity: 70%;
   cursor: pointer;
 }
+
+.btn-del{
+  background-color: red;
+  width: 40px;
+  height: 30px;
+  border-radius: 3px;
+  border: none;
+  
+}
+.btn-del a{
+  text-decoration: none;
+  color: white;
+  display: block;
+  font-weight: bold;
+  line-height: 30px;
+}
+.btn-del:hover{
+  opacity: 70%;
+}
+.btn-detail{
+  background-color: #ffcc00;
+  width: 70px;
+  height: 30px;
+  border-radius: 3px;
+  border: none;
+}
+.btn-detail a{
+  text-decoration: none;
+  color: black;
+  display: block;
+  font-weight: bold;
+  line-height: 30px;
+  
+}
+.btn-detail:hover{
+  opacity: 70%;
+}
+.huy{
+  text-align: right;
+  margin: 10px;
+}

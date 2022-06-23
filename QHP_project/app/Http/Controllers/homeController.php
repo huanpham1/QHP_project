@@ -87,6 +87,17 @@ class homeController extends Controller
         // .var_export
     }
     public function KTDonHang(){
-        return view('KTDonHang');
+        $spnam = new LaySanPham();
+        $SanPhamList = $spnam->getAllSanPham_Nam();
+
+        $spnu = new LaySanPham();
+        $sanphamnu = $spnu->getAllSanPham_Nu();
+
+        $tl = new LayTheLoai();
+        $theloai = $tl->getAllTheLoai();
+
+        $dm = new LayDanhMuc();
+        $danhmuc = $dm->getAllDanhMuc();
+        return view('KTDonHang', compact('SanPhamList','sanphamnu','theloai','danhmuc'));
     }
 }

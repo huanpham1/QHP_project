@@ -46,6 +46,10 @@
                                     <td>Ghi chú</td>
                                     <td>{{$orderDetail->GhiChu}}</td>
                                 </tr>
+                                <tr>
+                                    <td>Trạng thái</td>
+                                    <td>{{$orderDetail->TrangThai}}</td>
+                                </tr>
                             </table>
                         </div>
 
@@ -70,7 +74,7 @@
                                             <td>{{$item->TenSP}}</td>
                                             <td>{{$item->Size}}</td>
                                             <td>{{$item->SoLuong}}</td>
-                                            <td>{{$orderDetail->TrangThai}}</td>
+                                            
                                             <td align="right">${{$item->GiaTien}}</td>
                                             
                                         </tr>
@@ -88,7 +92,15 @@
                                 </tbody>
                             </table>
                             
-
+                            @if($orderDetail->TrangThai=="Chưa giao")
+                            <div class="huy">
+                                <button class="btn-del">
+                                    <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+                                    href="{{route('deleteUser', ['id'=>$item->MaDonHang])}}">Hủy</a>
+                                </button>
+                            </div>
+                            
+                            @endif
                             
                         </div>
 
