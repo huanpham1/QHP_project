@@ -1,7 +1,9 @@
 @extends('layout')
 
 @section('content')
+
 <link rel="stylesheet" href="{{ asset('assets/css/XemDanhMuc.css')}}">
+<link rel="stylesheet" href="{{ asset('assets/css/stylehome.css')}}">
     </header>
     <div class="content">
         <div class="filters">
@@ -56,35 +58,32 @@
             </div>
             <div class="sp-nam">
                 <div class="hang">
-                    <?php $i=0; foreach($sanpham as $data){
-                            $i++;
-                            if($i==5)
-                                break;
-                        ?>
-                        <div class="cot">
-                        <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><img src="{{ asset('storage/products/'.$data->HinhAnh)}}" alt="Giay"></a>
-                        <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><p class="tensp"><?php echo $data->TenSP ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <a href="#"><p class="price"><?php echo $data->GiaBan?>$</p></a>
-                    </div>
-                        <?php } ?>
+
                 </div>
 
                 <div class="hang">
-                    <?php $i=0; foreach($sanpham as $data){
-                            $i++;
-                            if($i==5)
-                                break;
-                        ?>
+                    @if (!empty($SanPhamList))
+                    <div class="hang">
+                        @for($j = 0; $j < 4; $j++)
+                        @php if($SanPhamList[$j]->KhuyenMai != null)echo "";  @endphp
                         <div class="cot">
-                        <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><img src="{{ asset('storage/products/'.$data->HinhAnh)}}" alt="Giay"></a>
-                        <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><p class="tensp"><?php echo $data->TenSP ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <a href="#"><p class="price"><?php echo $data->GiaBan?>$</p></a>
-                    </div>
-                        <?php } ?>
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay">@if($SanPhamList[$j]->KhuyenMai != null) <div class="sale">{{"-".$SanPhamList[$j]->KhuyenMai ."%"}}</div>  @endif</a>
+                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                            @if($SanPhamList[$j]->KhuyenMai != null)
+                            <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                            <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a>
+                            @else
+                            <a href="#"><p class="price" >{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                            @endif
+                            {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}$</p></a> --}}
+                        </div>
+                        @endfor
+                            </div>
+						@else
+							
+				    @endif
                 </div>
-                <div class="view-more">
-                    <a href="#"><button>VIEW MORE PRODUCTS</button></a>
-                </div>
+                
             </div>
         </div>
 

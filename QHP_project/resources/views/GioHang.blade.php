@@ -56,7 +56,7 @@
                     </td>
                     <td >
                         @if($item[1]->KhuyenMai != null)
-                        <div class="" style="display: flex;">
+                        <div class="" style="display: block;">
                             <p class="item-price">{{$item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100}}đ</p>
                             <p class="item-price" style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$item[1]->GiaBan}}đ</p>
                         </div>

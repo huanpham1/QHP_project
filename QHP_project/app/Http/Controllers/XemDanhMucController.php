@@ -31,6 +31,9 @@ class XemDanhMucController extends Controller
         $tl = new LayTheLoai();
         $theloai = $tl->getAllTheLoai();
 
-        return view('XemDanhMuc', compact('sanpham','danhmuc','dmid','theloai'));
+        $spnam = new LaySanPham();
+        $SanPhamList = $spnam->getAllSanPham_Nam();
+
+        return view('XemDanhMuc', compact('SanPhamList','sanpham','danhmuc','dmid','theloai'));
     }
 }
