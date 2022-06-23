@@ -18,21 +18,12 @@ class Orders extends Model
         // on tb1.MaTK = tb2.MaTK');
 
         if (empty($status)){
-<<<<<<< HEAD
-            $orders = DB::select("SELECT tb1.*, tb2.HoVaTen, tb2.Email FROM ".$this->table." tb1 JOIN taikhoan tb2
-            on tb1.MaTK = tb2.MaTK WHERE (tb2.HoVaTen LIKE '%".$keywords."%' OR
-            DiaChiNhanHang LIKE '%".$keywords."%') AND (NgayDatHang BETWEEN ".$dates[0]." AND ".$dates[1].") ORDER BY MaDonHang");
-        } else {
-            $orders = DB::select("SELECT tb1.*, tb2.HoVaTen, tb2.Email FROM ".$this->table." tb1 JOIN taikhoan tb2
-            on tb1.MaTK = tb2.MaTK WHERE TrangThai='".$status."' AND (HoVaTen LIKE '%".$keywords."%' OR
-=======
             $orders = DB::select("SELECT tb1.*, tb2.Email FROM ".$this->table." tb1 LEFT OUTER JOIN taikhoan tb2
-            on tb1.MaTK = tb2.MaTK WHERE (tb1.HoVaTen LIKE '%".$keywords."%' OR 
+            on tb1.MaTK = tb2.MaTK WHERE (tb1.HoVaTen LIKE '%".$keywords."%' OR
             DiaChiNhanHang LIKE '%".$keywords."%') AND (NgayDatHang BETWEEN ".$dates[0]." AND ".$dates[1].") ORDER BY MaDonHang");
         } else {
             $orders = DB::select("SELECT tb1.*, tb2.Email FROM ".$this->table." tb1 LEFT OUTER JOIN taikhoan tb2
-            on tb1.MaTK = tb2.MaTK WHERE TrangThai='".$status."' AND (tb1.HoVaTen LIKE '%".$keywords."%' OR 
->>>>>>> BranchMerge
+            on tb1.MaTK = tb2.MaTK WHERE TrangThai='".$status."' AND (tb1.HoVaTen LIKE '%".$keywords."%' OR
             DiaChiNhanHang LIKE '%".$keywords."%') AND (NgayDatHang BETWEEN ".$dates[0]." AND ".$dates[1].") ORDER BY MaDonHang");
         }
         return $orders;
