@@ -98,10 +98,12 @@
                                     <button class="btn-detail"><a href="{{route('orders.detail', ['id'=>$item->MaDonHang])}}">Chi tiết</a></button>
                                 </td>
 								<td>
-									<button class="btn-del">
-										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-										href="{{route('orders.delete', ['id'=>$item->MaDonHang])}}">Hủy</a>
-									</button>
+									@if ($item->TrangThai == 'Chưa giao')
+										<button class="btn-del">
+											<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+											href="{{route('orders.delete', ['id'=>$item->MaDonHang])}}">Hủy</a>
+										</button>
+									@endif
 								</td>
 							</tr>
 							@endforeach
