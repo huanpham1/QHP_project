@@ -18,7 +18,7 @@
                     <input type="submit" name="" id="" value="Kiểm Tra" class="btn">
                 </form>
             </div>
-            @if (session('msg')!='Xóa đơn hàng thành công'&&session('msg'))
+            @if (session('msg'))
                         <div class="message">{{session('msg')}}</div>
                         @endif
             @if (isset($title))

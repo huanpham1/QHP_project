@@ -15,3 +15,4 @@ function testremove(){
     // console.log(text[0].value);
     document.getElementById('form').removeChild(text);
 }
+

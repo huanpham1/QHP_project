@@ -65,7 +65,7 @@
         
         </div>
         <div class="view-more">
-            <a href="{{route('XemDanhMuc.index',[2])}}"><button>VIEW MORE PRODUCTS</button></a>
+            <a href="{{route('XemDanhMuc.index',[2])}}"><button>Xem Thêm Sản Phẩm</button></a>
         </div>
     </div>
 

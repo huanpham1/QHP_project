@@ -32,19 +32,21 @@
             <nav>
                 <ul>
                     <li><a href="#">Về chúng tôi</a></li>
-                    @if(@isset($danhmuc))
+                    {{-- @if(@isset($danhmuc))
                         @foreach($danhmuc as $datadm)
                             <li class="nam">
                                 <a href="{{route('XemDanhMuc.index',['id'=>$datadm->MaDanhMuc])}}">{{$datadm->TenDanhMuc}} <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                                {{-- <ul class="namnam">
-                                    @foreach($theloai as $data)
-                                        <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}">{{$data->TenTheLoai}}</a></li>
-                                    @endforeach
-                                </ul> --}}
+                            
                             </li>
 
                         @endforeach
-                    @endif
+                    @endif --}}
+                    <li class="nam">
+                        <a href="{{route('XemDanhMuc.index',['id'=>1])}}">Nam <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                        <a href="{{route('XemDanhMuc.index',['id'=>2])}}">Nữ <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                        <a href="{{route('XemDanhMuc.index',['id'=>3])}}">Trẻ em <input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                    
+                    </li>
                 </ul>
             </nav>
             <div class="search">

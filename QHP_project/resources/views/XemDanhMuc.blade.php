@@ -7,92 +7,117 @@
     </header>
     <div class="content">
         <div class="filters">
-            <div class="size-filter">
             <form action="{{route('LocDM')}}" method="POST" id="form">
+            {{-- <div class="size-filter">
+            
                 <strong><p>Size:</p></strong>
                 <div class="size">
                     <ul>
                         @for ( $i = 24; $i < 46; $i++)
                             <li id="{{$i}}"  onclick="SelecetSize({{$i}})">{{$i}}</li>
                         @endfor
-                        {{-- <li><a href="#">24</a></li><li><a href="#">25</a></li>
-                        <li><a href="#">26</a></li><li><a href="#">27</a></li>
-                        <li><a href="#">28</a></li><li><a href="#">29</a></li>
-                        <li><a href="#">30</a></li><li><a href="#">31</a></li>
-                        <li><a href="#">32</a></li><li><a href="#">33</a></li>
-                        <li><a href="#">34</a></li><li><a href="#">35</a></li>
-                        <li><a href="#">36</a></li><li><a href="#">37</a></li>
-                        <li><a href="#">38</a></li><li><a href="#">39</a></li>
-                        <li><a href="#">40</a></li><li><a href="#">41</a></li>
-                        <li><a href="#">42</a></li><li><a href="#">43</a></li>
-                        <li><a href="#">44</a></li><li><a href="#">45</a></li> --}}
+                        
                     </ul>
                 </div>
-            </div>
-
-            <div class="price-filter">
-
+            </div> --}}
+            <div class="select-box">
+                <div class="labe" style="text-align: center; width:300px; "><label for="select-box1" class="label select-box1"><span class="label-desc" style="color:rgb(7, 77, 189);font-size:20px">Kích cỡ:</span> </label></div>
                 
-              
+                <input type="hidden" class="SizeLoc" name="SizeLoc" id="SizeLoc" value="0">
+                
+                <input type="hidden" class="MaDM" name="MaDM" id="MaDM" value="{{$id}}">
+                <select id="select-box1" class="select" onchange="ChangeSelect()">
+                    <option value="0">Tất cả các kích cỡ</option>
+                    @for ( $i = 24; $i < 46; $i++)
+                            <option value="{{$i}}">{{$i}}</option>
+                        @endfor
+                
+                </select>
+                
+            </div>
+            <div class="price-filter">
                 <div class="range-slider">
-                    <p>Giá từ:</p>
+                    <p>Giá:</p>
                   <span class="rangeValues"></span>
                   <input value="1000" min="1000" max="50000" name="Value1" step="500" type="range" class="Rang1Value">
-                  <input value="50000" min="1000" max="50000" name="Value2" step="500" type="range">
+                  <input value="2000000" min="1000" max="2000000" name="Value2" step="500" type="range">
                 </div>
                 <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
-                <input type="hidden" class="abc" name="MaSP" id="" value="123">
                 
               </div>
-              <input type="submit" name="" id="" value="Lọc">
+              <div id="submit"><input type="submit" value="Lọc"></div>
             </form>
-            <button onclick="testremove()">remove</button>
         </div>
         <div class="product">
-            <?php foreach($dmid as $tendm){  ?>
-            <div class="title0"><p><?php echo $tendm->TenDanhMuc ?></p></div>
-            <?php }?>
-            <div class="danhmuc">
-                <ul>
-                    <?php
-                        foreach($theloai as $data){
-
-                    ?>
-                    <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}"><?php echo $data->TenTheLoai ?></a></li>
-                    <?php } ?>
-                </ul>
-            </div>
+            @if(isset($sp))
+            @if(empty($sp))
+                <div class="title0"><p>Không có sản phẩm phù hợp</p></div>
+            @endif
             <div class="sp-nam">
                 <div class="hang">
 
                 </div>
 
                 <div class="hang">
-                    @if (!empty($SanPhamList))
                     <div class="hang">
-                        @for($j = 0; $j < 4; $j++)
-                        @php if($SanPhamList[$j]->KhuyenMai != null)echo "";  @endphp
+                        @foreach ($sp as $item)
+                            
+                        @php if($item->KhuyenMai != null)echo "";  @endphp
                         <div class="cot">
-                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay">@if($SanPhamList[$j]->KhuyenMai != null) <div class="sale">{{"-".$SanPhamList[$j]->KhuyenMai ."%"}}</div>  @endif</a>
-                            <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
-                            @if($SanPhamList[$j]->KhuyenMai != null)
-                            <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
-                            <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a>
+                            <a href="{{route('chitiet',['id' => $item->MaSP]) }}"><img src="{{ asset('storage/products/'.$item->HinhAnh)}}" alt="Giay">@if($item->KhuyenMai != null) <div class="sale">{{"-".$item->KhuyenMai ."%"}}</div>  @endif</a>
+                            <a href="{{route('chitiet',['id' => $item->MaSP]) }}"><p class="tensp">{{$item->TenSP}}</p></a>
+                            @if($item->KhuyenMai != null)
+                            <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$item->GiaBan}}đ</p></a>
+                            <a href="#"><p class="price">{{$item->GiaBan*(100-$item->KhuyenMai)/100}}đ</p></a>
                             @else
-                            <a href="#"><p class="price" >{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                            <a href="#"><p class="price" >{{$item->GiaBan}}đ</p></a>
                             @endif
                             {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
                         </div>
-                        @endfor
-                            </div>
-						@else
-							
-				    @endif
+                        @endforeach
+                    </div>
                 </div>
-                
             </div>
+            @else
+            <?php foreach($dmid as $tendm){  ?>
+                <div class="title0"><p><?php echo $tendm->TenDanhMuc ?></p></div>
+                <?php }?>
+                <div class="danhmuc">
+                    <ul>
+                        <?php
+                            foreach($theloai as $data){
+                        ?>
+                        <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}"><?php echo $data->TenTheLoai ?></a></li>
+                        <?php } ?>
+                    </ul>
+                </div>
+                <div class="sp-nam">
+                    <div class="hang">
+                    </div>
+                    <div class="hang">
+                        @if (!empty($SanPhamList))
+                        <div class="hang">
+                            @for($j = 0; $j < 4; $j++)
+                            @php if($SanPhamList[$j]->KhuyenMai != null)echo "";  @endphp
+                            <div class="cot">
+                                <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay">@if($SanPhamList[$j]->KhuyenMai != null) <div class="sale">{{"-".$SanPhamList[$j]->KhuyenMai ."%"}}</div>  @endif</a>
+                                <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                                @if($SanPhamList[$j]->KhuyenMai != null)
+                                <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(247, 92, 92)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                                <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a>
+                                @else
+                                <a href="#"><p class="price" >{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                                @endif
+                                {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
+                            </div>
+                            @endfor
+                                </div>
+                            @else
+                        @endif
+                    </div>
+                </div>
+            @endif
         </div>
-
     </div>
 @section('scripts')
 <script>
@@ -104,12 +129,10 @@
     let slide2 = parseFloat( slides[1].value );
   // Neither slider will clip the other, so make sure we determine which is larger
   if( slide1 > slide2 ){ let tmp = slide2; slide2 = slide1; slide1 = tmp; }
-  
   let displayElement = parent.getElementsByClassName("rangeValues")[0];
 //innerHTML property allows Javascript code to manipulate a website being displayed
-      displayElement.innerHTML =  slide1 + " - đ" + slide2 +"đ";
+      displayElement.innerHTML =  slide1 + "đ - " + slide2 +"đ";
 }
-
 window.onload = function(){
   // Initialize Sliders
   let sliderSections = document.getElementsByClassName("range-slider");
@@ -121,19 +144,19 @@ window.onload = function(){
             sliders[y].oninput = getVals;
             // Manually trigger event first time to display values
             sliders[y].oninput();
-           
-            
           }
         }
       }
 }
-
 </script>
 <script src="{{ asset('assets/js/XemDanhMuc.js')}}">
 </script>
 <script type="text/javascript">
-    
+function ChangeSelect(){
+    var x = document.getElementsByClassName("select")[0].value;
+    console.log(x);
+  document.getElementById("SizeLoc").value =  x;
+}
 </script>
-
 @endsection
 @endsection

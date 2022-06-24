@@ -190,15 +190,14 @@ p{
     padding-bottom: 20px;
   }
   p{
-    text-align: center;
     margin-top: -10px;
-    font-size: 30px;
     color: rgb(7, 77, 189);
   }
   
   .range-slider .rangeValues {
     display: block;
-    box-shadow: 0 0 20px rgba(0,139,253,0.25);
+    /* box-shadow: 0 0 20px rgba(50, 51, 52, 0.25); */
+    background-color: #ececec;
     padding: 20px;
     font-size: 22px;
     margin-bottom: 35px;
@@ -240,3 +239,50 @@ p{
   input[type=range]:focus::-webkit-slider-runnable-track {
     background: #ccc;
   }
+  @import url(https://fonts.googleapis.com/css?family=Source+Sans+Pro);
+
+
+ 
+  .select-box {
+    cursor: pointer;
+    position : relative;
+    /* max-width:  20em; */
+    /* margin: 5em auto; */
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 50px;
+  }
+  .label {
+    color: #414141;
+    display: block;
+    font: 400 17px/2em 'Source Sans Pro', sans-serif;
+  }
+  .select {
+    background-color: #ececec;
+    border: none;
+    padding: 20px;
+    width: 300px;
+    height: 100%;
+    font-size: 20px;
+  }
+  #submit{
+    margin-top: 30px;
+    width: 300px;
+    justify-content: center;
+    text-align: center;
+}
+#submit>input{
+    width: 200px;
+    height: 40px;
+    color: white;
+    background-color: #ef5b5b;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 18px;
+    padding: 0px;
+    border: none;
+    cursor: pointer;
+}
+#submit>input:hover{
+    background-color: black;
+    transition: all 0.3s ease-in-out;
+}
