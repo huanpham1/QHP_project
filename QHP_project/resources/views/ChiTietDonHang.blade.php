@@ -61,7 +61,6 @@
                                         <th>Tên sản phẩm</th>
                                         <th>Size</th>
                                         <th>Số lượng</th>
-                                        <th>Trạng Thái</th>
                                         <th>Giá tiền</th>
                                     </tr>
                                 </thead>
@@ -75,14 +74,14 @@
                                             <td>{{$item->Size}}</td>
                                             <td>{{$item->SoLuong}}</td>
                                             
-                                            <td align="right">${{$item->GiaTien}}</td>
+                                            <td align="right">{{$item->GiaTien}}đ</td>
                                             
                                         </tr>
                                         @endforeach
                                         
                                         <tr>
                                             <th>Tổng tiền</th>
-                                            <td colspan="5" align="right" style="color:red;"><strong>${{$orderDetail->TongTien}}</strong></td>
+                                            <td colspan="4" align="right" style="color:red;"><strong>${{$orderDetail->TongTien}}</strong></td>
                                         </tr>
                                     @else
                                     <tr>
@@ -96,7 +95,7 @@
                             <div class="huy">
                                 <button class="btn-del">
                                     <a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-                                    href="{{route('deleteUser', ['id'=>$item->MaDonHang])}}">Hủy</a>
+                                    href="{{route('deleteUserLogin', ['id'=>$item->MaDonHang])}}">Hủy</a>
                                 </button>
                             </div>
                             

@@ -185,6 +185,32 @@ class OrdersController extends Controller
         return redirect()->route('KTDonHang')->with('msg', $msg);
         
     }
+    public function deleteUserLogin($id = 0){
+        if (!empty($id)){
+            $order = $this->orders->getDetail($id);
+            $order1 = $this->orders->selectCTDH($order[0]->MaDonHang);
+            foreach($order1 as $item){
+                $chiTietSPID = $item->ChiTietSPID;
+                $sp = new SanPham();
+                $SoLuongCon = $sp->LaySoLuong($chiTietSPID);
+                $sp->SetSoLuong($chiTietSPID,$SoLuongCon+$item->SoLuong);
+            }
+            if (!empty($order[0])){
+                $status = $this->orders->deleteOrder($id);
+                if ($status){
+                    $msg = 'Xóa đơn hàng thành công';
+                } else {
+                    $msg = 'Bạn không thể xóa đơn hàng lúc này. Vui lòng thử lại sau';
+                }
+            } else {
+                $msg = 'Đơn hàng không tồn tại';
+            }
+        } else {
+            $msg = 'Liên kết không tồn tại';
+        }
+        return redirect()->route('KTDHview')->with('msg', $msg);
+        
+    }
 
     public function update(Request $request){
         $id = session('id');
