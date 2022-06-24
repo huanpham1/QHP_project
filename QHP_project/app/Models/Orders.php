@@ -64,4 +64,9 @@ class Orders extends Model
         $query = DB::insert('INSERT INTO chitietdonhang(MaDonHang,ChiTietSPID,SoLuong,GiaTien) VALUES(?,?,?,?)',$data);
         return $query;
     }
+    public function selectCTDH($id){
+        // dd($id);
+        $query = DB::select('SELECT * FROM chitietdonhang WHERE MaDonHang = "'.$id.'"');
+        return $query;
+    }
 }

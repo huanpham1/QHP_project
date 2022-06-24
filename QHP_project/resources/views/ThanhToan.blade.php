@@ -189,7 +189,7 @@
                 @endif
             <input type="hidden" name="tongTien" value="{{$total}}">
             <div class="thanhToan">
-                    <input type="submit" value="THANH TOÁN">
+                    <input type="submit" value="ĐẶT HÀNG">
                 </div>
             </div>
             <input type="hidden" name="_token" value="<?php echo csrf_token();?>">

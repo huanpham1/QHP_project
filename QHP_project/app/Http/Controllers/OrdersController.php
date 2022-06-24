@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use App\Http\Controllers\Controller;
 use App\Models\Orders;
 use Illuminate\Http\Request;
-
+use App\Models\SanPham;
 use App\Models\LaySanPham;
 use App\Models\LayTheLoai;
 use App\Models\LayDanhMuc;
@@ -162,10 +162,15 @@ class OrdersController extends Controller
     public function deleteUser($id = 0){
         if (!empty($id)){
             $order = $this->orders->getDetail($id);
-            dd($order);
+            $order1 = $this->orders->selectCTDH($order[0]->MaDonHang);
+            foreach($order1 as $item){
+                $chiTietSPID = $item->ChiTietSPID;
+                $sp = new SanPham();
+                $SoLuongCon = $sp->LaySoLuong($chiTietSPID);
+                $sp->SetSoLuong($chiTietSPID,$SoLuongCon+$item->SoLuong);
+            }
             if (!empty($order[0])){
                 $status = $this->orders->deleteOrder($id);
-
                 if ($status){
                     $msg = 'Xóa đơn hàng thành công';
                 } else {
@@ -177,7 +182,6 @@ class OrdersController extends Controller
         } else {
             $msg = 'Liên kết không tồn tại';
         }
-
         return redirect()->route('KTDonHang')->with('msg', $msg);
         
     }
