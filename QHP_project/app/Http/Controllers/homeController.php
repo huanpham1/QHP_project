@@ -10,7 +10,6 @@ use App\Models\LaySanPham;
 use App\Models\LayTheLoai;
 use App\Models\LayDanhMuc;
 use Illuminate\Support\Facades\Storage;
-
 use App\Models\SanPham;
 
 class homeController extends Controller
@@ -83,7 +82,7 @@ class homeController extends Controller
     public function test(){
         $data = $data = DB::table('chitietsanpham')->where('Size', 30)->get('ChiTietSPID');
         // Storage::disk('local')->put('example.txt', json_encode(Session('cart')));
-        $sp= DB::select('SELECT * FROM chitietsanpham WHERE Size = 30 or Size = 31');
+        $sp = DB::update('UPDATE chitietsanpham SET SoLuongCon = 6 WHERE ChiTietSPID = "CTSP1301"');
 
         dd($sp);
         // .var_export

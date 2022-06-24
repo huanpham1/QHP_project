@@ -24,17 +24,22 @@ class SanPham extends Model
         // dd($data);
         return $data;
     }
-    public function GetSoLuong($id, $SoLuong){
-        $data = (DB::table('UPDATE chitietsanpham
-        SET SoLuong = $SoLuong WHERE ChiTietSPID = '.$id));
+    public function GetSoLuong($id){
+        $data = (DB::table('chitietsanpham')->where('MaSP', $id)->first());
 
         return $data;
     }
     public function LaySoLuong($id){
-        $data = (DB::table('chitietsanpham')->where('ChiTietSPID', $id));
+        $data = (DB::table('chitietsanpham')->where('ChiTietSPID', $id)->get('SoLuongCon')[0]->SoLuongCon);
 
         return $data;
     }
+    public function SETSoLuong($id, $sl){
+        $data = (DB::update('UPDATE chitietsanpham SET SoLuongCon = '.$sl.' WHERE ChiTietSPID = "'.$id.'"'));
+
+        return $data;
+    }
+
     public function getSize($id,){
         $data = DB::table('chitietsanpham')->where('MaSP', $id)->get('Size');
         return $data;
@@ -60,7 +65,7 @@ class SanPham extends Model
         if($Size<1)
             $data = DB::select("SELECT DISTINCT  sanpham.* FROM chitietsanpham inner join sanpham where sanpham.MaSP = chitietsanpham.MaSP And GiaBan between ".$x1. " AND ".$x2." AND MaDanhMuc = ".$MaDM);
         else
-        $data = DB::select("SELECT DISTINCT  SanPham.* FROM chitietsanpham inner join sanpham where sanpham.MaSP = chitietsanpham.MaSP And GiaBan between ".$x1. " AND ".$x2." AND Size = ".$Size." AND MaDanhMuc = ".$MaDM);
+        $data = DB::select("SELECT SanPham.* FROM chitietsanpham inner join sanpham where sanpham.MaSP = chitietsanpham.MaSP And GiaBan between ".$x1. " AND ".$x2." AND Size = ".$Size." AND MaDanhMuc = ".$MaDM);
         // $data = DB::select('SELECT * FROM chitietsanpham inner join sanpham where sanpham.MaSP = chitietsanpham.MaSP WHERE GiaBan between '.$x1 + ' and' .$x2 +'AND Size = '.$Size );
         // $data = (DB::table('chitietsanpham')->where('MaSP', (string)$id)->where('Size', (string)$size)->get('ChiTietSPID'));
         return $data;

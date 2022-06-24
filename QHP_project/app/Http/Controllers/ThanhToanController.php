@@ -127,6 +127,7 @@ class ThanhToanController extends Controller
             $trangthai = 'Chưa giao'
         ];
         $order->insertDH($data);
+        
         if(!isset($request->DHN)){
             $listSP[] = $request->session()->get('SP');
             if(isset($listSP[0]["LoaiGio"])){
@@ -151,7 +152,10 @@ class ThanhToanController extends Controller
                 $giaBan
             ];
             $order->insertCTDH($datactdh);
+            $SoLuongCon = $this->SanPham->LaySoLuong($chiTietSPID);
+            $this->SanPham->SetSoLuong($chiTietSPID,$SoLuongCon-$soLuong);
         }
+        
         $request->session()->forget('SP');
         if(isset($loaigio)){
             if($loaigio == "GH"){

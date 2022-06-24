@@ -36,7 +36,7 @@ async function getsl(url = 'http://127.0.0.1:8000/getsl', data = {}) {
 }
 async function getSL(ma){
         const url = 'http://127.0.0.1:8000/getsl'
-        const size = document.getElementById("size").value;
+        const size = document.getElementById("Size").value;
         const data = { MaSP: ma, Size: size };
         const sl = document.querySelector(".kq");
         // console.log(data)

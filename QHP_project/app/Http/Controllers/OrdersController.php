@@ -162,7 +162,7 @@ class OrdersController extends Controller
     public function deleteUser($id = 0){
         if (!empty($id)){
             $order = $this->orders->getDetail($id);
-
+            dd($order);
             if (!empty($order[0])){
                 $status = $this->orders->deleteOrder($id);
 
