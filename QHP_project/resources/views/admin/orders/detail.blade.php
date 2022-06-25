@@ -71,6 +71,10 @@
                             <td>Email</td>
                             <td>{{$orderDetail->Email}}</td>
                         </tr>
+						<tr>
+							<td>Hình thức vận chuyển</td>
+							<td>{{$orderDetail->HinhThucVanChuyen}}</td>
+						</tr>
                         <tr>
                             <td>Ghi chú</td>
                             <td>{{$orderDetail->GhiChu}}</td>
