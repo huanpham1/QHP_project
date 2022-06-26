@@ -35,12 +35,6 @@
 				<li><a href="{{route('theloai.index')}}"><i class="fa-regular fa-rectangle-list"></i>Quản Lý Thể Loại</li></a>
 				<li><a href="{{route('orders.index')}}"><i class="fa-solid fa-bag-shopping"></i>Quản Lý Đơn Hàng</li></a>
 				<li><a href="{{route('users.index')}}"><i class="fa-solid fa-user"></i>Quản Lý Tài Khoản</li></a>
-				<li class="cha_TK"><i class="fa-solid fa-arrow-up-right-dots"></i>Báo Cáo Thống Kê
-					<ul class="con_TK">
-						<a href="#"><li>Xuất báo cáo theo sản phẩm</li></a>
-						<a href="#"><li>Xuất báo cáo theo ngày tháng</li></a>
-					</ul>
-				</li>
 			</ul>
 		</div>
 		<div class="container">
@@ -59,7 +53,7 @@
 								<select name="status" id="status" class="select-categories">
 									<option value="0">Tất cả trạng thái</option>
 									<option value="Chưa giao" {{request()->status=='Chưa giao'?'selected':false}}>Chưa giao</option>
-									<option value="Đang giao" {{request()->status=='Đang giao giao'?'selected':false}}>Đang giao</option>
+									<option value="Đang giao" {{request()->status=='Đang giao'?'selected':false}}>Đang giao</option>
 									<option value="Đã giao" {{request()->status=='Đã giao'?'selected':false}}>Đã giao</option>
 								</select>
 						</div>
@@ -78,10 +72,10 @@
 								<th>Tên khách hàng</th>
 								<th>Địa chỉ</th>
 								<th>Ngày đặt hàng</th>
-								<th>Email</th>
+								<th>Số điện thoại</th>
 								<th>Trạng thái</th>
 								<th>Chi tiết</th>
-								<th>Xóa</th>
+								<th>Hủy</th>
 							</tr>
 						</thead>
 						<tbody>
@@ -92,16 +86,18 @@
 								<td>{{$item->HoVaTen}}</td>
 								<td>{{$item->DiaChiNhanHang}}</td>
 								<td>{{$item->NgayDatHang}}</td>
-                                <td>{{$item->Email}}</td>
+                                <td>{{$item->SoDT}}</td>
 								<td>{{$item->TrangThai}}</td>
                                 <td>
                                     <button class="btn-detail"><a href="{{route('orders.detail', ['id'=>$item->MaDonHang])}}">Chi tiết</a></button>
                                 </td>
 								<td>
-									<button class="btn-del">
-										<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
-										href="{{route('orders.delete', ['id'=>$item->MaDonHang])}}">Xóa</a>
-									</button>
+									@if ($item->TrangThai == 'Chưa giao')
+										<button class="btn-del">
+											<a onclick="return confirm('Bạn có chắc chắn muốn xóa không?')"
+											href="{{route('orders.delete', ['id'=>$item->MaDonHang])}}">Hủy</a>
+										</button>
+									@endif
 								</td>
 							</tr>
 							@endforeach

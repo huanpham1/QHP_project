@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Storage;
+use App\Models\LaySanPham;
+use App\Models\LayTheLoai;
+use App\Models\LayDanhMuc;
 class LoginController extends Controller
 {
     //
@@ -40,7 +43,8 @@ class LoginController extends Controller
             // return view('home')->with('username', $request->username);
             // dd(session()->get('TenTaiKhoan'));
             $cart = json_decode((Storage::disk('local')->get(session()->get('TenTaiKhoan').'.txt')), true);
-            session()->put('GH', $cart);
+            if($cart!='')
+                session()->put('GH', $cart);
             return redirect()->route('home')->with('username', $request->username);
         }else{
             return redirect()->back()->with('fail', 'Mật Khẩu hoặc tài khoản chưa chính xác');

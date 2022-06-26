@@ -20,7 +20,7 @@ class XemDanhMucController extends Controller
     }
     public function goToXemDanhMuc($id){
         $sp = new LaySanPham();
-        $sanpham = $sp->getSP_DanhMuc($id);
+        $SanPhamList = $sp->getSP_DanhMuc($id);
 
         $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
@@ -31,6 +31,26 @@ class XemDanhMucController extends Controller
         $tl = new LayTheLoai();
         $theloai = $tl->getAllTheLoai();
 
-        return view('XemDanhMuc', compact('sanpham','danhmuc','dmid','theloai'));
+        $spnam = new LaySanPham();
+        $sanpham = $spnam->getAllSanPham_Nam();
+
+        return view('XemDanhMuc', compact('SanPhamList','sanpham','danhmuc','dmid','theloai','id'));
+    }
+    public function LocDanhMuc(Request $request){
+        
+        // dd($request->all());
+        $x1 = $request->Value1;
+        $x2 = $request->Value2;
+        if($x1>$x2){
+            $x1 = $request->Value2;
+            $x2 = $request->Value1;
+        }
+        // dd($request->MaDM);
+        $spnew = new SanPham();
+        // dd($sp->LocSP($x1, $x2,$request->SizeLoc));
+        $sp = $spnew->LocSP($x1, $x2,$request->SizeLoc,$request->MaDM);
+        $id = $request->MaDM;
+        // dd($sp);
+        return view('XemDanhMuc', compact('sp','id'));
     }
 }

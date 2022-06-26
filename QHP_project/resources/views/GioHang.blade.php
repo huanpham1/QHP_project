@@ -1,6 +1,7 @@
 @extends('layout')
 
 @section('content')
+<link rel="stylesheet" href="{{ asset('assets/css/GioHang.css')}}">
 
     <div class="cart">
         <!-- <div class="cart-title"><h2>GIỎ HÀNG CỦA BẠN</h2></div>
@@ -30,7 +31,15 @@
                        <a href="{{route('chitiet',['id' => $item[1]->MaSP]) }}">{{$item[1]->TenSP}}</a>
                         <div class="item-infor">
                             {{-- <div class="color">Màu: <div class="item-color"></div></div> --}}
-                            @php $total += $item[1]->GiaBan * $item['SoLuong']; @endphp
+                            @php
+                                if($item[1]->KhuyenMai != null)
+                                    $total +=($item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100)* $item['SoLuong'];
+                                else
+                                    $total += $item[1]->GiaBan * $item['SoLuong'];
+
+
+
+                            @endphp
                             <div class="size">Size: <div class="item-size">{{$item[0]->Size}}</div></div>
                             <div class="btn-delete" onclick="DeleteCart('{{$id}}')">
                                 <a href="#">
@@ -45,8 +54,28 @@
                         <input type="hidden" name="" id="{{$id}}" value="{{$item[0]->SoLuongCon}}">
                         <div class="slKhongHopLe" value="{{$id}}"></div>
                     </td>
-                    <td ><div class="item-price ">{{$item[1]->GiaBan}}đ</div></td>
-                    <td class="item-total">{{$item[1]->GiaBan * $item['SoLuong']}}đ</td>
+                    <td >
+                        @if($item[1]->KhuyenMai != null)
+                        <div class="" style="display: block;">
+                            <p class="item-price" style="color: rgb(233, 81, 81)">{{$item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100}}đ</p>
+                            <p class="item-price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$item[1]->GiaBan}}đ</p>
+                        </div>
+
+                        @else
+                            <div class="item-price " style="color: rgb(233, 81, 81)">{{$item[1]->GiaBan}}đ</div>
+                        @endif
+
+
+                    </td>
+
+                    <td class="item-total">
+                        @if($item[1]->KhuyenMai != null)
+                       {{($item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100)* $item['SoLuong']}}đ
+                        @else
+                            {{$item[1]->GiaBan * $item['SoLuong']}}đ
+                        @endif
+
+                    </td>
                 </tr>
                 @endforeach
                 @endif

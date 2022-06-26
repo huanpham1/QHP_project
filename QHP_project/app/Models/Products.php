@@ -79,13 +79,15 @@ class Products extends Model
     }
 
     public function searchProduct($key){
-        if (is_numeric($key)){
-            //return DB::select('SELECT * FROM '.$this->table.' WHERE GiaBan = '.$key);
-            $variance = 0.01;
-            return DB::select("SELECT * FROM ".$this->table." WHERE ROUND(ABS(GiaBan - $key), 2) < ".$variance);
-        } else {
-            return DB::select('SELECT * FROM '.$this->table.' WHERE (TenSP LIKE "%'.$key.'%")');
-        }
+        // if (is_numeric($key)){
+        //     // return DB::select('SELECT * FROM '.$this->table.' WHERE GiaBan = '.$key);
+        //     $variance = 0.01;
+        //     return DB::select("SELECT * FROM ".$this->table." WHERE ROUND(ABS(GiaBan - $key), 2) < ".$variance);
+        // } else {
+        //     return DB::select('SELECT * FROM '.$this->table.' WHERE (TenSP LIKE "%'.$key.'%")');
+        // }
+
+        return DB::select("SELECT * FROM ".$this->table." WHERE (TenSP LIKE '%".$key."%') OR GiaBan = '".$key."'");
 
         //return DB::select("SELECT * FROM ".$this->table." WHERE TenSP LIKE '%$key%' OR GiaBan = '".$key."'");
         // $variance = 0.01;

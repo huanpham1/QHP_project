@@ -81,15 +81,19 @@ class GioHangController extends Controller
             $loaigio = 'GH';
         else
             $loaigio = 'cart';
+
+            // dd($loaigio);
         // $ma = DB::table('chitietsanpham')->where('MaSP', $id)->get('ChiTietSPID')[0]->ChiTietSPID;
-        $id =  $request->json('CTSPID');
+        $id =  $this->SanPham->getCTSPID($request->json('MaSP'), $request->json('Size'));
         if(session()->has($loaigio)){
             $cart = session()->get($loaigio, []);
 
         }
-        else $cart = [];
+        else $cart = session()->get($loaigio, []);
+        // return response()->json([$cart],200);
         $slCon = ($this->SanPham->getCT($id))->SoLuongCon;
         $slthem = $request->json('SoLuong');
+
         if(isset($cart[$id])) {
             $slco = $cart[$id]['SoLuong'] + $slthem;
             if($slco<$slCon){
@@ -106,9 +110,13 @@ class GioHangController extends Controller
 
         } else {
             if($slthem<=$slCon){
+                // return response()->json([$cart],200);
                 $cart[$id] = [
                     "SoLuong" => $request->json('SoLuong')
                 ];
+                // 
+                
+                // return response()->json([($cart)],200);
                 session()->put($loaigio, $cart);
 
                 $sl = count(Session($loaigio));
