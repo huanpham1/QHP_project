@@ -47,7 +47,7 @@
                         foreach($theloai as $data){
 
                     ?>
-                    <li><a href="#"><?php echo $data->TenTheLoai ?></a></li>
+                    <li><a href="{{route('XemTheLoai.index',['id'=>$data->MaTheLoai])}}"><?php echo $data->TenTheLoai ?></a></li>
                     <?php } ?>
                 </ul>
             </div>
