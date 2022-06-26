@@ -238,7 +238,7 @@ class ProductsController extends Controller
             $foundProducts = $this->products->searchProduct($key);
             return view('Search', compact('key', 'foundProducts'));
         } else {
-            redirect()->route('home');
+            return back();
         }
 
     }

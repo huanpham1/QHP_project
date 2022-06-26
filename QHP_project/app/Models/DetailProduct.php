@@ -18,6 +18,10 @@ class DetailProduct extends Model
         return DB::select('SELECT * FROM '.$this->table.', sanpham WHERE '.$this->table.'.MaSP=sanpham.MaSP AND sanpham.MaSP=?', [$id]);
     }
 
+    public function getDetailByID($id, $size){
+        return DB::select("SELECT * FROM ".$this->table." WHERE ChiTietSPID LIKE '%".$id."%' AND Size=".$size);
+    }
+
     public function addDetailProduct($data){
         DB::insert('INSERT INTO '.$this->table.' (ChiTietSPID, Size, SoLuongCon, MaSP) VALUES(?, ?, ?, ?)', $data);
     }

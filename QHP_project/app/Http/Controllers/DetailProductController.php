@@ -34,8 +34,9 @@ class DetailProductController extends Controller
 
     public function handleAdd(Request $request, $id){
         $size = $request->size;
-
         $productID = $id < 10 ? '0'.$id : $id;
+        $chiTietSP = 'CTSP' . $productID;
+        
         $numberOfSize = count($this->product->getAllDetail($id)) + 1;
         if ($numberOfSize < 10){
             $numberOfSize = '0'.$numberOfSize;
@@ -43,29 +44,34 @@ class DetailProductController extends Controller
         $chiTietID = 'CTSP' . $productID . $numberOfSize;
         
         $request->validate([
-            //'size' => 'required|regex:/^[0-9]{2}$/|unique:chitietsanpham,Size',
-            'size' => ['required', 'regex:/^[0-9]{2}$/', 
-                Rule::unique('chitietsanpham')->where(function($query) use($size, $chiTietID){
-                    //return $query->where('ChiTietSPID', $chiTietID)->where('Size', $size);
-                    return $query->where('Size', $size)->where('ChiTietSPID', $chiTietID);
-                }),
-            ],
             'quantity' => 'required|regex:/^[0-9]+$/',
         ], [
-            'size.required' => 'Size không được để trống',
-            'size.regex' => 'Size phải có 2 chữ số',
-            'size.unique'=> 'Size của sản phẩm đã tồn tại',
             'quantity.required' => 'Số lượng còn không được để trống',
             'quantity.regex' => 'Số lượng còn phải là số',
         ]);
 
-        $dataInsert = [
-            $chiTietID,
-            $request->size,
-            $request->quantity,
-            $id,
-        ];
-        $this->product->addDetailProduct($dataInsert);
+        //Nếu chưa tồn tại size thì thêm mới ngược lại cộng dồn vào size đã tồn tại
+        if (count($this->product->getDetailByID($chiTietSP, $size)) == 0){
+            $dataInsert = [
+                $chiTietID,
+                $request->size,
+                $request->quantity,
+                $id,
+            ];
+            $this->product->addDetailProduct($dataInsert);
+        } else {
+            $detailProduct = $this->product->getDetailByID($chiTietSP, $size);
+            foreach($detailProduct as $key=>$item){
+                $CTSPID = $item->ChiTietSPID;
+                $quantity = $item->SoLuongCon;
+            }
+            $ChangedQuantity = $request->quantity + $quantity;
+            $dataUpdate = [
+                $request->size,
+                $ChangedQuantity,
+            ];
+            $this->product->updateDetailProduct($dataUpdate, $CTSPID);
+        }
 
         return redirect(route('products.details.index', $id))->with('msg', 'Thêm size thành công');
     }
@@ -97,12 +103,8 @@ class DetailProductController extends Controller
         }
 
         $request->validate([
-            'size' => 'required|regex:/^[0-9]{2}$/|unique:chitietsanpham,Size,'.$detailID.',ChiTietSPID',
             'quantity' => 'required|regex:/^[0-9]+$/',
         ], [
-            'size.required' => 'Size không được để trống',
-            'size.regex' => 'Size phải có 2 chữ số',
-            'size.unique'=> 'Size của sản phẩm đã tồn tại',
             'quantity.required' => 'Số lượng còn không được để trống',
             'quantity.regex' => 'Số lượng còn phải là số',
         ]);
