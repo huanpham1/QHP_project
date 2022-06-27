@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use App\Models\SanPham;
 use App\Models\LaySanPham;
 use App\Models\LayTheLoai;
+use App\Models\taikhoan;
 use App\Models\LayDanhMuc;
 class OrdersController extends Controller
 {
@@ -217,8 +218,13 @@ class OrdersController extends Controller
         if (empty($id)){
             return back()->with('msg', 'Liên kết không tồn tại');
         }
+        // dd($request->all());
         $updateData = [$request->status];
         $this->orders->updateStatus($updateData, $id);
+        if($request->status=="Đã giao"){
+            $tk = new taikhoan();
+            $tk->updateTieuDung($request->MaTK, $request->TongTien);
+        }
 
         return back()->with('msg', 'Cập nhật trạng thái thành công');
     }

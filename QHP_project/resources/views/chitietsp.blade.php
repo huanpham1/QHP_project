@@ -39,7 +39,8 @@
                             <input aria-label="quantity" class="input-qty" min="1" name="SoLuong" type="number" value="1">
                             <input class="plus is-form" type="button" value="+">
                           </div>
-                        <div class="SLKHL"></div>
+                        <div class="SLKHL">@if(session('msg')) {{session('msg')}}@endif</div>
+                        
                     </div>
                     @if(($SoLuong=== NULL))
                         <div class="soluong">
@@ -135,6 +136,9 @@
             .then(response => {
                 // console.log(response);
                 if(response==400){
+                    SLKHL.innerHTML="Số lượng yêu cầu không có sẵn";
+                }
+                else if(response==403){
                     SLKHL.innerHTML="Số lượng yêu cầu không có sẵn";
                 }
                 else{

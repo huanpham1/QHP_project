@@ -30,8 +30,15 @@ class GioHangController extends Controller
             $loaigio = 'cart';
         if(session($loaigio)){
             foreach(session($loaigio) as $id => $item){
-
+                // dd($id);
+                // dd(session($loaigio)[$id]);
+                // dd(($this->SanPham->LaySoLuong($id)));
+                //xử lý quyên hết hàng tại giỏ hàng
+                // if($this->SanPham->LaySoLuong($id) <=0){
+                    // unset(session($loaigio)[$id]);
+                // }else
                 $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
+                
             }
         }
         // dd($SP);
@@ -58,22 +65,9 @@ class GioHangController extends Controller
 
                 $req->session()->put('GH',$GHM);
                 $data = session()->get('GH');
-                // $data1 = $data->session()->get('GH');
-                // dd($data);
-
             }
         return view('GioHang', compact('sl'));
-        // $ma = DB::table('chitietsanpham')->where('MaSP', [$data->json('MaSP')])->where('Size', [$data->json('Size')])->get('ChiTietSPID')[0]->ChiTietSPID;
-        // if($data !=null){
-        //     $GHC = Session('GH')?Session('GH') : null;
-        //     $GHM = new GioHang($GHC);
-        //     $GHM->ThemGH($ma, $data->json('SoLuong'));
-        //     $data->session()->put('GH',$GHM);
-        //     $data1 = $data->session()->get('GH');
-        //     // dd(session('GH'));
-        // }
-        // dd($data);
-        // return response()->json([$data1],200);
+        
     }
     public function addToCart(Request $request)
     {

@@ -11,6 +11,10 @@
             <a href="{{route('KTDHview')}}" class="CTCN">
                 <div class="t">Đơn hàng của bạn</div> 
             </a>
+            <a href="{{route('KTDHview')}}" class="CTCN">
+                <div class="t">Hạng thành viên</div> 
+            </a>
+            
             
         </div>
     @if(isset($ordersList))

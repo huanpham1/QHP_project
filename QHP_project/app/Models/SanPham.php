@@ -31,6 +31,7 @@ class SanPham extends Model
     }
     public function LaySoLuong($id){
         $data = (DB::table('chitietsanpham')->where('ChiTietSPID', $id)->get('SoLuongCon')[0]->SoLuongCon);
+        // $data = (DB::table('chitietsanpham')->where('ChiTietSPID', $id)->get('SoLuongCon'));
 
         return $data;
     }
@@ -68,6 +69,12 @@ class SanPham extends Model
         $data = DB::select("SELECT SanPham.* FROM chitietsanpham inner join sanpham where sanpham.MaSP = chitietsanpham.MaSP And GiaBan between ".$x1. " AND ".$x2." AND Size = ".$Size." AND MaDanhMuc = ".$MaDM);
         // $data = DB::select('SELECT * FROM chitietsanpham inner join sanpham where sanpham.MaSP = chitietsanpham.MaSP WHERE GiaBan between '.$x1 + ' and' .$x2 +'AND Size = '.$Size );
         // $data = (DB::table('chitietsanpham')->where('MaSP', (string)$id)->where('Size', (string)$size)->get('ChiTietSPID'));
+        return $data;
+    }
+
+    public function LayTongSoLuongCon($id){
+        $MaSP = DB::table('chitietsanpham')->where('ChiTietSPID', $id)->get('MaSP')[0]->MaSP;
+        $data = DB::select('SELECT sanpham.MaSP, SUM(SoLuongCon) as TongSoLuongCon FROM `chitietsanpham` INNER JOIN sanpham ON sanpham.MaSP = chitietsanpham.MaSP WHERE sanpham.MaSP='.$MaSP.' GROUP BY sanpham.MaSP');
         return $data;
     }
 }

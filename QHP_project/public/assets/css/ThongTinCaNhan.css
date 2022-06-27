@@ -51,9 +51,9 @@ section>.ThongTinCaNhan>table input{
     align-items: center;
     flex-wrap: wrap;
     width: 20%;
-    height:100px;
+    height:150px;
     margin-left: 10%;
-    background-color: #e1edef;
+    background-color: #eff1f1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .CTCN{
@@ -62,7 +62,7 @@ section>.ThongTinCaNhan>table input{
     text-decoration: none;
     /* background-color: rgb(64, 196, 196); */
     width: 90%;
-    height: 40%;
+    height: 30%;
     display: flex;
     justify-content: space-around;
     align-items: center;
