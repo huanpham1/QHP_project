@@ -65,6 +65,14 @@ class OrdersController extends Controller
         // dd($ordersList);
         return view('ThongTinCaNhan', compact('ordersList'));
     }
+    public function XepHangThanhVien(Request $request){
+        
+
+        $TTTK = $this->orders->getDetailAccHTV(session()->get('TenTaiKhoan'))[0];
+        // dd($TTTK);
+        // dd($ordersList);
+        return view('ThongTinCaNhan', compact('TTTK'));
+    }
 
     public function detail(Request $request, $id=0){
         $title = 'Chi tiết đơn hàng';

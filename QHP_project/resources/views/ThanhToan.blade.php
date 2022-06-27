@@ -132,9 +132,6 @@
                                     $total +=($item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100)* $item['SoLuong'];
                                 else
                                     $total += $item[1]->GiaBan * $item['SoLuong'];
-
-
-
                             @endphp
                             <div class="size">Size: <div class="item-size">{{$item[0]->Size}}</div></div>
                         </div>
@@ -162,8 +159,37 @@
             </table>
             <hr style="margin-top: 30px;">
             <div class="user-total-price">
-                <div class="total-price" style="margin-top: 10px;" >
-                    <strong>TỔNG CỘNG: <span style="color: red;">{{$total }}đ</span></strong>
+                <div class="total-price" style="margin-top: 10px; display: block" >
+                    @if(session('TenTaiKhoan'))
+                        @if($taikhoan[0]->TieuDung>=20000000)
+                            <strong>TỔNG CỘNG: 
+                                <span style="color: red;">{{$total * 95/100}}đ</span>
+                                <span  style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$total}}đ</p>
+                                
+                            </strong>
+                            <div><i style="text-decoration: none">đã giảm 5% thưởng hạng kim cương</i></div>
+                        @elseif($taikhoan[0]->TieuDung>=10000000)
+                            <strong>TỔNG CỘNG: 
+                                <span style="color: red;">{{$total * 96/100}}đ</span>
+                                <span  style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$total}}đ</p>
+                                
+                            </strong>
+                            <div><i style="text-decoration: none">đã giảm 4% thưởng hạng vàng</i></div>
+                        @elseif($taikhoan[0]->TieuDung>=3000000)
+                            <strong >TỔNG CỘNG: 
+                                <span style="color: red;">{{$total *98/100}}đ</span>
+                                <span  style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$total}}đ</p>
+                                
+                            </strong>
+                            <div><i style="text-decoration: none; ">đã giảm 2% thưởng hạng bạc</i></div>
+                        @else
+                        <strong>TỔNG CỘNG: <span style="color: red;">{{$total }}đ</span></strong>
+                        @endif
+                    @else
+                        <strong>TỔNG CỘNG: <span style="color: red;">{{$total }}đ</span></strong>
+                    
+                    @endif
+                    
                 </div>
             </div>
 
@@ -187,7 +213,22 @@
                     @endphp
 
                 @endif
-            <input type="hidden" name="tongTien" value="{{$total}}">
+                @if(session('TenTaiKhoan'))
+                @if($taikhoan[0]->TieuDung>=20000000)
+                    <input type="hidden" name="tongTien" value="{{$total * 95/100}}">
+                    
+                @elseif($taikhoan[0]->TieuDung>=10000000)
+                    <input type="hidden" name="tongTien" value="{{$total * 96/100}}">
+                    
+                @elseif($taikhoan[0]->TieuDung>=3000000)
+                    <input type="hidden" name="tongTien" value="{{$total* 98/100}}">
+                @else
+                    <input type="hidden" name="tongTien" value="{{$total}}">
+                @endif
+            @else
+                <input type="hidden" name="tongTien" value="{{$total}}">
+            
+            @endif
             <div class="thanhToan">
                     <input type="submit" value="ĐẶT HÀNG">
                 </div>

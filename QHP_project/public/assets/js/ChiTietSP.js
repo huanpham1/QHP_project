@@ -4,6 +4,7 @@ const minus = document.querySelector('.minus');
 plus.onclick = function(){
     let SLC = document.querySelector(".SLC").value;
     const box = document.querySelector('.input-qty');
+    console.log(SLC)
     if(Number(box.value)<Number(SLC)){
         box.value= Number(box.value) + 1;
     }
@@ -54,6 +55,7 @@ async function getSL(ma){
         .then(response => response.json())
         .then(response => {
             sl.innerHTML = 'còn ' + response + ' sản phẩm';
+            document.querySelector(".SLC").value = response;
         })
         .catch((error) => {
         console.error('Error:', error);
