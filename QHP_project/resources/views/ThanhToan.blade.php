@@ -41,10 +41,10 @@
                         @enderror
                     </tr>
                     <tr>
-                        <td><input type="text" name="ghiChu" id="ghiChu" placeholder="GHI CHÚ"></td>
+                        <td><input type="text" name="ghiChu" id="ghiChu" placeholder="GHI CHÚ" value="{{old('ghiChu')??""}}"></td>
                     </tr>
                      <tr>
-                        <td><input type="text" name="diaChiNhanHang" id="diaChiNhanHang" placeholder="ĐỊA CHỈ NHẬN HÀNG"></td>
+                        <td><input type="text" name="diaChiNhanHang" id="diaChiNhanHang" placeholder="ĐỊA CHỈ NHẬN HÀNG" value="{{old('diaChiNhanHang')??""}}"></td>
                     </tr>
                     <tr>
                         @error('diaChiNhanHang')
@@ -64,7 +64,7 @@
                         @endif
                     </tr>
                     <tr>
-                        <td><input type="text" name="name" id="name" placeholder="HỌ TÊN" value=""></td>
+                        <td><input type="text" name="name" id="name" placeholder="HỌ TÊN" value="{{old('name')??""}}"></td>
                     </tr>
                     <tr>
                         @error('name')
@@ -72,7 +72,7 @@
                         @enderror
                     </tr>
                     <tr>
-                        <td><input type="text" name="DiaChi" id="DiaChi" placeholder="ĐỊA CHỈ" value=""></td>
+                        <td><input type="text" name="DiaChi" id="DiaChi" placeholder="ĐỊA CHỈ" value="{{old('DiaChi')??""}}"></td>
                     </tr>
                     <tr>
                         @error('DiaChi')
@@ -80,7 +80,7 @@
                         @enderror
                     </tr>
                     <tr>
-                        <td><input type="text" name="phoneNum" id="phoneNum" placeholder="SỐ ĐIỆN THOẠI" value=""></td>
+                        <td><input type="text" name="phoneNum" id="phoneNum" placeholder="SỐ ĐIỆN THOẠI" value="{{old('DiaChi')??""}}"></td>
                     </tr>
                     <tr>
                         @error('phoneNum')
@@ -88,10 +88,10 @@
                         @enderror
                     </tr>
                     <tr>
-                        <td><input type="text" name="ghiChu" id="ghiChu" placeholder="GHI CHÚ"></td>
+                        <td><input type="text" name="ghiChu" id="ghiChu" placeholder="GHI CHÚ" value="{{old('ghiChu')??""}}"></td>
                     </tr>
                      <tr>
-                        <td><input type="text" name="diaChiNhanHang" id="diaChiNhanHang" placeholder="ĐỊA CHỈ NHẬN HÀNG"></td>
+                        <td><input type="text" name="diaChiNhanHang" id="diaChiNhanHang" placeholder="ĐỊA CHỈ NHẬN HÀNG" value="{{old('diaChiNhanHang')??""}}"></td>
                     </tr>
                     <tr>
                         @error('diaChiNhanHang')

@@ -29,17 +29,25 @@ class GioHangController extends Controller
         else
             $loaigio = 'cart';
         if(session($loaigio)){
-            foreach(session($loaigio) as $id => $item){
+            $products = session()->pull($loaigio, []); // Second argument is a default value
+
+            foreach($products as $id => $item){
                 // dd($id);
-                // dd(session($loaigio)[$id]);
+                // dd($products);
                 // dd(($this->SanPham->LaySoLuong($id)));
-                //xử lý quyên hết hàng tại giỏ hàng
-                // if($this->SanPham->LaySoLuong($id) <=0){
-                    // unset(session($loaigio)[$id]);
-                // }else
-                $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
+                // xử lý quyên hết hàng tại giỏ hàng
+                // dd()
+                // dd($item);
+                //  dd($item['SoLuong']);
+                if($this->SanPham->LaySoLuong($id) <= $item['SoLuong']){
+                    unset($products[$id]);
+                    // dd(session($loaigio));
+                }else
+                    $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
                 
             }
+            session()->put($loaigio, $products);
+            // dd(session($loaigio));
         }
         // dd($SP);
         $spnam = new LaySanPham();

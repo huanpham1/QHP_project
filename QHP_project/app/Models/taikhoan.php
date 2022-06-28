@@ -11,7 +11,7 @@ class taikhoan extends Model
 
     public function layThongTinKH($MaTK){
 
-        $tk = DB::select('SELECT * FROM taikhoan WHERE TenTaiKhoan = '.$MaTK);
+        $tk = DB::select('SELECT * FROM taikhoan WHERE TenTaiKhoan = "'.$MaTK.'"');
 
         return $tk;
     }
