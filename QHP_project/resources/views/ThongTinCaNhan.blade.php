@@ -11,9 +11,65 @@
             <a href="{{route('KTDHview')}}" class="CTCN">
                 <div class="t">Đơn hàng của bạn</div> 
             </a>
-            
+            <a href="{{route('XepHangThanhVien')}}" class="CTCN">
+                <div class="t">Hạng thành viên</div> 
+            </a>
         </div>
-    @if(isset($ordersList))
+    @if(isset($TTTK))
+    <div class="ThongTinCaNhan1" style="padding-bottom: 40px">
+        @if($TTTK->TieuDung >= 20000000)
+        <div class="table-list1">
+            <div class="xephang">Xếp Hạng: hạng Kim Cương</div>
+            {{-- {{$TTTK->TieuDung}}/20tr --}}
+            <div class="canmua">số tiền tiêu dùng của bạn {{20000000 - $TTTK->TieuDung}}</div>
+        </div>
+        @elseif($TTTK->TieuDung >= 10000000)
+        <div class="table-list1">
+            <div class="xephang">Xếp Hạng: hạng Vàng</div>
+            <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}/20tr</div>
+            <div class="canmua">Cần mua thêm {{20000000 - $TTTK->TieuDung}}</div>
+        </div>
+        {{-- @elseif() --}}
+        @elseif($TTTK->TieuDung >= 3000000)
+        <div class="table-list1">
+            <div class="xephang">Xếp Hạng: hạng bạc</div>
+            <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}/10tr</div>
+            <div class="canmua">Cần mua thêm {{10000000 - $TTTK->TieuDung}} để đạt hạng vàng</div>
+        </div>
+        @else
+            <div class="table-list1">
+                <div class="xephang">Xếp Hạng: hạng Thành viên</div>
+                <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}/3tr</div>
+                <div class="canmua">Cần mua thêm {{3000000 - $TTTK->TieuDung}} để đạt hạng bạc</div>
+            </div> 
+        @endif
+        
+        <table style="text-align: left; font-size: 25px; margin-top:25px; background-color: rgb(243, 188, 188); width: 60%;border-radius: 5px; height: 40%">
+            {{-- <caption></caption> --}}
+            <tr>
+                <td colspan="2" style="text-align: center">Thưởng hạng</td>
+            </tr>
+            <tr>
+                <td>Hạng thành viên</td>
+                <td>Không có</td>
+            </tr>
+            <tr>
+                <td>Hạng bạc</td>
+                <td>giảm 2%/đơn</td>
+            </tr>
+            <tr>
+                <td>Hạng vàng</td>
+                <td>giảm 4%/đơn</td>
+            </tr>
+            <tr>
+                <td>Hạng kim cương</td>
+                <td>giảm 5%/đơn</td>
+            </tr>
+            
+        </table>
+        
+    </div>
+    @elseif(isset($ordersList))
     <div class="ThongTinCaNhan" style="padding-bottom: 40px">
         <h1 style="text-align: center; padding: 10px">Đơn hàng của bạn</h1>
         <div class="table-list">

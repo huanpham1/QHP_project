@@ -29,10 +29,25 @@ class GioHangController extends Controller
         else
             $loaigio = 'cart';
         if(session($loaigio)){
-            foreach(session($loaigio) as $id => $item){
+            $products = session()->pull($loaigio, []); // Second argument is a default value
 
-                $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
+            foreach($products as $id => $item){
+                // dd($id);
+                // dd($products);
+                // dd(($this->SanPham->LaySoLuong($id)));
+                // xử lý quyên hết hàng tại giỏ hàng
+                // dd()
+                // dd($item);
+                //  dd($item['SoLuong']);
+                if($this->SanPham->LaySoLuong($id) <= $item['SoLuong']){
+                    unset($products[$id]);
+                    // dd(session($loaigio));
+                }else
+                    $SP[$id] = [$this->SanPham->getCT($id), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($id)[0]->MaSP),"SoLuong"=>$item["SoLuong"]];
+                
             }
+            session()->put($loaigio, $products);
+            // dd(session($loaigio));
         }
         // dd($SP);
         $spnam = new LaySanPham();
@@ -58,22 +73,9 @@ class GioHangController extends Controller
 
                 $req->session()->put('GH',$GHM);
                 $data = session()->get('GH');
-                // $data1 = $data->session()->get('GH');
-                // dd($data);
-
             }
         return view('GioHang', compact('sl'));
-        // $ma = DB::table('chitietsanpham')->where('MaSP', [$data->json('MaSP')])->where('Size', [$data->json('Size')])->get('ChiTietSPID')[0]->ChiTietSPID;
-        // if($data !=null){
-        //     $GHC = Session('GH')?Session('GH') : null;
-        //     $GHM = new GioHang($GHC);
-        //     $GHM->ThemGH($ma, $data->json('SoLuong'));
-        //     $data->session()->put('GH',$GHM);
-        //     $data1 = $data->session()->get('GH');
-        //     // dd(session('GH'));
-        // }
-        // dd($data);
-        // return response()->json([$data1],200);
+        
     }
     public function addToCart(Request $request)
     {

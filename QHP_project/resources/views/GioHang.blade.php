@@ -70,9 +70,11 @@
 
                     <td class="item-total">
                         @if($item[1]->KhuyenMai != null)
-                       {{($item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100)* $item['SoLuong']}}đ
+                            {{($item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100)* $item['SoLuong']}}đ
+                            <input type="hidden" class="LuuTru" value="{{($item[1]->GiaBan*(100-$item[1]->KhuyenMai)/100)}}">
                         @else
                             {{$item[1]->GiaBan * $item['SoLuong']}}đ
+                            <input type="hidden" class="LuuTru" value="{{$item[1]->GiaBan}}" >
                         @endif
 
                     </td>
@@ -172,6 +174,9 @@
                 if(response==400){
                     document.querySelector('[value='+id+'').innerHTML="Số lượng yêu cầu không có sẵn";
                     document.querySelector('[name='+id+'').value = document.querySelector('[id='+id+'').value;
+                    console.log(document.querySelector('.LuuTru').value*document.querySelector('[id='+id+'').value);
+                    document.querySelector('.item-total').innerHTML = document.querySelector('.LuuTru').value * document.querySelector('[id='+id+'').value;
+                    window.location.reload();
                 }else{
                     console.log(response);
                     window.location.reload();
