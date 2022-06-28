@@ -123,6 +123,8 @@
 							<option value="Đang giao" <?php if ($orderDetail->TrangThai == "Đang giao") echo 'selected'; ?>>Đang giao</option>
 							<option value="Đã giao" <?php if ($orderDetail->TrangThai == "Đã giao") echo 'selected'; ?>>Đã giao</option>
 						</select>
+						<input type="hidden" name="TongTien" id="" value="{{$orderDetail->TongTien}}">
+						<input type="hidden" name="MaTK" id="" value="{{$orderDetail->MaTK}}">
 						<button class="btn-status" type="submit">Xử lý</button>
 						@csrf
 					</form>

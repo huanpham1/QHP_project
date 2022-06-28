@@ -7,6 +7,40 @@ section{
     margin-bottom: 100px;
     display: flex;
 }
+.canmua{
+  padding-top  : 10px;
+}
+.tttieudung{
+  padding-top : 10px;
+}
+.ThongTinCaNhan1{
+  font-family:  Roboto;
+  text-align: center;
+  padding-top: 15px;
+  font-size: 25px;
+}
+section>.ThongTinCaNhan1{
+  min-height: 400px;
+  width: 50%;
+  margin-left: 2%;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+}
+section>.ThongTinCaNhan1>table {
+  margin: auto;
+  font-size: 20px;
+}
+section>.ThongTinCaNhan1>table caption{
+  margin: 10px 0px;
+}
+section>.ThongTinCaNhan1>table td {
+  padding: 10px;
+}
+section>.ThongTinCaNhan1>table input{
+  width: 300px;
+  font-size: 20px;
+}
+
 
 section>.ThongTinCaNhan{
     min-height: 400px;
@@ -51,9 +85,9 @@ section>.ThongTinCaNhan>table input{
     align-items: center;
     flex-wrap: wrap;
     width: 20%;
-    height:100px;
+    height:150px;
     margin-left: 10%;
-    background-color: #e1edef;
+    background-color: #eff1f1;
     box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
 }
 .CTCN{
@@ -62,7 +96,7 @@ section>.ThongTinCaNhan>table input{
     text-decoration: none;
     /* background-color: rgb(64, 196, 196); */
     width: 90%;
-    height: 40%;
+    height: 30%;
     display: flex;
     justify-content: space-around;
     align-items: center;

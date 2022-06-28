@@ -10,6 +10,8 @@ use App\Models\Orders;
 use App\Models\taikhoan;
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
+use Illuminate\Routing\Redirector;
+use Symfony\Component\HttpFoundation\RedirectResponse;
 
 class ThanhToanController extends Controller
 {
@@ -72,10 +74,17 @@ class ThanhToanController extends Controller
         else
             $loaigio = 'cart';
         $CTSP = $this->SanPham->getCTSPID($request->MaSP, $request->Size);
-        $SP[0] = [$this->SanPham->getCT($CTSP), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($CTSP)[0]->MaSP),"SoLuong"=>$request->SoLuong];
-        $DHN = 1;
-        // dd($SP);
-        return view("ThanhToan", compact('taikhoan','theloai','danhmuc', 'SP', 'DHN'));
+        
+        if($this->SanPham->LaySoLuong($CTSP) <= 0)
+            return redirect()->back()->with('msg', 'Số lượng yêu cầu  không có sẵn');   
+
+        else{
+            $SP[0] = [$this->SanPham->getCT($CTSP), $this->SanPham->GetSanPham($this->SanPham->GetIDSP($CTSP)[0]->MaSP),"SoLuong"=>$request->SoLuong];
+            $DHN = 1;
+            // dd($SP);
+            return view("ThanhToan", compact('taikhoan','theloai','danhmuc', 'SP', 'DHN'));
+
+        }
     }
     public function insertDH(Request $request){
         $rule = [

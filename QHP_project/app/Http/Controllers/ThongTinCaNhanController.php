@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Models\taikhoan;
 use App\Models\LayTheLoai;
 use App\Models\LayDanhMuc;
+use App\Models\LayTaiKhoan;
 
 class ThongTinCaNhanController extends Controller
 {
@@ -21,9 +22,10 @@ class ThongTinCaNhanController extends Controller
         $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
 
-        $MaTK = $request->session()->get('TenTaiKhoan');
-        $tk = new taikhoan();
-        $taikhoan = $tk->layThongTinKH($MaTK);
+        $TenTaiKhoan = $request->session()->get('TenTaiKhoan');
+        $tk = new LayTaiKhoan();
+        $taikhoan = $tk->layThongTinKH($TenTaiKhoan);
+        // dd($taikhoan);
         return view('ThongTinCaNhan', compact('taikhoan', 'danhmuc', 'theloai'));
     }
     public function formSua(Request $request){
@@ -34,7 +36,7 @@ class ThongTinCaNhanController extends Controller
         $danhmuc = $dm->getAllDanhMuc();
 
         $MaTK = $request->session()->get('TenTaiKhoan');
-        $tk = new taikhoan();
+        $tk = new LayTaiKhoan();
         $taikhoan = $tk->layThongTinKH($MaTK);
         return view('SuaThongTinCaNhan',compact('taikhoan', 'danhmuc', 'theloai'));
     }
@@ -52,15 +54,15 @@ class ThongTinCaNhanController extends Controller
             'numeric' => ':attribute khong dung dinh dang !'
         ];
         $request->validate($rule,$message);
-        $MaTK = $request->session()->get('TenTaiKhoan');
-        $tk = new taikhoan();
+        $TenTaiKhoan = $request->session()->get('TenTaiKhoan');   
+        $tk = new LayTaiKhoan();
         $data = [
             $request->name,
             $request->dateOfBirth,
             $request->email,
             $request->DiaChi,
             $request->phoneNum,
-            $MaTK
+            $TenTaiKhoan
         ];
         $taikhoan = $tk->SuaThongTin($data);
 
