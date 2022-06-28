@@ -53,7 +53,7 @@ class ThongTinCaNhanController extends Controller
             'numeric' => ':attribute khong dung dinh dang !'
         ];
         $request->validate($rule,$message);
-        $MaTK = $request->session()->get('TenTaiKhoan');
+        $TenTaiKhoan = $request->session()->get('TenTaiKhoan');   
         $tk = new LayTaiKhoan();
         $data = [
             $request->name,
@@ -61,7 +61,7 @@ class ThongTinCaNhanController extends Controller
             $request->email,
             $request->DiaChi,
             $request->phoneNum,
-            $MaTK
+            $TenTaiKhoan
         ];
         $taikhoan = $tk->SuaThongTin($data);
 

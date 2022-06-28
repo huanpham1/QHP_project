@@ -16,7 +16,7 @@ class LayTaiKhoan extends Model
         return $tk;
     }
     public function SuaThongTin($data){
-        $suaThongTin = DB::update('UPDATE taikhoan SET HoVaTen = ?,NgaySinh = ?,Email = ?,DiaChi = ?,SoDT = ? WHERE MaTK = ?',$data);
+        $suaThongTin = DB::update('UPDATE taikhoan SET HoVaTen = ?,NgaySinh = ?,Email = ?,DiaChi = ?,SoDT = ? WHERE TenTaiKhoan = ?',$data);
         return $suaThongTin;
     }
     public function GETIDTK($data){
