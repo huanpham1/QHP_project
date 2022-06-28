@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
 class LayTaiKhoan extends Model
 {
 
-    public function layThongTinKH($MaTK){
+    public function layThongTinKH($TenTaiKhoan){
 
-        $tk = DB::select('SELECT * FROM taikhoan WHERE MaTK = '.$MaTK);
+        $tk = DB::select('SELECT * FROM taikhoan WHERE TenTaiKhoan = "'.$TenTaiKhoan.'"');
 
         return $tk;
     }
@@ -20,7 +20,7 @@ class LayTaiKhoan extends Model
         return $suaThongTin;
     }
     public function GETIDTK($data){
-        $MaTK = DB::select('SELECT MaTK FROM taikhoan WHERE TenTaiKhoan = '.$data);
+        $MaTK = DB::select('SELECT MaTK FROM taikhoan WHERE TenTaiKhoan = "'.$data.'"');
         return $MaTK;
     }
 }
