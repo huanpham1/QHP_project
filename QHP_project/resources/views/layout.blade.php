@@ -84,25 +84,25 @@
     <footer>
         <div class="container_footer">
         <div class="support">
-            <p class="bold">SUPPORT</p>
-            <p>Checking order</p>
-            <p>Checkout Method</p>
-            <p>Return Policy</p>
+            <p class="bold">HỖ TRỢ</p>
+            <p>kiểm tra đơn hàng</p>
+            <p>Đăng xuất</p>
+            <p>Chính sách hoàn trả</p>
         </div>
         <div class="information">
-            <p class="bold">INFORMATION</p>
-            <p>Store Finder</p>
-            <p>Cooperation with</p>
+            <p class="bold">THÔNG TIN</p>
+            <p>Tìm kiếm hàng hoá</p>
+            <p>Hợp Tác với</p>
             <p>QHP</p>
             <p>Q&A</p>
         </div>
         <div class="about">
-            <p class="bold">ABOUT'S QHP</p>
-            <p>About QHP</p>
-            <p>QHP Stories</p>
-            <p>QHP Development</p>
-            <p>Activities</p>
-            <p>Contact Us</p>
+            <p class="bold">VỀ QHP</p>
+            <p>Về QHP</p>
+            <p>Câu chuyện QHP</p>
+            <p>Quá trình phát triển</p>
+            <p>Hoạt động</p>
+            <p>Liên lạc</p>
         </div>
         <div class="LOGO"><img src="{{ asset('assets/images/Logo.PNG')}}" alt="LOGO"></div>
         </div>

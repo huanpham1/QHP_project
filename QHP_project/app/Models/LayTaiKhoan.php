@@ -9,9 +9,9 @@ use Illuminate\Support\Facades\DB;
 class LayTaiKhoan extends Model
 {
 
-    public function layThongTinKH($MaTK){
-
-        $tk = DB::select('SELECT * FROM taikhoan WHERE MaTK = "'.$MaTK.'"');
+    public function layThongTinKH($TenTaiKhoan){
+        // dd($MaTK);
+        $tk = DB::select('SELECT * FROM taikhoan WHERE TenTaiKhoan = "'.$TenTaiKhoan.'"');
 
         return $tk;
     }

@@ -25,6 +25,7 @@ class ThongTinCaNhanController extends Controller
         $TenTaiKhoan = $request->session()->get('TenTaiKhoan');
         $tk = new LayTaiKhoan();
         $taikhoan = $tk->layThongTinKH($TenTaiKhoan);
+        // dd($taikhoan);
         return view('ThongTinCaNhan', compact('taikhoan', 'danhmuc', 'theloai'));
     }
     public function formSua(Request $request){
