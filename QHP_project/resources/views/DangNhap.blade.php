@@ -68,5 +68,17 @@
                 </div>
             </form>
         </div>
+        <script type="text/javascript">
+            document.getElementById("loginBtn").onclick = function(){
+                document.getElementById("dangNhap").style.display = "none";
+                document.getElementById("forgot-pass-form").style.display = "block";
+                return false;
+            }
+            document.getElementById("submitBtn").onclick = function(){
+                document.getElementById("forgot-pass-form").style.display = "none";
+                document.getElementById("dangNhap").style.display = "";
+                return false;
+            }
+        </script>
     </section>
     @endsection
