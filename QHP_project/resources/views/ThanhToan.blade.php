@@ -1,8 +1,8 @@
+
 @extends('layout')
 
 @section('content')
     <link rel="stylesheet" href="{{ asset('assets/css/ThanhToan.css')}}">
-
     <div class="content">
         <form action="{{route('ThanhToan.postHD')}}" method="post" style="display:flex;" entype="mulitpart/form-data">
         <div class="thongTinGiaoHang">

@@ -55,11 +55,6 @@
             @endif
             <div class="sp-nam">
                 <div class="hang">
-
-                </div>
-
-                <div class="hang">
-                    <div class="hang">
                         @foreach ($sp as $item)
                             
                         @php if($item->KhuyenMai != null)echo "";  @endphp
@@ -75,7 +70,6 @@
                             {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
                         </div>
                         @endforeach
-                    </div>
                 </div>
             </div>
             @else
@@ -92,9 +86,6 @@
                     </ul>
                 </div>
                 <div class="sp-nam">
-                    <div class="hang">
-                    </div>
-                    <div class="hang">
                         @if (!empty($SanPhamList))
                         <div class="hang">
                             @for($j = 0; $j < 4; $j++)
@@ -114,7 +105,6 @@
                                 </div>
                             @else
                         @endif
-                    </div>
                 </div>
             @endif
         </div>
