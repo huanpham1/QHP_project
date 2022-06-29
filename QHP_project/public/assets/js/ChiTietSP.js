@@ -56,6 +56,7 @@ async function getSL(ma){
         .then(response => {
             sl.innerHTML = 'còn ' + response + ' sản phẩm';
             document.querySelector(".SLC").value = response;
+            SLKHL.innerHTML="";
         })
         .catch((error) => {
         console.error('Error:', error);
