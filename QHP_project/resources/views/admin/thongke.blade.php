@@ -50,29 +50,44 @@
 
 			<div class="maincontent">
 				<div class="content">
-					<form action="">
+					<form action="" style="width: 100%;">
 						<div class="statistic-option">
+
 							<input type="radio" name="option" id="day_opt" 
 							<?php if (!empty($_GET['option']) && $_GET['option']=='1') echo 'checked'; ?> onclick="ThongKeNgay();" value="1">
 							<label for="day_opt">Thống kê theo ngày</label>
+							
+
 							<input type="radio" name="option" id="month_opt" 
 							<?php if (!empty($_GET['option']) && $_GET['option']=='2') echo 'checked'; else if (empty($_GET['option'])) echo 'checked'; ?> onclick="ThongKeThang();" value="2">
 							<label for="month_opt">Thống kê theo tháng</label>
+							
+
 							<input type="radio" name="option" id="year_opt" 
 							<?php if (!empty($_GET['option']) && $_GET['option']=='3') echo 'checked'; ?> onclick="ThongKeNam();" value="3">
 							<label for="year_opt">Thống kê theo năm</label>
+
+
 							<div id="statistic_date">
 								<label for="from_date">Từ ngày:</label>
 								<input type="date" name="from_date" id="from_date" min="2015-01-01" value="{{ !empty($_GET['from_date']) ? $_GET['from_date'] : '' }}" required>
 								<label for="to_date" style="margin-left: 20px;">Đến ngày:</label>
 								<input type="date" name="to_date" id="to_date" min="2015-01-01" value="{{ !empty($_GET['to_date']) ? $_GET['to_date'] : '' }}" required>
+								@if (session('msg'))
+								<div class="message">{{session('msg')}}</div>
+								@endif
 							</div>
+
 							<div id="statistic_month">
 								<label for="from_month">Từ tháng:</label>
 								<input type="month" name="from_month" id="from_month" min="2015-01" value="{{ !empty($_GET['from_month']) ? $_GET['from_month'] : '' }}" required>
 								<label for="to_month" style="margin-left: 20px;">Đến tháng:</label>
 								<input type="month" name="to_month" id="to_month" min="2015-01" value="{{ !empty($_GET['to_month']) ? $_GET['to_month'] : '' }}" required>
+								@if (session('msg'))
+								<div class="message">{{session('msg')}}</div>
+								@endif
 							</div>
+
 							<div id="statistic_year">
 								<label for="from_year">Từ năm:</label>
 								<select name="from_year" name="from_year" id="from_year">
@@ -90,7 +105,11 @@
 										</option>
 									@endfor
 								</select>
+								@if (session('msg'))
+								<div class="message">{{session('msg')}}</div>
+								@endif
 							</div>
+
 							<button type="submit" class="btn_TK">Thống kê</button>
 						</div>
 					</form>
@@ -113,27 +132,7 @@
 
 	
 	<script type="text/javascript">
-		// Đưa giá trị các năm vào select
 		window.onload = function () {
-			// var from_year = document.getElementById("from_year");
-			// var to_year = document.getElementById("to_year");
-	
-			// var currentYear = (new Date()).getFullYear();
-	
-			// for (var i = 2015; i <= currentYear; i++) {
-			// 	var option = document.createElement("OPTION");
-			// 	option.innerHTML = i;
-			// 	option.value = i;
-			// 	from_year.appendChild(option);
-			// }
-
-			// for (var i = 2015; i <= currentYear; i++) {
-			// 	var option = document.createElement("OPTION");
-			// 	option.innerHTML = i;
-			// 	option.value = i;
-			// 	to_year.appendChild(option);
-			// }
-			// to_year.value = currentYear;
 			
 			var from_date = document.getElementById("from_date");
 			var to_date = document.getElementById("to_date");

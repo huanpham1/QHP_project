@@ -12,7 +12,7 @@ class ThongKe extends Model
     use HasFactory;
 
     public function getOrdersByDate($from_date, $to_date){
-        return DB::select("SELECT * FROM donhang WHERE (CONVERT(DATE, NgayNhanHang) BETWEEN ".$from_date." AND ".$to_date.")
+        return DB::select("SELECT * FROM donhang WHERE NgayNhanHang BETWEEN ".$from_date." AND ".$to_date."
                     AND TrangThai = 'Đã giao'");
     }
 

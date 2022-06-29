@@ -128,6 +128,12 @@
 #statistic_year{
     display: none;
 }
+.message{
+  width: 100%;
+  color: red;
+  display: inline;
+  text-align: center;
+}
 .btn_TK{
     background-color: #ffcc00;
     width: 90px;

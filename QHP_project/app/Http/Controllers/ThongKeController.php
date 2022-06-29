@@ -102,6 +102,10 @@ class ThongKeController extends Controller
             $temp1 = $from_date;
             $temp2 = $to_date;
 
+            if ($from_date > $to_date){
+                return redirect()->route('thongke')->with('msg', 'Khoảng thời gian không hợp lệ');
+            }
+
             $arr_from = explode('-', $from_date);
             $start_year = $arr_from[0];
             $start_month = $arr_from[1];
@@ -114,11 +118,12 @@ class ThongKeController extends Controller
             $end_day = $arr_to[2];
             $to_date = ''.$arr_to[0].$arr_to[1].$arr_to[2];
 
-            $allOrders = $this->orders->getOrdersByMonth($from_date, $to_date);
+            $allOrders = $this->orders->getOrdersByDate($from_date, $to_date);
 
             $from_date = $temp1;
             $to_date = $temp2;
             $day = $from_date;
+
             while (true){
                 $revenue = 0;
                 foreach($allOrders as $key=>$item){
@@ -154,7 +159,7 @@ class ThongKeController extends Controller
             $to_month = ''.$arr_to[0].'/'.$arr_to[1].'/01';
 
             $allOrders = $this->orders->getOrdersByMonth($from_month, $to_month);
-            
+
             for ($y = $start_year; $y <= $end_year; $y++){
                 if ($y == $start_year && $y == $end_year){
                     for ($m = $start_month; $m <= $end_month; $m++){
