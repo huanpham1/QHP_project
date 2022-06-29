@@ -91,7 +91,8 @@ class ThanhToanController extends Controller
             'name' => 'required|min:5',
             'DiaChi' => 'required',
             'diaChiNhanHang' => 'required|min:20',
-            'phoneNum' => 'numeric|min:10'
+            'phoneNum' => 'numeric|min:10',
+            'ghiChu' => 'required'
         ];
         $message = [
             'required' => ':attribute không được để trống !',

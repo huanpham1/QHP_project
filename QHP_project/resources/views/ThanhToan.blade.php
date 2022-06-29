@@ -41,7 +41,12 @@
                         @enderror
                     </tr>
                     <tr>
-                        <td><input type="text" name="ghiChu" id="ghiChu" placeholder="GHI CHÚ" value="{{old('ghiChu')??""}}"></td>
+                        <td><input type="text" name="ghiChu" id="ghiChu" placeholder="GHI CHÚ" value=""></td>
+                    </tr>
+                    <tr>
+                        @error('ghiChu')
+                            <td style="padding-left:20px;height: 30px;font-size: 15px;" colspan="2"><span class="alert">{{$message}}</span></td>
+                        @enderror
                     </tr>
                      <tr>
                         <td><input type="text" name="diaChiNhanHang" id="diaChiNhanHang" placeholder="ĐỊA CHỈ NHẬN HÀNG" value="{{old('diaChiNhanHang')??""}}"></td>
