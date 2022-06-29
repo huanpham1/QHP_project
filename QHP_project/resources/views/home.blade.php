@@ -64,8 +64,7 @@
                     <tr>
                         <td colspan="4">Không có sản phẩm</td>
                     </tr>
-        @endif
-        
+            @endif
         </div>
         <div class="view-more">
             <a href="{{route('XemDanhMuc.index',[2])}}"><button>Xem Thêm Sản Phẩm</button></a>
