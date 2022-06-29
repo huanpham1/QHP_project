@@ -71,8 +71,9 @@
         </div>
 
         <div class="sp-nu">
-            <div class="title2" style="text-align: center; font-size: 30px; margin: 10px">Sản phẩm bán chạy</div>
+            
             @if (!empty($sanphamhot))
+            <div class="title2" style="text-align: center; font-size: 30px; margin: 10px">Sản phẩm bán chạy</div>
             <div class="hang">
                 @for($j = 0; $j < 4; $j++)
                 @php if($sanphamhot[$j]->KhuyenMai != null)echo "";  @endphp
