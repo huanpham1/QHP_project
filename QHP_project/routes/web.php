@@ -18,6 +18,7 @@ use App\Http\Controllers\XemDanhMucController;
 use App\Http\Controllers\XemTheLoaiController;
 use App\Http\Controllers\ThongTinCaNhanController;
 use App\Http\Controllers\ThanhToanController;
+use App\Http\Controllers\ThongKeController;
 
 /*
 |--------------------------------------------------------------------------
@@ -169,5 +170,7 @@ Route::middleware('checkadmin')->prefix('/adminsite')->group(function () {
 
         Route::get('/delete/{id}', [OrdersController::class, 'delete'])->name('delete');
     });
+
+    Route::get('/thongke', [ThongKeController::class, 'index'])->name('thongke');
 });
 
