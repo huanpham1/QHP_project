@@ -64,11 +64,37 @@
                     <tr>
                         <td colspan="4">Không có sản phẩm</td>
                     </tr>
-        @endif
-        
+            @endif
         </div>
         <div class="view-more">
             <a href="{{route('XemDanhMuc.index',[2])}}"><button>Xem Thêm Sản Phẩm</button></a>
+        </div>
+
+        <div class="sp-nu">
+            
+            @if (!empty($sanphamhot))
+            <div class="title2" style="text-align: center; font-size: 30px; margin: 10px">Sản phẩm bán chạy</div>
+            <div class="hang">
+                @for($j = 0; $j < 4; $j++)
+                @php if($sanphamhot[$j]->KhuyenMai != null)echo "";  @endphp
+                <div class="cot">
+                    <a href="{{route('chitiet',['id' => $sanphamhot[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$sanphamhot[$j]->HinhAnh)}}" alt="Giay">@if($sanphamhot[$j]->KhuyenMai != null) <div class="sale">{{"-".$sanphamhot[$j]->KhuyenMai ."%"}}</div>  @endif</a>
+                    <a href="{{route('chitiet',['id' => $sanphamhot[$j]->MaSP]) }}"><p class="tensp">{{$sanphamhot[$j]->TenSP}}</p></a>
+                    @if($sanphamhot[$j]->KhuyenMai != null)
+                    <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$sanphamhot[$j]->GiaBan}}đ</p></a>
+                    <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$sanphamhot[$j]->GiaBan*(100-$sanphamhot[$j]->KhuyenMai)/100}}đ</p></a>
+                    @else
+                    <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$sanphamhot[$j]->GiaBan}}đ</p></a>
+                    @endif
+                    {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
+                </div>
+                @endfor
+            </div>
+                    @else
+                    <tr>
+                        <td colspan="4">Không có sản phẩm</td>
+                    </tr>
+            @endif
         </div>
     </div>
 

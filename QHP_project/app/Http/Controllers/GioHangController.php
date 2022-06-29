@@ -39,7 +39,7 @@ class GioHangController extends Controller
                 // dd()
                 // dd($item);
                 //  dd($item['SoLuong']);
-                if($this->SanPham->LaySoLuong($id) <= $item['SoLuong']){
+                if($this->SanPham->LaySoLuong($id) < $item['SoLuong']){
                     unset($products[$id]);
                     // dd(session($loaigio));
                 }else

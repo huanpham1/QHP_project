@@ -21,7 +21,7 @@
         <div class="table-list1">
             <div class="xephang">Xếp Hạng: hạng Kim Cương</div>
             {{-- {{$TTTK->TieuDung}}/20tr --}}
-            <div class="canmua">số tiền tiêu dùng của bạn {{20000000 - $TTTK->TieuDung}}</div>
+            <div class="canmua">số tiền tiêu dùng của bạn: {{$TTTK->TieuDung}}</div>
         </div>
         @elseif($TTTK->TieuDung >= 10000000)
         <div class="table-list1">

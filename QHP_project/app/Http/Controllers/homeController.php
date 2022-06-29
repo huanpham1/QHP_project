@@ -28,8 +28,11 @@ class homeController extends Controller
         $dm = new LayDanhMuc();
         $danhmuc = $dm->getAllDanhMuc();
 
+        $sph = new LaySanPham();
+        $sanphamhot = $sph->getSP_HOT();
+
         //return view('home', compact('sanphamnam','sanphamnu','theloai','danhmuc'));
-        return view("home", compact('SanPhamList','sanphamnu','theloai','danhmuc'));
+        return view("home", compact('SanPhamList','sanphamnu','theloai','danhmuc','sanphamhot'));
     }
 
     public function notification(){
@@ -82,7 +85,7 @@ class homeController extends Controller
     public function test(){
         $data = $data = DB::table('chitietsanpham')->where('Size', 30)->get('ChiTietSPID');
         // Storage::disk('local')->put('example.txt', json_encode(Session('cart')));
-        $sp = DB::update('UPDATE chitietsanpham SET SoLuongCon = 6 WHERE ChiTietSPID = "CTSP1301"');
+        $sp = DB::select('SELECT sanpham.*,SUM(SoLuong) as TSL FROM chitietdonhang INNER JOIN chitietsanpham on chitietsanpham.ChiTietSPID = chitietdonhang.ChiTietSPID INNER JOIN donhang on chitietdonhang.MaDonHang = donhang.MaDonHang INNER JOIN sanpham on sanpham.MaSP = chitietsanpham.MaSP WHERE donhang.TrangThai="Đã giao" GROUP BY sanpham.MaSP,sanpham.TenSP,sanpham.GiaBan,sanpham.MoTa,sanpham.hinhanh, sanpham.madanhmuc, sanpham.matheloai, sanpham.khuyenmai Order by TSL desc ');
 
         dd($sp);
         // .var_export

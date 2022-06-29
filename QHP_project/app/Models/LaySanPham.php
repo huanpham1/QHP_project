@@ -33,6 +33,13 @@ class LaySanPham extends Model
 
         return $sp;
     }
+    function getSP_HOT(){
+
+        // Câu truy vấn lấy san pham theo danh muc
+        $sp = DB::select('SELECT sanpham.*,SUM(SoLuong) as TSL FROM chitietdonhang INNER JOIN chitietsanpham on chitietsanpham.ChiTietSPID = chitietdonhang.ChiTietSPID INNER JOIN donhang on chitietdonhang.MaDonHang = donhang.MaDonHang INNER JOIN sanpham on sanpham.MaSP = chitietsanpham.MaSP WHERE donhang.TrangThai="Đã giao" GROUP BY sanpham.MaSP,sanpham.TenSP,sanpham.GiaBan,sanpham.MoTa,sanpham.hinhanh, sanpham.madanhmuc, sanpham.matheloai, sanpham.khuyenmai Order by TSL desc ');
+
+        return $sp;
+    }
     function getSanPham($id){
 
         // Câu truy vấn lấy san pham theo id
