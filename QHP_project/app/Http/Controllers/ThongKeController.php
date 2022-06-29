@@ -148,6 +148,10 @@ class ThongKeController extends Controller
             $from_month = $request->from_month;
             $to_month = $request->to_month;
 
+            if ($from_month > $to_month){
+                return redirect()->route('thongke')->with('msg', 'Khoảng thời gian không hợp lệ');
+            }
+
             $arr_from = explode('-', $from_month);
             $start_year = $arr_from[0];
             $start_month = $arr_from[1];
@@ -223,6 +227,10 @@ class ThongKeController extends Controller
         else {
             $from_year = $request->from_year;
             $to_year = $request->to_year;
+
+            if ($from_year > $to_year){
+                return redirect()->route('thongke')->with('msg', 'Khoảng thời gian không hợp lệ');
+            }
 
             $allOrders = $this->orders->getOrdersByYear($from_year, $to_year);
             
