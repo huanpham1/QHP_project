@@ -87,23 +87,59 @@
                 </div>
                 <div class="sp-nam">
                         @if (!empty($SanPhamList))
-                        <div class="hang">
-                            @for($j = 0; $j < 4; $j++)
-                            @php if($SanPhamList[$j]->KhuyenMai != null)echo "";  @endphp
-                            <div class="cot">
-                                <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay">@if($SanPhamList[$j]->KhuyenMai != null) <div class="sale">{{"-".$SanPhamList[$j]->KhuyenMai ."%"}}</div>  @endif</a>
-                                <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
-                                @if($SanPhamList[$j]->KhuyenMai != null)
-                                <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
-                                <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a>
-                                @else
-                                <a href="#"><p class="price"  style="color: rgb(233, 81, 81)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
-                                @endif
-                                {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
-                            </div>
-                            @endfor
+                            @if(count($SanPhamList) <= 5)
+                                <div class="hang">
+                                    @for($j = 0; $j < count($SanPhamList); $j++)
+                                    @php if($SanPhamList[$j]->KhuyenMai != null)echo "";  @endphp
+                                    <div class="cot">
+                                        <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay">@if($SanPhamList[$j]->KhuyenMai != null) <div class="sale">{{"-".$SanPhamList[$j]->KhuyenMai ."%"}}</div>  @endif</a>
+                                        <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                                        @if($SanPhamList[$j]->KhuyenMai != null)
+                                        <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                                        <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a>
+                                        @else
+                                        <a href="#"><p class="price"  style="color: rgb(233, 81, 81)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                                        @endif
+                                        {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
+                                    </div>
+                                    @endfor
                                 </div>
                             @else
+                                <div class="hang">
+                                    @for($j = 0; $j < 5; $j++)
+                                    @php if($SanPhamList[$j]->KhuyenMai != null)echo "";  @endphp
+                                    <div class="cot">
+                                        <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay">@if($SanPhamList[$j]->KhuyenMai != null) <div class="sale">{{"-".$SanPhamList[$j]->KhuyenMai ."%"}}</div>  @endif</a>
+                                        <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                                        @if($SanPhamList[$j]->KhuyenMai != null)
+                                        <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                                        <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a>
+                                        @else
+                                        <a href="#"><p class="price"  style="color: rgb(233, 81, 81)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                                        @endif
+                                        {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
+                                    </div>
+                                    @endfor
+                                </div>
+                                <div class="hang">
+                                    @for($j = count($SanPhamList)-1; $j > 4; $j--)
+                                    @php if($SanPhamList[$j]->KhuyenMai != null)echo "";  @endphp
+                                    <div class="cot">
+                                        <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay">@if($SanPhamList[$j]->KhuyenMai != null) <div class="sale">{{"-".$SanPhamList[$j]->KhuyenMai ."%"}}</div>  @endif</a>
+                                        <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
+                                        @if($SanPhamList[$j]->KhuyenMai != null)
+                                        <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                                        <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a>
+                                        @else
+                                        <a href="#"><p class="price"  style="color: rgb(233, 81, 81)">{{$SanPhamList[$j]->GiaBan}}đ</p></a>
+                                        @endif
+                                        {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
+                                    </div>
+                                    @endfor
+                                </div>
+                            @endif
+                        @else
+                            <p>Không có sản phẩm</p>
                         @endif
                 </div>
             @endif
