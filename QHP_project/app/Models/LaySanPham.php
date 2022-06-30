@@ -7,10 +7,10 @@ use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 class LaySanPham extends Model
 {
-    public function getSP_TheLoai($id){
+    public function getSP_TheLoai($id, $iddm){
 
         // Câu truy vấn lấy san pham theo id
-        $sp= DB::select('SELECT * FROM sanpham WHERE MaTheLoai = ?',[$id]);
+        $sp= DB::select('SELECT * FROM sanpham WHERE MaTheLoai = "'.$id.'" AND MaDanhMuc = "'.$iddm.'"');
 
         return $sp;
     }

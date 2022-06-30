@@ -40,7 +40,7 @@
             </div>
         </div>
         <div class="product">
-            <div class="title0"><p>NAM</p></div>
+            <div class="title0"><p><?php foreach($tendm as $name) echo $name->TenDanhMuc ?></p></div>
             <div class="danhmuc">
                 <ul>
                     <?php
@@ -52,33 +52,39 @@
                 </ul>
             </div>
             <div class="sp-nam">
-                <div class="hang">
-                    <?php $i=0; foreach($sanpham as $data){
-                            $i++;
-                            if($i==5)
-                                break;
-                        ?>
-                        <div class="cot">
-                        <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><img src="{{ asset('storage/products/'.$data->HinhAnh)}}" alt="Giay"></a>
-                        <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><p class="tensp"><?php echo $data->TenSP ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <a href="#"><p class="price"><?php echo $data->GiaBan?>đ</p></a>
+                @if(!empty($sanpham))
+                    <div class="hang">
+                        <?php $i=0; foreach($sanpham as $data){
+                                $i++;
+                                if($i==5)
+                                    break;
+                            ?>
+                            <div class="cot">
+                            <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><img src="{{ asset('storage/products/'.$data->HinhAnh)}}" alt="Giay"></a>
+                            <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><p class="tensp"><?php echo $data->TenSP ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                            <a href="#"><p class="price"><?php echo $data->GiaBan?>đ</p></a>
+                        </div>
+                            <?php } ?>
                     </div>
-                        <?php } ?>
-                </div>
 
-                <div class="hang">
-                    <?php $i=0; foreach($sanpham as $data){
-                            $i++;
-                            if($i==5)
-                                break;
-                        ?>
-                        <div class="cot">
-                        <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><img src="{{ asset('storage/products/'.$data->HinhAnh)}}" alt="Giay"></a>
-                        <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><p class="tensp"><?php echo $data->TenSP ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
-                        <a href="#"><p class="price"><?php echo $data->GiaBan?>đ</p></a>
+                    <div class="hang">
+                        <?php $i=0; foreach($sanpham as $data){
+                                $i++;
+                                if($i==5)
+                                    break;
+                            ?>
+                            <div class="cot">
+                            <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><img src="{{ asset('storage/products/'.$data->HinhAnh)}}" alt="Giay"></a>
+                            <a href="{{route('chitiet',['id'=>$data->MaSP])}}"><p class="tensp"><?php echo $data->TenSP ?></p><input type="hidden" name="_token" value="<?php echo csrf_token();?>"></a>
+                            <a href="#"><p class="price"><?php echo $data->GiaBan?>đ</p></a>
+                        </div>
+                            <?php } ?>
                     </div>
-                        <?php } ?>
-                </div>
+                @else
+                    <div class="hang">
+                        <p>Chưa có thêm sản phẩm</p>
+                    </div>
+                @endif
             </div>
         </div>
 
