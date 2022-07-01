@@ -76,7 +76,7 @@
             </div>
             @else
             <?php foreach($dmid as $tendm){  ?>
-                <div class="title0"><p><?php echo $tendm->TenDanhMuc ?></p></div>
+                <div class="title0"><p><?php echo $tendm->TenDanhMuc; session()->put('MaDanhMuc',$tendm->MaDanhMuc) ?></p></div>
                 <?php }?>
                 <div class="danhmuc">
                     <ul>

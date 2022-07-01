@@ -19,6 +19,12 @@ class DanhMuc extends Model
         return $allDanhMuc;
     }
 
+    function getDMName($iddm){
+        $dm = DB::select('SELECT * FROM danhmuc WHERE MaDanhMuc = "'.$iddm.'"');
+
+        return $dm;
+    }
+
     public function addDanhMuc($data){
         DB::insert('INSERT INTO '.$this->table.' (TenDanhMuc) VALUES (?)', $data);
     }

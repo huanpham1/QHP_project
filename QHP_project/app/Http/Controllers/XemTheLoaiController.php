@@ -15,18 +15,19 @@ class XemTheLoaiController extends Controller
     public function index(){
         return view('XemTheLoai');
     }
-    public function getSP_TheLoai($id){
-
+    public function getSP_TheLoai(Request $request,$id){
+        $iddm = $request->session()->get('MaDanhMuc',2);
         // Câu truy vấn lấy san pham theo id
         $sp= new LaySanPham();
-        $sanpham = $sp->getSP_TheLoai($id);
+        $sanpham = $sp->getSP_TheLoai($id,$iddm);
 
         $tl = new theloai();
         $theloai = $tl->getAllTheLoai();
 
         $dm = new danhmuc();
         $danhmuc = $dm->getAllDanhMuc();
+        $tendm = $dm->getDMName($iddm);
 
-        return view('XemTheLoai', compact('sanpham','theloai','danhmuc'));
+        return view('XemTheLoai', compact('sanpham','theloai','danhmuc','tendm'));
     }
 }
