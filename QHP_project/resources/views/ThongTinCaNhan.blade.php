@@ -21,26 +21,26 @@
         <div class="table-list1">
             <div class="xephang">Xếp Hạng: hạng Kim Cương</div>
             {{-- {{$TTTK->TieuDung}}/20tr --}}
-            <div class="canmua">số tiền tiêu dùng của bạn: {{$TTTK->TieuDung}}</div>
+            <div class="canmua">số tiền tiêu dùng của bạn: {{$TTTK->TieuDung}}đ</div>
         </div>
         @elseif($TTTK->TieuDung >= 10000000)
         <div class="table-list1">
             <div class="xephang">Xếp Hạng: hạng Vàng</div>
-            <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}/20tr</div>
-            <div class="canmua">Cần mua thêm {{20000000 - $TTTK->TieuDung}}</div>
+            <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}đ/20tr</div>
+            <div class="canmua">Cần mua thêm {{20000000 - $TTTK->TieuDung}}đ</div>
         </div>
         {{-- @elseif() --}}
         @elseif($TTTK->TieuDung >= 3000000)
         <div class="table-list1">
             <div class="xephang">Xếp Hạng: hạng bạc</div>
-            <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}/10tr</div>
-            <div class="canmua">Cần mua thêm {{10000000 - $TTTK->TieuDung}} để đạt hạng vàng</div>
+            <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}đ/10tr</div>
+            <div class="canmua">Cần mua thêm {{10000000 - $TTTK->TieuDung}}đ để đạt hạng vàng</div>
         </div>
         @else
             <div class="table-list1">
                 <div class="xephang">Xếp Hạng: hạng Thành viên</div>
-                <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}/3tr</div>
-                <div class="canmua">Cần mua thêm {{3000000 - $TTTK->TieuDung}} để đạt hạng bạc</div>
+                <div class="tttieudung">Tiêu dùng: {{$TTTK->TieuDung}}đ/3tr</div>
+                <div class="canmua">Cần mua thêm {{3000000 - $TTTK->TieuDung}}đ để đạt hạng bạc</div>
             </div> 
         @endif
         

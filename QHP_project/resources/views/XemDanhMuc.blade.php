@@ -52,6 +52,8 @@
             @if(isset($sp))
             @if(empty($sp))
                 <div class="title0"><p>Không có sản phẩm phù hợp</p></div>
+            @else
+                <div class="title0"><p>Sản phẩm dành cho bạn</p></div>
             @endif
             <div class="sp-nam">
                 <div class="hang">

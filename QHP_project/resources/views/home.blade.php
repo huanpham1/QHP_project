@@ -17,7 +17,7 @@
                         <div class="cot">
                             <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$SanPhamList[$j]->HinhAnh)}}" alt="Giay">@if($SanPhamList[$j]->KhuyenMai != null) <div class="sale">{{"-".$SanPhamList[$j]->KhuyenMai ."%"}}</div>  @endif</a>
                             <a href="{{route('chitiet',['id' => $SanPhamList[$j]->MaSP]) }}"><p class="tensp">{{$SanPhamList[$j]->TenSP}}</p></a>
-                            @if($SanPhamList[$j]->TongSoLuongCon==0)
+                            @if($SanPhamList[$j]->TongSoLuongCon<=0)
                                 <img src="{{ asset('assets/images/hết hàng.png')}}" alt="" style="position: absolute; top:-5%;left:-30%;">
                             @endif
                             @if($SanPhamList[$j]->KhuyenMai != null)
@@ -50,6 +50,9 @@
                 <div class="cot">
                     <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$sanphamnu[$j]->HinhAnh)}}" alt="Giay">@if($sanphamnu[$j]->KhuyenMai != null) <div class="sale">{{"-".$sanphamnu[$j]->KhuyenMai ."%"}}</div>  @endif</a>
                     <a href="{{route('chitiet',['id' => $sanphamnu[$j]->MaSP]) }}"><p class="tensp">{{$sanphamnu[$j]->TenSP}}</p></a>
+                    @if($sanphamnu[$j]->TongSoLuongCon<=0)
+                                <img src="{{ asset('assets/images/hết hàng.png')}}" alt="" style="position: absolute; top:-5%;left:-30%;">
+                            @endif
                     @if($sanphamnu[$j]->KhuyenMai != null)
                     <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$sanphamnu[$j]->GiaBan}}đ</p></a>
                     <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$sanphamnu[$j]->GiaBan*(100-$sanphamnu[$j]->KhuyenMai)/100}}đ</p></a>
@@ -81,6 +84,9 @@
                             <div class="cot">
                                 <a href="{{route('chitiet',['id' => $sanphamhot[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$sanphamhot[$j]->HinhAnh)}}" alt="Giay">@if($sanphamhot[$j]->KhuyenMai != null) <div class="sale">{{"-".$sanphamhot[$j]->KhuyenMai ."%"}}</div>  @endif</a>
                                 <a href="{{route('chitiet',['id' => $sanphamhot[$j]->MaSP]) }}"><p class="tensp">{{$sanphamhot[$j]->TenSP}}</p></a>
+                                @if($sanphamhot[$j]->TongSoLuongCon<=0)
+                                    <img src="{{ asset('assets/images/hết hàng.png')}}" alt="" style="position: absolute; top:-5%;left:-30%;">
+                                @endif
                                 @if($sanphamhot[$j]->KhuyenMai != null)
                                 <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$sanphamhot[$j]->GiaBan}}đ</p></a>
                                 <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$sanphamhot[$j]->GiaBan*(100-$sanphamhot[$j]->KhuyenMai)/100}}đ</p></a>
@@ -93,11 +99,15 @@
                     </div>
                 @else 
                     <div class="hang">
-                            @for($j = 0; $j < count(@sanphamhot); $j++)
-                            @php if($sanphamhot[$j]->KhuyenMai != null)echo "";  @endphp
+                            @for($j = 0; $j < 4; $j++)
+                            {{-- @php if($sanphamhot[$j]->KhuyenMai != null)echo "";  @endphp --}}
+                            @if(isset($sanphamhot[$j]))
                             <div class="cot">
                                 <a href="{{route('chitiet',['id' => $sanphamhot[$j]->MaSP]) }}"><img src="{{ asset('storage/products/'.$sanphamhot[$j]->HinhAnh)}}" alt="Giay">@if($sanphamhot[$j]->KhuyenMai != null) <div class="sale">{{"-".$sanphamhot[$j]->KhuyenMai ."%"}}</div>  @endif</a>
                                 <a href="{{route('chitiet',['id' => $sanphamhot[$j]->MaSP]) }}"><p class="tensp">{{$sanphamhot[$j]->TenSP}}</p></a>
+                                @if($sanphamhot[$j]->TongSoLuongCon<=0)
+                                    <img src="{{ asset('assets/images/hết hàng.png')}}" alt="" style="position: absolute; top:-5%;left:-30%;">
+                                @endif
                                 @if($sanphamhot[$j]->KhuyenMai != null)
                                 <a href="#"><p class="price" style="text-decoration: line-through; color: rgb(150, 140, 140,0.7)">{{$sanphamhot[$j]->GiaBan}}đ</p></a>
                                 <a href="#"><p class="price" style="color: rgb(233, 81, 81)">{{$sanphamhot[$j]->GiaBan*(100-$sanphamhot[$j]->KhuyenMai)/100}}đ</p></a>
@@ -106,6 +116,7 @@
                                 @endif
                                 {{-- <a href="#"><p class="price">{{$SanPhamList[$j]->GiaBan*(100-$SanPhamList[$j]->KhuyenMai)/100}}đ</p></a> --}}
                             </div>
+                            @endif
                             @endfor
                     </div>
                 @endif
