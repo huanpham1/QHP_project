@@ -39,7 +39,7 @@
                 <div class="range-slider">
                     <p>Giá:</p>
                   <span class="rangeValues"></span>
-                  <input value="1000" min="1000" max="50000" name="Value1" step="500" type="range" class="Rang1Value">
+                  <input value="1000" min="1000" max="2000000" name="Value1" step="500" type="range" class="Rang1Value">
                   <input value="2000000" min="1000" max="2000000" name="Value2" step="500" type="range">
                 </div>
                 <input type="hidden" name="_token" value="<?php echo csrf_token();?>">
